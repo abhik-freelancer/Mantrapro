@@ -11,11 +11,18 @@ class memberdashboard extends CI_Controller {
  public function index()
  {
         if ($this->session->userdata('user_data')) {
+		$session=$this->session->userdata('user_data');
+			/*echo("<pre>");
+			print_r($this->session->all_userdata());
+			echo("</pre>");
+
+			echo($session['CUS_NAME']."tesr");*/
+
          $page = 'memberdashboard/memberdashboard';
-	 $header = "";
-	 $result="";
-	 $session="";	
-	 createbody_method($result,$page,$header,$session);
+		 $header = "";
+		 $result="";
+		
+		 createbody_method($result,$page,$header,$session);
          //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
         }else{
            

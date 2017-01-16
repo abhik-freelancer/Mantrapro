@@ -1,13 +1,20 @@
-$(document).ready(function () {
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+$(document).ready(function(){
     var basepath = $("#basepath").val();
-    $("#memeberlogin").click(function () {
-        var mobile = $("#member").val() || "";
-        var pwd = $("#pwd").val() || "";
-
-        $.ajax({
+    
+    
+    $("#btnchangepwd").click(function(){
+        var oldpassword = $("#oldpassword").val()||"";
+        var newpassword = $("#newpassword").val()||"";
+        if(validate()){
+         $.ajax({
             type: "POST",
-            url: basepath + 'memberlogin/login',
+            url: basepath + 'changepass/changePassword',
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: {mobile: mobile, pwd: pwd},
@@ -43,10 +50,22 @@ $(document).ready(function () {
                 alert(msg);
             }
         });
-
+    }else{
+        return false;
+    }
     });
-
-    $(document).on('click', '.glyphicon-remove', function () {
+     $(document).on('click', '.glyphicon-remove', function () {
         $("#msgdiv").hide();
     });
-}); 
+});
+function validate(){
+     var oldpassword = $("#oldpassword").val()||"";
+     var newpassword = $("#newpassword").val()||"";
+     
+     if(oldpassword=="" || newpassword=="" ){
+          $("#msgdiv").show();
+          $("#msgText").html("Fields are mandatory");
+         return false;
+     }
+    return true;
+}

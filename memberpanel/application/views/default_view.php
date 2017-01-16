@@ -47,6 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?php echo base_url(); ?>memberdashboard">Member-panel</a>
+                <input type="hidden" value="<?php echo base_url(); ?>" id="basepath"></input>      
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -140,7 +141,7 @@
                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>-->
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Change password</a>
+                            <a href="<?php echo base_url(); ?>changepass"><i class="fa fa-fw fa-gear"></i> Change password</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -209,6 +210,7 @@
 
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/changepass/changepass.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>

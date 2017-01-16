@@ -12,6 +12,9 @@ class logout extends CI_Controller {
  {
       if ($this->session->userdata('user_data')) {
             $this->session->sess_destroy();
+            redirect('memberlogin', 'refresh');
+      }else{
+           redirect('memberlogin', 'refresh');
       }
  }
 

@@ -164,21 +164,45 @@
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
+    <!-- jQuery ---->
+    <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script> 
+	<!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/jquery.bootstrap.newsbox.js"></script>
+	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
 
     <!-- Script to Activate the Carousel -->
     <script>
-  /*  $('.carousel').carousel({
-        interval: 1000 //changes the speed
-    })*/
-    
- //   $('.carousel').carousel();
-   
-    </script>
+	</script>
+	
+	<script>
+
+
+  $("#upcoming-events").bootstrapNews({
+            newsPerPage: 3,
+            autoplay: false,
+			pauseOnHover:true,
+            direction: 'up',
+            newsTickerInterval: 4000,
+            onToDo: function () {
+                //console.log(this);
+            }
+        }); 
+		
+
+  $("#latest-offers").bootstrapNews({
+            newsPerPage: 1,
+            autoplay: false,
+			pauseOnHover:true,
+            direction: 'up',
+            newsTickerInterval: 4000,
+            onToDo: function () {
+                //console.log(this);
+            }
+        }); 
+
+// Code that uses other library's $ can follow here.
+</script>
 
 </body>
 

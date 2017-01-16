@@ -32,6 +32,7 @@ body{
     position:relative;
   //  border:1px solid #F00;
 }
+
 .top-header{
     width:100%;
     height:150px;
@@ -133,3 +134,219 @@ body{
     width:92%;
     margin:0 auto;
 }
+
+/*----------Testimonial --------------*/
+
+#testimonial-crousal{
+	 width:80%;
+	 margin:0 auto;
+}
+
+.testimonial-container >.carousel-control.left{
+	background:none !important;
+	width:25px;
+	color:#323232;
+	}
+.testimonial-container >.carousel-control.right  {
+	background:none !important;
+	width:25px;
+	
+	}
+
+.testimonial-container > .carousel-control.left {left:-25px;}
+.testimonial-container > .carousel-control.right {right:-25px;}
+.testimonial-container > .broun-block {
+  //  background: url("http://myinstantcms.ru/images/bg-broun1.jpg") repeat scroll center top rgba(0, 0, 0, 0);
+   // padding-bottom: 34px;
+}
+
+.testimonial-block{
+	padding:12%;
+}
+.testimonial-border-right{
+	//border-right:2px dashhed #CCC;
+}
+.testimonial-container >  .block-text {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 3px 0 #2c2222;
+    color: #626262;
+    font-size: 14px;
+    margin-top: 27px;
+    padding: 15px 18px;
+}
+.testimonial-container >  .block-text a {
+ color: #7d4702;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 21px;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.testimonial-container >  .mark {
+    padding: 12px 0;background:none;
+}
+.testimonial-container >  .block-text p {
+    color: #585858;
+    font-family: Georgia;
+    font-style: italic;
+    line-height: 20px;
+}
+
+.testimonial-container >  .sprite-i-triangle {
+    background-position: 0 -1298px;
+    height: 44px;
+    width: 50px;
+}
+.testimonial-container >  .block-text ins {
+    bottom: -44px;
+    left: 50%;
+    margin-left: -60px;
+}
+
+
+.testimonial-container >  .block {
+    display: block;
+}
+.testimonial-container >  .zmin {
+    z-index: 1;
+}
+.testimonial-container >  .ab {
+    position: absolute;
+}
+
+.testimonial-container >  .person-text {
+    padding: 10px 0 0;
+    text-align: center;
+    z-index: 2;
+}
+.testimonial-container >  .person-text a {
+    color: #ffcc00;
+    display: block;
+    font-size: 14px;
+    margin-top: 3px;
+    text-decoration: underline;
+}
+.testimonial-container > .person-text i {
+    color: #fff;
+    font-family: Georgia;
+    font-size: 13px;
+}
+.testimonial-container > .rel {
+    position: relative;
+}
+
+
+/*---------Upcoming Events -----*/
+
+
+.events-and-offers{
+	margin-top:3%;
+    //background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.8)), url("../images/upcoming-events.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: fixed fixed;
+	height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#events-and-offer-box-container{
+	width:80%;
+	margin:0 auto;
+}
+/* site.css */
+.glyphicon
+{
+    margin-right:4px !important; /*override*/
+}
+
+.pagination .glyphicon
+{
+    margin-right:0px !important; /*override*/
+}
+
+.pagination a
+{
+    color:#555;
+}
+
+.panel ul
+{
+    padding:0px;
+    margin:0px;
+    list-style:none;
+}
+
+.news-item
+{
+	clear:both;
+    padding:4px 4px;
+    margin:0px;
+	padding-top: 2%;
+	padding-bottom: 20%;
+	border-bottom: 1px solid #CCC;
+ 
+}
+.event-date{
+	width:20%;
+	float: left;
+	height: 65px;
+	background: #F2652C;
+	text-align: center;
+	border-radius: 6px;
+	font-size: 124%;
+	word-wrap: break-word;
+	color:#FFF;
+	font-weight:bold;
+	box-shadow: 4px 4px 6px #CCC;
+	
+	
+}
+.event-date .date{
+	//padding-top:1%;
+}
+.event-date .year{
+	font-size: 1.6em;
+}
+.event-content{
+	width:75%;
+	float:right;
+	
+}
+.event-content h5{
+	margin-top:0px !important;
+	margin-bottom:0px !important;
+	color:#EE763A;
+	font-weight:bold;
+	font-style:itallic;
+}
+.event-content a {
+	background: #A1A1A1 none repeat scroll 0% 0%;
+	text-decoration: none;
+	color: #FFF;
+	border-radius: 4px;
+	padding: 2px 10px;
+}
+
+
+
+
+.news-item img{
+	overflow-x:hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

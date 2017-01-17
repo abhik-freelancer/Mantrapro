@@ -37,19 +37,30 @@ class changepass extends CI_Controller {
     public function changePassword(){
         $oldPassword =$this->input->post("oldpassword");
         $newpassword =  $this->input->post("newpassword"); 
+        $json_response=array();
         
          if ($this->session->userdata('user_data')) {
              $session = $this->session->userdata('user_data');
              $checkoldpassOfCustId = $this->changepassmodel->checkOldPassword($session["CUS_ID"],$oldPassword);
-             if($checkoldpass){
-                 
+             if($checkoldpassOfCustId==""){
+                 $json_response = array("msg_code"=>0,"msg_data"=>"Passwords do not match, please retype.");
+             }else{
+                 $update = $this->changepassmodel->updateMemberPassword($session["CUS_ID"],$newpassword);
+                 if($update){
+                     $json_response = array("msg_code"=>2,"msg_data"=>"Password update successfully.");
+                 }else{
+                     $json_response = array("msg_code"=>1,"msg_data"=>"Password upadate unsuccessfull.");
+                 }
              }
+             
+             
          }else{
              redirect('memberlogin', 'refresh');
              
          }
         
-        
+        header('Content-Type: application/json');
+        echo json_encode( $json_response );
     }
 
 }

@@ -21,4 +21,26 @@ class changepassmodel extends CI_Model {
         }
         
     }
+    
+    
+    public function updateMemberPassword($customerId,$newpassword){
+        try {
+            $this->db->trans_begin();
+            $this->db->set('PASS', $newpassword);
+            $this->db->where('CUS_ID', $customerId);
+            $this->db->update('customer_master');
+            //echo($this->db->last_query());
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+        
+    }
 }

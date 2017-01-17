@@ -1,90 +1,24 @@
 <div id="page-wrapper">
-     <div class="container-fluid">
+
+            <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Change password.
+                            Profile
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Change password
+                                <i class="fa fa-edit"></i> Change profile
                             </li>
                         </ol>
                     </div>
                 </div>
-                
-               <div class="alert alert-danger" role="alert" style="display:none;" id="msgdiv">
-                <div id="msgText"></div>
-                <span class="glyphicon glyphicon-remove" aria-hidden="true" style="float: right;margin-top: -19px;cursor: pointer;"></span>
-               </div>
-                
-                <div class="alert alert-success" role="alert" style="display:none;" id="msgdivsuccess">
-                <div id="successmsgText"></div>
-                <span class="glyphicon glyphicon-remove" aria-hidden="true" id="successclose" style="float: right;margin-top: -19px;cursor: pointer;"></span>
-               </div>
-                
-                
-                <div class="row">
-                    
-                    <div class="col-sm-3">
-                        Current password:
-                    </div>
-                    <div class="col-sm-8" >
-                        <input type="password" class="form-control " id="oldpassword">
-                        <p class="help-block">Current password typed here.</p>
-                    </div>
-                    
-                </div>
-                 <div class="row">
-                    
-                    <div class="col-sm-3">
-                        New password: 
-                    </div>
-                    <div class="col-sm-8" >
-                        <input type="password" class="form-control" id="newpassword">
-                         <p class="help-block">New password typed here.</p>
-                    </div>
-                    
-                </div>
-                    
-                <div class="row">
-                    
-                    <div class="col-sm-3">
-                       
-                    </div>
-                    <div class="col-sm-8" >
-                        <button type="button" class="btn btn-default" id="btnchangepwd">Change password</button>
-                    </div>
-                    
-                </div>
-                    
-                    
-                
-                <!-- <form role="form">
-
-                            <div class="form-group has-success">
-                                <label class="control-label" for="inputSuccess">Input with success</label>
-                                <input type="text" class="form-control" id="inputSuccess">
-                            </div>
-
-                            <div class="form-group has-warning">
-                                <label class="control-label" for="inputWarning">Input with warning</label>
-                                <input type="text" class="form-control" id="inputWarning">
-                            </div>
-
-                            <div class="form-group has-error">
-                                <label class="control-label" for="inputError">Input with error</label>
-                                <input type="text" class="form-control" id="inputError">
-                            </div>
-
-                        </form>-->
-              
-                <!-- /.row
+                <!-- /.row -->
 
                 <div class="row">
                     <div class="col-lg-6">
@@ -92,7 +26,7 @@
                         <form role="form">
 
                             <div class="form-group">
-                                <label>Text Input</label>
+                                <label>Name</label>
                                 <input class="form-control">
                                 <p class="help-block">Example block-level help text here.</p>
                             </div>
@@ -297,8 +231,10 @@
 
                     </div>
                 </div>
-                 -->
+                <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->
-</div>
+
+        </div>
+        <!-- /#page-wrapper -->

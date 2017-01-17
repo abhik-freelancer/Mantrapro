@@ -17,18 +17,19 @@ $(document).ready(function(){
             url: basepath + 'changepass/changePassword',
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data: {mobile: mobile, pwd: pwd},
+            data: {oldpassword: oldpassword, newpassword: newpassword},
             success: function (result) {
                 if (result.msg_code == 0) {
 
                     $("#msgdiv").show();
                     $("#msgText").html(result.msg_data);
 
-                } else if(result.msg_code == 3) {
+                } else if(result.msg_code == 1) {
                     $("#msgdiv").show();
                     $("#msgText").html(result.msg_data);
-                }else if(result.msg_code == 1){
-                    window.location=basepath + 'memberdashboard';
+                }else if(result.msg_code == 2){
+                    $("#msgdivsuccess").show();
+                    $("#successmsgText").html(result.msg_data);
                 }
             }, error: function (jqXHR, exception) {
                 var msg = '';
@@ -57,6 +58,10 @@ $(document).ready(function(){
      $(document).on('click', '.glyphicon-remove', function () {
         $("#msgdiv").hide();
     });
+     $(document).on('click', '#successclose', function () {
+        $("#msgdivsuccess").hide();
+    });
+    
 });
 function validate(){
      var oldpassword = $("#oldpassword").val()||"";

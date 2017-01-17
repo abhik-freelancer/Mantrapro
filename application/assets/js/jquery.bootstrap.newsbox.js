@@ -88,7 +88,7 @@ if (typeof Object.create !== 'function') {
             
             //get height of the very first self.options.newsPerPage news
            
-		   var height = 290;
+		  /* var height = 290;
 
             $.map(self.$elem.find(self.newsTagName), function( newsItem, index ) {
                 if ( index < self.options.newsPerPage ) {
@@ -96,7 +96,7 @@ if (typeof Object.create !== 'function') {
                 }
             });
 
-            $(self.elem).css({"overflow-y": "hidden", "height": height}); 
+            $(self.elem).css({"overflow-y": "hidden", "height": height});  */
 
             //recalculate news box height for responsive interfaces
             $( w ).resize(function() {

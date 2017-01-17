@@ -44,15 +44,15 @@
     <div class="container-fluid page-width">
     
      <!-- Top Fixed Header -->
-     <div class="container-fluid top-header">
+    <!-- <div class="container-fluid top-header">
          <div class="row">
              <div class="col-md-12"> <img src="<?php echo base_url(); ?>application/assets/images/header_img.png" height="150" width="100%"/></div>
          </div>
-     </div>
+     </div> -->
      
     
     <!-- Navigation -->
-    <nav class="navbar-inverse navbar-fixed-top custom-nav" role="navigation" style="top:150px;">
+    <nav class="navbar navbar-fixed-top custom-nav" role="navigation" style="//top:150px;">
        
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -168,7 +168,9 @@
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script> 
 	<!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
+	<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyBFfcYfF1vd5f6Uv9SXPzqtgxeUuOkFzf0"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.bootstrap.newsbox.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
 
     <!-- Script to Activate the Carousel -->
@@ -202,6 +204,49 @@
         }); 
 
 // Code that uses other library's $ can follow here.
+
+
+
+$(function() {
+	new Maplace({
+    show_markers: true,
+    locations: [
+	{
+         lat: 22.762343,
+        lon: 88.364582,
+        title: 'Barrackpore',
+        html: [
+            '<h3>Barrackpore</h3>',
+            '<p>4/2, S.N. Banerjee Road, Kolkata- 700 120</p>'
+        ].join(''),
+        zoom: 12
+    },
+	{
+        lat: 22.619635,
+        lon: 88.379096,
+        title: 'Chiriamore',
+        html: [
+            '<h3>Chiriamore</h3>',
+            '<p>29F, B.T. Road, Kolkata- 700 002</p>'
+        ].join(''),
+        zoom: 12
+    },
+	{
+        lat: 22.6236,
+        lon: 88.37888,
+        title: 'Sinthi',
+        html: [
+            '<h3>Sinthi</h3>',
+            '<p>OM Tower, 36/C, B.T. Road, Kolkata- 700 002</p>'
+        ].join(''),
+        zoom: 12
+    }
+	]
+	}).Load();
+	
+	
+});
+
 </script>
 
 </body>

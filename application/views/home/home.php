@@ -329,19 +329,19 @@
 			</div>
 		</div><!-- End Upcoming Events -->
 		<div class="col-md-6">
-			<div class="latest-offers"> 
-				<div class="upcoming-events">
+			<div class="latest-offers-container"> 
+				<div class="">
 				<div class="panel panel-default">
-					<div class="panel-heading"> <i class="fa fa-gift" aria-hidden="true" style="margin-right:4px;font-size:18px;"></i><b>Latest Offers</b>
+					<div class="panel-heading"> <span class="glyphicon glyphicon-gift" aria-hidden="true"></span><b>Latest Offers</b>
 					</div>
 					<div class="panel-body">
 					  <div class="row">
 					     <div class="col-xs-12">
 					        <ul id="latest-offers">
-								<li class="news-item">
+								<li class="latest-offers-item">
 									<img src="<?php echo base_url(); ?>application/assets/images/subs-offer.jpg" />
 								</li>
-								<li class="news-item">
+								<li class="latest-offers-item">
 									<img src="<?php echo base_url(); ?>application/assets/images/weight-loss.jpg" />
 								</li>
 							</ul>
@@ -355,7 +355,109 @@
 		</div><!-- End Latest Offers -->
 	</div>
 </div>
-
-
 <!-- End Upcoming Events & Latest Offers -->
+
+
+<!-- Video and Body Calculator -->
+
+<div class="container-fluid video-and-cal-box">
+	<div class="row" id="video-and-cal-box-container">
+		<div class="col-md-6">
+		<h3>Lorem Ipsum Dolar Sit</h3>
+			<div class="video-container">
+				<iframe width="100%" height="250" src="https://www.youtube.com/embed/3jg6HxLyH3I" frameborder="0" ></iframe>
+			</div>
+		</div>
+		<div class="col-md-6">
+		
+		<!--<h3>Body Calculator</h3>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="body-fat-percent drop-shadow perspective">
+						
+						<p>BODY FAT %</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="harvard-step-test drop-shadow perspective">
+					
+						<p>HARVARD STEP <br>TEST</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="sit-and-reach drop-shadow perspective">
+					
+						<p>SIT & REACH <br> TEST</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="pushup-and-situp drop-shadow perspective">
+					
+						<p>PUSH UP & SIT UP <br>TEST</p>
+					</div>
+				</div>
+			</div> -->
+			
+			
+							<h3>Ask From Us</h3>
+				<div class="ask-from-us">
+					<div class="form-group">
+						<label for="labelforname"><span class="glyphicon glyphicon-user"></span> Name</label>
+						<input type="text" class="form-control" id="name" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label for="labelforemail"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+					</div>
+				  <div class="form-group"> 
+					<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Mobile</label>
+					<input type="text" class="form-control" id="mobileno" placeholder="Your 10 digit mobile no">
+				  </div>
+				  <div class="form-group"> 
+					<label for="labelformessage"><span class="glyphicon glyphicon-pencil"></span> Your Message</label>
+					 <textarea class="form-control" rows="3"></textarea>
+				  </div>
+				  <button type="button" class="btn btn-default" >Submit</button>
+				</div>
+			
+			
+		</div>
+	</div>
+</div>
+
+<!-- END Video and Body Calculator -->
+
+<!-- Contact Us Section --
+	<div class="container-fluid conatc-and-ask-us">
+		<div class="row" id="contact-us-container">
+			<div class="col-md-6">
+				<h3>Find Us On Google Map</h3>
+				<div class="google-map">
+					<div id="gmap" style="with:100%;height:440px;"></div> 
+				</div>
+			</div>
+			<div class="col-md-6">
+
+			</div>
+		</div>
+	</div>
+<!-- End Contact Us Section -->
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<p class="welcome-heading">Find Us On Google Map</p>
+				<div id="gmap" style="with:100%;height:350px;"></div> 
+			</div>
+			
+		</div>
+	</div>
+
+
+
+ 
+
+
 

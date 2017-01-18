@@ -365,7 +365,7 @@
 		<div class="col-md-6">
 		<h3>Lorem Ipsum Dolar Sit</h3>
 			<div class="video-container">
-				<iframe width="100%" height="250" src="https://www.youtube.com/embed/3jg6HxLyH3I" frameborder="0" ></iframe>
+				<iframe width="100%" height="550" src="https://www.youtube.com/embed/3jg6HxLyH3I" frameborder="0" allowfullscreen ></iframe>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -400,25 +400,81 @@
 				</div>
 			</div> -->
 			
-			
-							<h3>Ask From Us</h3>
-				<div class="ask-from-us">
-					<div class="form-group">
+				<h3>May I Help You</h3>
+				<div class="ask-from-us ">
+					<div class="mayihelp-form-left">
+						<div class="form-group">
 						<label for="labelforname"><span class="glyphicon glyphicon-user"></span> Name</label>
 						<input type="text" class="form-control" id="name" placeholder="Name">
-					</div>
-					<div class="form-group">
+						</div>
+						
+						<div class="form-group">
 						<label for="labelforemail"><span class="glyphicon glyphicon-envelope"></span> Email</label>
 						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+						</div>
 					</div>
+					<div class="mayihelp-form-right">
+						<div class="form-group"> 
+						<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Mobile</label>
+						<input type="text" class="form-control" id="mobileno" placeholder="Your 10 digit mobile no">
+						</div>
+						
+						<div class="form-group"> 
+							<label for="labelforbranch"><span class="glyphicon glyphicon-phone"></span> Branch</label>
+							<select class="form-control">
+								  <option value="BP">Select</option>
+								  <option value="BP">Barrackpore</option>
+								  <option value="BP">Barrackpore</option>
+								  <option value="BP">Barrackpore</option>
+								  <option value="BP">Barrackpore</option>
+								  <option value="BP">Barrackpore</option>
+							</select>
+						</div>
+					</div>
+					
+					
+					
+				  
 				  <div class="form-group"> 
-					<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Mobile</label>
-					<input type="text" class="form-control" id="mobileno" placeholder="Your 10 digit mobile no">
+					<label for="labelforaddress"><span class="glyphicon glyphicon-pencil"></span> Address</label>
+					 <textarea class="form-control" rows="1" id="address"></textarea>
 				  </div>
 				  <div class="form-group"> 
-					<label for="labelformessage"><span class="glyphicon glyphicon-pencil"></span> Your Message</label>
-					 <textarea class="form-control" rows="3"></textarea>
+					<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Pincode</label>
+					<input type="text" class="form-control" id="pincode" placeholder="">
 				  </div>
+				  
+				  <div class="form-group"> 
+					<label for="labelformessage"><span class="glyphicon glyphicon-pencil"></span> Your Comments</label>
+					 <textarea class="form-control" rows="1"></textarea>
+				  </div>
+					<div class="form-group"> 
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Fitness
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Obesity
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Knee Pain  	 	
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Back Pain  
+						</label>
+						
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Ayurveda
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Diet
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Gynae
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="optradio">Others
+						</label>
+					</div>
 				  <button type="button" class="btn btn-default" >Submit</button>
 				</div>
 			
@@ -428,6 +484,13 @@
 </div>
 
 <!-- END Video and Body Calculator -->
+
+
+
+<div class=""></div>
+
+
+
 
 <!-- Contact Us Section --
 	<div class="container-fluid conatc-and-ask-us">
@@ -449,7 +512,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<p class="welcome-heading">Find Us On Google Map</p>
-				<div id="gmap" style="with:100%;height:350px;"></div> 
+				 <div id="gmap" style="with:100%;height:350px;"></div> 
 			</div>
 			
 		</div>

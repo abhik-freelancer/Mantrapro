@@ -253,7 +253,7 @@ body{
     background-position: fixed fixed;
 	height: 100%;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 #events-and-offer-box-container{
 	width:80%;
@@ -355,13 +355,13 @@ body{
 
 /*------ Video and body calculator -------*/
 .video-and-cal-box{
-	margin-top:3%;
+	margin-top:1%;
    // background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0,.9)), url("../images/contact-us-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: fixed fixed;
 	height: 100%;
-    padding-top: 50px;
+    padding-top: 10px;
    // padding-bottom: 50px;
 }
 #video-and-cal-box-container{
@@ -479,7 +479,7 @@ body{
 
 /*---ASK FROM US-----*/
 .ask-from-us{
-	width:90%;
+	width:100%;
 	margin:0 auto;
 	background:#FFF;
 	border-top:1px solid #F2652C;
@@ -510,13 +510,24 @@ body{
 }
 .ask-from-us button:hover{
 	background:#EE763A;
-	border:0px;
+	
 	font-weight:bold;
 	color:#FFF;
 	transition:.5s;
 	
 }
 
+
+.mayihelp-form-left{
+	width:48%;
+	margin-right:2%;
+	float:left;
+}
+.mayihelp-form-right{
+	width:48%;
+	margin-left:2%;
+	float:left;
+}
 
 
 

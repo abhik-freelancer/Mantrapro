@@ -21,9 +21,10 @@ class profile extends CI_Controller{
     public function index(){
           if ($this->session->userdata('user_data')) {
             $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"]!=""?$session["CUS_ID"]:0);
             $page = 'profile/changeprofile';
             $header = "";
-            $result = "";
+            $result = $this->profilemodel->getCustomerByCustId($customerId);
             createbody_method($result, $page, $header, $session);
             //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
         } else {

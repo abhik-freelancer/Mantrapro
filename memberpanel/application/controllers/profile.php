@@ -14,6 +14,7 @@
 class profile extends CI_Controller{
     public function __construct() {
         parent::__construct();
+        $this->load->model('bloodgroupmodel', '', TRUE);
         $this->load->model('profilemodel', '', TRUE);
         $this->load->library('session');
     }
@@ -24,8 +25,9 @@ class profile extends CI_Controller{
             $customerId = ($session["CUS_ID"]!=""?$session["CUS_ID"]:0);
             $page = 'profile/changeprofile';
             $header = "";
+            $headercontent['bloodgroup'] = $this->bloodgroupmodel->getBloodGroup();
             $result = $this->profilemodel->getCustomerByCustId($customerId);
-            createbody_method($result, $page, $header, $session);
+            createbody_method($result, $page, $header, $session,$headercontent);
             //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
         } else {
 

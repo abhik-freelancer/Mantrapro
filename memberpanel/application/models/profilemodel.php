@@ -26,7 +26,8 @@ class profilemodel extends CI_Model{
                 `customer_master`.`CUS_SEX`,
                 `customer_master`.`CUS_BLOOD_GRP`,
                 DATE_FORMAT(`customer_master`.`CUS_DOB`,'%d-%m-%Y') AS CUS_DOB,
-                `card_master`.`CARD_DESC`
+                `card_master`.`CARD_DESC`,
+                DATE_FORMAT(`customer_master`.`REGISTRATION_DT`,'%d-%m-%Y') AS REGISTRATION_DT
                 FROM 
                 `customer_master` 
                 LEFT JOIN `card_master` ON customer_master.`CUS_CARD` = `card_master`.`CARD_CODE` 
@@ -42,12 +43,14 @@ class profilemodel extends CI_Model{
                 "CUS_PHONE"=>$row->CUS_PHONE,
                 "CUS_PHONE2"=>$row->CUS_PHONE2,
                 "CUS_ADRESS"=>$row->CUS_ADRESS,
-                "CUS_PIN"=>$row->CUS_ADRESS,
+                "CUS_PIN"=>$row->CUS_PIN,
                 "CUS_EMAIL"=>$row->CUS_EMAIL,
                 "CUS_SEX"=>$row->CUS_SEX,
                 "CUS_BLOOD_GRP"=>$row->CUS_BLOOD_GRP,
                 "CUS_DOB"=>$row->CUS_DOB,
-                "CARD_DESC"=>$row->CARD_DESC
+                "CARD_DESC"=>$row->CARD_DESC,
+                "REGISTRATION_DT"=>$row->REGISTRATION_DT
+                    
                 
             );
             return $memberData;

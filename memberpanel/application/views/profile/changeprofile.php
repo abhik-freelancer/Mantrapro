@@ -22,44 +22,46 @@
                     
                 <div class="form-group">
                   <label for="address">Address</label>
-                  <textarea class="form-control" rows="3" id="address"></textarea>
+                  <textarea class="form-control" rows="3" id="address"><?php echo($bodycontent["CUS_ADRESS"]) ;?></textarea>
                 </div>    
                     
                 <div class="form-group">
                   <label for="pinnumber">Pin</label>
-                  <input type="text" class="form-control" id="pinnumber" placeholder="Pin" >
+                  <input type="text" class="form-control" id="pinnumber" placeholder="Pin" value="<?php echo($bodycontent["CUS_PIN"]) ;?>" >
                 </div>
                 
                 <div class="form-group">
                   <label for="Email">Email address</label>
-                  <input type="email" class="form-control" id="Email" placeholder="Email" >
+                  <input type="email" class="form-control" id="Email" placeholder="Email" value="<?php echo($bodycontent["CUS_EMAIL"]) ;?>">
                 </div>    
 
                <div class="form-group">
                     <label class="radio-inline">
-                       <input type="radio" name="membersex" id="sex" value="M"> Male
+                        <input type="radio" name="membersex" id="sex" value="M" <?php if($bodycontent["CUS_SEX"]=="M"){echo("Checked");}else{echo("");} ?> > Male
                     </label>
                    <label class="radio-inline">
-                     <input type="radio" name="membersex" id="sex" value="option2"> Female
+                     <input type="radio" name="membersex" id="sex" value="F" <?php if($bodycontent["CUS_SEX"]=="F"){echo("Checked");}else{echo("");} ?>> Female
                    </label>
                 </div> 
+                   
                 <div class="form-group">
-                    <select class="form-control">
+                    <select class="form-control" name="bloodgroup">
                         <option>Select</option>
-                        <option>O-positive</option>
-                        <option>O-negative</option>
-                        <option>A-positive</option>
-                        <option>A-negative</option>
-                        <option>B-positive</option>
-                        <option>B-negative</option>
-                        <option>AB-positive</option>
-                        <option>AB-negative</option>
+                        
+                        <?php foreach ($header["bloodgroup"] as $rows) {?>
+                                
+                        <option value="<?php echo($rows["bld_group_code"]); ?>" <?php echo($rows["bld_group_code"]==$bodycontent["CUS_BLOOD_GRP"]?"selected":"") ?>>
+                            <?php echo($rows["bld_group_code"]); ?>
+                        </option> 
+                        
+                        <?php } ?>
+                        
                     </select>  
                 </div>         
                         
                 <div class="form-group">
                   <label for="dateofbirth">DOB.</label>
-                  <input type="date" class="form-control" id="dateofbirth" placeholder="Date of birth" >
+                  <input type="date" class="form-control" id="dateofbirth" placeholder="Date of birth"  value="<?php echo($bodycontent["CUS_DOB"]) ?>">
                 </div>    
                     
                 <button type="submit" class="btn btn-default">Submit</button>
@@ -72,12 +74,12 @@
                         
                         <div class="form-group">
                         <label for="mantrapackage">Packeage</label>
-                        <input type="text" class="form-control" id="mantrapackage" placeholder="Currentpackages" disabled="" >
+                        <input type="text" class="form-control" id="mantrapackage" placeholder="Currentpackages" value="<?php echo($bodycontent["CARD_DESC"]); ?>" disabled="" >
                         </div>    
                     
                         <div class="form-group">
                         <label for="registrationdate">Date of registration</label>
-                        <input type="text" class="form-control" id="registrationdate" placeholder="Date of registration" disabled="" >
+                        <input type="text" class="form-control" id="registrationdate" placeholder="Date of registration" disabled=""  value="<?php echo($bodycontent["REGISTRATION_DT"]);?>">
                         </div> 
                         
                 

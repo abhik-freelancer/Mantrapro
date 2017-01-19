@@ -99,7 +99,7 @@
 </div>
 </div>
 
-<!-- Inspired By Fitness-->
+<!-- Inspired By Fitness--
 <div class="container-fluid bg-overlay">
     <div class="row">
         <div class="col-md-12"><p class="welcome-heading">Inspired By Fitness</p></div>
@@ -111,6 +111,32 @@
     </div>
 </div>
 <!--End Inspired By Fitness-->
+
+<!-- Get Free guest Pass -->
+	
+	<div class="container-fluid free-guest-container">
+		<div class="row" id="free-guest-container-box">
+			<div class="col-md-6">
+				<img src="<?php echo base_url(); ?>application/assets/images/free-guest-pass.jpg" alt="...">
+				
+			</div>
+			<div class="col-md-6">
+				<div class="guest-pass-title">
+					<p>One Day Free Guest Pass</p>
+				</div>
+				<div class="guest-pass-desc">
+					<p>Donec elit magna, consectetur ac enim in, ornare maximus nisi.</p>
+				</div>
+				<div class="guest-pass-link">
+					<button type="button" class="guest-pass-btn">Get Your Pass</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!-- End Free Guest Pass -->
+
+
 
 <!-- Testimonial -->
 <div class="container">
@@ -358,51 +384,30 @@
 <!-- End Upcoming Events & Latest Offers -->
 
 
-<!-- Video and Body Calculator -->
 
-<div class="container-fluid video-and-cal-box">
-	<div class="row" id="video-and-cal-box-container">
+<!-- May I Help You  -->
+<div class="container-fluid may-i-help">
+	<div class="row" id="may-i-help-box-container">
 		<div class="col-md-6">
-		<h3>Lorem Ipsum Dolar Sit</h3>
-			<div class="video-container">
-				<iframe width="100%" height="550" src="https://www.youtube.com/embed/3jg6HxLyH3I" frameborder="0" allowfullscreen ></iframe>
-			</div>
+		<div class="help-icon">
+			<span class="glyphicon glyphicon-question-sign"></span>
+		</div>
+		
+		<div class="help-title">
+			<p>How Can We Help You ?</p>
+		</div>
+		<div class="help-desc">
+			<p>Maecenas in faucibus dui. Ut dictum blandit cursus. Cras ut sagittis dolor. Nulla finibus dignissim ex, a porttitor turpis blandit ac. Curabitur et pulvinar lorem, in luctus tellus.</p>
+		</div>
+		<div class="help-icon">
+			<span class="glyphicon glyphicon-hand-right"></span>
+		</div>
+ 
+			
 		</div>
 		<div class="col-md-6">
-		
-		<!--<h3>Body Calculator</h3>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="body-fat-percent drop-shadow perspective">
-						
-						<p>BODY FAT %</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<div class="harvard-step-test drop-shadow perspective">
-					
-						<p>HARVARD STEP <br>TEST</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="sit-and-reach drop-shadow perspective">
-					
-						<p>SIT & REACH <br> TEST</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<div class="pushup-and-situp drop-shadow perspective">
-					
-						<p>PUSH UP & SIT UP <br>TEST</p>
-					</div>
-				</div>
-			</div> -->
-			
-				<h3>May I Help You</h3>
-				<div class="ask-from-us ">
-					<div class="mayihelp-form-left">
+			<div class="may-i-help-form">
+				<div class="mayihelp-form-left">
 						<div class="form-group">
 						<label for="labelforname"><span class="glyphicon glyphicon-user"></span> Name</label>
 						<input type="text" class="form-control" id="name" placeholder="Name">
@@ -412,14 +417,14 @@
 						<label for="labelforemail"><span class="glyphicon glyphicon-envelope"></span> Email</label>
 						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
 						</div>
-					</div>
-					<div class="mayihelp-form-right">
-						<div class="form-group"> 
+				</div>
+				<div class="mayihelp-form-right">
+					<div class="form-group"> 
 						<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Mobile</label>
 						<input type="text" class="form-control" id="mobileno" placeholder="Your 10 digit mobile no">
-						</div>
+					</div>
 						
-						<div class="form-group"> 
+					<div class="form-group"> 
 							<label for="labelforbranch"><span class="glyphicon glyphicon-phone"></span> Branch</label>
 							<select class="form-control">
 								  <option value="BP">Select</option>
@@ -429,92 +434,119 @@
 								  <option value="BP">Barrackpore</option>
 								  <option value="BP">Barrackpore</option>
 							</select>
-						</div>
 					</div>
-					
-					
-					
-				  
-				  <div class="form-group"> 
+				</div>
+				<div class="form-group"> 
 					<label for="labelforaddress"><span class="glyphicon glyphicon-pencil"></span> Address</label>
 					 <textarea class="form-control" rows="1" id="address"></textarea>
-				  </div>
-				  <div class="form-group"> 
+				</div>
+				<div class="form-group"> 
 					<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Pincode</label>
 					<input type="text" class="form-control" id="pincode" placeholder="">
-				  </div>
-				  
-				  <div class="form-group"> 
+				</div>
+				<div class="form-group"> 
 					<label for="labelformessage"><span class="glyphicon glyphicon-pencil"></span> Your Comments</label>
 					 <textarea class="form-control" rows="1"></textarea>
-				  </div>
-					<div class="form-group"> 
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Fitness
-						</label>
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Obesity
-						</label>
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Knee Pain  	 	
-						</label>
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Back Pain  
-						</label>
-						
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Ayurveda
-						</label>
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Diet
-						</label>
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Gynae
-						</label>
-						<label class="radio-inline">
-						  <input type="radio" name="optradio">Others
-						</label>
-					</div>
-				  <button type="button" class="btn btn-default" >Submit</button>
 				</div>
-			
+				<div class="form-group"> 
+					<div class="left-help-choice-option">
+						<ul>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Fitness
+								</label>
+							</li>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Obesity
+								</label>
+							</li>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Knee Pain  	 	
+								</label>
+							</li>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Back Pain  	 	
+								</label>
+							</li>
+						</ul>
+					</div>
+					<div class="right-help-choice-option">
+						<ul>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Ayurveda
+								</label>
+							</li>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Diet 	 	
+								</label>
+							</li>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Gynae	
+								</label>
+							</li>
+							<li>
+								<label class="radio-inline">
+								<input type="radio" name="optradio">Others 
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+				  <button type="button" class="btn btn-default" >Submit</button>
+			</div>
 			
 		</div>
 	</div>
 </div>
 
-<!-- END Video and Body Calculator -->
+<!-- END May I HElp You -->
 
 
 
-<div class=""></div>
+<!-- Video and Body Calculator -->
 
-
-
-
-<!-- Contact Us Section --
-	<div class="container-fluid conatc-and-ask-us">
-		<div class="row" id="contact-us-container">
-			<div class="col-md-6">
-				<h3>Find Us On Google Map</h3>
-				<div class="google-map">
-					<div id="gmap" style="with:100%;height:440px;"></div> 
-				</div>
-			</div>
-			<div class="col-md-6">
-
+<div class="container-fluid video-section-box">
+	<div class="row" id="video-section-box-container">
+		<div class="col-md-6">
+			<div class="embed-responsive embed-responsive-16by9 video-container">
+				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3jg6HxLyH3I" frameborder="0" allowfullscreen ></iframe>
 			</div>
 		</div>
+		<div class="col-md-6">
+			<div class="video-icon">
+			<span class="glyphicon glyphicon-facetime-video"></span>
+			</div>
+			<div class="video-title">
+				<p>Walk through</p>
+			</div>
+			<div class="video-desc">
+				<p>Maecenas in faucibus dui. Ut dictum blandit cursus. Cras ut sagittis dolor. Nulla finibus dignissim ex, a porttitor turpis blandit ac.</p>
+				
+			</div>
+			<div class="more-video">
+				<button type="button" class="btn btn-danger more-videos-btn" onclick="">More Videos</button>
+			</div>
+		</div>
+		
 	</div>
-<!-- End Contact Us Section -->
+</div>
 
-	<div class="container-fluid">
+<!-- END Video Section -->
+
+
+
+	<div class="container-fluid google-map-container">
 		<div class="row">
 			<div class="col-md-12">
 				<p class="welcome-heading">Find Us On Google Map</p>
-				 <div id="gmap" style="with:100%;height:350px;"></div> 
+				<div id="map" style="width: 100%; height:350px;"></div>
 			</div>
-			
 		</div>
 	</div>
 

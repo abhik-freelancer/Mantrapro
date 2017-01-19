@@ -44,15 +44,15 @@
     <div class="container-fluid page-width">
     
      <!-- Top Fixed Header -->
-    <!-- <div class="container-fluid top-header">
-         <div class="row">
+    <div class="container-fluid top-header">
+        <div class="row">
              <div class="col-md-12"> <img src="<?php echo base_url(); ?>application/assets/images/header_img.png" height="150" width="100%"/></div>
-         </div>
-     </div> -->
+        </div>
+    </div> 
      
     
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top custom-nav" role="navigation" style="//top:150px;">
+    <nav class="navbar  custom-nav" data-spy="affix" data-offset-top="150" role="navigation" id="nav" style="//top:150px;">
        
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -71,69 +71,38 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
-                            </li>
+					<li><a href="javascript:void(0);">Home</a></li>
+                     <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+						 <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)">About Us</a></li>
+                            <li><a href="javascript:void(0)">Mission & Vision</a></li>
+                            <li><a href="javascript:void(0)">Team Mantra</a></li>
+                            <li><a href="javascript:void(0)">1st Life Style Health Club</a></li>
+                            <li><a href="javascript:void(0)">Testimonials</a></li>
+                            <li><a href="javascript:void(0)">Career</a></li>
                         </ul>
-                    </li>
+					</li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.html">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.html">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
+						 <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)">Packages Offered</a></li>
+                            <li><a href="javascript:void(0)">Branch Wise Rate Chart</a></li>
+                            <li><a href="javascript:void(0)">Branch Wise Classes & Consultancy Schedule</a></li>
+                            <li><a href="javascript:void(0)">Body Calculator</a></li>
                         </ul>
-                    </li>
+					</li>
+                    <li><a href="javascript:void(0);">Event</a></li>
+                    <li><a href="javascript:void(0);">Fitness Education</a></li>
+                    <li><a href="javascript:void(0);">Nutrition</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery <b class="caret"></b></a>
+						 <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)">Photo Gallery</a></li>
+                            <li><a href="javascript:void(0)">Video Gallery</a></li>
                         </ul>
-                    </li>
+					</li>
+                    <li><a href="javascript:void(0);">Contact Us</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -156,7 +125,9 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+					<div class="footer-section">
+						<p>Copyright &copy; 2016 MANTRA. All Rights Reserved.</p>
+					</div>
                 </div>
             </div>
         </footer>
@@ -170,7 +141,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 	<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyBFfcYfF1vd5f6Uv9SXPzqtgxeUuOkFzf0"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.bootstrap.newsbox.js"></script>
-    <script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>
+    <!--<script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>-->
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
 
     <!-- Script to Activate the Carousel -->
@@ -203,50 +174,63 @@
             }
         }); 
 
-// Code that uses other library's $ can follow here.
 
-
-
-$(function() {
-	new Maplace({
-    show_markers: true,
-    locations: [
-	{
-         lat: 22.762343,
-        lon: 88.364582,
-        title: 'Barrackpore',
-        html: [
-            '<h3>Barrackpore</h3>',
-            '<p>4/2, S.N. Banerjee Road, Kolkata- 700 120</p>'
-        ].join(''),
-        zoom: 12
+	var markers = [
+    {
+        "title": 'Barrackpore',
+        "lat": '22.762343',
+        "lng": '88.364582',
+        "description": '4/2, S.N. Banerjee Road, Kolkata- 700 120'
     },
-	{
-        lat: 22.619635,
-        lon: 88.379096,
-        title: 'Chiriamore',
-        html: [
-            '<h3>Chiriamore</h3>',
-            '<p>29F, B.T. Road, Kolkata- 700 002</p>'
-        ].join(''),
-        zoom: 12
+    {
+        "title": 'Chiriamore',
+        "lat": '22.619635',
+        "lng": '88.379096',
+        "description": '29F, B.T. Road, Kolkata- 700 002'
     },
-	{
-        lat: 22.6236,
-        lon: 88.37888,
-        title: 'Sinthi',
-        html: [
-            '<h3>Sinthi</h3>',
-            '<p>OM Tower, 36/C, B.T. Road, Kolkata- 700 002</p>'
-        ].join(''),
-        zoom: 12
+    {
+        "title": 'Sinthi',
+        "lat": '22.6236',
+        "lng": '88.37888',
+        "description": 'OM Tower, 36/C, B.T. Road, Kolkata- 700 002'
     }
-	]
-	}).Load();
-	
-	
+    ];
+    window.onload = function () {
+        LoadMap();
+    }
+    function LoadMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            zoom: 10,
+			scrollwheel: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+ 
+        //Create and open InfoWindow.
+        var infoWindow = new google.maps.InfoWindow();
+ 
+        for (var i = 0; i < markers.length; i++) {
+            var data = markers[i];
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.title
+            });
+ 
+            //Attach click event to the marker.
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                    infoWindow.setContent("<div style = 'width:200px;min-height:40px'><b>"+ data.title + "</b></br>" + data.description + "</div>");
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+        }
+    }
+$('#nav').affix({
 });
-
 </script>
 
 </body>

@@ -34,7 +34,7 @@
             padding-left:0%;
           //  position: relative;
         }
-    </style>
+	</style>
 
 </head>
 
@@ -46,13 +46,13 @@
      <!-- Top Fixed Header -->
     <div class="container-fluid top-header">
         <div class="row">
-             <div class="col-md-12"> <img src="<?php echo base_url(); ?>application/assets/images/header_img.png" height="150" width="100%"/></div>
+             <div class="col-md-12"> 
+				<img src="<?php echo base_url(); ?>application/assets/images/header_img.png" height="150" width="100%"/> 
+			 </div>
         </div>
     </div> 
-     
-    
-    <!-- Navigation -->
-    <nav class="navbar  custom-nav" data-spy="affix" data-offset-top="150" role="navigation" id="nav" style="//top:150px;">
+	<!-- Navigation -->
+    <nav class="navbar navbar-default custom-nav" data-spy="affix" data-offset-top="147" id="navbar-main">
        
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -229,8 +229,9 @@
             })(marker, data);
         }
     }
-$('#nav').affix({
-});
+
+	
+	
 </script>
 
 </body>

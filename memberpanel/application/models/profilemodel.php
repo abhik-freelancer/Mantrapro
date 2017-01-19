@@ -12,7 +12,9 @@
  * @author Abhik
  */
 class profilemodel extends CI_Model{
-    //put your code here
+    
+    
+    
     public function getCustomerByCustId($customerId=NULL){
         
         $memberData=array();
@@ -27,7 +29,8 @@ class profilemodel extends CI_Model{
                 `customer_master`.`CUS_BLOOD_GRP`,
                 DATE_FORMAT(`customer_master`.`CUS_DOB`,'%d-%m-%Y') AS CUS_DOB,
                 `card_master`.`CARD_DESC`,
-                DATE_FORMAT(`customer_master`.`REGISTRATION_DT`,'%d-%m-%Y') AS REGISTRATION_DT
+                DATE_FORMAT(`customer_master`.`REGISTRATION_DT`,'%d-%m-%Y') AS REGISTRATION_DT,
+                customer_master.`image_name`
                 FROM 
                 `customer_master` 
                 LEFT JOIN `card_master` ON customer_master.`CUS_CARD` = `card_master`.`CARD_CODE` 
@@ -36,7 +39,7 @@ class profilemodel extends CI_Model{
          $query = $this->db->query($sql);
          if($query->num_rows()> 0){
             $row = $query->row();
-            //$customerId = $row->CUS_ID;
+            
             $memberData = array(
                 "CUS_ID"=>$row->CUS_ID,
                 "CUS_NAME"=>$row->CUS_NAME,
@@ -49,7 +52,8 @@ class profilemodel extends CI_Model{
                 "CUS_BLOOD_GRP"=>$row->CUS_BLOOD_GRP,
                 "CUS_DOB"=>$row->CUS_DOB,
                 "CARD_DESC"=>$row->CARD_DESC,
-                "REGISTRATION_DT"=>$row->REGISTRATION_DT
+                "REGISTRATION_DT"=>$row->REGISTRATION_DT,
+                "image_name"=>$row->image_name
                     
                 
             );

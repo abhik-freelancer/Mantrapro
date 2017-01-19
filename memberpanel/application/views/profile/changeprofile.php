@@ -91,11 +91,18 @@
                 <form>
                     <fieldset>
                         <legend>Profile picture:</legend>  
+                        <?php 
+                        if($bodycontent["image_name"]==""){
+                        $images="noimage.png";
+                        }else{
+                           $images=$bodycontent["image_name"]; 
+                        }
+                        ?>
                         
-                        <img src="<?php echo base_url(); ?>application/assets/images/Profilepicture/noimage.png" class="img-polaroid">    
+                        <img src="<?php echo base_url(); ?>application/assets/images/Profilepicture/<?php echo($images);?>" class="img-rounded" alt="<?php echo($bodycontent["CUS_NAME"]) ;?>" width="255" height="255" >    
                     
                         <div class="form-group">
-                            <label for="imagefile">File input</label>
+                            <label for="imagefile">Profile picture</label>
                             <input type="file" id="imagefile">
                             <p class="help-block">Change your profile picture.</p>
                         </div>

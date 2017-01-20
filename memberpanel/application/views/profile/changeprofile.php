@@ -1,52 +1,66 @@
 <div id="page-wrapper">
 
             <div class="container-fluid">
+                <!--message area-->
+                    <div class="alert alert-danger" role="alert" style="display:none;" id="msgdiv">
+                    <div id="msgText"></div>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" id="errorclose" style="float: right;margin-top: -19px;cursor: pointer;"></span>
+                    </div>
 
-              <form>
+                    <div class="alert alert-success" role="alert" style="display:none;" id="msgdivsuccess">
+                    <div id="successmsgText"></div>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" id="successclose" style="float: right;margin-top: -19px;cursor: pointer;"></span>
+                    </div>
+                <!--message area-->
+                
+                
+
+              <form name="frmPersonalia" id="frmPersonalia" method="post">
                <fieldset>
                     <legend>Personalia:</legend>   
                 <div class="form-group">
-                  <label for="membername">Name</label>
-                  <input type="text" class="form-control" id="membername" placeholder="Name" value="<?php echo($bodycontent["CUS_NAME"]) ;?>">
+                  <label for="membername">Name*</label>
+                  <input type="text" class="form-control" id="membername" placeholder="Name" name="memberName" id="memberName" value="<?php echo($bodycontent["CUS_NAME"]) ;?>">
                 </div>
                 <div class="form-group">
                   <label for="registermobilenumber">Mobile</label>
-                  <input type="text" class="form-control" id="registermobilenumber" placeholder="Moblie" value="<?php echo($bodycontent["CUS_PHONE"]) ;?>" disabled>
+                  <input type="text" class="form-control"  placeholder="Moblie" name="memberRegisterMobile" id="memberRegisterMobile" value="<?php echo($bodycontent["CUS_PHONE"]) ;?>" disabled>
                 </div>
                 
                   <div class="form-group">
                         <label for="alternatemobilenumber">Alternate Mobile</label>
-                        <input type="text" class="form-control" id="alternatemobilenumber" value="<?php echo($bodycontent["CUS_PHONE2"]) ;?>" placeholder="Moblie" >
+                        <input type="text" class="form-control" name="alternatemobilenumber" id="alternatemobilenumber" value="<?php echo($bodycontent["CUS_PHONE2"]) ;?>" placeholder="Moblie" >
                   </div>    
                 
                     
                 <div class="form-group">
-                  <label for="address">Address</label>
-                  <textarea class="form-control" rows="3" id="address"><?php echo($bodycontent["CUS_ADRESS"]) ;?></textarea>
+                  <label for="address">Address*</label>
+                  <textarea class="form-control" rows="3" id="address" name="memberAddress" id="memberAddress"><?php echo($bodycontent["CUS_ADRESS"]) ;?></textarea>
                 </div>    
                     
                 <div class="form-group">
-                  <label for="pinnumber">Pin</label>
-                  <input type="text" class="form-control" id="pinnumber" placeholder="Pin" value="<?php echo($bodycontent["CUS_PIN"]) ;?>" >
+                  <label for="pinnumber">Pin*</label>
+                  <input type="text" class="form-control" id="pinnumber" name="pinnumber" placeholder="Pin" value="<?php echo($bodycontent["CUS_PIN"]) ;?>" >
                 </div>
                 
                 <div class="form-group">
-                  <label for="Email">Email address</label>
-                  <input type="email" class="form-control" id="Email" placeholder="Email" value="<?php echo($bodycontent["CUS_EMAIL"]) ;?>">
+                  <label for="Email">Email address*</label>
+                  <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value="<?php echo($bodycontent["CUS_EMAIL"]) ;?>">
                 </div>    
 
                <div class="form-group">
                     <label class="radio-inline">
-                        <input type="radio" name="membersex" id="sex" value="M" <?php if($bodycontent["CUS_SEX"]=="M"){echo("Checked");}else{echo("");} ?> > Male
+                        <input type="radio" name="membersex" id="membersex" value="M" <?php if($bodycontent["CUS_SEX"]=="M"){echo("Checked");}else{echo("");} ?> > Male
                     </label>
                    <label class="radio-inline">
-                     <input type="radio" name="membersex" id="sex" value="F" <?php if($bodycontent["CUS_SEX"]=="F"){echo("Checked");}else{echo("");} ?>> Female
+                     <input type="radio" name="membersex" id="membersex" value="F" <?php if($bodycontent["CUS_SEX"]=="F"){echo("Checked");}else{echo("");} ?>> Female
                    </label>
                 </div> 
                    
                 <div class="form-group">
+                    <label for="Email">Blood group*</label>
                     <select class="form-control" name="bloodgroup">
-                        <option>Select</option>
+                        <option value="">Select</option>
                         
                         <?php foreach ($header["bloodgroup"] as $rows) {?>
                                 
@@ -60,8 +74,8 @@
                 </div>         
                         
                 <div class="form-group">
-                  <label for="dateofbirth">DOB.</label>
-                  <input type="date" class="form-control" id="dateofbirth" placeholder="Date of birth"  value="<?php echo($bodycontent["CUS_DOB"]) ?>">
+                  <label for="dateofbirth">DOB*</label>
+                  <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" placeholder="Date of birth"  value="<?php echo($bodycontent["CUS_DOB"]) ?>">
                 </div>    
                     
                 <button type="submit" class="btn btn-default">Submit</button>

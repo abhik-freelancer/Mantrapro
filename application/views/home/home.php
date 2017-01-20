@@ -21,12 +21,12 @@
         Background2
       </div>
     </div>
-    <div class="item">
+   <!-- <div class="item">
      <img src="<?php echo base_url(); ?>application/assets/images/bg3.jpg"  alt="...">
       <div class="carousel-caption">
         Background3
       </div>
-    </div>
+    </div> -->
    
   </div>
 
@@ -44,7 +44,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <p class="welcome-heading">Welcome to Mantra</p>
+            <p class="mantra-heading-text">Welcome to Mantra</p>
         </div>
     </div>
 </div>
@@ -115,14 +115,13 @@
 <!--End Inspired By Fitness-->
 
 <!-- Get Free guest Pass -->
-	
+
 	<div class="container-fluid free-guest-container">
 		<div class="row" id="free-guest-container-box">
-			<div class="col-md-6">
-				<img src="<?php echo base_url(); ?>application/assets/images/free-guest-pass.jpg" alt="...">
-				
+			<div class="col-md-6 guest-img-container">
+				<img src="<?php echo base_url(); ?>application/assets/images/free-guest-pass.jpg" class="img-responsive" alt="...">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 guest-content-container">
 				<div class="guest-pass-title">
 					<p>One Day Free Guest Pass</p>
 				</div>
@@ -130,11 +129,12 @@
 					<p>Donec elit magna, consectetur ac enim in, ornare maximus nisi.</p>
 				</div>
 				<div class="guest-pass-link">
-					<button type="button" class="guest-pass-btn">Get Your Pass</div>
+					<button type="button" class="guest-pass-btn">Get Your Pass
 				</div>
 			</div>
 		</div>
 	</div>
+
 	
 <!-- End Free Guest Pass -->
 
@@ -143,7 +143,7 @@
 <!-- Testimonial -->
 <div class="container">
 	<div class="row">
-		<p class="welcome-heading">What Member Says</p>
+		<p class="mantra-heading-text">What Member Says</p>
 	</div>
 </div>
 <div class="testimonial-container">
@@ -253,6 +253,7 @@
 			
         </div>
     </div>
+  </div>
 </div><!-- end testimonial-container -->
 
 <!-- End Testimonial -->
@@ -367,10 +368,10 @@
 					     <div class="col-xs-12">
 					        <ul id="latest-offers">
 								<li class="latest-offers-item">
-									<img src="<?php echo base_url(); ?>application/assets/images/subs-offer.jpg" />
+									<img src="<?php echo base_url(); ?>application/assets/images/subs-offer.jpg" class="img-responsive"/>
 								</li>
 								<li class="latest-offers-item">
-									<img src="<?php echo base_url(); ?>application/assets/images/weight-loss.jpg" />
+									<img src="<?php echo base_url(); ?>application/assets/images/weight-loss.jpg"  class="img-responsive" />
 								</li>
 							</ul>
 					    </div>
@@ -403,6 +404,7 @@
 		</div>
 		<div class="help-icon">
 			<span class="glyphicon glyphicon-hand-right"></span>
+			<span class="glyphicon glyphicon-hand-down"></span>
 		</div>
  
 			
@@ -546,7 +548,7 @@
 	<div class="container-fluid google-map-container">
 		<div class="row">
 			<div class="col-md-12">
-				<p class="welcome-heading">Find Us On Google Map</p>
+				<p class="mantra-heading-text">Find Us On Google Map</p>
 				<div id="map" style="width: 100%; height:350px;"></div>
 			</div>
 		</div>

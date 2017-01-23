@@ -203,7 +203,8 @@
             center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
             zoom: 10,
 			scrollwheel: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+			gestureHandling: 'cooperative',
+			mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
  

@@ -82,7 +82,7 @@
                </fieldset>
             </form>
 
-                <form>
+                
                     <fieldset>
                         <legend>Accounts:</legend>  
                         
@@ -95,15 +95,14 @@
                         <label for="registrationdate">Date of registration</label>
                         <input type="text" class="form-control" id="registrationdate" placeholder="Date of registration" disabled=""  value="<?php echo($bodycontent["REGISTRATION_DT"]);?>">
                         </div> 
-                        
-                
                     </fieldset>
-                </form>
+              
                 
-                
-                
-                <form>
-                    <fieldset>
+                <fieldset>
+                     <div class="alert alert-danger" role="alert" style="display:none;" id="msgdivImage">
+                    <div id="ImagemsgText"></div>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" id="errorImageclose" style="float: right;margin-top: -10px;cursor: pointer;"></span>
+                 </div>
                         <legend>Profile picture:</legend>  
                         <?php 
                         if($bodycontent["image_name"]==""){
@@ -113,17 +112,26 @@
                         }
                         ?>
                         
-                        <img src="<?php echo base_url(); ?>application/assets/images/Profilepicture/<?php echo($images);?>" class="img-rounded" alt="<?php echo($bodycontent["CUS_NAME"]) ;?>" width="255" height="255" >    
-                    
-                        <div class="form-group">
-                            <label for="imagefile">Profile picture</label>
-                            <input type="file" id="imagefile">
-                            <p class="help-block">Change your profile picture.</p>
+                        <div class="form-group" style="position: relative">
+                        <label for="profilepic"></label>
+                        <img src="<?php echo base_url(); ?>application/assets/images/Profilepicture/<?php echo($images);?>" class="img-rounded profileimg" alt="<?php echo($bodycontent["CUS_NAME"]) ;?>" width="255" height="255" id="profilepic" name="profilepic">    
+                        <img src="<?php echo base_url(); ?>application/assets/images/imagefileloading.gif" style="position: absolute;top:0;left:17px; display: none;" id="loadergif"/>
                         </div>
-                        
+                </fieldset>
+                 
                 
+                <form enctype="multipart/form-data" accept-charset="utf-8" name="formnamememberImg" id="formnamememberImg"  method="post" action="">
+                    <fieldset>
+                        <input type="hidden" name="filepost" value="1"/>
+                        <div class="form-group">
+                             <label  class="custom-file-input">
+                                <input type="file" name="imagefile" id="imagefile" accept="image/*" onchange=""/>
+                             </label>
+                        </div>
                     </fieldset>
                 </form>
+                
+               
             </div>
             <!-- /.container-fluid -->
 

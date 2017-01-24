@@ -61,6 +61,19 @@ class profilemodel extends CI_Model {
             return $memberData;
         }
     }
+    
+    public function  getImageById($customerId){
+        $images="";
+        $sql="SELECT `customer_master`.`image_name`
+                FROM `customer_master`
+                WHERE `customer_master`.`CUS_ID` =".$customerId;
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $images =$row-> image_name;
+        }
+        return $images;
+    }
 
     public function updatePersonal($customerId, $upadateData) {
         try {
@@ -102,6 +115,24 @@ class profilemodel extends CI_Model {
             return TRUE;
         }  else {
             return FALSE;
+        }
+    }
+    
+    public function updatePersonalImage($customerId, $image_data){
+        try {
+            $this->db->set("image_name",$image_data);
+            $this->db->where('CUS_ID', $customerId);
+            $this->db->update('customer_master', $upadateData);
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+        } catch (Exception $err) {
+            echo $exc->getTraceAsString();
         }
     }
 

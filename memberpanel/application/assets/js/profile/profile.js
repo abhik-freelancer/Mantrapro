@@ -64,5 +64,71 @@ $(document).ready(function(){
         $("#msgdivsuccess").hide();
     });
     
+    //ajax file uplaod
+    $('#imagefile').on('change', function (event) {
+            event.preventDefault();
+
+           var form = $('#formnamememberImg')[0];
+           var formData = new FormData(form);
+           $("#loadergif").show();
+           //alert(this.files[0].size);//2097152 bytes
+            if(this.files[0].size<=2097152){
+            $.ajax({
+                url : basepath+"profile/uploadProfilePicture", // the action from the upload form
+                type : 'post',
+                data : formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType : 'json',
+                success : function(response) {
+                    if(response.msg_code==200){
+                        var path =basepath+"application/assets/images/Profilepicture/"+response.msg_data;
+                        $(".profileimg").attr("src",path);
+                        $("#loadergif").hide();
+                    }else if(response.msg_code==400){
+                        $("#msgdivImage").show();
+                        $("#ImagemsgText").html(response.msg_data);
+                        $("#loadergif").hide();
+                    }else if(response.msg_code==500){
+                         window.location.href = basepath + 'memberlogin';
+                    }
+                }, error: function (jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+            }
+            });
+            }else{
+                $("#msgdivImage").show();
+                $("#ImagemsgText").html("Image size limit :2Mb.Please try another. ");
+                $("#loadergif").hide();
+            }
+        });
+
+    
+    
+    
+   $(document).on('click', '#errorImageclose', function () {
+        $("#msgdivImage").hide();
+    }); 
+    
+    
+    
+    
     
 });//end

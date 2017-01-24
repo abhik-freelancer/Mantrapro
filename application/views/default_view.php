@@ -19,6 +19,9 @@
    <!-- <link href="<?php echo base_url(); ?>application/assets/css/modern-business.css" rel="stylesheet">-->
     <!-- Custom Fonts -->
     <link href="<?php echo base_url(); ?>application/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<link href="<?php echo base_url(); ?>application/assets/css/animate.min.css" rel="stylesheet">
+	
   <!--  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -142,14 +145,16 @@
 	<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyBFfcYfF1vd5f6Uv9SXPzqtgxeUuOkFzf0"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.bootstrap.newsbox.js"></script>
     <!--<script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>-->
+	<script src="<?php echo base_url(); ?>application/assets/js/wow.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
 
     <!-- Script to Activate the Carousel -->
-    <script>
-	</script>
+
+             
 	
 	<script>
-
+	new WOW().init();
+              
 
   $("#upcoming-events").bootstrapNews({
             newsPerPage: 3,

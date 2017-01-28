@@ -1,7 +1,19 @@
+body{
+	background: #FC6B32  ;
+	height:100%;
+	/*animation-name: changebodycolor;
+    animation-duration: 10s;
+	animation-iteration-count: infinite;*/
+}
 form {
     border: 3px solid #f1f1f1;
 }
-
+@keyframes changebodycolor {
+    0%  {background-color: #FA611A;}
+    25%  {background-color: #FF6016;}
+    50%  {background-color: #F56320}
+    100% {background-color: #F8560B;}
+}
 
 
 button {
@@ -37,7 +49,202 @@ img.avatar {
 
 span.psw {
     float: right;
-    padding-top: 16px;
+    padding-top: 0px;
+}
+
+.custom-login-row{
+	width:80%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:30%;
+	left:10%;
+}
+.login-text-box{
+		//border-right:1px solid #FFF;
+}
+.login-form-container{
+	padding-top:2%;
+}
+.login-icon{
+	width:50%;
+	margin:0 auto;
+}
+.login-text{
+	clear:both;
+	font-size:1.3em;
+	color:#FFF;
+}
+.login-form-container label{
+	color:#FFF;
+	font-size:1.3em;
+	margin-top:5px;
+}
+.custom-input{
+	border: none;
+	border-radius: 1px;
+	height: 44px;
+}
+.custom-button{
+	background:#FFF;
+	height: 45px !important;
+	border: medium none !important;
+	border-radius: 1px !important;
+	margin-top: 18px !important;
+	color: #F84C1D;
+	font-size: 20px;
+	line-height: 20px;
+	text-shadow: 1px 1px 1px #CCC;
+	font-weight: bold;
+}
+.custom-button:hover{
+	background:#E0E0E0;
+	color:#747171;
+	text-shadow:0px;
+	transition:.10s;
+}
+.remeber-me{
+	font-size:13px;
+	color:#FFF;
+	font-weight:bold;
+}
+.psw a{
+	color:#FFF;
+	font-weight:bold;
+	font-size:13px;
+}
+.error{
+	color: #F00;
+	background-color: #FFF;
+	box-shadow: 1px 1px 3px #272727;
+	border:none;
+	font-weight:700;
+}
+
+
+@media only screen and (max-width: 1024px) {
+	.custom-login-row{
+	width:90%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:20%;
+	left:5%;
+	}
+}
+@media only screen and (max-width: 991px) {
+	.login-icon{
+		width:33%;
+		margin:0 auto;
+	}
+	.custom-login-row{
+	width:65%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:18%;
+	left:18%;
+	}
+}
+@media only screen and (max-width: 680px) {
+	.login-icon{
+		width:38%;
+		margin:0 auto;
+	}
+	.custom-login-row{
+	width:80%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:18%;
+	left:10%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.login-icon{
+		width:45%;
+		margin:0 auto;
+	}
+	.custom-login-row{
+	width:80%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:18%;
+	left:10%;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.login-icon{
+		width:50%;
+		margin:0 auto;
+	}
+	.custom-login-row{
+	width:80%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:18%;
+	left:10%;
+	}
+	.error{
+		font-size: 0.9em;
+	}
+}
+@media only screen and (max-width:460px) {
+	.login-icon{
+		width:50%;
+		margin:0 auto;
+	}
+	.login-text{
+		font-size:1.2em;
+	}
+	.custom-login-row{
+	width:90%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:10%;
+	left:5%;
+	}
+}
+@media only screen and (max-width:370px) {
+	.login-icon{
+		width:65%;
+		margin:0 auto;
+	}
+	.custom-login-row{
+	width:96%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:10%;
+	left:2%;
+	}
+}
+@media only screen and (max-width:280px) {
+	.login-icon{
+		width:80%;
+		margin:0 auto;
+	}
+	.custom-login-row{
+	width:98%;
+	margin:0 auto;
+	/*padding-top:15%;
+	padding-bottom:15%;*/
+	position:absolute;
+	top:10%;
+	left:1%;
+	}
 }
 
 /* Change styles for span and cancel button on extra small screens */

@@ -37,6 +37,7 @@
             padding-left:0%;
           //  position: relative;
         }
+
 	</style>
 
 </head>
@@ -50,16 +51,14 @@
     <div class="container-fluid top-header">
         <div class="row">
              <div class="col-md-12"> 
-				<img src="<?php echo base_url(); ?>application/assets/images/header_img.png" height="150" width="100%"/> 
+				<img src="<?php echo base_url(); ?>application/assets/images/mantra-top-header2.jpg" height="119" /> 
 			 </div>
         </div>
     </div> 
-	<!-- Navigation -->
+	<!-- Navigation --
     <nav class="navbar navbar-default custom-nav" data-spy="affix" data-offset-top="147" id="navbar-main">
-       
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+       <div class="container">
+			<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -67,11 +66,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?php echo base_url(); ?>home">
-				<!--<img src="<?php echo base_url(); ?>application/assets/images/logo.jpg" id="logo"/>-->
+				<!--<img src="<?php echo base_url(); ?>application/assets/images/logo.jpg" id="logo"/>--
 				
 				</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 					<li><a href="javascript:void(0);">Home</a></li>
@@ -108,10 +107,362 @@
                     <li><a href="javascript:void(0);">Contact Us</a></li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
+    </nav> -->
+	
+	<!-- Mega Menu -->
+<section id="navbar-main">
+<div class="container-fluid">
+  <nav class="navbar navbar-default custom-nav" data-spy="affix" data-offset-top="117">
+
+	<div class="navbar-header">
+    <!--	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button> -->
+		<span class="glyphicon glyphicon-menu-hamburger responsive-icon" onclick="openNav()"></span>
+	
+		<!-- <a class="navbar-brand" href="#">My Store</a> -->
+	</div>
+	
+	<div class="collapse navbar-collapse js-navbar-collapse" >
+		<ul class="nav navbar-nav navbar-right desktop-view">
+		<li><a href="#">Home</a></li>
+		
+<!-- Old About Us
+<li class="dropdown mega-dropdown">
+   <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+   <ul class="dropdown-menu mega-dropdown-menu">
+      <div class="container">
+         <div class="row">
+            <li class="col-sm-4">
+               <ul>
+                  <li class="dropdown-header">Shortly About Us</li>
+                  <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+                  <li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+               </ul>
+            </li>
+            <li class="col-sm-4">
+               <ul>
+                  <li class="dropdown-header">Mission & Vision</li>
+                  <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+                  <li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+               </ul>
+            </li>
+            <li class="col-sm-4">
+               <ul>
+                  <li class="dropdown-header">1st Life Style Health Club</li>
+                  <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+                  <li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+               </ul>
+            </li>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <li class="col-sm-4">
+               <ul>
+                  <li class="dropdown-header">Team Mantra</li>
+                  <p>Mantra health club is promoted by extremely well known entities: Nu Mantra Life Style Health Club Private Limited by Mr. Subhbbrata Bhattacharjee and ,Mr. Dipanjan Bhattacharjee Who are all individually as passionate about healthy life style and fitness.</p>
+                  <li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+               </ul>
+            </li>
+            <li class="col-sm-4">
+               <ul>
+                  <li class="dropdown-header">Testimonials</li>
+                  <div class="nav-testimonial">
+                     <div class='row'>
+                        <div>
+                           <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                           
+                              <div class="carousel-inner">
+                               
+                                 <div class="item active">
+                                    <div class="row">
+                                       <div class="col-sm-4 text-center">
+                                          <img src="<?php echo base_url(); ?>application/assets/images/testimonial1.jpg"  class="img-circle" style="width: 100px;height:100px;" >
+                                       </div>
+                                       <div class="col-sm-8">
+                                          <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
+                                          <span style="font-style:itallic;">Someone famous</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                
+                                 <div class="item">
+                                    <div class="row">
+                                       <div class="col-sm-4 text-center">
+                                          <img src="<?php echo base_url(); ?>application/assets/images/testimonial2.jpg"  class="img-circle" style="width: 100px;height:100px;" >
+                                       </div>
+                                       <div class="col-sm-8">
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
+                                          <span style="font-style:itallic;">Someone famous</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           
+                              <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                              <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                 
+                  <li><a href="javascript:void(0)" class="btn cutome-link-btn">View All</a></li>
+               </ul>
+            </li>
+            <li class="col-sm-4">
+               <ul>
+                  <li class="dropdown-header">Career</li>
+                  <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+                  <li><a href="javascript:void(0)" class="btn cutome-link-btn">Apply Now</a></li>
+               </ul>
+            </li>
+         </div>
+      </div>
+   </ul>
+</li>
+-->
+		
+
+
+<!-- Start -->
+<li class="dropdown mega-dropdown">
+   <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+   <ul class="dropdown-menu mega-dropdown-menu">
+      <li class="col-sm-4" style="border-right:1px solid #CCC;">
+         <ul>
+            <li class="dropdown-header">Shortly About Us</li>
+            <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+			<a href="javascript:void(0)" class="btn cutome-link-btn">View More</a>
+			<li class="divider"></li>
+			
+			
+            <li class="dropdown-header">Mission & Vision</li>
+            <p>To make healthier INDIA by improving HEALTH ASSECT VALUE OF every Indian. </p>
+            <a href="javascript:void(0)" class="btn cutome-link-btn">View More</a>
+		    <li class="divider"></li>
+			
+			
+            <li class="dropdown-header">1st Life Style Health Club</li>
+            <p>MANTRA, the First Life Style Health Club of Kolkata, and the leading Health Club chain in North Kolkata, whose prime focus being on increasing this critical ‘wealth’, makes a resolution to spread “Health is the Greatest Wealth” awareness amongst the Mantra Members.
+            </p>
+            <a href="javascript:void(0)" class="btn cutome-link-btn">View More</a>
+			
+			
+         </ul>
+      </li>
+      <li class="col-sm-4"  style="border-right:1px solid #CCC;">
+         <ul>
+            <li class="dropdown-header">Team Mantra</li>
+            <div class="nav-mantra-director">
+               <div class="mantra-direct-left">
+                  <img src="<?php echo base_url(); ?>application/assets/images/subhabrata_bhattacharjee.jpg" class="">
+                  <p>Mr. Subhabrata Bhattacharjee</p>
+                  <p class="director">Director</p>
+               </div>
+               <div class="mantra-direct-right">
+                  <img src="<?php echo base_url(); ?>application/assets/images/dipanjan_bhattacharjee.jpg">
+                  <p>Mr. Dipanjan Bhattacharjee</p>
+                  <p class="director">Director</p>
+               </div>
+            </div>
+            <p class="team-mantra-desc">
+               Mantra health club is promoted by extremely well known entities: Nu Mantra Life Style Health Club Private Limited by Mr. Subhbbrata Bhattacharjee and ,Mr. Dipanjan Bhattacharjee Who are all individually as passionate about healthy life style and fitness.They have a vision to make healthier INDIA by rendering high quality health and fitness service.
+            </p>
+             <a href="javascript:void(0)" class="btn cutome-link-btn">More About Team Mantra</a>
+            
+         </ul>
+      </li>
+      <li class="col-sm-4">
+         <ul>
+            <li class="dropdown-header">Testimonials</li>
+            <div class="nav-testimonial">
+               <div class='row'>
+                  <div>
+                     <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+						<div class="carousel-inner">
+							<div class="item active">
+                              <div class="row">
+                                 <div class="col-sm-4 text-center">
+                                    <img src="<?php echo base_url(); ?>application/assets/images/testimonial1.jpg"  class="img-circle" style="width: 100px;height:100px;" >
+                                 </div>
+                                 <div class="col-sm-8">
+                                    <p class="testimonial-thought"> Mantra has become a part of my life. It has changed my lifestyle and helped me to keep good and sound health at my 61 years of age.</p>
+                                    <h5 class="person-name">Shib Sankar Banerjee<br>Retired person, Barrackpore</h5>
+							
+                                 </div>
+                              </div>
+                           </div>
+						   <div class="item">
+                              <div class="row">
+                                 <div class="col-sm-4 text-center">
+                                    <img src="<?php echo base_url(); ?>application/assets/images/testimonial2.jpg"  class="img-circle" style="width: 100px;height:100px;" >
+                                 </div>
+                                <div class="col-sm-8">
+                                    <p class="testimonial-thought">In the busy and hectic life of today with all sinful food habit, the MMWL package from MANTRA is really a blessing from heaven.</p>
+                                    <h5 class="person-name">Papiya Roy <br>Housewife, Dunlop, Baranagar</h5>
+									
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+						<!--
+						<a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a> -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+			 <a href="javascript:void(0)" class="btn cutome-link-btn">More Testimonials</a>
+            <li class="divider"></li>
+			
+			<li class="dropdown-header">Career</li>
+            <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+             <a href="javascript:void(0)" class="btn cutome-link-btn">Apply Now</a>
+         </ul>
+      </li>
+   </ul>
+</li>
+<!-- end --->
+
+		
+	<!--Services -->
+		
+		<li class="dropdown mega-dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <span class="caret"></span></a>
+				<ul class="dropdown-menu mega-dropdown-menu">
+				<div class="container">
+					<div class="row">
+						<li class="col-sm-4">
+							<ul>
+								<li class="dropdown-header">Packages Offered</li>  
+								Download Admision Form
+							</ul>
+						</li>
+						<li class="col-sm-4">
+							<ul>
+								<li class="dropdown-header">Branch Wise Rate Chart</li>                            
+									<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+									<li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+							
+							   
+							</ul>
+						</li>
+						<li class="col-sm-4">
+							<ul>
+								<li class="dropdown-header">Branch Wise Classes & Consultancy Schedule</li>    
+								<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+									<li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+								
+							</ul>
+						</li>
+						
+					</div>
+					</div>
+
+				</ul>
+		</li>
+		
+		<!-- End Services -->
+		<li><a href="#">Event</a></li>
+		<li><a href="#">Fitness Education</a></li>
+		<li><a href="#">Nutrition</a></li>
+		<li><a href="#">Gallery</a></li>
+		<li><a href="#">Body Calculator</a></li>
+		<li><a href="#">Contact Us</a></li>
+		</ul>
+			<!--	<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My account <span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Separated link</a></li>
+				  </ul>
+				</li>
+				<li><a href="#">My cart (0) items</a></li>
+			  </ul> -->
+	</div><!-- /.nav-collapse -->
+	
+	</nav>
+	
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="mobile-menu-main">
+            <div class="list-group panel">
+               <a href="#" class="list-group-item">Home</a>
+               <a href="#about-sub" class="list-group-item" data-toggle="collapse" data-parent="#mobile-menu-main">About<span class="caret"></span></a>
+               <div class="collapse" id="about-sub">
+                  <a href="#" class="list-group-item" >About Us</a>
+                  <a href="#" class="list-group-item" >Mission & Vision</a>
+                  <a href="#" class="list-group-item" >1st Life Style Health Club</a>
+                  <a href="#" class="list-group-item" >Team Mantra</a>
+                  <a href="#" class="list-group-item" >Testimonials</a>
+                  <a href="#" class="list-group-item" >Career</a>
+               </div>
+               <a href="#services-sub" class="list-group-item" data-toggle="collapse" data-parent="#mobile-menu-main">Services<span class="caret"></span></a>
+               <div class="collapse" id="services-sub">
+                  <a href="#" class="list-group-item">Packages Offered</a>
+                  <a href="#" class="list-group-item">Branch Wise Rate Chart</a>
+                  <a href="#" class="list-group-item">Branch Wise Classes & Consultancy Schedule</a>
+                  <a href="#" class="list-group-item">Team Mantra</a>
+                  <a href="#" class="list-group-item">Testimonials</a>
+                  <a href="#" class="list-group-item">Career</a>
+               </div>
+               <a href="#" class="list-group-item">Events</a>
+               <a href="#" class="list-group-item">Fitness Education</a>
+               <a href="#" class="list-group-item">Nutrition</a>
+               <a href="#gallery-sub" class="list-group-item" data-toggle="collapse" data-parent="#mobile-menu-main">Gallery<span class="caret"></span></a>
+               <div class="collapse" id="gallery-sub">
+                  <a href="#" class="list-group-item">Photo Gallery</a>
+                  <a href="#" class="list-group-item">Video Gallery</a>
+               </div>
+               <a href="#calulator-sub" class="list-group-item" data-toggle="collapse" data-parent="#mobile-menu-main">Body Calculator<span class="caret"></span></a>
+               <div class="collapse"  id="calulator-sub">
+                  <a href="#" class="list-group-item">Body Fat %</a>
+                  <a href="#" class="list-group-item">Harvard Step Test</a>
+                  <a href="#" class="list-group-item">Sit & Reach Test</a>
+                  <a href="#" class="list-group-item">Push Up & Sit Up Test</a>
+               </div>
+               <a href="#" class="list-group-item">Contact Us</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end Mobile Menu-->
+
+
+  
+</div>
+</div>
+	
+	
+	
+	
+
+	<!-- Mobile Menu -->
+  
+</div>
+
+<section>
+
+
+	<!-- End Mega Menu -->
+	
+	
+	
     <div class="body-view">
  
      <?php if($bodyview)  : ?>  
@@ -153,6 +504,52 @@
              
 	
 	<script>
+	/*
+jQuery(document).ready(function(){
+    $(".dropdown").hover(
+        function() { $('.dropdown-menu', this).fadeIn("fast");
+        },
+        function() { $('.dropdown-menu', this).fadeOut("fast");
+    });
+});
+*/
+$(document).ready(function(){
+   /* $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );*/
+	
+	$('.dropdown-toggle').dropdown(); 
+	/*  $('#quote-carousel').carousel({
+    pause: true,
+    interval: 4000,
+  }); */
+});
+
+// When the DOM is ready, run this function
+
+
+/*
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );
+});*/
+	
+	
 	new WOW().init();
               
 
@@ -236,7 +633,19 @@
         }
     }
 
-	
+function openNav() {
+   // document.getElementById("mobileMenu").style.width = "250px";
+	$("#mobileMenu").css({
+		"width":"250px"
+	});
+}
+
+function closeNav() {
+   // document.getElementById("mobileMenu").style.width = "0";
+	$("#mobileMenu").css({
+		"width":"0px"
+	});
+}
 	
 </script>
 

@@ -52,6 +52,12 @@ $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'mantrahe_data';
+/* websnipe database connection info
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'mantradiet';
+$db['default']['password'] = 'admin#321';
+$db['default']['database'] = 'mantrahe_data';
+*/
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

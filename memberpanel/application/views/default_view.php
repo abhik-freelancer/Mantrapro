@@ -25,6 +25,10 @@
 	
 	<!-- Custom Style -->
 	<link href="<?php echo base_url(); ?>application/assets/css/style.css" rel="stylesheet">
+	
+	<!-- Bootstrap datepicker -->
+	<link href="<?php echo base_url(); ?>application/assets/css/bootstrap-datepicker.css" rel="stylesheet">
+	<!-- Bootstrap datepicer end -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,10 +57,10 @@
                 <input type="hidden" value="<?php echo base_url(); ?>" id="basepath"></input>      
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
+           <ul class="nav navbar-right top-nav">
+            <!--   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
+                   <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
                             <a href="#">
                                 <div class="media">
@@ -106,7 +110,7 @@
                             <a href="#">Read All New Messages</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
               <!--  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
@@ -159,7 +163,7 @@
                     <li class="active">
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                <!-- <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
@@ -190,7 +194,24 @@
                     </li>
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li> -->
+					<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user-md"></i> Health & Fitness <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li><a href="#">General Fitness Assessment</a></li>
+                            <li><a href="#">General Medical Assessment</a></li>
+                            <li><a href="#">Orthopaedic Screening</a></li>
+                            <li><a href="#">Archieves</a></li>
+                            <li><a href="#">Anthropometry</a></li>
+                            <li><a href="#">Blood Test(s)</a></li>
+                        </ul>
                     </li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i>
+ Health Asset Value</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -222,6 +243,8 @@
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/raphael.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/morris.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/morris-data.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
+	
 
 </body>
 

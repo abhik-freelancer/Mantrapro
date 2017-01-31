@@ -31,10 +31,3 @@
     ErrorDocument 404 /index.php  
 </IfModule>
 
-<IfModule mod_php5.c>
-
-#php_value post_max_size 500M
-
-php_value max_input_vars 50000
-
-</IfModule>

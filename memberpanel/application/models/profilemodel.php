@@ -122,7 +122,7 @@ class profilemodel extends CI_Model {
         try {
             $this->db->set("image_name",$image_data);
             $this->db->where('CUS_ID', $customerId);
-            $this->db->update('customer_master', $upadateData);
+            $this->db->update('customer_master');
 
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();

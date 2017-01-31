@@ -46,8 +46,9 @@ class profile extends CI_Controller {
         $memberAddress = $this->input->post("memberAddress");
         $pinnumber = $this->input->post("pinnumber");
         $Email = $this->input->post("Email");
-
-        if (empty($this->input->post("membersex"))) {
+		$membersex="";
+		$_mtempvalue=$this->input->post("membersex");
+        if (empty($_mtempvalue)) {
             $membersex = 0;
         } else {
             $membersex = $this->input->post("membersex");
@@ -73,7 +74,7 @@ class profile extends CI_Controller {
 
                 $updatePersonal = $this->profilemodel->updatePersonal($customerId, $upadateData);
                 if ($updatePersonal) {
-                    $json_response = array("msg_code" => 1, "msg_data" => "Profile has changed successfully");
+                    $json_response = array("msg_code" => 1, "msg_data" => "Profile has been changed successfully");
                 } else {
                     $json_response = array("msg_code" => 2, "msg_data" => "Something is going wrong.");
                 }
@@ -86,6 +87,7 @@ class profile extends CI_Controller {
 
         header('Content-Type: application/json');
         echo json_encode($json_response);
+		 exit();
     }
 
     private function formValidate($memberName, $memberAddress, $pinNumber, $email, $membersex, $bloodgroup, $dateofbirth) {

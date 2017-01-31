@@ -4,9 +4,7 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Change password.
-                        </h1>
+                        <h1 class="page-header page-label"> Change Password</h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>
@@ -18,47 +16,47 @@
                     </div>
                 </div>
                 
-               <div class="alert alert-danger" role="alert" style="display:none;" id="msgdiv">
+               <div class="alert alert-danger custom-error" role="alert" style="display:none;" id="msgdiv">
                 <div id="msgText"></div>
                 <span class="glyphicon glyphicon-remove" aria-hidden="true" style="float: right;margin-top: -19px;cursor: pointer;"></span>
                </div>
                 
-                <div class="alert alert-success" role="alert" style="display:none;" id="msgdivsuccess">
+                <div class="alert alert-success custom-success" role="alert" style="display:none;" id="msgdivsuccess">
                 <div id="successmsgText"></div>
                 <span class="glyphicon glyphicon-remove" aria-hidden="true" id="successclose" style="float: right;margin-top: -19px;cursor: pointer;"></span>
                </div>
                 
                 
-                <div class="row">
+                <div class="row custom-row-width">
                     
                     <div class="col-sm-3">
-                        Current password:
+                        <p class="change-pass-label">Current password</sup></p>
                     </div>
-                    <div class="col-sm-8" >
-                        <input type="password" class="form-control " id="oldpassword">
-                        <p class="help-block">Current password typed here.</p>
+                    <div class="col-sm-9" >
+                        <input type="password" class="form-control custome-input" id="oldpassword" >
+                        <p class="help-block">Current password type here.</p>
                     </div>
                     
                 </div>
-                 <div class="row">
+                 <div class="row custom-row-width">
                     
                     <div class="col-sm-3">
-                        New password: 
+                        <p class="change-pass-label">New password</p>
                     </div>
-                    <div class="col-sm-8" >
-                        <input type="password" class="form-control" id="newpassword">
-                         <p class="help-block">New password typed here.</p>
+                    <div class="col-sm-9" >
+                        <input type="password" class="form-control custome-input" id="newpassword" >
+                        <p class="help-block">New password type here.</p> 
                     </div>
                     
                 </div>
                     
-                <div class="row">
+                <div class="row custom-row-width">
                     
                     <div class="col-sm-3">
-                       
+                       
                     </div>
-                    <div class="col-sm-8" >
-                        <button type="button" class="btn btn-default" id="btnchangepwd">Change password</button>
+                    <div class="col-sm-9" >
+                        <button type="button" class="btn btn-default custome-button" id="btnchangepwd">Change password</button>
                     </div>
                     
                 </div>

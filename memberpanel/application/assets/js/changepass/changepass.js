@@ -69,7 +69,7 @@ function validate(){
      
      if(oldpassword=="" || newpassword=="" ){
           $("#msgdiv").show();
-          $("#msgText").html("Fields are mandatory");
+          $("#msgText").html("All fields are mandatory");
          return false;
      }
     return true;

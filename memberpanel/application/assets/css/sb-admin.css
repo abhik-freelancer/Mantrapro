@@ -231,23 +231,23 @@ ul.alert-dropdown {
 .custom-file-input {
 		display: inline-block;
 		position: relative;
-		color: #8C8C8C;
+		color: #FFF;
 	}
 	.custom-file-input input {
 		visibility: hidden;
-		width: 100px;
+		width: 120px;
 	}
 		.custom-file-input:before {
 		content: "Change image";
 		display: block;
-		background: #FCFCFC none repeat scroll 0% 0%;
-		border: 1px solid #A29E9E;
-		border-radius: 5px;
-		padding: 5px 0px;
+		background: #E95C24 none repeat scroll 0% 0%;
+		border: 1px solid #E95C24;
+		border-radius: 4px;
+		padding: 10px 0px;
 		outline: medium none;
 		white-space: nowrap;
 		cursor: pointer;
-		text-shadow: 1px 1px rgba(255, 255, 255, 0.7);
+		//text-shadow: 1px 1px rgba(255, 255, 255, 0.7);
 		font-weight: bold;
 		text-align: center;
 		font-size: 10pt;
@@ -256,8 +256,11 @@ ul.alert-dropdown {
 		right: 0px;
 	}
 	.custom-file-input:hover:before {
-		border-color: #CECECE;
+		border-color: #E95C24;
+		opacity:.8;
 	}
 		.custom-file-input:active:before {
-		background: #CECECE;
+		border-color: #E95C24;
+		opacity:.8;
+		
 	}

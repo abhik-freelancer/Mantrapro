@@ -128,7 +128,12 @@ $(document).ready(function(){
     }); 
     
     
-    
+    $('#dateofbirth').datepicker({
+            autoclose: true,
+			todayHighlight: true,
+            format: 'dd-mm-yyyy',
+			forceParse: false
+		});
     
     
 });//end

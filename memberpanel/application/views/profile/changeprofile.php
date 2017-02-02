@@ -1,6 +1,20 @@
 <div id="page-wrapper">
 
             <div class="container-fluid">
+                
+                 <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header page-label"> Profile update</h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-edit"></i> Profile update
+                            </li>
+                        </ol>
+                    </div>
+                </div>
 			
 			<div class="row">
              <form name="frmPersonalia" id="frmPersonalia" method="post">
@@ -160,3 +174,4 @@
 
         </div>
         <!-- /#page-wrapper -->
+</div>

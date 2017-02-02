@@ -1,13 +1,10 @@
  <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-<title>Mantra - Member Login</title>
-<link href="<?php echo base_url(); ?>application/assets/css/bootstrap.css" rel="stylesheet">
-<!--<link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">-->
+<meta charset="UTF-8">
+<title>Login</title>
+ <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.css" rel="stylesheet">
+ <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>application/assets/css/login.css" rel="stylesheet" type="text/css"  />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -50,16 +47,10 @@
 	<div class="row custom-login-row">
 	<div class="col-md-6 login-text-box">
 		<div class="login-icon">
-			<img src="<?php echo base_url(); ?>application/assets/images/mantra-logo.png" />
+			<img src="<?php echo base_url(); ?>application/assets/images/member-login-icon2.png" />
 		</div>
-		
-		<div class="mantra-title-box">
-			<h1 class="mantra-title">MANTRA</h1>
-			<p class="mantra-catchline">LIFE STYLE HEALTH CLUB</p>
-		</div>
-		
 		<div class="login-text">
-			
+			<p>Maecenas quam elit, condimentum nec volutpat non, sodales in sem. Aenean laoreet urna porta lacinia pellentesque. Nulla libero risus, fermentum in tortor ut, convallis sollicitudin tortor. </p>
 		</div>
 	</div>
 	<div class="col-md-6 login-form-container">
@@ -71,16 +62,19 @@
 		</div>
 		
 		<label><b>Mobile</b></label>
-		<input type="text" placeholder="9136875942" class="form-control custom-input" name="member" id="member" required>
+		<input type="text" placeholder="Enter mobile" class="form-control custom-input" name="member" id="member" required>
 
 		<label><b>Password</b></label>
-		<input type="password" placeholder="Enter your password" class="form-control custom-input" name="pwd" id="pwd" required>
+		<input type="password" placeholder="Enter Password" class="form-control custom-input" name="pwd" id="pwd" required>
 
 		<button type="submit" id="memeberlogin" class="custom-button">Login</button>
 		<input type="checkbox" checked="checked" ><span class="remeber-me"> Remember me</span>
 		 <span class="psw"><a href="#"> Forgot password?</a></span>
 	</div>
 	</div>
+	
+	
+	
 </div>
 
 

@@ -1,6 +1,7 @@
 body{
-	background: #FC6B32  ;
-	height:100%;
+	//background: #FC6B32  ;
+	background:#F6F6F6 ;
+	/*height:100%; */
 	/*animation-name: changebodycolor;
     animation-duration: 10s;
 	animation-iteration-count: infinite;*/
@@ -47,19 +48,23 @@ img.avatar {
 	width:80%;
 }
 
+.container-fluid{
+	padding-left:2px !important;
+	padding-right:2px !important;
+}
+
 span.psw {
     float: right;
-    padding-top: 0px;
+    padding-top: 3px;
 }
 
 .custom-login-row{
 	width:80%;
 	margin:0 auto;
-	/*padding-top:15%;
-	padding-bottom:15%;*/
-	position:absolute;
+	padding:10% 0;
+	/*position:absolute;
 	top:30%;
-	left:10%;
+	left:10%;*/
 }
 .login-text-box{
 		//border-right:1px solid #FFF;
@@ -68,49 +73,73 @@ span.psw {
 	padding-top:2%;
 }
 .login-icon{
-	width:50%;
+	width:21%;
 	margin:0 auto;
+	margin: 7% auto 0px;
 }
 .login-text{
 	clear:both;
 	font-size:1.3em;
 	color:#FFF;
 }
+
+.mantra-title-box{
+	
+}
+.mantra-title{
+	text-align: center;
+	font-weight: bold;
+	color: #FC5A37;
+	font-size: 5.5em;
+	margin-top: -7px;
+}
+.mantra-catchline{
+	text-align: center;
+	line-height: 0px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
 .login-form-container label{
-	color:#FFF;
+	color:#515151;
 	font-size:1.3em;
 	margin-top:5px;
 }
 .custom-input{
-	border: none;
-	border-radius: 1px;
 	height: 44px;
+	border: 1px solid #FFA486;
+	border-radius: 10px;
+	
 }
 .custom-button{
-	background:#FFF;
+	background:#FC6432;
 	height: 45px !important;
 	border: medium none !important;
-	border-radius: 1px !important;
+	//border-radius: 1px !important;
 	margin-top: 18px !important;
-	color: #F84C1D;
+	color: #FFF;
 	font-size: 20px;
 	line-height: 20px;
-	text-shadow: 1px 1px 1px #CCC;
+	//text-shadow: 1px 1px 1px #CCC;
 	font-weight: bold;
+	border-radius: 10px;
+	border: 1px solid #ABAAAA;
+	//color:#ADADAD  !important;
 }
 .custom-button:hover{
-	background:#E0E0E0;
-	color:#747171;
-	text-shadow:0px;
+	//background:#E0E0E0;
+	background:#FC6432 ;
+	color:#FFF;
+	text-shadow: 0px 0px 0px #CCC;
 	transition:.10s;
 }
 .remeber-me{
 	font-size:13px;
-	color:#FFF;
+	color:#F84F2B;
 	font-weight:bold;
 }
 .psw a{
-	color:#FFF;
+	color:#F84F2B;
 	font-weight:bold;
 	font-size:13px;
 }
@@ -129,70 +158,89 @@ span.psw {
 	margin:0 auto;
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:20%;
-	left:5%;
+	left:5%;*/
+	padding:10% 0;
 	}
 }
 @media only screen and (max-width: 991px) {
 	.login-icon{
-		width:33%;
+		width:11%;
 		margin:0 auto;
 	}
 	.custom-login-row{
-	width:65%;
+	width:98%;
 	margin:0 auto;
+	padding:2% 0;
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:18%;
-	left:18%;
+	left:18%;*/
 	}
 }
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 991px) {
+	
+}
+@media only screen and (max-width: 800px) {
 	.login-icon{
-		width:38%;
+		width:12%;
 		margin:0 auto;
 	}
 	.custom-login-row{
-	width:80%;
+	//width:80%;
 	margin:0 auto;
+	padding-bottom:5%
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:18%;
-	left:10%;
+	left:10%;*/
+	}
+}
+@media only screen and (max-width: 800px) {
+	.login-icon{
+		width:14%;
+		margin:0 auto;
 	}
 }
 
 @media only screen and (max-width: 600px) {
 	.login-icon{
-		width:45%;
+		width:16%;
 		margin:0 auto;
 	}
 	.custom-login-row{
-	width:80%;
+//	width:80%;
 	margin:0 auto;
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:18%;
-	left:10%;
+	left:10%;*/
+	}
+}
+@media only screen and (max-width: 650px) {
+		.login-icon{
+		width:19%;
+		margin:0 auto;
 	}
 }
 @media only screen and (max-width: 500px) {
 	.login-icon{
-		width:50%;
+		width:23%;
 		margin:0 auto;
 	}
 	.custom-login-row{
-	width:80%;
+	width:96%;
 	margin:0 auto;
+	padding-bottom:5%
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:18%;
-	left:10%;
+	left:10%;*/
 	}
 	.error{
 		font-size: 0.9em;
@@ -200,60 +248,83 @@ span.psw {
 }
 @media only screen and (max-width:460px) {
 	.login-icon{
-		width:50%;
+		width:24%;
 		margin:0 auto;
 	}
 	.login-text{
 		font-size:1.2em;
 	}
 	.custom-login-row{
-	width:90%;
+	width:96%;
 	margin:0 auto;
-	/*padding-top:15%;
-	padding-bottom:15%;*/
-	position:absolute;
-	top:10%;
-	left:5%;
+	padding-bottom:5%
 	}
+	.login-form-container {
+    padding-top: 7%;
+}
+
+	
+.mantra-title{
+	font-size: 4.5em;
+	margin-top: -7px;
+}
+.mantra-catchline{
+	text-align: center;
+	line-height: 0px;
+	font-size: 21px;
+	font-weight: bold;
+}
+.login-form-container label {
+    color: #515151;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
 }
 @media only screen and (max-width:370px) {
 	.login-icon{
-		width:65%;
+		width:30%;
 		margin:0 auto;
 	}
 	.custom-login-row{
 	width:96%;
 	margin:0 auto;
+	padding-bottom:8%
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:10%;
-	left:2%;
+	left:2%;*/
 	}
 }
+
+@media only screen and (max-width:315px) {
+	.mantra-title {
+		font-size: 3.5em;
+		margin-top: -3px;
+	}
+	.mantra-catchline {
+		
+		font-size: 16px;
+		
+	}
+}
+
+
 @media only screen and (max-width:280px) {
-	.login-icon{
-		width:80%;
-		margin:0 auto;
+	.login-icon {
+		width: 42%;
+		margin: 0px auto;
 	}
 	.custom-login-row{
 	width:98%;
 	margin:0 auto;
+	padding-bottom:8%
 	/*padding-top:15%;
 	padding-bottom:15%;*/
-	position:absolute;
+	/*position:absolute;
 	top:10%;
-	left:1%;
+	left:1%;*/
 	}
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-}

@@ -20,7 +20,14 @@ class Home extends CI_Controller {
          //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
  }
 
-	
+
+ public function getYourPass(){
+	 $page = 'home/get-pass';
+	 $header = "";
+	 $result="";
+	 createbody_method($result,$page,$header,$session);
+ }
+ 
 
 }
 

@@ -129,7 +129,7 @@
 					<p>Donec elit magna, consectetur ac enim in, ornare maximus nisi.</p>
 				</div>
 				<div class="guest-pass-link">
-					<button type="button" class="guest-pass-btn">Get Your Pass
+					<button type="button" class="guest-pass-btn" onclick="window.location.href='<?php echo base_url()?>home/getYourPass'">Get Your Pass</button>
 				</div>
 			</div>
 		</div>

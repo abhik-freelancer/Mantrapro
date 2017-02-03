@@ -74,7 +74,54 @@ class profilemodel extends CI_Model {
         }
         return $images;
     }
+    
+    public function getMembershipNumber($customerId){
+        $membershipNumber = "";
+        $sql ="SELECT `customer_master`.`MEMBERSHIP_NO`
+                FROM
+                `customer_master`
+                WHERE 
+                customer_master.`CUS_ID`=".$customerId;
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $membershipNumber = $row-> MEMBERSHIP_NO;
+        }
+        return $membershipNumber;
+    }
 
+    
+    public function getValidityString($membershipNumber){
+        $membervalidity =array();
+        $sql = "SELECT `payment_master`.`MEMBERSHIP_NO`,payment_master.`VALIDITY_STRING`,
+                DATE_FORMAT(payment_master.`FROM_DT`,'%d-%m-%Y') AS fromdate,
+                DATE_FORMAT (payment_master.`VALID_UPTO`,'%d-%m-%Y')AS validupto,
+                DATE_FORMAT(payment_master.`EXPIRY_DT`,'%d-%m-%Y') AS expiredate
+                FROM
+                `payment_master` 
+                WHERE 
+                payment_master.`PAYMENT_ID` = (SELECT  MAX(payment_master.`PAYMENT_ID`) AS id FROM payment_master 
+                WHERE
+                `payment_master`.`MEMBERSHIP_NO` ='".$membershipNumber."'
+                AND `payment_master`.`FRESH_RENEWAL`!='D'
+                AND `payment_master`.FRESH_RENEWAL!='P'
+                AND  `payment_master`.`FRESH_RENEWAL`!='C')";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $membervalidity=array(
+                    "membershipno"=>$row-> MEMBERSHIP_NO,
+                    "VALIDITY_STRING"=>$row->VALIDITY_STRING,
+                    "fromdate"=>$row->fromdate,
+                    "validupto"=>$row->validupto,
+                    "expiredate"=>$row->expiredate,
+                );
+                
+        }
+        return $membervalidity;
+        
+    }
+    
     public function updatePersonal($customerId, $upadateData) {
         try {
             $this->updatePassword($customerId, $upadateData);

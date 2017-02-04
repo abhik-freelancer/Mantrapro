@@ -74,7 +74,8 @@
 		<div class="col-md-12"><p id="all-field-req"></p></div>
 	</div>
 		 
-	<button type="submit" class="btn btn-default" id="">Submit</button>
+	<button type="submit" class="btn custom-button-guest-pass" id="">Submit</button>
+	<div class="submit-message"><p id="submit-response">Response message</p></div>
 	</form>
 </div>
 </div>

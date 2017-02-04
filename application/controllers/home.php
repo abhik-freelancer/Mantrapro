@@ -36,7 +36,6 @@ class Home extends CI_Controller {
  
 	public function InsertFreeGuestPass(){
 		 $json_response = array();
-		  
 		 
 		 $entry_date = date("Y-m-d");
 		 $firstname = trim($this->input->post("firstname"));
@@ -47,9 +46,8 @@ class Home extends CI_Controller {
 		 $pincode = trim($this->input->post("pincode"));
 		 $address = trim($this->input->post("address"));
 		 $comments = trim($this->input->post("comments"));
-		// $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
 		
-		$recaptcha = $this->input->post('g-recaptcha-response');
+		 $recaptcha = $this->input->post('g-recaptcha-response');
 		 $userip = $this->input->ip_address();
 		
 		if($this->validateFreeGuestPass($firstname,$last_name,$email,$mobile,$gymlocation,$pincode)){
@@ -72,11 +70,39 @@ class Home extends CI_Controller {
 				print_r($freeGuestPassArray);
 				echo "<pre>";
 				exit;
-				$insert = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+				$insertData = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+				if($insertData){
+					$json_response = array("msg_code" => 1, "msg_data" => "You have successfully applied.");
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data" => "There is something wrong.Please try again...");
+				}
 			}
 			else{
-				$json_response = array("msg_code" => 10, "msg_data" => "Captcha is invalid. Please try again...");
+				$json_response = array("msg_code" => 10, "msg_data" => "Please tick that you are not a robot");
 			}
+			
+		/*	$freeGuestPassArray = array(
+				"date_of_entry" => $entry_date,
+				"first_name" => $firstname,
+				"last_name" => $last_name,
+				"emailid" => $email,
+				"contactno" => $mobile,
+				"gym_location" => $gymlocation,
+				"address" => $address,
+				"pincode" => $pincode,
+				"comment" => $comments,
+				"is_called" => 'N'
+				
+				);
+				
+			$insertData = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+				if($insertData){
+					$json_response = array("msg_code" => 1, "msg_data" => "You have successfully applied.");
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data" => "There is something wrong.Please try again...");
+				} */
 		}
 		else{
             $json_response = array("msg_code" => 0, "msg_data" => "* Fields are mandatory.");
@@ -102,7 +128,7 @@ class Home extends CI_Controller {
 		if($gymlocation=="0"){
 			return false;
 		}
-		if($pincode=""){
+		if($pincode==""){
 			return false;
 		}
 		return true;

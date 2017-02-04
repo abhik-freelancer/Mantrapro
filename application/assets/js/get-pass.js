@@ -4,7 +4,7 @@ $(document).ready(function(){
 	
 	$("#getPassForm").on("submit", function(event){
 		 event.preventDefault();
-		
+		if(validateFreeGuestPass()){
 		$.ajax({
             type: "POST",
             url: basepath + 'home/InsertFreeGuestPass',
@@ -21,6 +21,19 @@ $(document).ready(function(){
 				else if(result.msg_code == 10){
 					$("#all-field-req").css("display","block");
 					$("#all-field-req").html(result.msg_data);
+				}
+				else if(result.msg_code == 1){
+					$("#submit-response").css("display","block");
+					$("#submit-response").html(result.msg_data);
+					$('#getPassForm')[0].reset();
+				}
+				else if(result.msg_code == 2){
+					$("#submit-response").css("display","block");
+					$("#submit-response").html(result.msg_data);
+				}
+				else{
+					$("#all-field-req").html("");
+					$("#all-field-req").css("display","none");
 				}
 				
 				
@@ -47,6 +60,10 @@ $(document).ready(function(){
                 alert(msg); */
             }
         });
+		}
+		else{
+			return false;
+		}
 		
 		
 		
@@ -65,6 +82,7 @@ $(document).ready(function(){
 		var pincode = $("#pincode").val();
 		var error = "";
 		var email_validate = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		var mobile_validate = /^([0-9]{10})$/;
 		
 		$("#fname-error").html("");
 		$("#lastname-error").html("");
@@ -96,6 +114,11 @@ $(document).ready(function(){
 			$("#mobile-error").html(error);
 			return false;
 		}
+		if(!mobile_validate.test(mobile)){
+			error = "This mobile no is not valid";
+			$("#mobile-error").html(error);
+			return false;
+		}
 		if(gymLocation=="0"){
 			error = "Select a gym location";
 			$("#gymlocation-error").html(error);
@@ -110,8 +133,8 @@ $(document).ready(function(){
 	}
 
 function numericFilter(txb) {
-  // txb.value = txb.value.replace(/[^\0-9]/ig, "");
-	txb.value = txb.value.replace(/[^\0-9]/, "");
+   txb.value = txb.value.replace(/[^\0-9]/ig, "");
+	//txb.value = txb.value.replace(/[^\0-9]/, "");
 }
 
 

@@ -47,7 +47,8 @@ class Home extends CI_Controller {
 		
 		if($this->validateFreeGuestPass($firstname,$last_name,$email,$mobile,$gymlocation,$pincode)){
 			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
-			if ($response . 'success' == false) {
+			$obj = json_decode($response);
+			if ($obj->success == false) {
 				$json_response = array("msg_code" => 10, "msg_data" => "Captcha is invalid. Please try again...");
 				return false;
 			 }

@@ -7,6 +7,7 @@
 
 $(document).ready(function(){
     var basepath = $("#basepath").val();
+	alert(basepath);
     
      $("#frmPersonalia").on("submit", function(event) {
          event.preventDefault();

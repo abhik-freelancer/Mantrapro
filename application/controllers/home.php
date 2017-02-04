@@ -21,14 +21,56 @@ class Home extends CI_Controller {
  }
 
 
- public function getYourPass(){
+ public function getpass(){
 	 $page = 'home/get-pass';
 	 $header = "";
+	 $session="";
 	 $result="";
-	 createbody_method($result,$page,$header,$session);
+	 $headercontent['gymlocation']= $this->homemodel->getGymLocation();
+	 createbody_method($result, $page, $header, $session, $headercontent);
  }
  
-
+	public function InsertFreeGuestPass(){
+		 $json_response = array();
+		 
+		 $entry_date = date("Y-m-d");
+		 $firstname = trim($this->input->post("firstname"));
+		 $last_name = trim($this->input->post("lastname"));
+		 $email = trim($this->input->post("email"));
+		 $mobile = trim($this->input->post("mobile"));
+		 $gymlocation = trim($this->input->post("gymLocation"));
+		 $pincode = trim($this->input->post("pincode"));
+		 $address = trim($this->input->post("address"));
+		 $comments = trim($this->input->post("comments"));
+		 $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+		 $userip = $this->input->ip_address();
+		
+$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
+		 if ($response . 'success' == false) {
+			 return FALSE;
+			 } 
+		else {
+				$freeGuestPassArray = array(
+				"date_of_entry" => $entry_date,
+				"first_name" => $firstname,
+				"last_name" => $last_name,
+				"emailid" => $email,
+				"contactno" => $mobile,
+				"gym_location" => $gymlocation,
+				"address" => $address,
+				"pincode" => $pincode,
+				"comment" => $comments,
+				"is_called" => 'N',
+				);
+				$insert = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+		 } 
+		
+	
+		
+		
+		
+		
+	}
 }
 
 ?>

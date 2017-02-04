@@ -51,7 +51,8 @@
     <div class="container-fluid top-header">
         <div class="row">
              <div class="col-md-12"> 
-				<img src="<?php echo base_url(); ?>application/assets/images/mantra-top-header2.jpg" height="119" /> 
+				<img src="<?php echo base_url(); ?>application/assets/images/mantra-top-header2.jpg" height="119" />
+				 <input type="hidden" value="<?php echo base_url(); ?>" id="basepath"></input> 
 			 </div>
         </div>
     </div> 
@@ -494,10 +495,12 @@
 	<!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 	<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyBFfcYfF1vd5f6Uv9SXPzqtgxeUuOkFzf0"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.bootstrap.newsbox.js"></script>
     <!--<script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>-->
 	<script src="<?php echo base_url(); ?>application/assets/js/wow.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/get-pass.js"></script>	
 
     <!-- Script to Activate the Carousel -->
 

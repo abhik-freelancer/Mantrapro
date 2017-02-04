@@ -12,7 +12,7 @@ $(document).ready(function(){
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: $(this).serialize(),
             success: function (result) {
-				
+				//alert(result.msg_code);
 				if (result.msg_code == 0) {
 					//$("#all-field-req").html("");
 					$("#all-field-req").css("display","block");
@@ -23,11 +23,17 @@ $(document).ready(function(){
 					$("#all-field-req").html(result.msg_data);
 				}
 				else if(result.msg_code == 1){
+					$("#all-field-req").css("display","none");
+					$("#all-field-req").html("");
+					
 					$("#submit-response").css("display","block");
 					$("#submit-response").html(result.msg_data);
 					$('#getPassForm')[0].reset();
 				}
 				else if(result.msg_code == 2){
+					$("#all-field-req").css("display","none");
+					$("#all-field-req").html("");
+					
 					$("#submit-response").css("display","block");
 					$("#submit-response").html(result.msg_data);
 				}

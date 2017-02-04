@@ -54,6 +54,9 @@ class Home extends CI_Controller {
 			
 			$response = $this->recaptcha->verifyResponse($recaptcha);
 			if (isset($response['success']) and $response['success'] === true) {
+				
+				//echo "Captcha success";
+				
 				$freeGuestPassArray = array(
 				"date_of_entry" => $entry_date,
 				"first_name" => $firstname,
@@ -67,9 +70,9 @@ class Home extends CI_Controller {
 				"is_called" => 'N'
 				
 				);
-				print_r($freeGuestPassArray);
-				echo "<pre>";
-				exit;
+				//print_r($freeGuestPassArray);
+				//echo "<pre>";
+				//exit;
 				$insertData = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
 				if($insertData){
 					$json_response = array("msg_code" => 1, "msg_data" => "You have successfully applied.");
@@ -79,6 +82,7 @@ class Home extends CI_Controller {
 				}
 			}
 			else{
+				//echo "Captcha Error";
 				$json_response = array("msg_code" => 10, "msg_data" => "Please tick that you are not a robot");
 			}
 			

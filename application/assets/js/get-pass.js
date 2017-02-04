@@ -33,7 +33,9 @@ $(document).ready(function(){
 				}
 				else{
 					$("#all-field-req").html("");
+					$("#submit-response").html("");
 					$("#all-field-req").css("display","none");
+					$("#submit-response").css("display","none");
 				}
 				
 				
@@ -127,6 +129,7 @@ $(document).ready(function(){
 		if(pincode==""){
 			error ="Pincode is required";
 			$("#pincode-error").html(error);
+			return false;
 		}
 		
 		return true;

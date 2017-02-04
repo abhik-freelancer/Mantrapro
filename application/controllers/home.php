@@ -6,6 +6,7 @@ class Home extends CI_Controller {
  {
    parent::__construct();
     $this->load->model('homemodel','',TRUE);
+	 $this->load->library('recaptcha');
 	
  }
 	
@@ -22,16 +23,20 @@ class Home extends CI_Controller {
 
 
  public function getpass(){
+	
 	 $page = 'home/get-pass';
 	 $header = "";
 	 $session="";
-	 $result="";
+	 $result['widget']=$this->recaptcha->getWidget();
+	 $result['script']=$this->recaptcha->getScriptTag();
 	 $headercontent['gymlocation']= $this->homemodel->getGymLocation();
+	 
 	 createbody_method($result, $page, $header, $session, $headercontent);
  }
  
 	public function InsertFreeGuestPass(){
 		 $json_response = array();
+		  
 		 
 		 $entry_date = date("Y-m-d");
 		 $firstname = trim($this->input->post("firstname"));
@@ -42,18 +47,41 @@ class Home extends CI_Controller {
 		 $pincode = trim($this->input->post("pincode"));
 		 $address = trim($this->input->post("address"));
 		 $comments = trim($this->input->post("comments"));
-		 $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+		// $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+		
+		$recaptcha = $this->input->post('g-recaptcha-response');
 		 $userip = $this->input->ip_address();
 		
 		if($this->validateFreeGuestPass($firstname,$last_name,$email,$mobile,$gymlocation,$pincode)){
-			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
+			
+			$response = $this->recaptcha->verifyResponse($recaptcha);
+			if (isset($response['success']) and $response['success'] === true) {
+				echo "Captcha Success";
+			}
+			else{
+				echo "Captcha Wrong";
+			}
+			
+			
+			/*$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
 			$obj = json_decode($response);
-			if ($obj->success == false) {
-				$json_response = array("msg_code" => 10, "msg_data" => "Captcha is invalid. Please try again...");
-				return false;
+			
+			if($obj->success==true)            
+			{
+			echo '<h2>Captcha success.</h2>';
+			}
+			else{
+				echo '<h2>Captcha Error.</h2>';
+			}
+			*/
+		/*	if ($obj->success == false) {
+				echo "This is Captcha response -".$obj->success;
+				//$json_response = array("msg_code" => 10, "msg_data" => "Captcha is invalid. Please try again...");
+				//return false;
 			 }
 			else{
-			
+			echo "Captcha Response : ".$obj->success;
+			echo "<br>";
 			$freeGuestPassArray = array(
 				"date_of_entry" => $entry_date,
 				"first_name" => $firstname,
@@ -65,7 +93,7 @@ class Home extends CI_Controller {
 				"pincode" => $pincode,
 				"comment" => $comments,
 				"is_called" => 'N',
-				"captcharesponse" => $response
+				"captcharesponse" => $captcha_reponse->success
 				);
 		
 			echo "<pre>";
@@ -73,7 +101,7 @@ class Home extends CI_Controller {
 			echo "<pre>";
 			exit;
 			$insert = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
-			}
+			}*/
 		}
 		else{
             $json_response = array("msg_code" => 0, "msg_data" => "* Fields are mandatory.");

@@ -65,7 +65,9 @@
 		<div class="form-group col-md-6 col-md-12">
 			<!--<div class="g-recaptcha" data-sitekey="6LfZVRQUAAAAAM_R3DAbp_akOtOEnf6SaE7WjB2v"></div>-->
 			<!--localhost <div class="g-recaptcha" data-sitekey="6LdNVxQUAAAAAKPN9xy2BY8fXhgzb8dCvMRg0To-"></div> -->
-			<div class="g-recaptcha" data-sitekey="6LdUVRQUAAAAAIZPq_c7wAcCCez18Fc8l8N2Xegg"></div>
+			<!--<div class="g-recaptcha" data-sitekey="6LdUVRQUAAAAAIZPq_c7wAcCCez18Fc8l8N2Xegg"></div>-->
+			<?php echo $bodycontent["widget"];?>
+			<?php echo $bodycontent["script"];?>
 		</div>
 	</div>
 	<div class="row">

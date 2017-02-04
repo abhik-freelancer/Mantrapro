@@ -26,6 +26,7 @@ class memberdashboard extends CI_Controller {
             $validityString = $fromdate." - ".$todate;
             $grantDays = $this->dashboardmodel->getExtensionDays($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
             $validupto = date('Y-m-d',  strtotime($todate));
+            $validfrom = date('Y-m-d',  strtotime($fromdate));
             $totalExtentiondate = date('Y-m-d',strtotime($validupto. ' +'.$grantDays.' days'));
             $currentDate =date('Y-m-d');
             
@@ -34,18 +35,19 @@ class memberdashboard extends CI_Controller {
 
             $diffDays = $date2->diff($date1)->format("%a");
             
-              //2017-05-19
             
-                
-//$thirty_days_ahead =  date('Y-m-d H:i:s', strtotime("+30 days") )
-
-
+            
+          //  getAttendanceRate($fromDate,$validUpto,$memberNo)
+            
+            
             
             $header = "";
+            
             $result["cashbackdata"] = $this->dashboardmodel->getMemberCashBackPoint($membershipNumber,$validityString);
             $result["remain"]=$diffDays;
+            $result["validupto"]=$todate;
+            $result["attpercentage"]=  $this->dashboardmodel->getAttendanceRate($validfrom,$validupto,$membershipNumber);
             
-             //echo("<pre>"); print_r($result); echo("</pre>");
             
             createbody_method($result, $page, $header, $session);
             //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')

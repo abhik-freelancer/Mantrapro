@@ -56,4 +56,33 @@ class dashboardmodel extends CI_Model {
         }
         return $grantDays;
     }
+    
+    public function getAttendanceRate($fromDate,$validUpto,$memberNo){
+        $totalattDays =0;
+        $currentDate =date('Y-m-d');
+        $sql="SELECT COUNT(tran_id)as attday FROM `member_attendance`
+            WHERE member_attendance.`membershipno`='".$memberNo."'
+            AND member_attendance.`att_date` BETWEEN '".$fromDate."' AND '".$validUpto."'";
+        
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $totalattDays = (int)$row->attday;
+                
+        }
+        
+          $date_diff=strtotime($currentDate) - strtotime($fromDate);
+          //$days = floor(($date_diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))+1;
+          $days=floor($date_diff / (60 * 60 * 24));
+             if ($days>0)
+             {
+               $att_rate=number_format($totalattDays*100/$days,2);
+               $att_rate_str=$att_rate."%";
+             } 
+             else
+             {
+              $att_rate_str="";
+             }
+             return $att_rate_str;
+    }
 }

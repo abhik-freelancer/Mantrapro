@@ -77,7 +77,7 @@ class dashboardmodel extends CI_Model {
              if ($days>0)
              {
                $att_rate=number_format($totalattDays*100/$days,2);
-               $att_rate_str=$att_rate."%";
+               $att_rate_str=$att_rate;
              } 
              else
              {

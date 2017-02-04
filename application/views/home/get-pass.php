@@ -9,34 +9,34 @@
 	</div>
 
 <div class="container get-your-pass-form">
-	<form name="getPassForm" id="getPassForm" method="post" onsubmit="return validateFreeGuestPass();">
+	<form name="getPassForm" id="getPassForm" method="post" >
 	<div class="row">
 		  <div class="form-group col-md-6 col-sm-12">
-			<label for="firstname">First Name*</label>
+			<label for="firstname">First Name<span class="required-mark">*</span></label>
 			<input type="text" class="form-control custom-input" id="firstname" name="firstname" placeholder="First Name">
 			<p class="error-style" id="fname-error"></p>
 		  </div>
 		  <div class="form-group col-md-6 col-sm-12">
-			<label for="lastname">Last Name</label>
+			<label for="lastname">Last Name<span class="required-mark">*</span></label>
 			<input type="text" class="form-control custom-input" id="lastname" name="lastname" placeholder="Last Name">
 			<p class="error-style" id="lastname-error"></p>
 		  </div>
 	</div>
 	<div class="row">
 		<div class="form-group col-md-6 col-sm-12">
-			<label for="email">Email </label>
+			<label for="email">Email <span class="required-mark">*</span></label>
 			<input type="text" class="form-control custom-input" id="email" name="email" placeholder="Email">
 			<p class="error-style" id="email-error"></p>
 		</div>
 		<div class="form-group col-md-6 col-sm-12">
-			<label for="mobile">Mobile</label>
-			<input type="text" class="form-control custom-input" id="mobile" name="mobile" placeholder="Mobile No" onkeyup="">
+			<label for="mobile">Mobile<span class="required-mark">*</span></label>
+			<input type="text" class="form-control custom-input" id="mobile" name="mobile" placeholder="Mobile No" onKeyUp="numericFilter(this);" >
 			<p class="error-style" id="mobile-error"></p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="form-group col-md-6 col-sm-12">
-			<label for="exampleInputEmail1">Gym Location</label>
+			<label for="exampleInputEmail1">Gym Location<span class="required-mark">*</span></label>
 			<select class="form-control custom-input" id="gymLocation" name="gymLocation">
 			  <option value="0">Select </option>
 			  <?php foreach($header['gymlocation'] as $gymlocation){ ?>
@@ -46,8 +46,8 @@
 			<p class="error-style" id="gymlocation-error"></p>
 		</div>
 		<div class="form-group col-md-6 col-sm-12">
-			<label for="pincode">Pincode</label>
-			<input type="text" class="form-control custom-input" id="pincode" name="pincode" placeholder="Pincode">
+			<label for="pincode">Pincode<span class="required-mark">*</span></label>
+			<input type="text" class="form-control custom-input" id="pincode" name="pincode" placeholder="Pincode" onKeyUp="numericFilter(this);">
 			<p class="error-style" id="pincode-error"></p>
 		</div>
 	</div>
@@ -62,11 +62,14 @@
 		</div>
 	</div>	
 	<div class="row">
-		<div class="">
+		<div class="form-group col-md-6 col-md-12">
 			<!--<div class="g-recaptcha" data-sitekey="6LfZVRQUAAAAAM_R3DAbp_akOtOEnf6SaE7WjB2v"></div>-->
 			<!--localhost <div class="g-recaptcha" data-sitekey="6LdNVxQUAAAAAKPN9xy2BY8fXhgzb8dCvMRg0To-"></div> -->
 			<div class="g-recaptcha" data-sitekey="6LdUVRQUAAAAAIZPq_c7wAcCCez18Fc8l8N2Xegg"></div>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12"><p id="all-field-req"></p></div>
 	</div>
 		 
 	<button type="submit" class="btn btn-default" id="">Submit</button>

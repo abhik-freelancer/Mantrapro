@@ -526,6 +526,19 @@ textarea{
 	border-radius: 4px !important;
 	
 }
+.required-mark{
+	font-weight: bold;
+	font-size: 1em;
+	text-shadow: 1px 1px 3px #5F5E5E;
+}
+#all-field-req{
+	color: #FFF;
+	background: #FC4242;
+	padding: 1%;
+	border-radius: 10px;
+	font-weight: bold;
+	display:none;
+}
 /*----------Testimonial --------------*/
 
 #testimonial-crousal{

@@ -4,6 +4,7 @@ $(document).ready(function(){
 	
 	$("#getPassForm").on("submit", function(event){
 		 event.preventDefault();
+		
 		$.ajax({
             type: "POST",
             url: basepath + 'home/InsertFreeGuestPass',
@@ -11,7 +12,20 @@ $(document).ready(function(){
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: $(this).serialize(),
             success: function (result) {
-               
+				
+				if (result.msg_code == 0) {
+					//$("#all-field-req").html("");
+					$("#all-field-req").css("display","block");
+					$("#all-field-req").html(result.msg_data);
+				}
+				else if(result.msg_code == 10){
+					$("#all-field-req").css("display","block");
+					$("#all-field-req").html(result.msg_data);
+				}
+				
+				
+				
+				
             }, 
 			error: function (jqXHR, exception) {
               /*  var msg = '';
@@ -33,6 +47,10 @@ $(document).ready(function(){
                 alert(msg); */
             }
         });
+		
+		
+		
+		
 	});
 	
 	
@@ -91,6 +109,10 @@ $(document).ready(function(){
 		return true;
 	}
 
+function numericFilter(txb) {
+  // txb.value = txb.value.replace(/[^\0-9]/ig, "");
+	txb.value = txb.value.replace(/[^\0-9]/, "");
+}
 
 
 

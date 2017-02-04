@@ -45,12 +45,15 @@ class Home extends CI_Controller {
 		 $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
 		 $userip = $this->input->ip_address();
 		
-$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
-		 if ($response . 'success' == false) {
-			 return FALSE;
-			 } 
-		else {
-				$freeGuestPassArray = array(
+		if($this->validateFreeGuestPass($firstname,$last_name,$email,$mobile,$gymlocation,$pincode)){
+			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
+			if ($response . 'success' == false) {
+				$json_response = array("msg_code" => 10, "msg_data" => "Captcha is invalid. Please try again...");
+				return false;
+			 }
+			else{
+			
+			$freeGuestPassArray = array(
 				"date_of_entry" => $entry_date,
 				"first_name" => $firstname,
 				"last_name" => $last_name,
@@ -61,15 +64,44 @@ $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?s
 				"pincode" => $pincode,
 				"comment" => $comments,
 				"is_called" => 'N',
+				"captcharesponse" => $response
 				);
-				$insert = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
-		 } 
 		
+			echo "<pre>";
+			print_r($freeGuestPassArray);
+			echo "<pre>";
+			exit;
+			$insert = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+			}
+		}
+		else{
+            $json_response = array("msg_code" => 0, "msg_data" => "* Fields are mandatory.");
+        }
+		
+	header('Content-Type: application/json');
+    echo json_encode($json_response);
+	exit();
 	
+	}
+	
+	private function validateFreeGuestPass($firstname,$last_name,$email,$mobile,$gymlocation,$pincode){
 		
-		
-		
-		
+		if($firstname==""){
+			return false;
+		}
+		if($last_name==""){
+			return false;
+		}
+		if($mobile==""){
+			return false;
+		}
+		if($gymlocation=="0"){
+			return false;
+		}
+		if($pincode=""){
+			return false;
+		}
+		return true;
 	}
 }
 

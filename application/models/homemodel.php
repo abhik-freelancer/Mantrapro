@@ -4,14 +4,14 @@ class homemodel extends CI_Model{
     
    public function getGymLocation(){
 	   $data=array();
-	   $sql = "SELECT BRANCH_ID,BRANCH_NAME,BRANCH_CODE FROM `branch_master` ORDER BY BRANCH_NAME";
+	   $sql = "SELECT id,branch_name,branch_code FROM `web_branch` ORDER BY branch_name";
 	    $query = $this->db->query($sql);
          if($query->num_rows()> 0){
               foreach ($query->result() as $rows) {
                 $data[] = array(
-                    "BRANCH_ID"=>$rows->BRANCH_ID,
-                    "BRANCH_NAME"=>$rows->BRANCH_NAME,
-                    "BRANCH_CODE"=>$rows->BRANCH_CODE
+                    "BRANCH_ID"=>$rows->id,
+                    "BRANCH_NAME"=>$rows->branch_name,
+                    "BRANCH_CODE"=>$rows->branch_code
                     );
             }
             return $data;

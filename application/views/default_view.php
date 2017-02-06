@@ -37,7 +37,8 @@
             padding-left:0%;
           //  position: relative;
         }
-
+	
+	
 	</style>
 
 </head>
@@ -48,7 +49,7 @@
     <div class="container-fluid page-width">
     
      <!-- Top Fixed Header -->
-    <div class="container-fluid top-header">
+    <div class="container-fluid top-header" >
         <div class="row">
              <div class="col-md-12"> 
 				<img src="<?php echo base_url(); ?>application/assets/images/mantra-top-header2.jpg" height="119" />
@@ -56,6 +57,11 @@
 			 </div>
         </div>
     </div> 
+	
+	
+	
+	
+	
 	<!-- Navigation --
     <nav class="navbar navbar-default custom-nav" data-spy="affix" data-offset-top="147" id="navbar-main">
        <div class="container">

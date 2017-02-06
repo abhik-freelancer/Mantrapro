@@ -14,10 +14,11 @@ class Home extends CI_Controller {
  {
      $page = 'home/home';
 	 $header = "";
-	 $result=array("content"=>"At Mantra we believe that each individual’sDonec at tincidunt quam. Etiam sem lectus, tincidunt lobortis nunc at, efficitur malesuada purus. Cras massa mi, sodales et enim vitae, sagittis consequat nulla. Fusce facilisis ante et vestibulum pulvinar… ",
-                        "category"=>"page");
-	 $session="";	
-	 createbody_method($result,$page,$header,$session);
+	$result['activeTestimonial'] = $this->homemodel->getTestimonialForActiveCls();
+	$result['withoutActiveItemTestimonial'] = $this->homemodel->getTestimonialForWithoutActiveCls();
+	//$result['events'] = $this->homemodel->getAllEvents();
+	$session="";	
+	createbody_method($result,$page,$header,$session);
          //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
  }
 
@@ -86,27 +87,6 @@ class Home extends CI_Controller {
 				$json_response = array("msg_code" => 10, "msg_data" => "Please tick that you are not a robot");
 			}
 			
-		/*	$freeGuestPassArray = array(
-				"date_of_entry" => $entry_date,
-				"first_name" => $firstname,
-				"last_name" => $last_name,
-				"emailid" => $email,
-				"contactno" => $mobile,
-				"gym_location" => $gymlocation,
-				"address" => $address,
-				"pincode" => $pincode,
-				"comment" => $comments,
-				"is_called" => 'N'
-				
-				);
-				
-			$insertData = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
-				if($insertData){
-					$json_response = array("msg_code" => 1, "msg_data" => "You have successfully applied.");
-				}
-				else{
-					$json_response = array("msg_code" => 2, "msg_data" => "There is something wrong.Please try again...");
-				} */
 		}
 		else{
             $json_response = array("msg_code" => 0, "msg_data" => "* Fields are mandatory.");
@@ -137,6 +117,10 @@ class Home extends CI_Controller {
 		}
 		return true;
 	}
+	
+	
+	
+	
 }
 
 ?>

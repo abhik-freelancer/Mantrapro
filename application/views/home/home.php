@@ -1,4 +1,3 @@
-
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -93,7 +92,7 @@
                         <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/mantra-netgym.png" /></div>
                         <h4>NET GYMING</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <div class="more"><a href="#" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
+                        <div class="more"><a href="<?php echo base_url();?>/memberpanel/" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
         </div>
@@ -153,6 +152,87 @@
             <div id="carousel-reviews" class="carousel slide" data-ride="carousel">
 				<div class="crousal-container">
 				<div class="carousel-inner" id="testimonial-crousal">
+			
+				<div class="item active">
+					<?php 
+						$active_testimonail_count =1;
+					foreach($bodycontent['activeTestimonial'] as $activeTestimonial){
+						if($active_testimonail_count%2==0){
+						$sml_device_cls = 'hidden-sm hidden-xs testimonial-border-right';
+						}
+						else{
+							$sml_device_cls = '';
+						}
+						?>
+						<div class="col-md-6 col-sm-12 <?php echo $sml_device_cls;?>">
+								<div class="testimonial-block">
+									<div class="block-text rel zmin">
+										<a title="" href="#"></a>
+											<div class="person-text rel">
+											<img alt="" src="<?php echo base_url();?>application/assets/images/<?php echo  $activeTestimonial['testimonialImage'];?>"><br>
+											<p style="text-align:center;" class="testimonial-name"><?php echo $activeTestimonial['name'];?>
+											<span>, <?php echo $activeTestimonial['location'];?></span> </p>
+											</div>
+										<p class="testimonial-comment">
+											<?php echo $activeTestimonial['comment'];?>
+										</p>
+									</div>
+									
+								</div>
+						</div>
+					<?php 
+						$active_testimonail_count = $active_testimonail_count+1;
+					}?>
+				</div>
+				
+				<?php 
+				$i = 0;
+				$nooftestimonial = 1;
+					foreach($bodycontent['withoutActiveItemTestimonial'] as $witoutactiveTestimonial){
+					$i++;
+					
+			
+					if($i%2!=0){
+						$item_div = '<div class="item">';
+						$end_item_div ="";
+					}
+					else{
+						$item_div = "";
+						$end_item_div = '</div>';
+					}
+					if($nooftestimonial%2==0){
+						$small_device_cls = 'hidden-sm hidden-xs testimonial-border-right';
+					}
+					else{
+						$small_device_cls = '';
+					}
+					
+				?>
+					<?php echo $item_div;?>
+					<div class="col-md-6 col-sm-12 <?php echo $small_device_cls;?>">
+						<div class="testimonial-block">
+							
+							<div class="block-text rel zmin">
+							<div class="person-text rel">
+								<img alt="" src="<?php echo base_url();?>application/assets/images/<?php echo  $witoutactiveTestimonial['testimonialImage'];?>"><br>
+								<p style="text-align:center;" class="testimonial-name"><?php echo $witoutactiveTestimonial['name'];?>
+								<span>, <?php echo $witoutactiveTestimonial['location'];?></span></a>
+							</div>
+								<a title="" href="#"></a>
+							<p class="testimonial-comment"><?php echo $witoutactiveTestimonial['comment'];?></p>
+							</div>
+							
+						</div>
+					</div>
+					<?php echo $end_item_div;?>
+				
+				<?php
+				$nooftestimonial = $nooftestimonial+1;
+				}?>
+				
+				
+				
+			<!--
                     <div class="item active">
                 	    <div class="col-md-6 col-sm-12">
 							<div class="testimonial-block">
@@ -183,6 +263,8 @@
 							</div>
 						</div>
 					</div>
+				
+				
                     <div class="item">
                         <div class="col-md-6 col-sm-12 testimonial-border-right">
 							 <div class="testimonial-block">
@@ -212,6 +294,9 @@
 						  </div>
 						</div>
 					</div>
+				 
+				
+				  
                     <div class="item">
                         <div class="col-md-6 col-sm-12 testimonial-border-right">
 						  <div class="testimonial-block">
@@ -239,7 +324,9 @@
 							</div>
 						  </div>
 						</div>
-					</div>                    
+					</div>    
+					-->
+					
                 </div>
 				</div>
 				
@@ -250,6 +337,7 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
             </div>
+		</div>
 			
         </div>
     </div>
@@ -262,6 +350,7 @@
 
 <div class="container-fluid events-and-offers">
 	<div class="row" id="events-and-offer-box-container">
+	
 		<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 			<div class="upcoming-events">
 				<div class="panel panel-default">
@@ -269,7 +358,7 @@
 					</div>
 					<div class="panel-body">
 					  <div class="row">
-					     <div class="col-xs-12">
+					      <div class="col-xs-12">
 					        <ul id="upcoming-events">
 								<li class="news-item" >
 									<div class="event-date">
@@ -352,11 +441,12 @@
 					        </ul>
 					    </div>
 					  </div>
-					</div>
+					</div> <!-- event panel body-->
 				<div class="panel-footer"></div>
-				</div>
-			</div>
+				</div> <!-- END .panel -->
+			</div> <!-- END .upcoming-events -->
 		</div><!-- End Upcoming Events -->
+		
 		<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 			<div class="latest-offers-container"> 
 				<div class="">
@@ -382,6 +472,7 @@
 			</div>
 			</div>
 		</div><!-- End Latest Offers -->
+		
 	</div>
 </div>
 <!-- End Upcoming Events & Latest Offers -->

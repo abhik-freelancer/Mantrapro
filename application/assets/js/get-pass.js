@@ -15,10 +15,16 @@ $(document).ready(function(){
 				//alert(result.msg_code);
 				if (result.msg_code == 0) {
 					//$("#all-field-req").html("");
+					$("#submit-response").css("display","none");
+					$("#submit-response").html("");
+					
 					$("#all-field-req").css("display","block");
 					$("#all-field-req").html(result.msg_data);
 				}
 				else if(result.msg_code == 10){
+					$("#submit-response").css("display","none");
+					$("#submit-response").html("");
+					
 					$("#all-field-req").css("display","block");
 					$("#all-field-req").html(result.msg_data);
 				}
@@ -49,7 +55,7 @@ $(document).ready(function(){
 				
             }, 
 			error: function (jqXHR, exception) {
-              /*  var msg = '';
+                var msg = '';
                 if (jqXHR.status === 0) {
                     msg = 'Not connect.\n Verify Network.';
                 } else if (jqXHR.status == 404) {
@@ -65,7 +71,7 @@ $(document).ready(function(){
                 } else {
                     msg = 'Uncaught Error.\n' + jqXHR.responseText;
                 }
-                alert(msg); */
+                alert(msg); 
             }
         });
 		}

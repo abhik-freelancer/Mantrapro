@@ -39,4 +39,54 @@ class homemodel extends CI_Model{
 			}
 	}
 	
+	
+	public function getTestimonialForActiveCls(){
+		$data=array();
+		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id`  LIMIT 2 ";
+		 $query = $this->db->query($sql);
+         if($query->num_rows()> 0){
+              foreach ($query->result() as $rows) {
+                $data[] = array(
+                    "id"=>$rows->id,
+                    "name"=>$rows->name,
+                    "occupation"=>$rows->occupation,
+                    "testimonialImage"=>$rows->testimonialImage,
+                    "location"=>$rows->location,
+                    "comment"=>$rows->comment
+                    );
+            }
+            return $data;
+             
+        }
+		else{
+             return $data;
+         }
+	} 
+	
+	public function getTestimonialForWithoutActiveCls(){
+		$data=array();
+		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id`  LIMIT 100 OFFSET 2 ";
+		 $query = $this->db->query($sql);
+         if($query->num_rows()> 0){
+              foreach ($query->result() as $rows) {
+                $data[] = array(
+                    "id"=>$rows->id,
+                    "name"=>$rows->name,
+                    "occupation"=>$rows->occupation,
+                    "testimonialImage"=>$rows->testimonialImage,
+                    "location"=>$rows->location,
+                    "comment"=>$rows->comment
+                    );
+            }
+            return $data;
+             
+        }
+		else{
+             return $data;
+         }
+	} 
+	
+	
+	
+	
 }

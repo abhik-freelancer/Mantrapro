@@ -77,7 +77,7 @@
 		<input type="password" placeholder="Enter your password" class="form-control custom-input" name="pwd" id="pwd" required>
 
 		<button type="submit" id="memeberlogin" class="custom-button">Login</button>
-		<input type="checkbox" checked="checked" ><span class="remeber-me"> Remember me</span>
+		<!--<input type="checkbox" checked="checked" ><span class="remeber-me"> Remember me</span>-->
 		 <span class="psw"><a href="#"> Forgot password?</a></span>
 	</div>
 	</div>

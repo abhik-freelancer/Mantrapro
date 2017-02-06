@@ -17,6 +17,7 @@ class memberdashboard extends CI_Controller {
         if ($this->session->userdata('user_data')) {
             $session = $this->session->userdata('user_data');
             $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            
             $page = 'memberdashboard/memberdashboard';
             $membershipNumber = $this->profilemodel->getMembershipNumber($customerId);
             $latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
@@ -35,10 +36,13 @@ class memberdashboard extends CI_Controller {
 
             $diffDays = $date2->diff($date1)->format("%a");
             
+            $subscriptionamount = $this->profilemodel->getSubscriptionAmountOfMember($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
+            $paidAmount = $this->profilemodel->getPaidAmount($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
             
             
           //  getAttendanceRate($fromDate,$validUpto,$memberNo)
-            
+            $customer = $this->profilemodel->getCustomerByCustId($customerId);
+            $customermobile=$customer["CUS_PHONE"];
             
             
             $header = "";
@@ -47,6 +51,8 @@ class memberdashboard extends CI_Controller {
             $result["remain"]=$diffDays;
             $result["validupto"]=$todate;
             $result["attpercentage"]=  $this->dashboardmodel->getAttendanceRate($validfrom,$validupto,$membershipNumber);
+            $result["paymentdue"] = ($subscriptionamount - $paidAmount);
+            $result["packagehistory"] = $this->dashboardmodel->getPackageHistory($customermobile,$latestvalidity["VALIDITY_STRING"]);
             
             
             createbody_method($result, $page, $header, $session);

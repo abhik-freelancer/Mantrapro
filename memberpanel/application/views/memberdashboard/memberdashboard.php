@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo($bodycontent["cashbackdata"]["total_point"]); ?></div>
-                                        <div>Cashback point!</div>
+                                        <div>Cashback point !</div>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo($bodycontent["remain"]); ?></div>
-                                        <div>Days left for expire!</div>
+                                        <div>Days left for expiry !</div>
                                     </div>
                                 </div>
                             </div>
@@ -95,15 +95,15 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
+                                        <i class="fa fa-inr fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Support Tickets!</div>
+                                        <div class="huge"><?php echo($bodycontent["paymentdue"]); ?></div>
+                                        <div>Due amount !</div>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-12">
+                   <!-- <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
@@ -129,12 +129,12 @@
                                 <div id="morris-area-chart"></div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-4">
+                   <!-- <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
@@ -147,7 +147,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    -->
+                    <!--<div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
@@ -192,72 +193,47 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+                    </div>-->
+                     <div class="row">
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                                <h3 class="panel-title"><i class="fa fa-history fa-fw"></i> Package history</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Order #</th>
-                                                <th>Order Date</th>
-                                                <th>Order Time</th>
-                                                <th>Amount (USD)</th>
+                                                <th>Membership No.</th>
+                                                <th>Package</th>
+                                                <th>Start Date</th>
+                                                <th>Valid upto</th>
+                                                <th>Amount(Inr)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>3326</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:29 PM</td>
-                                                <td>$321.33</td>
+                                        <?php if($bodycontent["packagehistory"]) {
+                                            
+                                         foreach ($bodycontent["packagehistory"] as $content) {
+                                        ?>
+                                           
+                                            <tr <?php echo($content["active"]==1?"class=success":""); ?>>
+                                                <td><?php echo($content["MEMBERSHIP_NO"]); ?></td>
+                                                <td><?php echo($content["CARD_DESC"]) ;?></td>
+                                                <td><?php echo($content["FROM_DT"]); ?></td>
+                                                <td><?php echo($content["VALID_UPTO"]); ?></td>
+                                                <td>
+                                                    <?php echo($content["SUBSCRIPTION"]); ?>
+                                                    <?php if($content["active"]==1) { ?>
+                                                    <i class="fa fa-fw fa-calendar"></i>
+                                                    <?php } ?>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>3325</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:20 PM</td>
-                                                <td>$234.34</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3324</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:03 PM</td>
-                                                <td>$724.17</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3323</td>
-                                                <td>10/21/2013</td>
-                                                <td>3:00 PM</td>
-                                                <td>$23.71</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3322</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:49 PM</td>
-                                                <td>$8345.23</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3321</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:23 PM</td>
-                                                <td>$245.12</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3320</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:15 PM</td>
-                                                <td>$5663.54</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3319</td>
-                                                <td>10/21/2013</td>
-                                                <td>2:13 PM</td>
-                                                <td>$943.45</td>
-                                            </tr>
+                                        <?php 
+                                            }
+                                         }
+                                         ?>   
                                         </tbody>
                                     </table>
                                 </div>
@@ -266,7 +242,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!--transaction table-->
+                     </div>
                 </div>
                 <!-- /.row -->
 

@@ -89,6 +89,8 @@ class profilemodel extends CI_Model {
         }
         return $membershipNumber;
     }
+    
+    
 
     
     public function getValidityString($membershipNumber){
@@ -182,5 +184,59 @@ class profilemodel extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
+    /**
+     * 
+     * @param type $membershipNo
+     * @param type $validityString
+     * @return double
+     */
+    public function getSubscriptionAmountOfMember($membershipNo,$validityString){
+        $subscriptionamount = (double)0.00;
+        
+        $sql = " SELECT 
+                 IFNULL(payment_master.`SUBSCRIPTION`,0)AS SUBSCRIPTION
+                 FROM 
+                 payment_master 
+                 WHERE MEMBERSHIP_NO ='".$membershipNo."' AND VALIDITY_STRING='".$validityString."' 
+                 AND (FRESH_RENEWAL!='P' AND FRESH_RENEWAL!='D')";
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $subscriptionamount = $row->SUBSCRIPTION;    
+        }
+        
+        return $subscriptionamount;
+        
+    }
+    /**
+     * 
+     * @param type $memebrshipNo
+     * @param type $validityString
+     * @return double
+     */
+    public function getPaidAmount($memebrshipNo,$validityString){
+        $paymentDue = (double)0.00;
+        $sql = "SELECT (IFNULL(SUM(payment_master.`AMOUNT`),0)- IFNULL(SUM(`payment_master`.DISCOUNT_CONV),0)+ 
+	IFNULL(SUM(payment_master.DISCOUNT_OFFER),0)+ IFNULL(SUM(payment_master.DISCOUNT_NEGO),0)+
+	IFNULL(SUM(payment_master.`CASHBACK_AMT`),0)) AS due
+	FROM payment_master 
+        WHERE MEMBERSHIP_NO='".$memebrshipNo."'
+        AND VALIDITY_STRING='".$validityString."' AND FRESH_RENEWAL!='P' 
+        GROUP BY  MEMBERSHIP_NO
+        ORDER BY payment_id DESC";
+        
+        
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $paymentDue = $row->due;    
+        }
+        
+        return $paymentDue;
+    }
+    
+    
+    
+    
 
 }

@@ -108,7 +108,7 @@ class dashboardmodel extends CI_Model {
                 INNER JOIN
                 payment_master ON customer_master.`MEMBERSHIP_NO` = payment_master.`MEMBERSHIP_NO`
                 WHERE  customer_master.`CUS_PHONE` ='".$mobileno."' AND payment_master.`SUBSCRIPTION` IS NOT NULL
-                ORDER BY payment_master.`FROM_DT` DESC ";
+                ORDER BY payment_master.`FROM_DT` DESC  LIMIT 0,6";
         $query = $this->db->query($sql);
         
         if ($query->num_rows() > 0) {

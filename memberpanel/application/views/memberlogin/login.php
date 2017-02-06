@@ -75,6 +75,7 @@
 
 		<label><b>Password</b></label>
 		<input type="password" placeholder="Enter your password" class="form-control custom-input" name="pwd" id="pwd" required>
+                <p class="help-block">Your default password is your date of birth (1990-12-31).</p>
 
 		<button type="submit" id="memeberlogin" class="custom-button">Login</button>
 		<!--<input type="checkbox" checked="checked" ><span class="remeber-me"> Remember me</span>-->

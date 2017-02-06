@@ -65,14 +65,17 @@
 		<div class="form-group col-md-6 col-md-12">
 			<!--<div class="g-recaptcha" data-sitekey="6LfZVRQUAAAAAM_R3DAbp_akOtOEnf6SaE7WjB2v"></div>-->
 			<!--localhost <div class="g-recaptcha" data-sitekey="6LdNVxQUAAAAAKPN9xy2BY8fXhgzb8dCvMRg0To-"></div> -->
-			<div class="g-recaptcha" data-sitekey="6LdUVRQUAAAAAIZPq_c7wAcCCez18Fc8l8N2Xegg"></div>
+			<!--<div class="g-recaptcha" data-sitekey="6LdUVRQUAAAAAIZPq_c7wAcCCez18Fc8l8N2Xegg"></div>-->
+			<?php echo $bodycontent["widget"];?>
+			<?php echo $bodycontent["script"];?>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12"><p id="all-field-req"></p></div>
 	</div>
 		 
-	<button type="submit" class="btn btn-default" id="">Submit</button>
+	<button type="submit" class="btn custom-button-guest-pass" id="">Submit</button>
+	<div class="submit-message"><p id="submit-response">Response message</p></div>
 	</form>
 </div>
 </div>

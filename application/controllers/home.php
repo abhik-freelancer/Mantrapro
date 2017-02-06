@@ -6,6 +6,7 @@ class Home extends CI_Controller {
  {
    parent::__construct();
     $this->load->model('homemodel','',TRUE);
+	 $this->load->library('recaptcha');
 	
  }
 	
@@ -22,11 +23,14 @@ class Home extends CI_Controller {
 
 
  public function getpass(){
+	
 	 $page = 'home/get-pass';
 	 $header = "";
 	 $session="";
-	 $result="";
+	 $result['widget']=$this->recaptcha->getWidget();
+	 $result['script']=$this->recaptcha->getScriptTag();
 	 $headercontent['gymlocation']= $this->homemodel->getGymLocation();
+	 
 	 createbody_method($result, $page, $header, $session, $headercontent);
  }
  
@@ -42,19 +46,18 @@ class Home extends CI_Controller {
 		 $pincode = trim($this->input->post("pincode"));
 		 $address = trim($this->input->post("address"));
 		 $comments = trim($this->input->post("comments"));
-		 $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+		
+		 $recaptcha = $this->input->post('g-recaptcha-response');
 		 $userip = $this->input->ip_address();
 		
 		if($this->validateFreeGuestPass($firstname,$last_name,$email,$mobile,$gymlocation,$pincode)){
-			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdUVRQUAAAAAFsPA6Kf9LSMnZvL3AKMfcHiiNfY &response=" . $recaptchaResponse . "&remoteip=" . $userip ); 
-			$obj = json_decode($response);
-			if ($obj->success == false) {
-				$json_response = array("msg_code" => 10, "msg_data" => "Captcha is invalid. Please try again...");
-				return false;
-			 }
-			else{
 			
-			$freeGuestPassArray = array(
+			$response = $this->recaptcha->verifyResponse($recaptcha);
+			if (isset($response['success']) and $response['success'] === true) {
+				
+				//echo "Captcha success";
+				
+				$freeGuestPassArray = array(
 				"date_of_entry" => $entry_date,
 				"first_name" => $firstname,
 				"last_name" => $last_name,
@@ -64,16 +67,46 @@ class Home extends CI_Controller {
 				"address" => $address,
 				"pincode" => $pincode,
 				"comment" => $comments,
-				"is_called" => 'N',
-				"captcharesponse" => $response
+				"is_called" => 'N'
+				
 				);
-		
-			echo "<pre>";
-			print_r($freeGuestPassArray);
-			echo "<pre>";
-			exit;
-			$insert = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+				//print_r($freeGuestPassArray);
+				//echo "<pre>";
+				//exit;
+				$insertData = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+				if($insertData){
+					$json_response = array("msg_code" => 1, "msg_data" => "You have successfully applied.");
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data" => "There is something wrong.Please try again...");
+				}
 			}
+			else{
+				//echo "Captcha Error";
+				$json_response = array("msg_code" => 10, "msg_data" => "Please tick that you are not a robot");
+			}
+			
+		/*	$freeGuestPassArray = array(
+				"date_of_entry" => $entry_date,
+				"first_name" => $firstname,
+				"last_name" => $last_name,
+				"emailid" => $email,
+				"contactno" => $mobile,
+				"gym_location" => $gymlocation,
+				"address" => $address,
+				"pincode" => $pincode,
+				"comment" => $comments,
+				"is_called" => 'N'
+				
+				);
+				
+			$insertData = $this->homemodel->InsertIntoFreeGuestPass($freeGuestPassArray);
+				if($insertData){
+					$json_response = array("msg_code" => 1, "msg_data" => "You have successfully applied.");
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data" => "There is something wrong.Please try again...");
+				} */
 		}
 		else{
             $json_response = array("msg_code" => 0, "msg_data" => "* Fields are mandatory.");
@@ -99,7 +132,7 @@ class Home extends CI_Controller {
 		if($gymlocation=="0"){
 			return false;
 		}
-		if($pincode=""){
+		if($pincode==""){
 			return false;
 		}
 		return true;

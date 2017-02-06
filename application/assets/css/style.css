@@ -526,6 +526,19 @@ textarea{
 	border-radius: 4px !important;
 	
 }
+.custom-button-guest-pass{
+	width: 100%;
+	height: 47px;
+	background: #FE5B26 none repeat scroll 0% 0%;
+	border: 1px solid #FE5B26;
+	color: #FFF;
+	font-size: 1.3em !important;
+	font-weight: 700;
+}
+.custom-button-guest-pass:hover{
+	color: #FFF !important;
+	opacity:.9;
+}
 .required-mark{
 	font-weight: bold;
 	font-size: 1em;
@@ -537,6 +550,15 @@ textarea{
 	padding: 1%;
 	border-radius: 10px;
 	font-weight: bold;
+	display:none;
+}
+#submit-response{
+	margin-top: 1%;
+    text-align: left;
+    padding: 1%;
+    font-size: 17px;
+	color: #ACFFB3;
+	font-weight: 600;
 	display:none;
 }
 /*----------Testimonial --------------*/

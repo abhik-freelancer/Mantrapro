@@ -106,7 +106,9 @@ label{
 	margin-top:20px;
 }
 
-
+.port-folio-preview{
+	width:70%;
+}
 
 
 @media only screen and (max-width:1080px) {

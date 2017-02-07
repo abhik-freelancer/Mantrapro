@@ -195,7 +195,7 @@
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li> -->
-					<li>
+		  <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user-md"></i> Health & Fitness <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li><a href="#">General Fitness Assessment</a></li>
@@ -206,6 +206,22 @@
                             <li><a href="#">Blood Test(s)</a></li>
                         </ul>
                     </li>
+                    
+                    
+                     <li>
+                         <a href="javascript:;" data-toggle="collapse" data-target="#portfolio"><i class="fa fa-user-md">
+                             
+                             </i> Portfolio <i class="fa fa-fw fa-caret-down"></i>
+                         </a>
+                        <ul id="portfolio" class="collapse">
+                            <li><a href="#">Make folio</a></li>
+                            <li><a href="#">View folio</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                    
+                    
 					<li><a href="#"><i class="fa fa-external-link-square"></i>
  Health Asset Value</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
@@ -236,6 +252,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/changepass/changepass.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/profile/profile.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 

@@ -59,5 +59,124 @@ class portfolio extends CI_Controller{
         exit();
     }
     
+    public function updateMemberBodyComposition(){
+        if ($this->session->userdata('user_data')) {
+            $response = array();
+            $session = $this->session->userdata('user_data');
+            $customerId = $session["CUS_ID"];
+            $dateofentry = $this->input->post("dateofentry");
+            $weight = $this->input->post("weight");
+            $waist = $this->input->post("waist");
+            $hip = $this->input->post("hip");
+            $bodyfatPercentage = $this->input->post("bodyfatPercentage");
+            $bodyfatmass = $this->input->post("bodyfatmass");
+            $bodyleanmass = $this->input->post("bodyleanmass");
+            $waistcircumferencevalue = $this->input->post("waistcircumferencevalue");
+            $waistcircumferenceasses = $this->input->post("waistcircumferenceasses");
+            $waisthipratiovalue = $this->input->post("waisthipratiovalue");
+            $waisthipratioasses = $this->input->post("waisthipratioasses");
+            
+            $membershipno = $this->profilemodel->getMembershipNumber($customerId);
+            $validity = $this->profilemodel->getValidityString($membershipno);
+            $card = $this->profilemodel->getCustomerByCustId($customerId);
+            
+            //$_FILES['imgInp']['error'] !== 4 empty check;
+            
+            if($this->validate($dateofentry, $weight, $waist, $hip)){
+                          
+                $dir = APPPATH . 'assets/images/portfolioimages/';
+                $config = array(
+                    'upload_path' => $dir,
+                    'allowed_types' => 'gif|jpg|png',
+                    //allowed max file size. 0 means unlimited file size
+                    'max_size' => '2048KB',
+                    //max file name size
+                    'max_filename' => '255',
+                    //whether file name should be encrypted or not
+                    'encrypt_name' => TRUE
+                    //store image info once uploaded
+                );
+                $this->load->library('upload', $config);
+                
+                if (!$this->upload->do_upload('imgInp')) {
+                    
+                    $response = array(
+                        'msg_code' => '400',
+                        'msg_data' => $this->upload->display_errors(),
+                    );
+                } else {
+                    $image_data = $this->upload->data();
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = $image_data['full_path']; //get original image
+                    //$config['maintain_ratio'] = TRUE;
+                    //$config_resize['quality'] = "50%";
+                   // $config['create_thumb'] = TRUE;
+                    $config['width'] = 800;
+                    $config['height'] = 600;
+                   
+                    $this->load->library('image_lib', $config);
+                    if (!$this->image_lib->resize()) {
+                        $response = array(
+                            'msg_code' => '400',
+                            'msg_data' => $this->image_lib->display_errors(),
+                        );
+                    } else {
+                     $uploadedImage=$image_data['file_name'];
+                    }
+                     $datainsertion = array(
+				"date_of_entry"=>date('Y-m-d',strtotime($dateofentry)),
+                                "date_of_collection"=>date('Y-m-d'),
+				"membership_no"=>$membershipno,
+				"weight"=>$weight,
+				"waist"=>$waist,
+				"hip"=>$hip,
+				"fat_per"=>$bodyfatPercentage,
+				"fat_mass"=>$bodyfatmass,
+				"lean_body_mass"=>$bodyleanmass,
+				"waist_point"=>$waistcircumferencevalue,
+				"waist_remarks"=>$waistcircumferenceasses,
+				"waist_hip_point"=>$waisthipratiovalue,
+				"waist_hip_remarks"=>$waisthipratioasses,
+                                "image_name"=>$uploadedImage,
+                                "validity_string"=>$validity["VALIDITY_STRING"],
+                                "entry_from"=>"slf",
+                                "member_id"=>$customerId,
+                                "branch_code"=>"",
+                                "card_code"=>$card["CUS_CARD"],
+                               
+                                );
+                     
+                    $insert = $this->profilemodel->insertbodycomposition($datainsertion); 
+                    
+                    if($insert){
+                         $response = array("msg_code" => 1, "msg_data" => "Everything is okay !");
+                    }else{
+                        $response = array("msg_code" => 2, "msg_data" => "Sorry something going wrong !");
+                    }
+                }
+                
+            }else{
+                $response = array("msg_code" => 0, "msg_data" => "* Fields are mandatory");
+            }
+            
+        }else{
+            $response = array("msg_code" => 500, "msg_data" => "0.00");
+        }
+        $this->output->set_content_type('application/json', 'utf-8')
+                ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))->_display();
+        exit();
+    }
+    
+    private function validate($date,$weight,$waist,$hip){
+        if($date==""){return false;}
+        if($weight==""){return FALSE;}
+        if($waist ==""){return FALSE;}
+        if($hip ==""){return FALSE;}
+        
+        
+        return true;
+        
+    }
+    
     
 }

@@ -30,7 +30,7 @@
         </div>
 
         <!-- /.row -->
-
+<form class="form-horizontal" method="post" enctype="multipart/form-data" id="frmbodycmp">
         <div class="row">
             <div class="col-lg-6 text-center">
                 <div class="panel panel-default">
@@ -47,82 +47,104 @@
             <div class="col-lg-6 text-center">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="Date">Date:</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control" id="date" placeholder="">
+                                <label class="control-label col-sm-4" for="Date">Date</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="dateofentry" name="dateofentry" placeholder="" readonly="">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="weight">Weight:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="weight" placeholder="Enter weight">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="Waist">Waist:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Waist" placeholder="Enter waist">
+                                <label class="control-label col-sm-4" for="weight">Weight</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control decimal" id="weight" name="weight" placeholder="Enter weight">
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="hip">Hip:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="hip" placeholder="Enter hip">
+                                <label class="control-label col-sm-4" for="Waist">Waist</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control decimal" id="Waist" name="waist" placeholder="Enter waist">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="hip">Hip</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control decimal" id="hip" name="hip" placeholder="Enter hip">
                                 </div>
                             </div>
                            
-                            <img src="<?php echo(base_url()) ?>application/assets/images/assessment-icon-2.png"  id="getvalue" alt="Get value" title="Get value" style="cursor: pointer"/>
+                            <a href="javascript:void(0);" class="btn btn-primary" id="getvalue">Get value</a>
                                
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="bodyfat">Bodyfat(%):</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="bodyfat" placeholder="" disabled="">
+                                <label class="control-label col-sm-4" for="bodyfat">Bodyfat(%)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="bodyfat" name="bodyfatPercentage" placeholder="" readonly="">
+                                    
                                 </div>
                             </div>
                            
                             
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="bodyfatmass">Bodyfat mass:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="bodyfatmass" placeholder="" disabled="">
+                                <label class="control-label col-sm-4" for="bodyfatmass">Bodyfat mass</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="bodyfatmass" placeholder="" name="bodyfatmass" readonly="">
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="bodyleanmass">Bodylean mass:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="bodyleanmass" placeholder="" disabled="">
+                                <label class="control-label col-sm-4" for="bodyleanmass">Bodylean mass</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="bodyleanmass" placeholder="" readonly="" name="bodyleanmass">
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="waistcrmfrnc">Waistcircumference :</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="waistcrmfrnc" placeholder="" disabled="">
+                                <label class="control-label col-sm-4" for="waistcrmfrnc">Waist circumference </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="waistcrmfrnc" placeholder="" readonly="" name="waistcircumferenceasses">
+                                    <input type="hidden" id="waistcrmfrncvalue" value="" name="waistcircumferencevalue"/>
+                                    
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="waisthipratio">Waisthipratio :</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="waisthipratio" placeholder="" disabled="">
+                                <label class="control-label col-sm-4" for="waisthipratio">Waist hip ratio </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="waisthipratio" placeholder="" readonly="" name="waisthipratioasses">
+                                    <input type="hidden" id="waisthipratiovalue" value="" name="waisthipratiovalue"/>
                                 </div>
                             </div>
+                            
+                    <!--message area-->
+                    <div class="alert alert-danger custom-error" role="alert" style="display:none;" id="msgdiv">
+                    <div id="msgText"></div>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" id="errorclose" style="float: right;margin-top: -19px;cursor: pointer;"></span>
+                    </div>
+
+                    <div class="alert alert-success custom-success" role="alert" style="display:none;" id="msgdivsuccess">
+                    <div id="successmsgText"></div>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" id="successclose" style="float: right;margin-top: -19px;cursor: pointer;"></span>
+                    </div>
+                <!--message area--> 
+                            
+                            
+                            
+                            
+                            
                             
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-default">Update</button>
                                 </div>
                             </div>
-                        </form>
+                       
                     </div>
                 </div>
             </div>
         </div>
+     </form>
         <!-- /.row -->
     </div>
 </div>

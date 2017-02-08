@@ -11,7 +11,6 @@ if (!defined('BASEPATH'))
 
 /**
  * Description of profilemodel
- *
  * @author Abhik
  */
 class profilemodel extends CI_Model {
@@ -27,7 +26,8 @@ class profilemodel extends CI_Model {
                 `customer_master`.`CUS_PIN`,
                 `customer_master`.`CUS_EMAIL`,
                 `customer_master`.`CUS_SEX`,
-                `customer_master`.`CUS_BLOOD_GRP`,
+                `customer_master`.`CUS_BLOOD_GRP`,customer_master.`CUS_CARD`,
+                
                 DATE_FORMAT(`customer_master`.`CUS_DOB`,'%d-%m-%Y') AS CUS_DOB,
                 `card_master`.`CARD_DESC`,
                 DATE_FORMAT(`customer_master`.`REGISTRATION_DT`,'%d-%m-%Y') AS REGISTRATION_DT,
@@ -53,6 +53,7 @@ class profilemodel extends CI_Model {
                 "CUS_BLOOD_GRP" => $row->CUS_BLOOD_GRP,
                 "CUS_DOB" => $row->CUS_DOB,
                 "CARD_DESC" => $row->CARD_DESC,
+                "CUS_CARD"=>$row->CUS_CARD,
                 "REGISTRATION_DT" => $row->REGISTRATION_DT,
                 "image_name" => $row->image_name
             );
@@ -124,8 +125,28 @@ class profilemodel extends CI_Model {
         
     }
     
+    public function  insertbodycomposition($data){
+        
+         try {
+                $this->db->trans_begin();
+                $this->db->insert('body_composition', $data);
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+        } catch (Exception $err) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+
     public function updatePersonal($customerId, $upadateData) {
         try {
+            $this->db->trans_begin();
             $this->updatePassword($customerId, $upadateData);
             $this->db->where('CUS_ID', $customerId);
             $this->db->update('customer_master', $upadateData);
@@ -141,6 +162,8 @@ class profilemodel extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
+    
+    
 
     private function updatePassword($customerId, $upadateData) {
 
@@ -169,6 +192,7 @@ class profilemodel extends CI_Model {
     
     public function updatePersonalImage($customerId, $image_data){
         try {
+            $this->db->trans_begin();
             $this->db->set("image_name",$image_data);
             $this->db->where('CUS_ID', $customerId);
             $this->db->update('customer_master');

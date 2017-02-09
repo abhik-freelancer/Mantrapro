@@ -39,10 +39,15 @@ class portfolio extends CI_Controller{
         if ($this->session->userdata('user_data')) {
             $session = $this->session->userdata('user_data');
             $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            
+            $membershipno = $this->profilemodel->getMembershipNumber($customerId);
+            $validity = $this->profilemodel->getValidityString($membershipno);
+            
             $page = 'portfolio/viewfolio';
             $header = "";
             $headercontent="";
-            $result = $this->profilemodel->getCustomerByCustId($customerId);
+            $result["bodycomp"] = $this->profilemodel->getPortfolioView($customerId,$validity["VALIDITY_STRING"]);
+           
             createbody_method($result, $page, $header, $session, $headercontent);
         }else{
              redirect('memberlogin', 'refresh');

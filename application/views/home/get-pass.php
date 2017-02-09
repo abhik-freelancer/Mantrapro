@@ -40,7 +40,7 @@
 			<select class="form-control custom-input" id="gymLocation" name="gymLocation">
 			  <option value="0">Select </option>
 			  <?php foreach($header['gymlocation'] as $gymlocation){ ?>
-				<option value="<?php echo $gymlocation['BRANCH_CODE'];?>"><?php echo $gymlocation['BRANCH_NAME'];?></option>
+				<option value="<?php echo $gymlocation['branch_code'];?>"><?php echo $gymlocation['branch_name'];?></option>
 			  <?php } ?>
 			</select>
 			<p class="error-style" id="gymlocation-error"></p>

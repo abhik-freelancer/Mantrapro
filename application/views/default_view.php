@@ -136,7 +136,7 @@
 	
 	<div class="collapse navbar-collapse js-navbar-collapse" >
 		<ul class="nav navbar-nav navbar-right desktop-view">
-		<li><a href="#">Home</a></li>
+		<li><a href="<?php echo base_url();?>">Home</a></li>
 		
 <!-- Old About Us
 <li class="dropdown mega-dropdown">
@@ -507,6 +507,8 @@
 	<script src="<?php echo base_url(); ?>application/assets/js/wow.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/get-pass.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/home/events.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/home/mayihelp.js"></script>	
 
     <!-- Script to Activate the Carousel -->
 

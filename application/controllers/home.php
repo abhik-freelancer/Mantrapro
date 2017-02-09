@@ -12,12 +12,21 @@ class Home extends CI_Controller {
 	
  public function index()
  {
-     $page = 'home/home';
-	 $header = "";
+	$today_dt = date('Y-m-d');
+    $page = 'home/home';
+	$header = "";
+	$session="";
 	$result['activeTestimonial'] = $this->homemodel->getTestimonialForActiveCls();
 	$result['withoutActiveItemTestimonial'] = $this->homemodel->getTestimonialForWithoutActiveCls();
-	//$result['events'] = $this->homemodel->getAllEvents();
-	$session="";	
+	$result['events'] = $this->homemodel->getAllEvents($today_dt);
+	$result['webBranch'] = $this->homemodel->getWebBranch();
+	$result['latestOffer'] = $this->homemodel->getLatestOffer();
+	
+	/*echo "<pre>";
+		print_r($result['events']);
+	echo "</pre>";*/
+	
+		
 	createbody_method($result,$page,$header,$session);
          //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
  }
@@ -30,7 +39,7 @@ class Home extends CI_Controller {
 	 $session="";
 	 $result['widget']=$this->recaptcha->getWidget();
 	 $result['script']=$this->recaptcha->getScriptTag();
-	 $headercontent['gymlocation']= $this->homemodel->getGymLocation();
+	 $headercontent['gymlocation']= $this->homemodel->getWebBranch();
 	 
 	 createbody_method($result, $page, $header, $session, $headercontent);
  }
@@ -118,7 +127,147 @@ class Home extends CI_Controller {
 		return true;
 	}
 	
+	public function geteventdetail(){
+		$event_date = $this->input->post('event_date');
+		$result['event_date'] = date('Y-m-d',strtotime($event_date));
+		$result['event_detail'] = $this->homemodel->getEventDetails($event_date);
+		$display = $this->load->view('home/event-details',$result);
+		echo $display ;
+		
+		
+	}
 	
+	//@ InsertMayIHelp 
+	// By Mithilesh on 08.02.2017
+	
+	public function InsertMayIHelp(){
+		$json_response = array();
+		$entry_date = date("Y-m-d");
+		$name = trim($this->input->post('name'));
+		$email = trim($this->input->post('email'));
+		$mobileno = trim($this->input->post('mobileno'));
+		$branch = trim($this->input->post('branch'));
+		$address = trim($this->input->post('address'));
+		$pincode = trim($this->input->post('pincode'));
+		$interestarea = trim($this->input->post('interestarea'));
+		$message = trim($this->input->post('message'));
+		
+		$error_msg = $this->validateMayIHelp($name,$mobileno,$branch,$pincode,$interestarea,$message);
+		if($error_msg==""){
+			if($email!=""){
+			$error_msg = $this->validateEmail($email);
+			}
+			else{
+			$error_msg="";
+			}
+		}
+		
+		
+		
+		
+		//echo "Email Valid :".$valid_email_err;
+		if($error_msg=="" ){
+			$insertMayIHelpArray = array(
+				"name" => $name ,
+				"mobile_no" => $mobileno ,
+				"branch_cd" => $branch ,
+				"date_of_entry" => $entry_date ,
+				"emailid" => $email ,
+				"address" => $address ,
+				"pincode" => $pincode ,
+				"comments" => $message ,
+				"help_category" => $interestarea ,
+				"is_called" => 'N' 
+			);
+			
+			$insertData = $this->homemodel->InsertIntoMayIHelp($insertMayIHelpArray);
+			if($insertData){
+				$json_response = array("msg_code" => 1, "msg_data" => "Thank you,we will get back to you soon.");
+			}
+			else{
+				$json_response = array("msg_code" => 2, "msg_data" => "There is something wrong.Please try again...");
+			}
+			
+		}
+		else{
+			$json_response = array("msg_code" => 0, "msg_data" => $error_msg);
+		}
+		
+		
+		header('Content-Type: application/json');
+		echo json_encode($json_response);
+		exit();
+	}
+	
+	//@ serverside validation for may i help you 
+	// By Mithilesh on 08.02.2017
+	private function validateMayIHelp($name,$mobileno,$branch,$pincode,$interestarea,$message){
+		$error = "";
+		if($name==""){
+			$error = "First name is required *name";
+			return $error;
+		}
+		
+		if($mobileno==""){
+			$error = "Mobile no is required *mobileno";
+			return $error;
+		}
+		elseif(!preg_match('/^\d{10}$/',$mobileno)) 
+		{
+			$error = "Mobile no is not valid *mobileno";
+			return $error;
+		}
+		
+	    elseif($branch=="0"){
+			$error = "Branch is required *branch";
+			return $error;
+		}
+		elseif($pincode==""){
+			$error = "Pincode is required *pincode";
+			return $error;
+		}
+		elseif(!preg_match('/^\d{6}$/',$pincode)) 
+		{
+			$error = "Pincode is not valid *pincode";
+			return $error;
+		}
+		elseif($interestarea==""){
+			$error = "Select area of interest";
+			return $error;
+		}
+		elseif($interestarea=="Others"){
+			if($message==""){
+				$error = "Please write your message *message";
+				return $error;
+			}
+			else{
+			  $error = "";
+			  return $error;
+			}
+		}
+		else{
+			 $error = "";
+			  return $error;
+		}
+		
+	
+		
+		
+	}
+	
+	private function validateEmail($email){
+		$error = "";
+		if($email!=""){
+			if(!preg_match('/^[A-z0-9_\-]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z.]{2,4}$/',$email)){
+				$error = "Email is not valid *email";
+				return $error;
+			}
+			else{
+				$error = "";
+				return $error;
+			}
+		}
+	}
 	
 	
 }

@@ -359,8 +359,28 @@
 					<div class="panel-body">
 					  <div class="row">
 					      <div class="col-xs-12">
+						  
 					        <ul id="upcoming-events">
-								<li class="news-item" >
+							<?php foreach($bodycontent['events'] as $events){?>
+								
+								<li class="news-item">
+									<div class="event-date">
+										<span class="date"><?php echo date('d',strtotime($events['event_date']));?> - <?php echo date('M',strtotime($events['event_date']));?></span>
+										<span class="year"><?php echo date('Y',strtotime($events['event_date']));?></span></span>
+									</div>
+									<div class="event-content">
+										<h5><?php echo strtoupper($events['event_title']);?>, <?php echo $events['branch'];?></h5>
+										<?php echo $events['short_desc'];?>....<br>
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#getEventsDetail" class="eventdetail" data-id="<?php echo $events['event_date'];?>">Read more...</a>
+									</div>
+								</li>
+								
+							<?php } ?>
+								
+							
+							
+							
+							<!--	  <li class="news-item" >
 									<div class="event-date">
 										<span class="date"> 23 - JAN</span>
 										<span class="year">2017</span>
@@ -371,74 +391,9 @@
 										<a href="#">Read more...</a>
 									</div>
 								</li>
-								<li class="news-item">
-									<div class="event-date">
-										<span class="date">24 - JAN</span>
-										<span class="year">2017</span>
-									</div>
-									<div class="event-content">
-										<h5>MANTRA ANNUAL SPORTS </h5>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... 
-										<a href="#">Read more...</a>
-									</div>
-								</li>
-								<li class="news-item">
-									<div class="event-date">
-										<span class="date">25 - JAN</span>
-										<span class="year">2017</span>
-									</div>
-									<div class="event-content">
-										<h5>MANTRA ANNUAL SPORTS </h5>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... 
-										<a href="#">Read more...</a>
-									</div>
-								</li>
-								<li class="news-item">
-									<div class="event-date">
-										<span class="date">26 - JAN</span>
-										<span class="year">2017</span>
-									</div>
-									<div class="event-content">
-										<h5>MANTRA ANNUAL SPORTS </h5>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... 
-										<a href="#">Read more...</a>
-									</div>
-								</li>
-								<li class="news-item">
-									<div class="event-date">
-										<span class="date">27 - JAN</span>
-										<span class="year">2017</span>
-									</div>
-									<div class="event-content">
-										<h5>MANTRA ANNUAL SPORTS </h5>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... 
-										<a href="#">Read more...</a>
-									</div>
-								</li>
-								<li class="news-item">
-									<div class="event-date">
-										<span class="date">28 - JAN</span>
-										<span class="year">2017</span>
-									</div>
-									<div class="event-content">
-										<h5>MANTRA ANNUAL SPORTS </h5>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... 
-										<a href="#">Read more...</a>
-									</div>
-								</li>
-								<li class="news-item">
-									<div class="event-date">
-									
-										<span class="date">29 - JAN</span>
-										<span class="year">2017</span>
-									</div>
-									<div class="event-content">
-										<h5>MANTRA ANNUAL SPORTS </h5>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... 
-										<a href="#">Read more...</a>
-									</div>
-								</li>
+							 -->
 					        </ul>
+							
 					    </div>
 					  </div>
 					</div> <!-- event panel body-->
@@ -446,6 +401,18 @@
 				</div> <!-- END .panel -->
 			</div> <!-- END .upcoming-events -->
 		</div><!-- End Upcoming Events -->
+		
+		
+		
+<!-- Events Detail Modal -->
+<div class="modal fade event-modal" id="getEventsDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content even-detail-modal" id="even-detail-modal">
+    
+    </div>
+  </div>
+</div>
+		
 		
 		<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 			<div class="latest-offers-container"> 
@@ -457,12 +424,18 @@
 					  <div class="row">
 					     <div class="col-xs-12">
 					        <ul id="latest-offers">
+							<?php foreach($bodycontent['latestOffer'] as $latestoffer){?>
 								<li class="latest-offers-item">
-									<img src="<?php echo base_url(); ?>application/assets/images/subs-offer.jpg" class="img-responsive"/>
+									<img src="<?php echo base_url(); ?>/admin/upload/latestoffer/resize-offer-img/<?php echo $latestoffer['offer_image'];?>" class="img-responsive"/>
 								</li>
+							<?php } ?>
+							
+								
 								<li class="latest-offers-item">
 									<img src="<?php echo base_url(); ?>application/assets/images/weight-loss.jpg"  class="img-responsive" />
 								</li>
+								
+								
 							</ul>
 					    </div>
 					  </div>
@@ -501,69 +474,67 @@
 			
 		</div>
 		<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+		
 			<div class="may-i-help-form">
+			<form name="mayihelpForm" id="mayihelpForm" method="post">
 				<div class="mayihelp-form-left">
 						<div class="form-group">
-						<label for="labelforname"><span class="glyphicon glyphicon-user"></span> Name</label>
-						<input type="text" class="form-control" id="name" placeholder="Name">
+						<label for="labelforname"><span class="glyphicon glyphicon-user"></span> Name*</label>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name">
 						</div>
 						
 						<div class="form-group">
 						<label for="labelforemail"><span class="glyphicon glyphicon-envelope"></span> Email</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 						</div>
 				</div>
 				<div class="mayihelp-form-right">
 					<div class="form-group"> 
-						<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Mobile</label>
-						<input type="text" class="form-control" id="mobileno" placeholder="Your 10 digit mobile no">
+						<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Mobile*</label>
+						<input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Your 10 digit mobile no" onKeyUp="numericFilter(this);">
 					</div>
 						
 					<div class="form-group"> 
-							<label for="labelforbranch"><span class="glyphicon glyphicon-phone"></span> Branch</label>
-							<select class="form-control">
-								  <option value="BP">Select</option>
-								  <option value="BP">Barrackpore</option>
-								  <option value="BP">Barrackpore</option>
-								  <option value="BP">Barrackpore</option>
-								  <option value="BP">Barrackpore</option>
-								  <option value="BP">Barrackpore</option>
+							<label for="labelforbranch"><span class="glyphicon glyphicon-globe"></span> Branch*</label>
+							<select class="form-control" name="branch" id="branch">
+								  <option value="0">Select</option>
+								  <?php foreach($bodycontent['webBranch'] as $web_branch){?>
+								   <option value="<?php echo $web_branch['branch_code'];?>"><?php echo $web_branch['branch_name'];?></option>
+								  <?php } ?>
+								  
 							</select>
 					</div>
 				</div>
 				<div class="form-group"> 
-					<label for="labelforaddress"><span class="glyphicon glyphicon-pencil"></span> Address</label>
-					 <textarea class="form-control" rows="1" id="address"></textarea>
+					<label for="labelforaddress"><span class="glyphicon glyphicon-map-marker"></span> Address</label>
+					 <textarea class="form-control" rows="1" id="address" name="address" placeholder="Your address ..."></textarea>
 				</div>
 				<div class="form-group"> 
-					<label for="labelformobile"><span class="glyphicon glyphicon-phone"></span> Pincode</label>
-					<input type="text" class="form-control" id="pincode" placeholder="">
+					<label for="labelformobile"><span class="glyphicon glyphicon-eye-open"></span> Pincode*</label>
+					<input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode">
 				</div>
 				<div class="form-group"> 
-					<label for="labelformessage"><span class="glyphicon glyphicon-pencil"></span> Your Comments</label>
-					 <textarea class="form-control" rows="1"></textarea>
-				</div>
-				<div class="form-group"> 
+					<label for="labelforinterst"><span class="glyphicon glyphicon-pencil"></span> Area of interest</label><br>
 					<div class="left-help-choice-option">
 						<ul>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Fitness
+								<input type="radio" name="interestarea" value="Fitness">Fitness
 								</label>
 							</li>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Obesity
+								<input type="radio" name="interestarea" value="Obesity">Obesity
 								</label>
 							</li>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Knee Pain  	 	
+								<input type="radio" name="interestarea" value="Knee Pain">Knee Pain  	 	
 								</label>
 							</li>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Back Pain  	 	
+								<input type="radio" name="interestarea" value="Back Pain">Back Pain  	 	
 								</label>
 							</li>
 						</ul>
@@ -572,28 +543,38 @@
 						<ul>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Ayurveda
+								<input type="radio" name="interestarea" value="Ayurveda">Ayurveda
 								</label>
 							</li>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Diet 	 	
+								<input type="radio" name="interestarea" value="Diet">Diet 	 	
 								</label>
 							</li>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Gynae	
+								<input type="radio" name="interestarea" value="Gynae">Gynae	
 								</label>
 							</li>
 							<li>
 								<label class="radio-inline">
-								<input type="radio" name="optradio">Others 
+								<input type="radio" name="interestarea" value="Others">Others 
 								</label>
 							</li>
 						</ul>
 					</div>
 				</div>
-				  <button type="button" class="btn btn-default" >Submit</button>
+				<div class="form-group"> 
+					<label for="labelformessage"><span class="glyphicon glyphicon-pencil"></span> Message</label>
+					 <textarea class="form-control" rows="1" placeholder="Your message..." name="message" id="message"></textarea>
+				</div>
+				<button type="submit" class="btn btn-default" >Submit</button>
+			</form>
+			
+			<div class="mayihelp-error" style="padding:1%;">
+				<p id="mayihelp-error" class="error-style" style="color:#F95340;"></p>
+			</div>
+			
 			</div>
 			
 		</div>

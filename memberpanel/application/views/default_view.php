@@ -214,8 +214,8 @@
                              </i> Portfolio <i class="fa fa-fw fa-caret-down"></i>
                          </a>
                         <ul id="portfolio" class="collapse">
-                            <li><a href="#">Make folio</a></li>
-                            <li><a href="#">View folio</a></li>
+                            <li><a href="<?php echo base_url(); ?>portfolio">Body Composition</a></li>
+                            <li><a href="<?php echo base_url(); ?>portfolio/viewfolio">View folio</a></li>
                             
                         </ul>
                     </li>

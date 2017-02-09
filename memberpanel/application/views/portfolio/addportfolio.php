@@ -23,7 +23,7 @@
                     </li>
 
                     <li class="active">
-                        <i class="fa fa-edit"></i> Make folio
+                        <i class="fa fa-edit"></i> Body Composition
                     </li>
                 </ol>
             </div>

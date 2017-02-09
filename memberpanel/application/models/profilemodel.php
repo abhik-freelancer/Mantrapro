@@ -359,7 +359,80 @@ class profilemodel extends CI_Model {
         
     }
     
+    /*SELECT 
+		body_composition.`tran_id`,
+		body_composition.`weight`,
+		body_composition.`waist`,
+		body_composition.`hip`,
+		body_composition.`fat_per`,
+		body_composition.`fat_mass`,
+		body_composition.`lean_body_mass`,
+		body_composition.`waist_remarks`,
+		body_composition.`waist_point`,
+		body_composition.`waist_hip_point`,
+		body_composition.`waist_hip_remarks`,
+		body_composition.`date_of_entry`
+
+ FROM `body_composition` 
+WHERE body_composition.`date_of_entry` ='2017-02-01'
+AND body_composition.`validity_string` ='2016-05-19 - 2017-05-19'*/
     
+    public function getBodyCompositionByDate($dateofentry,$validity){
+        $data=array(
+            "tran_id"=>0,
+            "weight"=>"",
+            "waist"=>"",
+            "hip"=>"",
+            "fat_per"=>0.00,
+            "fat_mass"=>0.00,
+            "lean_body_mass"=>0.00,
+            "waist_remarks"=>"",
+            "waist_point"=>0.00,
+            "waist_hip_point"=>0.00,
+            "waist_hip_remarks"=>"",
+            "image_name"=>""
+        );
+        $date=date('Y-m-d',strtotime($dateofentry));
+        $sql="SELECT 
+		IFNULL(body_composition.`tran_id`,0) AS tran_id,
+		body_composition.`weight`,
+		body_composition.`waist`,
+		body_composition.`hip`,
+		body_composition.`fat_per`,
+		body_composition.`fat_mass`,
+		body_composition.`lean_body_mass`,
+		body_composition.`waist_remarks`,
+		body_composition.`waist_point`,
+		body_composition.`waist_hip_point`,
+		body_composition.`waist_hip_remarks`,
+		body_composition.`date_of_entry`,body_composition.`image_name`
+
+           FROM `body_composition` 
+           WHERE body_composition.`date_of_entry` ='".$date."'
+           AND body_composition.`validity_string` ='".$validity."'";
+        $query= $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $data=array(
+                    "tran_id"=>$row->tran_id,
+                    "weight"=>$row->weight,
+                    "waist"=>$row->waist,
+                    "hip"=>$row->hip,
+                    "fat_per"=>$row->fat_per,
+                    "fat_mass"=>$row->fat_mass,
+                    "lean_body_mass"=>$row->lean_body_mass,
+                    "waist_remarks"=>$row->waist_remarks,
+                    "waist_point"=>$row->waist_point,
+                    "waist_hip_point"=>$row->waist_hip_point,
+                    "waist_hip_remarks"=>$row->waist_hip_remarks,
+                    "image_name"=>$row->image_name
+                );
+                
+        }
+        
+        return $data;
+        
+    }
     
     
 

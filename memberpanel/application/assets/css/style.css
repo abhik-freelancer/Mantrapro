@@ -163,8 +163,8 @@ label{
 	height: 420px;
 }
 .port-folio-block{
-	height:520px !important;
-	max-height:520px !important;
+//	height:520px !important;
+//	max-height:520px !important;
 }
 .folio-block-img-width{
 	max-width: 100%;
@@ -202,9 +202,38 @@ label{
     background-color: rgba(255,255,255,0);
     border: 0px solid #FF663D;
 }
+.port-folio-abbr .list-group-item {
+	width:90%;
+	margin:0 auto;
+	border: 0px solid #DDD !important;
+	padding: 10px 15px;
+	color: #FF4800;
+	font-weight:600;
+}
 
-@media only screen and (max-width:1237px){
-	
+
+
+
+
+
+
+@media only screen and (max-width:1337px){
+	.portfolio-view-container .panel-footer  	.nav > li >a{
+	padding: 7px 12px;
+	}
+
+}
+@media only screen and (max-width:1287px){
+	.portfolio-view-container .panel-footer  	.nav > li >a{
+	padding: 7px 10px;
+	}
+
+}
+@media only screen and (max-width:1253px){
+	.portfolio-view-container .panel-footer  	.nav > li >a{
+	padding: 7px 8px;
+	}
+
 }
 
 @media only screen and (max-width:1240px) {
@@ -217,13 +246,33 @@ label{
 	max-height: 400px;
 	}
 }
+@media only screen and (max-width:1220px){
+	.portfolio-view-container .panel-footer  	.nav > li >a{
+	padding: 7px 5px;
+	}
+
+}
 @media only screen and (max-width:1168px) {
+	
+	.folio-block-img-height{
+	width: 70%;
+	
+	}
+	
 	.portfolio-view-container .panel-footer  .nav-pills > li {
     float: left;
     float: none;
     margin-top: 1%;
 	}
 }
+
+@media only screen and (max-width:1111px) {
+	.folio-block-img-height{
+	width: 74%;
+	
+	}
+}
+
 
 @media only screen and (max-width:1080px) {
 	.change-pass-label{
@@ -232,6 +281,13 @@ label{
 		font-weight:400;
 	}
 }
+
+@media only screen and (max-width:1080px){
+	.folio-block-img-height {
+    width: 84%;
+	}
+}
+
 @media only screen and (max-width:991px){
 	.port-folio-preview{
 	/*	width:70%;
@@ -251,7 +307,19 @@ label{
 		height:auto;
 		max-height:auto;
 	}
-
+	.folio-block-img-height{
+	width: 55%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	height:auto;
+	max-height: auto;
+	}
+	.folio-block-img-eq{
+	max-width:100%;
+	height:auto;
+	max-height: auto;
+	}
 }
 
 
@@ -288,6 +356,11 @@ label{
 		width:100%;
 		margin-left:0%;
 	
+	}
+}
+@media only screen and (max-width:420px){
+	.folio-block-img-height {
+		width:75%;
 	}
 }
 

@@ -56,6 +56,10 @@
                                 <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/<?php echo($images_data); ?>" class="img-rounded port-folio-preview" id="imgpreview" alt="Cinque Terre" >
                             </div>
                             <div class="panel-footer">
+                                Weight&nbsp;<span class="label label-warning"><?php echo($content["weight"]); ?></span>
+                                Waist&nbsp;<span class="label label-warning"><?php echo($content["waist"]); ?></span>
+                                Hip&nbsp;<span class="label label-warning"><?php echo($content["hip"]); ?></span>
+                                
                                 BF%&nbsp;<span class="label label-warning"><?php echo($content["fat_per"]); ?></span>
                                 BFM&nbsp;<span class="label label-warning"><?php echo($content["fat_mass"]); ?></span>
                                 BLM&nbsp;<span class="label label-warning"><?php echo($content["lean_body_mass"]); ?></span>
@@ -85,6 +89,9 @@
                                 <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/<?php echo($images_data); ?>" class="img-rounded port-folio-preview" id="imgpreview" alt="Cinque Terre" >
                             </div>
                              <div class="panel-footer">
+                                 Weight&nbsp;<span class="label label-warning"><?php echo($content["weight"]); ?></span>
+                                Waist&nbsp;<span class="label label-warning"><?php echo($content["waist"]); ?></span>
+                                Hip&nbsp;<span class="label label-warning"><?php echo($content["hip"]); ?></span>
                                  BF% &nbsp;<span class="label label-warning"><?php echo($content["fat_per"]); ?></span>
                                 BFM &nbsp;<span class="label label-warning"><?php echo($content["fat_mass"]); ?></span>
                                 BLM &nbsp;<span class="label label-warning"><?php echo($content["lean_body_mass"]); ?></span>

@@ -255,6 +255,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/raphael.min.js"></script>

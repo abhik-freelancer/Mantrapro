@@ -359,23 +359,7 @@ class profilemodel extends CI_Model {
         
     }
     
-    /*SELECT 
-		body_composition.`tran_id`,
-		body_composition.`weight`,
-		body_composition.`waist`,
-		body_composition.`hip`,
-		body_composition.`fat_per`,
-		body_composition.`fat_mass`,
-		body_composition.`lean_body_mass`,
-		body_composition.`waist_remarks`,
-		body_composition.`waist_point`,
-		body_composition.`waist_hip_point`,
-		body_composition.`waist_hip_remarks`,
-		body_composition.`date_of_entry`
-
- FROM `body_composition` 
-WHERE body_composition.`date_of_entry` ='2017-02-01'
-AND body_composition.`validity_string` ='2016-05-19 - 2017-05-19'*/
+   
     
     public function getBodyCompositionByDate($dateofentry,$validity){
         $data=array(
@@ -480,6 +464,40 @@ AND body_composition.`validity_string` ='2016-05-19 - 2017-05-19'*/
         
         return $data;
         }
+    }
+    
+    public function getBodyCompositionImageById($id){
+        $image="";
+        $sql = "SELECT image_name FROM body_composition WHERE tran_id='".$id."'";
+        $query = $this->db->query($sql);
+        if($query->num_rows()>0){
+            $rows = $query->row();
+            $image = $rows->image_name;
+        }
+        return $image;
+    }
+    
+    public function delete($id){
+        
+        try {
+            $this->db->trans_begin();
+            
+            $this->db->where("tran_id",$id);
+            $this->db->delete('body_composition');
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+            
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+ 
     }
     
 

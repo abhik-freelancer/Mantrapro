@@ -255,4 +255,42 @@ class portfolio extends CI_Controller{
              }
     }
     
+    public function delete(){
+        $response = array();
+        if ($this->session->userdata('user_data')) {
+            $transactionId = $this->input->post("transactionId");
+            $imageUnlink = $this->profilemodel->getBodyCompositionImageById($transactionId);
+            $this->unlinkFromDisk($imageUnlink);
+            $del = $this->profilemodel->delete($transactionId);
+            
+            if($del){
+                $response = array("msg_code" => 1, "msg_data" => "");
+            }else{
+                $response = array("msg_code" => 0, "msg_data" => "");
+            }
+        }else{
+            $response = array("msg_code" => 500, "msg_data" => "");
+        }
+        $this->output->set_content_type('application/json', 'utf-8')
+                ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))->_display();
+        exit();
+    }
+    
+    private function unlinkFromDisk($imageName){
+        if($imageName==""){
+            $path = APPPATH . 'assets/images/portfolioimages/no.jpg';
+        }else{
+            $path = APPPATH . 'assets/images/portfolioimages/'.$imageName;
+        }
+        
+        
+        
+        //echo(file_exists($path));
+        if(file_exists($path)){
+            unlink($path);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

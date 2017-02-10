@@ -5,92 +5,54 @@
  */
 
 
-$(document).ready(function(){
-     var basepath = $("#basepath").val();
-     //dateofentry
-     $('#dateofentry').datepicker({
-            autoclose: true,
-			todayHighlight: true,
-            format: 'dd-mm-yyyy',
-			forceParse: false
-		});
-   
-    $("#imgInp").change(function(){
+$(document).ready(function () {
+    var basepath = $("#basepath").val();
+    //dateofentry
+    $('#dateofentry').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'dd-mm-yyyy',
+        forceParse: false
+    });
+
+    $("#imgInp").change(function () {
         readURL(this);
     });
-    
-    $("#weight").blur(function(){
-        getBodyfatPercentage();
-    });
-    $("#Waist").blur(function(){
-        getBodyfatPercentage();
-    });
-    $("#hip").blur(function(){
-        getBodyfatPercentage();
-    });
-    $("#getvalue").click(function(){
-        
-        getBodyfatPercentage();
-    });
-    
-    
-    
-    $('.decimal').keypress(function (event) {
-        if ((event.which != 46 || $(this).val().indexOf('.') != -1) &&
-                ((event.which < 48 || event.which > 57) &&
-                        (event.which != 0 && event.which != 8))) {
-            event.preventDefault();
-        }
 
-        var text = $(this).val();
+    $("#weight").blur(function () {
+        getBodyfatPercentage();
+    });
+    $("#Waist").blur(function () {
+        getBodyfatPercentage();
+    });
+    $("#hip").blur(function () {
+        getBodyfatPercentage();
+    });
+    $("#getvalue").click(function () {
 
-        if ((text.indexOf('.') != -1) &&
-                (text.substring(text.indexOf('.')).length > 4) &&
-                (event.which != 0 && event.which != 8) &&
-                ($(this)[0].selectionStart >= text.length - 4)) {
-            event.preventDefault();
-        }
+        getBodyfatPercentage();
     });
-    
-    $(document).on('click', '#errorclose', function () {
-        $("#msgdiv").hide();
-    });
-     $(document).on('click', '#successclose', function () {
-        $("#msgdivsuccess").hide();
-    });
-    
-    $("#frmbodycmp").on("submit", function(event) {
-         event.preventDefault();
-        // var frdata = $(this).serialize();
-        // var img=$('#imgInp').val();     
-        //var form = $('#frmbodycmp')[0];
-          // var formData = new FormData(form);
-          var formData = new FormData($(this)[0]);
-        $.ajax({
+
+
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+        title:"Are your sure to delete ?",
+        onConfirm: function () {
+            var transactionId = $(this).attr("id");
+           //alert(transactionId);
+            
+             $.ajax({
             type: "POST",
-            url: basepath + 'portfolio/updateMemberBodyComposition',
+            url: basepath + 'portfolio/delete',
             dataType: "json",
-            processData: false,
-            contentType: false,// "application/x-www-form-urlencoded; charset=UTF-8",
-            data:formData ,
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {transactionId: transactionId},
             success: function (result) {
-                if (result.msg_code == 0) {
-                    $("#msgdivsuccess").hide();
-                    $("#msgdiv").show();
-                    $("#msgText").html(result.msg_data);
-                    
-
-                } else if(result.msg_code == 2) {
-                    $("#msgdivsuccess").hide();
-                    $("#msgdiv").show();
-                    $("#msgText").html(result.msg_data);
-                }else if(result.msg_code == 1){
-                    $("#msgdiv").hide();
-                    $("#msgdivsuccess").show();
-                    $("#successmsgText").html(result.msg_data);
-                    $('#frmbodycmp')[0].reset();
-                     $('#imgpreview').attr('src', basepath+'application/assets/images/portfolioimages/No_Image_Available.png');
-                } else if(result.msg_code==500){
+                if (result.msg_code == 1) {
+                         window.location.href = basepath +'portfolio/viewfolio';
+                } else if (result.msg_code == 0) {
+                    return false;
+                } else if (result.msg_code == 500) {
                     window.location.href = basepath + 'memberlogin';
                 }
             }, error: function (jqXHR, exception) {
@@ -113,63 +75,70 @@ $(document).ready(function(){
                 alert(msg);
             }
         });
-       });
-    
-    
-    
-    
-    
-    
-});//main
+            
+        },
+        onCancel: function () {
+            
+        }
+    });
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#imgpreview').attr('src', e.target.result);
+    $('.decimal').keypress(function (event) {
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) &&
+                ((event.which < 48 || event.which > 57) &&
+                        (event.which != 0 && event.which != 8))) {
+            event.preventDefault();
         }
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+        var text = $(this).val();
 
-function getBodyfatPercentage(){
-    //console.log("here i am");
-    var basepath = $("#basepath").val();
-    var weight = $("#weight").val()||"";
-    var waist = $("#Waist").val()||"";
-    var hip = $("#hip").val()||"";
-    var bodyfat="";
-    if(bfvalidate()){
-        
+        if ((text.indexOf('.') != -1) &&
+                (text.substring(text.indexOf('.')).length > 4) &&
+                (event.which != 0 && event.which != 8) &&
+                ($(this)[0].selectionStart >= text.length - 4)) {
+            event.preventDefault();
+        }
+    });
+
+    $(document).on('click', '#errorclose', function () {
+        $("#msgdiv").hide();
+    });
+    $(document).on('click', '#successclose', function () {
+        $("#msgdivsuccess").hide();
+    });
+
+    $("#frmbodycmp").on("submit", function (event) {
+        event.preventDefault();
+        // var frdata = $(this).serialize();
+        // var img=$('#imgInp').val();     
+        //var form = $('#frmbodycmp')[0];
+        // var formData = new FormData(form);
+        var formData = new FormData($(this)[0]);
         $.ajax({
             type: "POST",
-            url: basepath + 'portfolio/getBodyFatPercentage',
+            url: basepath + 'portfolio/updateMemberBodyComposition',
             dataType: "json",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data: {weight: weight, waist: waist,hip:hip},
+            processData: false,
+            contentType: false, // "application/x-www-form-urlencoded; charset=UTF-8",
+            data: formData,
             success: function (result) {
-                if (result.msg_code == 1) {
-                    $("#bodyfat").val(result.msg_data.bodyFatPercentage);
-                    $("#bodyfatmass").val(result.msg_data.bodyFatMass);
-                    $("#bodyleanmass").val(result.msg_data.bodyLeanMass);
-                    $("#waistcrmfrnc").val(result.msg_data.waistcurcumferenceassesment);
-                    $("#waistcrmfrncvalue").val(result.msg_data.waistcurcumferencevalue);
-                    $("#waisthipratio").val(result.msg_data.waistHipRatioAssessment);
-                    $("#waisthipratiovalue").val(result.msg_data.waistHipRatioValue);
-                    
-                }else if(result.msg_code == 2){
-                    $("#bodyfat").val(result.msg_data.bodyFatPercentage);
-                    $("#bodyfatmass").val(result.msg_data.bodyFatMass);
-                    $("#bodyleanmass").val(result.msg_data.bodyLeanMass);
-                    $("#waistcrmfrnc").val(result.msg_data.waistcurcumferenceassesment);
-                    $("#waistcrmfrncvalue").val(result.msg_data.waistcurcumferencevalue);
-                    $("#waisthipratio").val(result.msg_data.waistHipRatioAssessment);
-                    $("#waisthipratiovalue").val(result.msg_data.waistHipRatioValue);
-                    
-                }else if(result.msg_code==500){
-                     window.location.href = basepath + 'memberlogin';
+                if (result.msg_code == 0) {
+                    $("#msgdivsuccess").hide();
+                    $("#msgdiv").show();
+                    $("#msgText").html(result.msg_data);
+
+
+                } else if (result.msg_code == 2) {
+                    $("#msgdivsuccess").hide();
+                    $("#msgdiv").show();
+                    $("#msgText").html(result.msg_data);
+                } else if (result.msg_code == 1) {
+                    $("#msgdiv").hide();
+                    $("#msgdivsuccess").show();
+                    $("#successmsgText").html(result.msg_data);
+                    $('#frmbodycmp')[0].reset();
+                    $('#imgpreview').attr('src', basepath + 'application/assets/images/portfolioimages/No_Image_Available.png');
+                } else if (result.msg_code == 500) {
+                    window.location.href = basepath + 'memberlogin';
                 }
             }, error: function (jqXHR, exception) {
                 var msg = '';
@@ -191,20 +160,104 @@ function getBodyfatPercentage(){
                 alert(msg);
             }
         });
-        
-    }else{
+    });
+
+
+
+
+
+
+});//main
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgpreview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function getBodyfatPercentage() {
+    //console.log("here i am");
+    var basepath = $("#basepath").val();
+    var weight = $("#weight").val() || "";
+    var waist = $("#Waist").val() || "";
+    var hip = $("#hip").val() || "";
+    var bodyfat = "";
+    if (bfvalidate()) {
+
+        $.ajax({
+            type: "POST",
+            url: basepath + 'portfolio/getBodyFatPercentage',
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {weight: weight, waist: waist, hip: hip},
+            success: function (result) {
+                if (result.msg_code == 1) {
+                    $("#bodyfat").val(result.msg_data.bodyFatPercentage);
+                    $("#bodyfatmass").val(result.msg_data.bodyFatMass);
+                    $("#bodyleanmass").val(result.msg_data.bodyLeanMass);
+                    $("#waistcrmfrnc").val(result.msg_data.waistcurcumferenceassesment);
+                    $("#waistcrmfrncvalue").val(result.msg_data.waistcurcumferencevalue);
+                    $("#waisthipratio").val(result.msg_data.waistHipRatioAssessment);
+                    $("#waisthipratiovalue").val(result.msg_data.waistHipRatioValue);
+
+                } else if (result.msg_code == 2) {
+                    $("#bodyfat").val(result.msg_data.bodyFatPercentage);
+                    $("#bodyfatmass").val(result.msg_data.bodyFatMass);
+                    $("#bodyleanmass").val(result.msg_data.bodyLeanMass);
+                    $("#waistcrmfrnc").val(result.msg_data.waistcurcumferenceassesment);
+                    $("#waistcrmfrncvalue").val(result.msg_data.waistcurcumferencevalue);
+                    $("#waisthipratio").val(result.msg_data.waistHipRatioAssessment);
+                    $("#waisthipratiovalue").val(result.msg_data.waistHipRatioValue);
+
+                } else if (result.msg_code == 500) {
+                    window.location.href = basepath + 'memberlogin';
+                }
+            }, error: function (jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+            }
+        });
+
+    } else {
         return bodyfat;
     }
 }
 
-function bfvalidate(){
-    var weight = $("#weight").val()||"";
-    var waist = $("#Waist").val()||"";
-    var hip = $("#hip").val()||"";
-    if(weight==""){return false;}
-    if(waist==""){return false;}
-    if(hip==""){return false;}
-    
+function bfvalidate() {
+    var weight = $("#weight").val() || "";
+    var waist = $("#Waist").val() || "";
+    var hip = $("#hip").val() || "";
+    if (weight == "") {
+        return false;
+    }
+    if (waist == "") {
+        return false;
+    }
+    if (hip == "") {
+        return false;
+    }
+
     return true;
-    
+
 }

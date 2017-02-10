@@ -39,6 +39,9 @@
 						<div class="port-folio-block">
                         <div class="panel panel-info">
                             <div class="panel-heading">
+                                <button style="float:left;margin-top:-7px;" id="<?php echo($content["tran_id"]); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="confirmation" data-btn-ok-label="Yes" data-btn-ok-class="btn-success" data-btn-cancel-label="No" data-btn-cancel-class="btn-danger" data-title="" >
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                 <h1 class="panel-title"><?php echo($content["date_of_entry"]); ?></h1>
 							</div>
                             <div class="panel-body">
@@ -112,6 +115,9 @@
                     <div class="col-md-6  text-center">
                        <div class="panel panel-info">
                             <div class="panel-heading">
+                                <button style="float:left;margin-top:-7px;" id="<?php echo($content["tran_id"]); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="confirmation" data-btn-ok-label="Yes" data-btn-ok-class="btn-success" data-btn-cancel-label="No" data-btn-cancel-class="btn-danger" data-title="" >
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                 <h1 class="panel-title"><?php echo($content["date_of_entry"]); ?></h1>
                             </div>
                             <div class="panel-body">

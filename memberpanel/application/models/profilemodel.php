@@ -471,7 +471,10 @@ AND body_composition.`validity_string` ='2016-05-19 - 2017-05-19'*/
                     "waist_hip_point"=>$row->waist_hip_point,
                     "waist_hip_remarks"=>$row->waist_hip_remarks,
                     "image_name"=>$row->image_name,
-                    "date_of_entry"=>$row->date_of_entry
+                    "date_of_entry"=>$row->date_of_entry,
+					"image_width"=>$this->getImageWidth($row->image_name),
+					"image_height"=>$this->getImageHeight($row->image_name)
+					
                 );
                }
                return $data;
@@ -481,6 +484,53 @@ AND body_composition.`validity_string` ='2016-05-19 - 2017-05-19'*/
         return $data;
         }
     }
+	
+	private function getImageWidth($imagename){
+		//realpath(APPPATH.'../assets/img');
+		$image_width=0;
+		$imagepath = APPPATH . 'assets/images/portfolioimages/'.$imagename;
+		if($imagename!=""){
+			if(file_exists($imagepath)){
+				list($width, $height) = getimagesize($imagepath);
+				$image_width = $width;
+				return $image_width;
+			}
+			else{
+				return $image_width;
+			}
+			
+		}
+		else{
+			return $image_width;
+		}
+		
+		
+		
+		
+	}
+	
+	private function getImageHeight($imagename){
+		$image_height =0;
+		$imagepath = realpath(APPPATH . 'assets/images/portfolioimages/'.$imagename);
+		
+		if($imagename!=""){
+			if(file_exists($imagepath)){
+				list($width, $height) = getimagesize($imagepath);
+				$image_height = $height;
+				return $image_height;
+			}
+			else{
+				return $image_height;
+			}
+			 
+		}
+		else{
+			 return $image_height;
+		}
+		
+		
+	}
+
     
 
 }

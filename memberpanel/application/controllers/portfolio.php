@@ -46,7 +46,13 @@ class portfolio extends CI_Controller{
             $page = 'portfolio/viewfolio';
             $header = "";
             $headercontent="";
+			
             $result["bodycomp"] = $this->profilemodel->getPortfolioView($customerId,$validity["VALIDITY_STRING"]);
+			
+		/*	echo "<pre>";
+				print_r($result["bodycomp"]);
+			echo "</pre>"; 
+			exit; */
            
             createbody_method($result, $page, $header, $session, $headercontent);
         }else{

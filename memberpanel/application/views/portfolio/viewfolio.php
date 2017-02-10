@@ -31,46 +31,85 @@
     
     ?>
           <?php if($i%2==0){?>
-                    <div class="row">
+                    <div class="row portfolio-view-container">
               <?php } ?>
                     
                     <?php if($i%2==0){?>
-                    <div class="col-lg-6 text-center">
+                    <div class="col-md-6 text-center">
+						<div class="port-folio-block">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                
-                               
                                 <h1 class="panel-title"><?php echo($content["date_of_entry"]); ?></h1>
-                            </div>
+							</div>
                             <div class="panel-body">
                                 <?php 
                                     $images_data ="";
+									$port_folio_img_cls ="";
                                     if($content["image_name"]!=""){
                                         $images_data = $content["image_name"]; 
                                     }else{
                                         $images_data = "No_Image_Available.png";
                                     }
-                                    
+									
+									$image_width = $content['image_width'];
+									$image_height = $content['image_height'];
+									
+									if($image_width>$image_height){
+										$port_folio_img_cls = 'folio-block-img-width' ;
+									}
+									elseif($image_height>$image_width){
+										$port_folio_img_cls = 'folio-block-img-height' ;
+									}
+									else{
+										$port_folio_img_cls ="folio-block-img-eq";
+									}
+								
+                              
                                 ?>
                                 
-                                <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/<?php echo($images_data); ?>" class="img-rounded port-folio-preview" id="imgpreview" alt="Cinque Terre" >
+                                <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/<?php echo($images_data); ?>" class="img-rounded <?php echo $port_folio_img_cls;?>" id="imgpreview" alt="Cinque Terre" >
+								
                             </div>
                             <div class="panel-footer">
+							<!--
                                 Weight&nbsp;<span class="label label-warning"><?php echo($content["weight"]); ?></span>
                                 Waist&nbsp;<span class="label label-warning"><?php echo($content["waist"]); ?></span>
                                 Hip&nbsp;<span class="label label-warning"><?php echo($content["hip"]); ?></span>
-                                
+                                <br>
                                 BF%&nbsp;<span class="label label-warning"><?php echo($content["fat_per"]); ?></span>
                                 BFM&nbsp;<span class="label label-warning"><?php echo($content["fat_mass"]); ?></span>
                                 BLM&nbsp;<span class="label label-warning"><?php echo($content["lean_body_mass"]); ?></span>
                                 WCF&nbsp;<span class="label label-warning"><?php echo($content["waist_remarks"]); ?></span>
-                                WHR&nbsp;<span class="label label-warning"><?php echo($content["waist_hip_remarks"]); ?></span>
-                            </div>
+                                WHR&nbsp;<span class="label label-warning"><?php echo($content["waist_hip_remarks"]); ?></span> -->
+							
+							 <ul class="nav nav-pills">
+									
+								<li><a href="#" class="btn btn-primary">Weight <span class="badge"><?php echo($content["weight"]); ?></span></a></li>
+								<li><a href="#" class="btn btn-primary">Waist <span class="badge"><?php echo($content["waist"]); ?></span></a></li>
+								<li><a href="#" class="btn btn-primary">Hip <span class="badge"><?php echo($content["hip"]); ?></span></a></li>
+								<li><a href="#" class="btn btn-primary">Result <span class="badge"><span class="glyphicon glyphicon-hand-down"></span></a></li>
+								
+							</ul>
+								 <ul class="nav result-data nav-pills">
+									<li><a href="#" class="">BF% <span class="badge"><?php echo($content["fat_per"]); ?></span></a></li>
+									<li><a href="#" class="">BFM <span class="badge"><?php echo($content["fat_mass"]); ?></span></a></li>
+									<li><a href="#" class="">BLM <span class="badge"><?php echo($content["lean_body_mass"]); ?></span></a></li>
+									<li><a href="#" class="">WCF <span class="badge"><?php echo($content["waist_remarks"]); ?></span></a></li>
+									<li><a href="#" class="">WHR <span class="badge"><?php echo($content["waist_hip_remarks"]); ?></span></a></li>
+								</ul>
+								
+								
+								
+								
+								
+								
+							</div>
                         </div>
+					  </div>
                     </div>
                     <?php }else {?>
                     
-                    <div class="col-lg-6 text-center">
+                    <div class="col-md-6  text-center">
                        <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h1 class="panel-title"><?php echo($content["date_of_entry"]); ?></h1>
@@ -78,25 +117,59 @@
                             <div class="panel-body">
                                <?php 
                                     $images_data ="";
+									$port_folio_img_cls ="";
                                     if($content["image_name"]!=""){
                                         $images_data = $content["image_name"]; 
                                     }else{
                                         $images_data = "No_Image_Available.png";
                                     }
-                                    
+									
+									$image_width = $content['image_width'];
+									$image_height = $content['image_height'];
+									
+									if($image_width>$image_height){
+										$port_folio_img_cls = 'folio-block-img-width' ;
+									}
+									elseif($image_height>$image_width){
+										$port_folio_img_cls = 'folio-block-img-height' ;
+									}
+									else{
+										$port_folio_img_cls ="folio-block-img-eq";
+									}
+								
                                 ?>
-                                
-                                <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/<?php echo($images_data); ?>" class="img-rounded port-folio-preview" id="imgpreview" alt="Cinque Terre" >
+                               
+                                <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/<?php echo($images_data); ?>" class="img-rounded <?php echo $port_folio_img_cls;?>" id="imgpreview" alt="Cinque Terre" >
                             </div>
                              <div class="panel-footer">
-                                 Weight&nbsp;<span class="label label-warning"><?php echo($content["weight"]); ?></span>
+							 
+							<!-- 
+                                Weight&nbsp;<span class="label label-warning"><?php echo($content["weight"]); ?></span>
                                 Waist&nbsp;<span class="label label-warning"><?php echo($content["waist"]); ?></span>
                                 Hip&nbsp;<span class="label label-warning"><?php echo($content["hip"]); ?></span>
-                                 BF% &nbsp;<span class="label label-warning"><?php echo($content["fat_per"]); ?></span>
+								<br>
+                                BF% &nbsp;<span class="label label-warning"><?php echo($content["fat_per"]); ?></span>
                                 BFM &nbsp;<span class="label label-warning"><?php echo($content["fat_mass"]); ?></span>
                                 BLM &nbsp;<span class="label label-warning"><?php echo($content["lean_body_mass"]); ?></span>
                                 WCF &nbsp;<span class="label label-warning"><?php echo($content["waist_remarks"]); ?></span>
-                                WHR &nbsp;<span class="label label-warning"><?php echo($content["waist_hip_remarks"]); ?></span>
+                                WHR &nbsp;<span class="label label-warning"><?php echo($content["waist_hip_remarks"]); ?></span> -->
+								
+								
+							 <ul class="nav nav-pills">
+								<li><a href="#" class="btn btn-primary">Weight <span class="badge"><?php echo($content["weight"]); ?></span></a></li>
+								<li><a href="#" class="btn btn-primary">Waist <span class="badge"><?php echo($content["waist"]); ?></span></a></li>
+								<li><a href="#" class="btn btn-primary">Hip <span class="badge"><?php echo($content["hip"]); ?></span></a></li>
+								<li><a href="#" class="btn btn-primary">Result <span class="badge"><span class="glyphicon glyphicon-hand-down"></span></a></li>
+								
+							</ul>
+								 <ul class="nav result-data nav-pills">
+									<li><a href="#" class="">BF% <span class="badge"><?php echo($content["fat_per"]); ?></span></a></li>
+									<li><a href="#" class="">BFM <span class="badge"><?php echo($content["fat_mass"]); ?></span></a></li>
+									<li><a href="#" class="">BLM <span class="badge"><?php echo($content["lean_body_mass"]); ?></span></a></li>
+									<li><a href="#" class="">WCF <span class="badge"><?php echo($content["waist_remarks"]); ?></span></a></li>
+									<li><a href="#" class="">WHR <span class="badge"><?php echo($content["waist_hip_remarks"]); ?></span></a></li>
+								</ul>
+							
                             </div>
                         </div>
                     </div>

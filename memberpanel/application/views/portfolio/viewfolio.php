@@ -15,14 +15,8 @@
                 </ol>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-         <!-- /.row -->
+
+       <!-- /.row -->
 <?php if($bodycontent["bodycomp"]){
     $i=2;
      foreach ($bodycontent["bodycomp"] as $content) {
@@ -39,7 +33,7 @@
 						<div class="port-folio-block">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <button style="float:left;margin-top:-7px;" id="<?php echo($content["tran_id"]); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="confirmation" data-btn-ok-label="Yes" data-btn-ok-class="btn-success" data-btn-cancel-label="No" data-btn-cancel-class="btn-danger" data-title="" >
+                                <button style="float:left;margin-top:-7px;" id="<?php echo($content["tran_id"]); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="confirmation" data-btn-ok-label="Yes" data-btn-ok-class="btn-success" data-btn-cancel-label="No" data-btn-cancel-class="btn-danger" data-title="" >
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </button>
                                 <h1 class="panel-title"><?php echo($content["date_of_entry"]); ?></h1>
@@ -87,19 +81,34 @@
 							
 							 <ul class="nav nav-pills">
 									
-								<li><a href="#" class="btn btn-primary">Weight <span class="badge"><?php echo($content["weight"]); ?></span></a></li>
-								<li><a href="#" class="btn btn-primary">Waist <span class="badge"><?php echo($content["waist"]); ?></span></a></li>
-								<li><a href="#" class="btn btn-primary">Hip <span class="badge"><?php echo($content["hip"]); ?></span></a></li>
-								<li><a href="#" class="btn btn-primary">Result <span class="badge"><span class="glyphicon glyphicon-hand-down"></span></a></li>
+								<li><a href="javascript:void(0);" class="btn btn-primary">Weight <span class="badge"><?php echo($content["weight"]); ?></span></a></li>
+								<li><a href="javascript:void(0);" class="btn btn-primary">Waist <span class="badge"><?php echo($content["waist"]); ?></span></a></li>
+								<li><a href="javascript:void(0);" class="btn btn-primary">Hip <span class="badge"><?php echo($content["hip"]); ?></span></a></li>
+								<li><a href="javascript:void(0);" class="btn btn-primary">Result <span class="badge"><span class="glyphicon glyphicon-hand-down"></span></a></li>
 								
 							</ul>
-								 <ul class="nav result-data nav-pills">
-									<li><a href="#" class="">BF% <span class="badge"><?php echo($content["fat_per"]); ?></span></a></li>
-									<li><a href="#" class="">BFM <span class="badge"><?php echo($content["fat_mass"]); ?></span></a></li>
-									<li><a href="#" class="">BLM <span class="badge"><?php echo($content["lean_body_mass"]); ?></span></a></li>
-									<li><a href="#" class="">WCF <span class="badge"><?php echo($content["waist_remarks"]); ?></span></a></li>
-									<li><a href="#" class="">WHR <span class="badge"><?php echo($content["waist_hip_remarks"]); ?></span></a></li>
-								</ul>
+							<ul class="nav result-data nav-pills">
+									<li><a href="javascript:void(0);" class="">BF% <span class="badge"><?php echo($content["fat_per"]); ?></span></a></li>
+									<li><a href="javascript:void(0);" class="">BFM <span class="badge"><?php echo($content["fat_mass"]); ?></span></a></li>
+									<li><a href="javascript:void(0);" class="">LBM <span class="badge"><?php echo($content["lean_body_mass"]); ?></span></a></li>
+									<li><a href="javascript:void(0);" class="">WC <span class="badge"><?php echo($content["waist_remarks"]); ?></span></a></li>
+									<li><a href="javascript:void(0);" class="">WHR <span class="badge"><?php echo($content["waist_hip_remarks"]); ?></span></a></li>
+									<li>
+										<div class="btn-group dropup">
+										  <button class="btn btn-custom btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Abbreviation <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu">
+											<li class=""><a href="javascript:void(0);">BF% :Body Fat %</a></li>
+											<li class=""><a href="javascript:void(0);">BFM : Body Fat Mass</a></li>
+											<li class=""><a href="javascript:void(0);">LBM : Lean Body Mass</a></li>
+											<li class=""><a href="javascript:void(0);">WC  : Waist Circumference</a></li>
+											<li class=""><a href="javascript:void(0);">WHR : Waist Hip Ratio</a></li>
+										  </ul>
+										</div>
+									</li>
+							</ul>
+							
 								
 								
 								
@@ -115,7 +124,7 @@
                     <div class="col-md-6  text-center">
                        <div class="panel panel-info">
                             <div class="panel-heading">
-                                <button style="float:left;margin-top:-7px;" id="<?php echo($content["tran_id"]); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="confirmation" data-btn-ok-label="Yes" data-btn-ok-class="btn-success" data-btn-cancel-label="No" data-btn-cancel-class="btn-danger" data-title="" >
+                                <button style="float:left;margin-top:-7px;" id="<?php echo($content["tran_id"]); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="confirmation" data-btn-ok-label="Yes" data-btn-ok-class="btn-success" data-btn-cancel-label="No" data-btn-cancel-class="btn-danger" data-title="" >
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </button>
                                 <h1 class="panel-title"><?php echo($content["date_of_entry"]); ?></h1>
@@ -171,9 +180,23 @@
 								 <ul class="nav result-data nav-pills">
 									<li><a href="#" class="">BF% <span class="badge"><?php echo($content["fat_per"]); ?></span></a></li>
 									<li><a href="#" class="">BFM <span class="badge"><?php echo($content["fat_mass"]); ?></span></a></li>
-									<li><a href="#" class="">BLM <span class="badge"><?php echo($content["lean_body_mass"]); ?></span></a></li>
-									<li><a href="#" class="">WCF <span class="badge"><?php echo($content["waist_remarks"]); ?></span></a></li>
+									<li><a href="#" class="">LBM <span class="badge"><?php echo($content["lean_body_mass"]); ?></span></a></li>
+									<li><a href="#" class="">WC <span class="badge"><?php echo($content["waist_remarks"]); ?></span></a></li>
 									<li><a href="#" class="">WHR <span class="badge"><?php echo($content["waist_hip_remarks"]); ?></span></a></li>
+									<li>
+										<div class="btn-group dropup">
+										  <button class="btn btn-custom btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Abbreviation <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu">
+											<li class=""><a href="javascript:void(0);">BF% :Body Fat %</a></li>
+											<li class=""><a href="javascript:void(0);">BFM : Body Fat Mass</a></li>
+											<li class=""><a href="javascript:void(0);">LBM : Lean Body Mass</a></li>
+											<li class=""><a href="javascript:void(0);">WC  : Waist Circumference</a></li>
+											<li class=""><a href="javascript:void(0);">WHR : Waist Hip Ratio</a></li>
+										  </ul>
+										</div>
+									</li>
 								</ul>
 							
                             </div>

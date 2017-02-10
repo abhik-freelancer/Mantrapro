@@ -162,6 +162,19 @@ label{
 	max-height: 420px;
 	height: 420px;
 }
+.panel-info{
+	border-color: #F0F0F0;
+	box-shadow: 5px 5px 5px #CCC;	
+}
+.portfolio-view-container  .panel-heading{
+	background-color: #F0EFEF;
+	border-color: #E3E3E3;
+}
+.portfolio-view-container  .panel-title{
+	font-weight: 700;
+	color: #FF2D00;
+}
+
 .port-folio-block{
 //	height:520px !important;
 //	max-height:520px !important;
@@ -203,15 +216,26 @@ label{
     border: 0px solid #FF663D;
 }
 .port-folio-abbr .list-group-item {
-	width:90%;
+	width:97%;
 	margin:0 auto;
+	background:#F0F0F0;
 	border: 0px solid #DDD !important;
-	padding: 10px 15px;
+	padding: 5px 15px;
 	color: #FF4800;
 	font-weight:600;
 }
 
-
+.popover{
+	z-index:1000 !important;
+}
+.btn-custom{
+	color: #FFF;
+	background-color: #F3724F;
+	}
+.portfolio-view-container .dropdown-menu > li > a{
+	
+	font-size:10px;
+}
 
 
 

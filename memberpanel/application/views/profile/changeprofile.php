@@ -161,7 +161,7 @@
                     <fieldset>
                         <input type="hidden" name="filepost" value="1"/>
                         <div class="form-group">
-                             <label  class="custom-file-input">
+                             <label  class="custom-file-input" style="width:auto;">
                                 <input type="file" name="imagefile" id="imagefile" accept="image/*" onchange=""/>
                              </label>
                         </div>

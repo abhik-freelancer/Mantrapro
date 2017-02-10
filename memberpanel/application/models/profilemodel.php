@@ -516,39 +516,5 @@ class profilemodel extends CI_Model {
 	}
 
     
-    public function getBodyCompositionImageById($id){
-        $image="";
-        $sql = "SELECT image_name FROM body_composition WHERE tran_id='".$id."'";
-        $query = $this->db->query($sql);
-        if($query->num_rows()>0){
-            $rows = $query->row();
-            $image = $rows->image_name;
-        }
-        return $image;
-    }
-    
-    public function delete($id){
-        
-        try {
-            $this->db->trans_begin();
-            
-            $this->db->where("tran_id",$id);
-            $this->db->delete('body_composition');
-
-            if ($this->db->trans_status() === FALSE) {
-                $this->db->trans_rollback();
-                return false;
-            } else {
-                $this->db->trans_commit();
-                return true;
-            }
-            
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
-        }
-
- 
-    }
-    
 
 }

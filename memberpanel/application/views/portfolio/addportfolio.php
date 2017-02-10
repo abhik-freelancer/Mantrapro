@@ -30,11 +30,12 @@
         </div>
 
         <!-- /.row -->
-<form class="form-horizontal" method="post" enctype="multipart/form-data" id="frmbodycmp">
-        <div class="row">
-            <div class="col-lg-6 text-center">
-                <div class="panel panel-default">
-                    <div class="panel-body">
+<form  method="post" enctype="multipart/form-data" id="frmbodycmp">
+        <div class="row body-cal-container">
+            <div class="col-lg-5 col-md-6 col-sm-12">
+			
+                <div class="panel panel-default custom-panel-body">
+					<div class="panel-body change-image-body-container">
                         <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/No_Image_Available.png" class="img-rounded port-folio-preview" id="imgpreview" alt="Cinque Terre" >
                     </div>
                      <div class="form-group">
@@ -43,11 +44,101 @@
                              </label>
                      </div>
                 </div>
+			
             </div>
-            <div class="col-lg-6 text-center">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        
+            <div class="col-lg-7 col-md-6 col-sm-12 ">
+			 
+                <div class="panel panel-default custom-panel-body">
+                    <div class="panel-body ">
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+                                <label class="control-label " for="Date">Date*</label>
+                                <input type="date" class="form-control custome-input" id="dateofentry" name="dateofentry" placeholder="" readonly="" style="cursor:pointer;">
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-group">
+                            <label class="control-label " for="weight">Weight (in Kgs.)* </label>
+                            <input type="text" class="form-control decimal custome-input" id="weight" name="weight" placeholder="Enter weight">
+                        </div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+                                <label class="control-label" for="Waist">Waist (in Inches)*</label>
+								<input type="text" class="form-control decimal custome-input" id="Waist" name="waist" placeholder="Enter waist">
+                            </div>
+						</div>
+						<div class="col-md-6">
+							 <div class="form-group">
+                                <label class="control-label" for="hip">Hip (in Inches)*</label>
+                                <input type="text" class="form-control decimal custome-input" id="hip" name="hip" placeholder="Enter hip">
+                                
+                            </div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-12">
+							<a href="javascript:void(0);" class="btn custome-button " id="getvalue">Calculate</a>
+						</div>
+					</div>
+
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+                                <label class="control-label" for="bodyfat">Body fat(%)</label>
+                                <input type="text" class="form-control custome-input" id="bodyfat" name="bodyfatPercentage" placeholder="" readonly="">
+                            </div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+                                <label class="control-label" for="bodyfatmass">Body fat mass</label>
+                                <input type="text" class="form-control custome-input" id="bodyfatmass" placeholder="" name="bodyfatmass" readonly="">
+                            </div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+                                <label class="control-label" for="bodyleanmass">Lean body mass</label>
+                               <input type="text" class="form-control custome-input" id="bodyleanmass" placeholder="" readonly="" name="bodyleanmass">
+                            </div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+                                <label class="control-label" for="waistcrmfrnc">Waist circumference </label>
+                                <input type="text" class="form-control custome-input" id="waistcrmfrnc" placeholder="" readonly="" name="waistcircumferenceasses">
+                                    <input type="hidden" id="waistcrmfrncvalue" value="" name="waistcircumferencevalue"/>
+                             </div>
+                        </div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							 <div class="form-group">
+                                <label class="control-label" for="waisthipratio">Waist hip ratio </label>
+                                <input type="text" class="form-control custome-input" id="waisthipratio" placeholder="" readonly="" name="waisthipratioasses">
+                                    <input type="hidden" id="waisthipratiovalue" value="" name="waisthipratiovalue"/>
+                            </div> 
+						</div>
+						<div class="col-md-6">
+						
+						</div>
+					</div>
+
+
+					<!--
+
+					
+
+					
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="Date">Date</label>
                                 <div class="col-sm-8">
@@ -115,7 +206,7 @@
                                     <input type="text" class="form-control" id="waisthipratio" placeholder="" readonly="" name="waisthipratioasses">
                                     <input type="hidden" id="waisthipratiovalue" value="" name="waisthipratiovalue"/>
                                 </div>
-                            </div>
+                            </div>  -->
                             
                     <!--message area-->
                     <div class="alert alert-danger custom-error" role="alert" style="display:none;" id="msgdiv">
@@ -129,22 +220,22 @@
                     </div>
                 <!--message area--> 
                             
-                            
-                            
-                            
-                            
-                            
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Update</button>
+                        <div class="form-group">
+                                <div class="">
+                                    <button type="submit" class="btn custome-button">Save Your Data</button>
                                 </div>
                             </div>
                        
                     </div>
                 </div>
+				
+			
+				
             </div>
         </div>
      </form>
+	 
+	 
         <!-- /.row -->
     </div>
 </div>

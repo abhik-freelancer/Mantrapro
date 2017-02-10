@@ -28,8 +28,7 @@
     $i=2;
      foreach ($bodycontent["bodycomp"] as $content) {
          
-     
-    
+         
     ?>
           <?php if($i%2==0){?>
                     <div class="row portfolio-view-container">

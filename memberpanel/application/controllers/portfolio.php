@@ -168,7 +168,7 @@ class portfolio extends CI_Controller{
                                  }
                     
                                   if($insert){
-                                       $response = array("msg_code" => 1, "msg_data" => "Everything is okay !");
+                                       $response = array("msg_code" => 1, "msg_data" => "Data saved successfully !");
                                     }else{
                                        $response = array("msg_code" => 2, "msg_data" => "Sorry something going wrong or you have already entered data for this day !");
                                     }

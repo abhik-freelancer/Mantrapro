@@ -113,6 +113,7 @@ $(document).ready(function () {
         //var form = $('#frmbodycmp')[0];
         // var formData = new FormData(form);
         var formData = new FormData($(this)[0]);
+		
 		$("#save-data").css("display","none");
 		$("#save-loader").css("display","block");
 		$("#save-loader").addClass('blink_me');
@@ -133,7 +134,17 @@ $(document).ready(function () {
 					$("#msgdiv").show();
                     $("#msgText").html(result.msg_data);
 
-				} else if (result.msg_code == 2) {
+				} else if(result.msg_code == 400){
+					$("#msgdivsuccess").hide();
+					$("#save-loader").css("display","none");
+					$("#save-data").css("display","block");
+					 
+					$("#msgdiv").show();
+                    $("#msgText").html(result.msg_data);
+					 
+				}
+					
+				else if (result.msg_code == 2) {
                     $("#msgdivsuccess").hide();
                     $("#msgdiv").show();
 					
@@ -151,9 +162,17 @@ $(document).ready(function () {
                     $("#successmsgText").html(result.msg_data);
                     $('#frmbodycmp')[0].reset();
                     $('#imgpreview').attr('src', basepath + 'application/assets/images/portfolioimages/No_Image_Available.png');
-                } else if (result.msg_code == 500) {
+                } 
+				else if (result.msg_code == 500) {
+					$("#save-loader").css("display","none");
                     window.location.href = basepath + 'memberlogin';
                 }
+				else {
+					$("#save-loader").css("display","none");
+					$("#save-data").css("display","block");
+					 $("#msgdiv").show();
+					$("#successmsgText").html("Something wrong.Please try again...");
+				}
             }, error: function (jqXHR, exception) {
                 var msg = '';
                 if (jqXHR.status === 0) {

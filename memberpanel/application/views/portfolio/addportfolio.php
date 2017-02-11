@@ -36,7 +36,7 @@
 			
                 <div class="panel panel-default custom-panel-body">
 					<div class="panel-body change-image-body-container">
-                        <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/No_Image_Available.png" class="img-rounded port-folio-preview" id="imgpreview" alt="Cinque Terre" >
+                        <img src="<?php echo(base_url()) ?>application/assets/images/portfolioimages/No_Image_Available.png" class="img-rounded port-folio-preview" id="imgpreview" alt="Unknown upload error" >
                     </div>
                      <div class="form-group">
                              <label  class="custom-file-input">
@@ -223,7 +223,7 @@
                         <div class="form-group">
                             <div class="">
                                 <button type="submit" class="btn custome-button" id="save-data">Save Your Data</button>
-                                <p class="btn custome-button" id="save-loader">Please wait ...</p>
+                                <p class="btn custome-button save-loader" id="save-loader" style="display:none;">Please wait ...</p>
                             </div>
                         </div>
                        

@@ -159,7 +159,7 @@ label{
 
 }
 #save-loader{
-	display:none;
+	/*display:none !important; */
 	line-height: 31px;
 }
 .blink_me {

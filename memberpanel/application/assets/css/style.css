@@ -139,6 +139,9 @@ label{
 .page-label-margin{
 	margin-top:20px;
 }
+.change-image-body-container #imgpreview{
+	max-height:420px;
+}
 
 .port-folio-preview{
 	margin-left: auto;
@@ -180,7 +183,10 @@ label{
 //	max-height:520px !important;
 }
 .folio-block-img-width{
-	max-width: 100%;
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 .folio-block-img-height{
 	width: 60%;

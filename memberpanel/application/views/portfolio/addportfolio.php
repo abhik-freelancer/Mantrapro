@@ -55,7 +55,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
                                 <label class="control-label " for="Date">Date*</label>
-                                <input type="date" class="form-control custome-input" id="dateofentry" name="dateofentry" placeholder="" readonly="" style="cursor:pointer;">
+                                <input type="text" class="form-control custome-input" id="dateofentry" name="dateofentry" placeholder="" readonly="" style="cursor:pointer;">
 							</div>
 						</div>
 						<div class="col-md-6">

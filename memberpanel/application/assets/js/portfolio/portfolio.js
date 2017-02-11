@@ -113,6 +113,10 @@ $(document).ready(function () {
         //var form = $('#frmbodycmp')[0];
         // var formData = new FormData(form);
         var formData = new FormData($(this)[0]);
+		$("#save-data").css("display","none");
+		$("#save-loader").css("display","block");
+		$("#save-loader").addClass('blink_me');
+		
         $.ajax({
             type: "POST",
             url: basepath + 'portfolio/updateMemberBodyComposition',
@@ -123,17 +127,27 @@ $(document).ready(function () {
             success: function (result) {
                 if (result.msg_code == 0) {
                     $("#msgdivsuccess").hide();
-                    $("#msgdiv").show();
+					$("#save-loader").css("display","none");
+					$("#save-data").css("display","block");
+					
+					$("#msgdiv").show();
                     $("#msgText").html(result.msg_data);
 
-
-                } else if (result.msg_code == 2) {
+				} else if (result.msg_code == 2) {
                     $("#msgdivsuccess").hide();
                     $("#msgdiv").show();
+					
+					$("#save-loader").css("display","none");
+					$("#save-data").css("display","block");
+					
                     $("#msgText").html(result.msg_data);
                 } else if (result.msg_code == 1) {
                     $("#msgdiv").hide();
                     $("#msgdivsuccess").show();
+					
+					$("#save-loader").css("display","none");
+					$("#save-data").css("display","block");
+					
                     $("#successmsgText").html(result.msg_data);
                     $('#frmbodycmp')[0].reset();
                     $('#imgpreview').attr('src', basepath + 'application/assets/images/portfolioimages/No_Image_Available.png');

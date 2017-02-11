@@ -158,7 +158,17 @@ label{
 	cursor:not-allowed;
 
 }
+#save-loader{
+	display:none;
+	line-height: 31px;
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
 
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
 /**---------------Port folio view Container---------------**/
 
 .portfolio-view-container .panel-body{

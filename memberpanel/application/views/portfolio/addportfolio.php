@@ -221,10 +221,11 @@
                 <!--message area--> 
                             
                         <div class="form-group">
-                                <div class="">
-                                    <button type="submit" class="btn custome-button">Save Your Data</button>
-                                </div>
+                            <div class="">
+                                <button type="submit" class="btn custome-button" id="save-data">Save Your Data</button>
+                                <p class="btn custome-button" id="save-loader">Please wait ...</p>
                             </div>
+                        </div>
                        
                     </div>
                 </div>

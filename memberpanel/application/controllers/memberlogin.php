@@ -26,7 +26,8 @@ class memberlogin extends CI_Controller {
  $memberPassword = $this->input->post("pwd");
  $json_response=array();
  if($mobileNumber!="" && $memberPassword!=""){
-     $result=  $this->memberloginmodel->checkMember($mobileNumber,$memberPassword);
+     $maxCustomerId = $this->memberloginmodel->getMaxCustomerId($mobileNumber);
+     $result=  $this->memberloginmodel->checkMember($maxCustomerId,$memberPassword);
      if($result["CUS_ID"]!=""){
          $this->setSessionData($result);
          $json_response = array("msg_code"=>1,"msg_data"=>"");

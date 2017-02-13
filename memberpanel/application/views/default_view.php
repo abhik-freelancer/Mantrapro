@@ -13,7 +13,10 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">
-
+    
+    <!-- data table css -->
+    <link href="<?php echo base_url(); ?>application/assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/sb-admin.css" rel="stylesheet">
 
@@ -196,9 +199,17 @@
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li> -->
 		  <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user-md"></i> Health & Fitness <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li><a href="#">General Fitness Assessment</a></li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#healthandfit"><i class="fa fa-user-md"></i> Health & Fitness <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="healthandfit" class="collapse">
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#generalfitness"><i class="fa fa-arrow-down"></i> General Fitness Assessment<i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="generalfitness" class="collapse" style="list-style: none;">
+                                    <li><a href="<?php echo(base_url());?>healthandfitness/endurancetest">Endurance test</a></li>
+                                    <li><a href="<?php echo(base_url());?>healthandfitness/strengthtest">Strength test</a></li>
+                                    <li><a href="<?php echo(base_url());?>healthandfitness/flexibilitytest">Flexibility test</a></li>
+                                </ul>
+                            
+                            </li>
                             <li><a href="#">General Medical Assessment</a></li>
                             <li><a href="#">Orthopaedic Screening</a></li>
                             <li><a href="#">Archieves</a></li>
@@ -253,9 +264,11 @@
     <script src="<?php echo base_url(); ?>application/assets/js/changepass/changepass.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/profile/profile.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/healthandfitness/generalfitness.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
+     <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/raphael.min.js"></script>

@@ -1092,6 +1092,62 @@ textarea{
 	margin:0 auto;
 	
 }
+
+/*--------Contact us page-------*/
+#contact-page-box-container{
+	height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background:#F3F3F3;
+	
+}
+.contact-row-container
+{
+	width:80%;
+	margin:0 auto !important;
+}
+.contact-box-container{
+	border: 1px solid #CCC;
+	padding: 2%;
+	border-radius: 10px;
+	height:590px;
+	max-height:600px !important;
+	margin-bottom:3%;
+}
+.contact-row-container .contact-title-head{
+	text-align:left;
+	font-size:2em;
+	color:#F2652C;
+	font-weight:700;
+}
+.c-branch-name{
+	font-size:1.9em;
+	font-weight:500;
+}
+.c-branch-add{
+	margin-top: -10px;
+	font-size: 1.3em;
+}
+.c-branch-add{
+	margin-top: -8px;
+	font-size: 1.3em;
+}
+.contact-branch{
+	width:62% !important;
+	margin:0 auto !important;
+}
+.facebook-page-container{
+	padding:2%;
+	border:1px solid #CCC;
+	border-radius:10px;
+	height:590px;
+	max-height:600px !important;
+}
+
+
+
+
+
 /*--------------*/
 .footer-section{
 	width:100%;
@@ -1155,6 +1211,10 @@ textarea{
 	}
 	.news-item {
       padding: 2% 4px 22%;
+	}
+	.contact-row-container{
+	width:96%;
+	margin:0 auto !important;
 	}
 }
 
@@ -1246,6 +1306,13 @@ textarea{
 		width: 100%;
 		margin: 0 auto;
 	}
+	#fbpageContainer{
+	width:64% !important;
+	margin:0 auto;
+	}
+	.facebook-page-container p{
+		text-align:center !important;
+	}
 	
 }
 @media only screen and (max-width: 900px) {
@@ -1291,6 +1358,10 @@ textarea{
 		height: 320px;
 		max-height: 320px;
 		overflow: hidden;
+	}
+	#fbpageContainer{
+	width:80% !important;
+	margin:0 auto;
 	}
 	
 }	
@@ -1346,6 +1417,13 @@ textarea{
 		
 	}
 	
+	
+}
+@media only screen and (max-width: 600px){
+	#fbpageContainer{
+	width:100% !important;
+	margin:0 auto;
+	}
 }
 
 @media only screen and (max-width: 535px) {
@@ -1373,6 +1451,7 @@ textarea{
 	margin-left:36%;
 	//	box-shadow: 0 8px 6px -6px black;
 	}
+	
 }
 
 

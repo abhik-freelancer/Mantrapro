@@ -44,6 +44,14 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
      
     
     <div class="container-fluid page-width">
@@ -244,7 +252,7 @@
          <ul>
             <li class="dropdown-header">Shortly About Us</li>
             <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
-			<a href="javascript:void(0)" class="btn cutome-link-btn">View More</a>
+			<a href="<?php echo base_url();?>about/about_us" class="btn cutome-link-btn">View More</a>
 			<li class="divider"></li>
 			
 			
@@ -380,7 +388,7 @@
 		<li><a href="#">Nutrition</a></li>
 		<li><a href="#">Gallery</a></li>
 		<li><a href="#">Body Calculator</a></li>
-		<li><a href="#">Contact Us</a></li>
+		<li><a href="<?php echo base_url();?>contact">Contact Us</a></li>
 		</ul>
 			<!--	<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -408,10 +416,10 @@
       <div class="col-md-12">
          <div id="mobile-menu-main">
             <div class="list-group panel">
-               <a href="#" class="list-group-item">Home</a>
+               <a href="<?php echo base_url();?>" class="list-group-item">Home</a>
                <a href="#about-sub" class="list-group-item" data-toggle="collapse" data-parent="#mobile-menu-main">About<span class="caret"></span></a>
                <div class="collapse" id="about-sub">
-                  <a href="#" class="list-group-item" >About Us</a>
+                  <a href="<?php echo base_url();?>about/about_us" class="list-group-item" >About Us</a>
                   <a href="#" class="list-group-item" >Mission & Vision</a>
                   <a href="#" class="list-group-item" >1st Life Style Health Club</a>
                   <a href="#" class="list-group-item" >Team Mantra</a>
@@ -442,7 +450,7 @@
                   <a href="#" class="list-group-item">Sit & Reach Test</a>
                   <a href="#" class="list-group-item">Push Up & Sit Up Test</a>
                </div>
-               <a href="#" class="list-group-item">Contact Us</a>
+               <a href="<?php echo base_url();?>contact" class="list-group-item">Contact Us</a>
             </div>
          </div>
       </div>
@@ -509,6 +517,7 @@
 	<script src="<?php echo base_url(); ?>application/assets/js/get-pass.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/events.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/mayihelp.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/contact/contact-us.js"></script>	
 
     <!-- Script to Activate the Carousel -->
 

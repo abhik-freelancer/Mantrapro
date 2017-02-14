@@ -1074,6 +1074,31 @@ textarea{
 	transition:.3s;
 }
 
+
+
+/******************About Us **********************/
+
+.about-us-row-container{
+	width:80% !important;
+	margin:2% auto !important;
+	
+}
+.about-us-row-container h1{
+	font-size: 3.8em;
+	text-align: left;
+	font-weight: bold;
+}
+.first-text-col {
+	color:#F65E3E;
+}
+.about-first-head{
+	font-size: 19px;
+	color: #F65E3E;
+}
+.mantra-bout-text{
+	padding-left:4%;
+}
+
 /*---------Contact Us--------*/
 .google-map-container{
 	//margin-top:3%;

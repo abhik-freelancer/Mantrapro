@@ -1,3 +1,10 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<img src="<?php echo base_url(); ?>application/assets/images/about-us.jpg" class="img-responsive" />
+		</div>
+	</div>
+</div>
 <div class="container-fluid" id="contact-page-box-container">
 	<div class="row contact-row-container" >
 		<div class="col-md-6 " >

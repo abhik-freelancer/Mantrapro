@@ -213,11 +213,11 @@
 									</ul>
 								
 								</li>
-								<li><a href="#">General Medical Assessment</a></li>
+								<li><a href="<?php echo(base_url());?>healthandfitness/generalmedicalassesment">General Medical Assessment</a></li>
 								<li><a href="#">Orthopaedic Screening</a></li>
 								<li><a href="#">Archieves</a></li>
 								<li><a href="#">Anthropometry</a></li>
-								<li><a href="#">Blood Test(s)</a></li>
+								<li><a href="<?php echo(base_url());?>healthandfitness/bloodtest">Blood Test</a></li>
 							</ul>
 						</li>
                     

@@ -503,6 +503,12 @@ label{
 	}
 
 }
+@media only screen and (max-width:1243px){
+	.portfolio-view-container .panel-footer  	.nav > li >a{
+	padding: 7px 4px;
+	}
+
+}
 
 @media only screen and (max-width:1240px) {
 	.folio-block-img-height{

@@ -15,6 +15,19 @@ $("#situptest").DataTable({
 $("#onerepeatationmaxtest").DataTable({
     "ordering": false
 });
+//bldpressure
+$("#bldpressure").DataTable({
+    "ordering": false
+});
+//oxysatlvl
+$("#oxysatlvl").DataTable({
+    "ordering": false
+});
+//visualactivity
+$("#visualactivity").dataTable({
+   "ordering": false 
+});
 
+$('.ex1').slider({});
 
 });

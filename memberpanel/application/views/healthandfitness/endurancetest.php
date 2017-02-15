@@ -1,4 +1,5 @@
- <div id="page-wrapper">
+
+<div id="page-wrapper">
 
      <div class="container-fluid">
          <div class="row">
@@ -29,40 +30,40 @@
                                 </div>
                                  <div class="panel-body">
                                      <div class="table-responsive">
-                            <table class="table table-bordered table-hover" id="vo2max">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Heart rate</th>
-                                        <th>Duration</th>
-                                        <th>METs</th>
-                                        <th>Vo2max</th>
-                                        <th>Rating</th>
-                                        <th>Score</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php if($bodycontent["Vo2Max"]) {
-                                        foreach ($bodycontent["Vo2Max"] as $content) {
-    
+									<table class="table table-bordered table-hover" id="vo2max" > 
+										<thead>
+												<tr>
+													<th>Date</th>
+													<th>Heart rate</th>
+													<th>Duration</th>
+													<th>METs</th>
+													<th>Vo2max</th>
+													<th>Rating</th>
+													<th>Score</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php if($bodycontent["Vo2Max"]) {
+													foreach ($bodycontent["Vo2Max"] as $content) {
+				
 
-                                        ?>
-                                    <tr>
-                                        <td><?php echo($content["date_of_entry"]); ?></td>
-                                        <td><?php echo($content["heart_rate"]); ?></td>
-                                        <td><?php echo($content["duration"]); ?></td>
-                                        <td><?php echo($content["mets"]); ?></td>
-                                        <td><?php echo($content["vomax"]); ?></td>
-                                        <td><?php echo($content["rating"]); ?></td>
-                                        <td><?php echo($content["score"]); ?></td>
-                                    </tr>
-                                    <?php 
-                                    }
-                                    }?>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
+													?>
+												<tr>
+													<td><?php echo($content["date_of_entry"]); ?></td>
+													<td><?php echo($content["heart_rate"]); ?></td>
+													<td><?php echo($content["duration"]); ?></td>
+													<td><?php echo($content["mets"]); ?></td>
+													<td><?php echo($content["vomax"]); ?></td>
+													<td><?php echo($content["rating"]); ?></td>
+													<td><?php echo($content["score"]); ?></td>
+												</tr>
+												<?php 
+												}
+												}?>
+												
+											</tbody>
+									</table>
+									</div>
                                  </div>
                              </div>
                          </div><!-- VO2 Max  area-->

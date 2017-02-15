@@ -22,6 +22,8 @@
 
     <!-- Morris Charts CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/plugins/morris.css" rel="stylesheet">
+    
+     <link href="<?php echo base_url(); ?>application/assets/css/slider.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url(); ?>application/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -210,7 +212,7 @@
                                 </ul>
                             
                             </li>
-                            <li><a href="#">General Medical Assessment</a></li>
+                            <li><a href="<?php echo(base_url());?>healthandfitness/generalmedicalassesment">General Medical Assessment</a></li>
                             <li><a href="#">Orthopaedic Screening</a></li>
                             <li><a href="#">Archieves</a></li>
                             <li><a href="#">Anthropometry</a></li>
@@ -269,6 +271,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
      <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
+      <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-slider.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/raphael.min.js"></script>

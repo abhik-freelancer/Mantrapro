@@ -23,6 +23,7 @@
     <!-- Morris Charts CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/plugins/morris.css" rel="stylesheet">
     
+    <!--slider-->
      <link href="<?php echo base_url(); ?>application/assets/css/slider.css" rel="stylesheet">
 
     <!-- Custom Fonts -->

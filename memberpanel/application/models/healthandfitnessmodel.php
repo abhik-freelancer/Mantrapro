@@ -274,6 +274,7 @@ class healthandfitnessmodel extends CI_Model {
     }
     
     public function getBloodTest($membershipno,$validitystring){
+        $data=array();
         $sql= "SELECT `blood_test`.`tran_id`,
                 blood_test.`test_id`,blood_test_master.`test_desc`,unit_master.`unit_desc`,
                 blood_test_detail.`lower_range`,blood_test_detail.`upper_range`,

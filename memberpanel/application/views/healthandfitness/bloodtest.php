@@ -48,9 +48,11 @@
                                                     <tr>
                                                         <td><?php echo($content["date_of_collection"]); ?></td>
                                                         <td><?php echo($content["test_desc"]); ?></td>
-                                                        <td><?php echo($content["lower_range"]."-".$content["upper_range"]); ?></td>
+                                                        <td><?php echo($content["lower_range"]."-".$content["upper_range"]."(".$content["unit_desc"].")"); ?></td>
                                                         <td><?php echo($content["reading"]); ?></td>
-                                                        <td><input class="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/></td>
+                                                        <td>
+                                                            <b>€ 10</b><input class="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/><b>€ 1000</b>
+                                                        </td>
                                                     </tr>
                                                     <?php 
                                                     }

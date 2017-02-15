@@ -275,7 +275,7 @@ class healthandfitnessmodel extends CI_Model {
     
     public function getBloodTest($membershipno,$validitystring){
         $sql= "SELECT `blood_test`.`tran_id`,
-                blood_test.`test_id`,blood_test_master.`test_desc`,
+                blood_test.`test_id`,blood_test_master.`test_desc`,unit_master.`unit_desc`,
                 blood_test_detail.`lower_range`,blood_test_detail.`upper_range`,
                 date_format(blood_test.`date_of_entry`,'%d-%m-%Y') as date_of_entry,
                 date_format(blood_test.`date_of_collection`,'%d-%m-%Y') as date_of_collection,
@@ -285,6 +285,7 @@ class healthandfitnessmodel extends CI_Model {
                blood_test
                INNER JOIN `blood_test_master` ON blood_test.`test_id` = blood_test_master.`blood_id`
                LEFT JOIN `blood_test_detail` ON `blood_test_master`.`blood_id` = blood_test_detail.`blood_id`
+               LEFT JOIN `unit_master` ON blood_test_master.`unit_id` = unit_master.`unit_id`
                WHERE blood_test.`membership_no` ='MHBPW1500000097' AND blood_test.`validity_string` ='2016-09-28 - 2017-09-28'";
         $query= $this->db->query($sql);
         if ($query->num_rows() > 0) {
@@ -292,7 +293,7 @@ class healthandfitnessmodel extends CI_Model {
                 $data[]=array(
                     "tran_id"=>$row->tran_id,
                     "date_of_collection"=>$row->date_of_collection,
-                    
+                    "unit_desc"=>$row->unit_desc,
                     "membership_no"=>$row->membership_no,
                     "reading"=>$row->reading,
                     "test_desc"=>$row->test_desc,

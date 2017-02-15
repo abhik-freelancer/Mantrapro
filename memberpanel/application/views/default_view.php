@@ -13,25 +13,30 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- data table css -->
     <link href="<?php echo base_url(); ?>application/assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <!-- Custom CSS --
     <link href="<?php echo base_url(); ?>application/assets/css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
+	<!-- Morris Charts CSS --
     <link href="<?php echo base_url(); ?>application/assets/css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
+	<link href="<?php echo base_url(); ?>application/assets/css/plugins/metis-menu.css" rel="stylesheet">
+	<!-- Custom Fonts --
     <link href="<?php echo base_url(); ?>application/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
 	<!-- Custom Style -->
-	<link href="<?php echo base_url(); ?>application/assets/css/style.css" rel="stylesheet">
 	
+	<link href="<?php echo base_url(); ?>application/assets/css/metisMenu.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>application/assets/css/sb-admin-2.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>application/assets/css/morris.css" rel="stylesheet">
+	
+
+	
+	
+	<link href="<?php echo base_url(); ?>application/assets/css/style.css" rel="stylesheet">
 	<!-- Bootstrap datepicker -->
 	<link href="<?php echo base_url(); ?>application/assets/css/bootstrap-datepicker.css" rel="stylesheet">
 	<!-- Bootstrap datepicer end -->
+	
+	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,17 +45,21 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<style>
+
+</style>
+
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <!--
+	<div id="wrapper">
 
-        <!-- Navigation -->
+    
         <nav class="navbar navbar-inverse navbar-fixed-top dashbord-top-nav" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -59,88 +68,104 @@
                 <a class="navbar-brand" href="<?php echo base_url(); ?>memberdashboard">Member-panel</a>
                 <input type="hidden" value="<?php echo base_url(); ?>" id="basepath"></input>      
             </div>
-            <!-- Top Menu Items -->
            <ul class="nav navbar-right top-nav">
-            <!--   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                   <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>-->
-              <!--  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
+				<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo  $CUS_NAME; ?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
                         <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                            <a href="<?php echo base_url(); ?>profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                       <li>
+                            <a href="<?php echo base_url(); ?>changepass"><i class="fa fa-fw fa-gear"></i> Change password</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">View All</a>
+                            <a href="<?php echo base_url(); ?>logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
-                </li>-->
+                </li>
+            </ul>
+			<div class="navbar-default sidebar" role="navigation">
+				 <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="<?php echo base_url(); ?>memberdashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+            
+					<li>
+                        <a href="#"><i class="fa fa-user-md"></i> Health & Fitness <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="healthandfit" class="nav nav-second-level">   
+                            <li>
+                                <a href="javascript:void(0);" > General Fitness Assessment <i class="fa arrow"></i>
+</a>
+                                <ul id="generalfitness" class="nav nav-third-level">
+                                    <li><a href="<?php echo(base_url());?>healthandfitness/endurancetest">Endurance test</a></li>
+                                    <li><a href="<?php echo(base_url());?>healthandfitness/strengthtest">Strength test</a></li>
+                                    <li><a href="<?php echo(base_url());?>healthandfitness/flexibilitytest">Flexibility test</a></li>
+                                </ul>
+                            
+                            </li>
+                            <li><a href="#">General Medical Assessment</a></li>
+                            <li><a href="#">Orthopaedic Screening</a></li>
+                            <li><a href="#">Archieves</a></li>
+                            <li><a href="#">Anthropometry</a></li>
+                            <li><a href="#">Blood Test(s)</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="#"><i class="fa fa-user-md">
+                            </i> Portfolio <i class="fa fa-fw fa-caret-down"></i>
+                         </a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="<?php echo base_url(); ?>portfolio">Body Composition</a></li>
+                            <li><a href="<?php echo base_url(); ?>portfolio/viewfolio">View folio</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-external-link-square"></i>
+					Health Asset Value</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
+					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
+                </ul>
+				</div>
+            </div>
+        </nav> -->
+		
+		
+
+       <!--content  inserted here---
+	     <?php// if($bodyview)  : ?>  
+		<?php// $this->load->view($bodyview); ?>
+		<?php
+		  // endif; 
+		  ?>
+	   --content inserted here ---
+
+    </div>
+    <!-- /#wrapper -->
+	
+	
+	  <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>memberdashboard">Member-panel</a>
+                <input type="hidden" value="<?php echo base_url(); ?>" id="basepath"></input>      
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo  $CUS_NAME; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -159,92 +184,62 @@
                         </li>
                     </ul>
                 </li>
+             
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav sidebar-dashboard">
-                    <li class="active">
-                        <a href="<?php echo base_url(); ?>memberdashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                <!-- <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li> -->
-		  <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#healthandfit"><i class="fa fa-user-md"></i> Health & Fitness <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="healthandfit" class="collapse">
-                            <li>
-                                <a href="javascript:;" data-toggle="collapse" data-target="#generalfitness"><i class="fa fa-arrow-down"></i> General Fitness Assessment<i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="generalfitness" class="collapse" style="list-style: none;">
-                                    <li><a href="<?php echo(base_url());?>healthandfitness/endurancetest">Endurance test</a></li>
-                                    <li><a href="<?php echo(base_url());?>healthandfitness/strengthtest">Strength test</a></li>
-                                    <li><a href="<?php echo(base_url());?>healthandfitness/flexibilitytest">Flexibility test</a></li>
-                                </ul>
-                            
-                            </li>
-                            <li><a href="#">General Medical Assessment</a></li>
-                            <li><a href="#">Orthopaedic Screening</a></li>
-                            <li><a href="#">Archieves</a></li>
-                            <li><a href="#">Anthropometry</a></li>
-                            <li><a href="#">Blood Test(s)</a></li>
-                        </ul>
-                    </li>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                       <li class="active">
+							<a href="<?php echo base_url(); ?>memberdashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+						</li>
+						
+						<li>
+							<a href="javascript:void(0);" data-toggle="collapse"> Health & Fitness <span class=" glyphicon glyphicon-menu-down" ></span></a>
+							<ul class="collapse nav nav-second-level">
+								<li>
+									<a href="javascript:void(0);" data-toggle="collapse" > General Fitness Assessment <span class="glyphicon glyphicon-menu-down"></span></a>
+									<ul id="generalfitness" class="collapse nav nav-third-level">
+										<li><a href="<?php echo(base_url());?>healthandfitness/endurancetest">Endurance test</a></li>
+										<li><a href="<?php echo(base_url());?>healthandfitness/strengthtest">Strength test</a></li>
+										<li><a href="<?php echo(base_url());?>healthandfitness/flexibilitytest">Flexibility test</a></li>
+									</ul>
+								
+								</li>
+								<li><a href="#">General Medical Assessment</a></li>
+								<li><a href="#">Orthopaedic Screening</a></li>
+								<li><a href="#">Archieves</a></li>
+								<li><a href="#">Anthropometry</a></li>
+								<li><a href="#">Blood Test(s)</a></li>
+							</ul>
+						</li>
                     
                     
-                     <li>
-                         <a href="javascript:;" data-toggle="collapse" data-target="#portfolio"><i class="fa fa-user-md">
-                             
-                             </i> Portfolio <i class="fa fa-fw fa-caret-down"></i>
+                    <li>
+                         <a href="javascript:void(0);" data-toggle="collapse"> Portfolio <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
-                        <ul id="portfolio" class="collapse">
+                        <ul id="portfolio" class="collapse nav nav-second-level">
                             <li><a href="<?php echo base_url(); ?>portfolio">Body Composition</a></li>
                             <li><a href="<?php echo base_url(); ?>portfolio/viewfolio">View folio</a></li>
                             
                         </ul>
                     </li>
-                    
-                    
-                    
-					<li><a href="#"><i class="fa fa-external-link-square"></i>
- Health Asset Value</a></li>
+                    <li><a href="#"><i class="fa fa-external-link-square"></i>Health Asset Value</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
-                </ul>
+				
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.navbar-collapse -->
+            <!-- /.navbar-static-side -->
         </nav>
-
-       <!--content  inserted here--->
+		
+		
+		 <!--content  inserted here--->
 	     <?php if($bodyview)  : ?>  
     
                 
@@ -254,27 +249,43 @@
 		 <?php
 		   endif; 
 		  ?>
-	   <!--content inserted here --->
 
     </div>
     <!-- /#wrapper -->
 
+
+	
+	
+	
+
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
+	 <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
+	
+	 <script src="<?php echo base_url(); ?>application/assets/js/metisMenu.min.js"></script>
+	 <script src="<?php echo base_url(); ?>application/assets/js/raphael.min.js"></script>
+	 <script src="<?php echo base_url(); ?>application/assets/js/morris.min.js"></script>
+	 <script src="<?php echo base_url(); ?>application/assets/js/sb-admin-2.js"></script>
+
     <script src="<?php echo base_url(); ?>application/assets/js/changepass/changepass.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/profile/profile.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/healthandfitness/generalfitness.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
-     <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
+   
+    
+    
+    <!-- Morris Charts JavaScript --
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/raphael.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/morris.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/plugins/morris/morris-data.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/sidebar-menu.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/metisMenu.js"></script> -->
+	
 	
 
 </body>

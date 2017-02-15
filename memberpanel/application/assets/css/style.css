@@ -1,7 +1,7 @@
 body{
 	background: #FCFCFC  !important;
 }
-
+/*
 .dashbord-top-nav{
 	background:#F2652C;
 	border:0px !important;
@@ -11,11 +11,63 @@ body{
 	color:#FFF;
 }
 .dashbord-top-nav  ul li a{
-	color:#FFF;
+//	color:#FFF;
 }
 .dashbord-top-nav  ul li ul li a{
 	color:#323232;
 }
+*/
+/*
+.sidebar .sidebar-nav.navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+.sidebar .sidebar-search {
+  padding: 15px;
+}
+.sidebar ul li {
+  border-bottom: 1px solid #e7e7e7;
+}
+.sidebar ul li a.active {
+  background-color: #eeeeee;
+}
+.sidebar .arrow {
+  float: right;
+}
+.sidebar .fa.arrow:before {
+  content: "\f104";
+}
+.sidebar .active > a > .fa.arrow:before {
+  content: "\f107";
+}
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+  border-bottom: none !important;
+}
+.sidebar .nav-second-level li a {
+  padding-left: 37px;
+}
+.sidebar .nav-third-level li a {
+  padding-left: 52px;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    z-index: 9999;
+    position: absolute;
+    width: 250px;
+    margin-top: 51px;
+  }
+  .navbar-top-links .dropdown-messages,
+  .navbar-top-links .dropdown-tasks,
+  .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+}
+
+
+
+
+/*
 .side-nav {
 	top:50px !important;
 	background:#F2652C;
@@ -72,6 +124,63 @@ body{
 }
 
 */
+
+#wrapper {
+   background-color:#F2652C !important;
+}
+.navbar-default{
+	background-color: #F2652C;
+	border-color: #F2652C;
+}
+.navbar-default .navbar-brand {
+    color: #FFF;
+}
+.navbar-default .navbar-brand:hover {
+    color: #FFF;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #FFF;
+}
+.nav  a {
+    color: #FFF;
+    text-decoration: none;
+}
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: #F2652C;
+    border-color: #F2652C;
+	
+}
+.navbar-top-links li a:hover{
+	background:none;
+}
+.navbar-top-links li a {
+    padding: 13px;
+    min-height: 50px;
+}
+.sidebar ul li {
+    border-bottom: 0px solid #FF9471;
+}
+.sidebar .glyphicon{
+	float:right;
+	font-size:11px;
+	margin-top:3px;
+}
+.sidebar ul li a.active {
+    background-color: #FF9471;
+}
+.sidebar ul li a:hover , .sidebar ul li a:focus{
+	padding:none;
+	background:#FFF;
+	color:#323232;
+	border:none;
+	transition:.2s;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #EEE;
+}
+
 
 
 

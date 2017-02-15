@@ -75,4 +75,42 @@ class healthandfitness extends CI_Controller{
              redirect('memberlogin', 'refresh');
         }
     }
+    
+    public function generalmedicalassesment(){
+        if($this->session->userdata('user_data')){
+            $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $membershipno = $this->profilemodel->getMembershipNumber($customerId);
+            $validity = $this->profilemodel->getValidityString($membershipno);
+             $page = 'healthandfitness/generalmedicalassesment';
+            $header = "";
+            $headercontent="";
+            $result["medicalassesment"] = $this->healthandfitnessmodel->getGeneralMedicalassesment($membershipno);
+            
+            
+            createbody_method($result, $page, $header, $session, $headercontent);
+            
+        }  else {
+             redirect('memberlogin', 'refresh');
+        }
+    }
+    
+    public function bloodtest(){
+         if($this->session->userdata('user_data')){
+            $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $membershipno = $this->profilemodel->getMembershipNumber($customerId);
+            $validity = $this->profilemodel->getValidityString($membershipno);
+             $page = 'healthandfitness/bloodtest';
+            $header = "";
+            $headercontent="";
+            $result["bloodtest"] = $this->healthandfitnessmodel->getBloodTest($membershipno,$validity["VALIDITY_STRING"]);
+            
+            
+            createbody_method($result, $page, $header, $session, $headercontent);
+            
+        }  else {
+             redirect('memberlogin', 'refresh');
+        }
+    }
 }

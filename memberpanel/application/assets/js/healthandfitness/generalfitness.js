@@ -28,6 +28,11 @@ $("#visualactivity").dataTable({
    "ordering": false 
 });
 
-$('.ex1').slider({});
+$('.ex1').slider({
+        precision: 2,
+        tooltip:"show",
+        tooltip:"always"
+        
+});
 
 });

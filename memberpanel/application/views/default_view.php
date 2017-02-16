@@ -22,8 +22,8 @@
 	<link href="<?php echo base_url(); ?>application/assets/css/plugins/metis-menu.css" rel="stylesheet">
 	<!-- Custom Fonts --
     
-    <!--slider-->
-     <link href="<?php echo base_url(); ?>application/assets/css/slider.css" rel="stylesheet">
+    <!--slider
+     <link href="<?php echo base_url(); ?>application/assets/css/slider.css" rel="stylesheet">-->
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url(); ?>application/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -276,6 +276,7 @@
 	 <script src="<?php echo base_url(); ?>application/assets/js/raphael.min.js"></script>
 	 <script src="<?php echo base_url(); ?>application/assets/js/morris.min.js"></script>
 	 <script src="<?php echo base_url(); ?>application/assets/js/sb-admin-2.js"></script>
+         <!-- <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-slider.js"></script>-->
 
     <script src="<?php echo base_url(); ?>application/assets/js/changepass/changepass.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/profile/profile.js"></script>

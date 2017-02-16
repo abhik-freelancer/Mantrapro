@@ -231,7 +231,7 @@
                             
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-external-link-square"></i>Health Asset Value</a></li>
+                    <li><a href="#"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
@@ -270,6 +270,7 @@
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
+	    <script src="<?php echo base_url(); ?>application/assets/js/dataTbleBootstrap.js"></script>
 	 <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
 	
 	 <script src="<?php echo base_url(); ?>application/assets/js/metisMenu.min.js"></script>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 $('#vo2max').DataTable({
     "ordering": false
 });

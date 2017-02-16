@@ -1,7 +1,11 @@
 $(document).ready(function(){
 
 $('#vo2max').DataTable({
-    "ordering": false
+    "ordering": false,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    }
 });
 $("#pushup").DataTable({
     "ordering": false,

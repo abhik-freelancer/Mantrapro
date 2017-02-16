@@ -262,7 +262,7 @@ class healthandfitnessmodel extends CI_Model {
                INNER JOIN `blood_test_master` ON blood_test.`test_id` = blood_test_master.`blood_id`
                LEFT JOIN `blood_test_detail` ON `blood_test_master`.`blood_id` = blood_test_detail.`blood_id`
                LEFT JOIN `unit_master` ON blood_test_master.`unit_id` = unit_master.`unit_id`
-               WHERE blood_test.`membership_no` ='MHBPW1500000097' AND blood_test.`validity_string` ='2016-09-28 - 2017-09-28'";
+               WHERE blood_test.`membership_no` ='".$membershipno."' AND blood_test.`validity_string` ='".$validitystring."'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {

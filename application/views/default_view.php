@@ -258,14 +258,14 @@
 			
             <li class="dropdown-header">Mission & Vision</li>
             <p>To make healthier INDIA by improving HEALTH ASSECT VALUE OF every Indian. </p>
-            <a href="javascript:void(0)" class="btn cutome-link-btn">View More</a>
+            <a href="<?php echo base_url();?>about/mission_and_vision" class="btn cutome-link-btn">View More</a>
 		    <li class="divider"></li>
 			
 			
             <li class="dropdown-header">1st Life Style Health Club</li>
             <p>MANTRA, the First Life Style Health Club of Kolkata, and the leading Health Club chain in North Kolkata, whose prime focus being on increasing this critical ‘wealth’, makes a resolution to spread “Health is the Greatest Wealth” awareness amongst the Mantra Members.
             </p>
-            <a href="javascript:void(0)" class="btn cutome-link-btn">View More</a>
+            <a href="<?php echo base_url();?>about/life_style_health_club" class="btn cutome-link-btn">View More</a>
 			
 			
          </ul>

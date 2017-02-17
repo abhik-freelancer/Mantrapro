@@ -7,8 +7,6 @@ body{
 	
 	
 }
-
-
 *{
     margin:0;
     padding:0;
@@ -16,7 +14,7 @@ body{
    -webkit-font-smoothing: antialiased !important;
    -moz-osx-font-smoothing: grayscale !important;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-	
+	list-style:none;
     
 }
 textarea{
@@ -1078,6 +1076,21 @@ textarea{
 
 /******************About Us **********************/
 
+.row-container{
+	width:80% !important;
+	margin:2% auto !important;
+}
+.row-container img{
+	border-radius:8px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+.row-container h1{
+	font-size: 3.8em;
+	text-align: left;
+	font-weight: bold;
+}
 .about-us-row-container{
 	width:80% !important;
 	margin:2% auto !important;
@@ -1088,6 +1101,19 @@ textarea{
 	text-align: left;
 	font-weight: bold;
 }
+.about-us-row-container img{
+	border-radius:8px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+.desktop-about-img{
+	display:block !important;
+}
+.responsive-about-block-img{
+	display:none !important;
+}
+
 .first-text-col {
 	color:#F65E3E;
 }
@@ -1098,6 +1124,95 @@ textarea{
 .mantra-bout-text{
 	padding-left:4%;
 }
+.mission-vision-heading {
+	font-size: 3.8em;
+	text-align: left;
+	font-weight: bold;
+}
+.mission-and-vission img{
+	border-radius:8px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+.mission-and-vission h1{
+	font-size: 18px;
+	color: #FF4800;
+	margin-top: -5px;
+}
+.vision-highlight{
+	font-weight: bold;
+	color:#FF5100;
+	padding: 2%;
+	
+}
+.mission-vision-bg  p{
+	color:#FFF;
+	text-align:center;
+}
+/*-----------Life Style Health Club---------*/
+
+.parralax-health-style-block2 {
+    /* The image used */
+   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../images/getpassbg.jpg");
+   height:100%;
+   min-height: 100%; 
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 50px;
+   padding-bottom: 20px;
+   color:#D7D7D7 !important;
+}
+
+.life-text-block-2{
+	font-size: 1.2em;
+}
+.life-text-block-2 .glyphicon-hand-right{
+		font-size:5em;
+		text-align:center;
+	}
+ul.fa-ul li{
+	padding:2px 0;
+}
+ul.fa-ul li .badge{
+	background:#F2652C;
+}
+.health-right-icon{
+	text-align:center;
+	display:block;
+}
+.health-style-feature-icon{
+	text-align:center !important;
+}
+.health-style-feature-icon .badge{
+	font-size:1.5em;
+	padding: 3px 18px;
+	background:#FF654B;
+}
+.health-style-feature-title{
+	text-align:center !important;
+	font-size:2.3em;
+	color:#F8663F;
+}
+.gen-medical-assmnt1{
+	padding-top:10%;
+	font-size: 17px;
+}
+.health-style-block3 ul li{
+	padding:2% 0%;
+}
+.health-style-block4 .badge,.health-style-block5 .badge,.health-style-block6 .badge{
+	background:#F2652C;
+}
+.health-style-block4 ul li,.health-style-block5 ul li,.health-style-block6 ul li{
+	padding:2% 0%;
+}
+
+
+
+
 
 /*---------Contact Us--------*/
 .google-map-container{
@@ -1208,6 +1323,16 @@ textarea{
 	}
 }
 
+@media only screen and (max-width: 1199px){
+	.about-us-row-container {
+		width: 94% !important;
+    }
+	.row-container{
+		width:94% !important;
+	}
+	
+}
+
 
 
 @media only screen and (max-width: 1128px) {
@@ -1246,6 +1371,14 @@ textarea{
 @media only screen and (max-width: 1065px) {
 	.news-item {
       padding: 2% 4px 28%;
+	}
+}
+
+@media only screen and (max-width:1072px){
+	.row-container h1{
+		font-size: 2.8em;
+		text-align: center;
+		/*font-weight: bold; */
 	}
 }
 
@@ -1338,7 +1471,25 @@ textarea{
 	.facebook-page-container p{
 		text-align:center !important;
 	}
-	
+	.about-us-row-container img{
+		margin-bottom:4%;
+	}
+	.desktop-about-img{
+		display:none !important;
+	}
+	.responsive-about-block-img{
+		display:block !important;
+	}
+	.mantra-bout-text{
+		width:80%;
+		margin:5% auto;
+	}
+	.health-right-icon{
+		display:none;
+	}
+	.gen-medical-assmnt1 {
+		padding-top: 1%;
+	}
 }
 @media only screen and (max-width: 900px) {
 	.responsive-icon{
@@ -1408,6 +1559,10 @@ textarea{
 	}
 	.news-item {
 		padding: 2% 4px 28%;
+	}
+	.mantra-bout-text {
+    width: 98%;
+    margin: 5% auto;
 	}
 }
 @media only screen and (max-width: 636px) {
@@ -1511,6 +1666,11 @@ textarea{
 	.help-desc p {
 		font-size: 1.2em;
 	}
+	.mission-vision-heading {
+	font-size: 2.5em;
+	text-align: center;
+	
+	}
 }
 
 @media only screen and (max-width: 465px) {
@@ -1536,6 +1696,14 @@ textarea{
 	}
 	.video-desc p {
 		font-size: 1.3em;
+	}
+	.row-container h1 {
+		font-size: 2.2em;
+		text-align: center;
+	}
+	.about-first-head {
+		font-size: 17px;
+		color: #F65E3E;
 	}
 }
 
@@ -1565,6 +1733,9 @@ textarea{
 	#upcoming-events .news-item {
      padding: 3% 4px 36%;
 	}
+	.fa-ul {
+    margin-left: 0px !important;
+    }
 }	
 
 
@@ -1586,6 +1757,10 @@ textarea{
 		height: 238px;
 		max-height: 238px;
 		overflow: hidden;
+	}
+	.about-us-row-container h1 {
+    font-size: 2.8em;
+    text-align:center;
 	}
 }
 
@@ -1655,6 +1830,10 @@ textarea{
 		width:67%;
 		margin:0 auto;
 		
+	}
+	.mission-vision-heading {
+    font-size: 2.2em;
+    text-align: center;
 	}
 }
 

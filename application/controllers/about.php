@@ -29,8 +29,22 @@ class about extends CI_Controller {
 	//$page = 'contact/contact-detail';
 	createbody_method($result,$page,$header,$session);
 	
-	
-	
+}
+
+public function mission_and_vision(){
+	$page = "about/mission-and-vission";
+	$header="";
+	$session = "";
+	$result = "";
+	createbody_method($result,$page,$header,$session);
+}
+
+public function life_style_health_club(){
+	$page = "about/life-style-health-club";
+	$header="";
+	$session = "";
+	$result = "";
+	createbody_method($result,$page,$header,$session);
 }
 
 	

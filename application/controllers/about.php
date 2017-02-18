@@ -6,10 +6,7 @@ class about extends CI_Controller {
  {
    parent::__construct();
     $this->load->model('homemodel','',TRUE);
-    $this->load->model('contactmodel','',TRUE);
-	 $this->load->library('recaptcha');
-	
- }
+  }
 	
  public function index()
  {
@@ -31,21 +28,31 @@ class about extends CI_Controller {
 	
 }
 
-public function mission_and_vision(){
-	$page = "about/mission-and-vission";
-	$header="";
-	$session = "";
-	$result = "";
-	createbody_method($result,$page,$header,$session);
-}
-
-public function life_style_health_club(){
-	$page = "about/life-style-health-club";
-	$header="";
-	$session = "";
-	$result = "";
-	createbody_method($result,$page,$header,$session);
-}
+	public function mission_and_vision(){
+		$page = "about/mission-and-vission";
+		$header="";
+		$session = "";
+		$result = "";
+		createbody_method($result,$page,$header,$session);
+	}
+	
+	public function life_style_health_club(){
+		$page = "about/life-style-health-club";
+		$header="";
+		$session = "";
+		$result = "";
+		createbody_method($result,$page,$header,$session);
+	}
+	
+	public function mantra_testimonial(){
+		$page = "about/mantra-testimonial";
+		$header="";
+		$session = "";
+		$result['testimonials'] = $this->homemodel->getAllTestimonial();
+		createbody_method($result,$page,$header,$session);
+	}
+	
+	
 
 	
 }

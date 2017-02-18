@@ -21,6 +21,7 @@
     <link href="<?php echo base_url(); ?>application/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
 	<link href="<?php echo base_url(); ?>application/assets/css/animate.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>application/assets/css/pushy.css" rel="stylesheet">
 	
   <!--  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> -->
 
@@ -136,8 +137,9 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
-		</button> -->
-		<span class="glyphicon glyphicon-menu-hamburger responsive-icon" onclick="openNav()"></span>
+		</button> 
+		<span class="glyphicon glyphicon-menu-hamburger responsive-icon" onclick="openNav()"></span>-->
+		<span class="glyphicon glyphicon-menu-hamburger responsive-icon menu-btn"></span>
 	
 		<!-- <a class="navbar-brand" href="#">My Store</a> -->
 	</div>
@@ -332,7 +334,7 @@
                   </div>
                </div>
             </div>
-			 <a href="javascript:void(0)" class="btn cutome-link-btn">More Testimonials</a>
+			 <a href="<?php echo base_url();?>about/mantra_testimonial" class="btn cutome-link-btn">More Testimonials</a>
             <li class="divider"></li>
 			
 			<li class="dropdown-header">Career</li>
@@ -385,7 +387,7 @@
 		<!-- End Services -->
 		<li><a href="#">Event</a></li>
 		<li><a href="#">Fitness Education</a></li>
-		<li><a href="#">Nutrition</a></li>
+		<li><a href="<?php echo base_url();?>nutrition">Nutrition</a></li>
 		<li><a href="#">Gallery</a></li>
 		<li><a href="#">Body Calculator</a></li>
 		<li><a href="<?php echo base_url();?>contact">Contact Us</a></li>
@@ -408,7 +410,7 @@
 	</nav>
 	
 
-<!-- Mobile Menu -->
+<!-- Mobile Menu --
 <div id="mobileMenu" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <div class="container-fluid">
@@ -420,8 +422,8 @@
                <a href="#about-sub" class="list-group-item" data-toggle="collapse" data-parent="#mobile-menu-main">About<span class="caret"></span></a>
                <div class="collapse" id="about-sub">
                   <a href="<?php echo base_url();?>about/about_us" class="list-group-item" >About Us</a>
-                  <a href="#" class="list-group-item" >Mission & Vision</a>
-                  <a href="#" class="list-group-item" >1st Life Style Health Club</a>
+                  <a href="<?php echo base_url();?>about/mission_and_vision" class="list-group-item" >Mission & Vision</a>
+                  <a href="<?php echo base_url();?>about/life_style_health_club" class="list-group-item" >1st Life Style Health Club</a>
                   <a href="#" class="list-group-item" >Team Mantra</a>
                   <a href="#" class="list-group-item" >Testimonials</a>
                   <a href="#" class="list-group-item" >Career</a>
@@ -458,6 +460,57 @@
 </div>
 <!-- end Mobile Menu-->
 
+
+        <!-- Pushy Menu -->
+        <nav class="pushy pushy-left" data-focus="#first-link">
+            <div class="pushy-content">
+                <ul>
+					<li class="pushy-link"><a href="<?php echo base_url();?>">Home</a></li>
+                    <li class="pushy-submenu">
+                        <button id="first-link">About <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button> 
+                        <ul>
+                            <li class="pushy-link"><a href="<?php echo base_url();?>about/about_us">  About Us</a></li>
+                            <li class="pushy-link"><a href="<?php echo base_url();?>about/mission_and_vision">Mission & Vision</a></li>
+                            <li class="pushy-link"><a href="<?php echo base_url();?>about/life_style_health_club">1st Life Style Health Club</a></li>
+							<li class="pushy-link"><a href="#">Team Mantra</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_testimonial">Testimonials</a></li>
+							<li class="pushy-link"><a href="#">Career</a></li>
+                        </ul>
+                    </li>
+                    <li class="pushy-submenu">
+                        <button>Services <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
+                        <ul>
+							<li class="pushy-link"><a href="#">Packages Offered</a></li>
+							<li class="pushy-link"><a href="#">Branch Wise Rate Chart</a></li>
+							<li class="pushy-link"><a href="#">Branch Wise Classes & Consultancy Schedule</a></li>
+                        </ul>
+                    </li>
+					<li class="pushy-link"><a href="#" >Fitness Education</a></li>
+					<li class="pushy-link"><a href="<?php echo base_url();?>nutrition" >Nutrition</a></li>
+                    <li class="pushy-submenu">
+                        <button>Gallery <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
+                        <ul>
+							<li class="pushy-link"><a href="#">Photo gallery</a></li>
+                            <li class="pushy-link"><a href="#">Video Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="pushy-submenu">
+                        <button>Body Calculator <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
+                        <ul>
+                            <li class="pushy-link"><a href="#">Body Fat %</a></li>
+                            <li class="pushy-link"><a href="#">Harvard Step Test</a></li>
+                            <li class="pushy-link"><a href="#">Sit & Reach Test</a></li>
+                            <li class="pushy-link"><a href="#">Push Up & Sit Up Test</a></li>
+                        </ul>
+                    </li>
+                    <li class="pushy-link"><a href="<?php echo base_url();?>contact">Contact Us</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Site Overlay -->
+        <div class="site-overlay"></div>
 
   
 </div>
@@ -514,6 +567,7 @@
     <!--<script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>-->
 	<script src="<?php echo base_url(); ?>application/assets/js/wow.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/pushy.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/get-pass.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/events.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/mayihelp.js"></script>	

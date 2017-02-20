@@ -311,5 +311,72 @@ class healthandfitnessmodel extends CI_Model {
             return $percentage;
         }
     }
+    
+    
+    public function getSpineCrvicalData($membershipno,$validity){
+        $data =array();
+        $sql= "SELECT
+                    crv_spine_flexion ,                          
+                    crv_spine_extension    ,   
+                    crv_spine_right_rotation  ,
+                    crv_spine_left_rotation ,  
+                    crv_spine_right_lat_flx  , 
+                    crv_spine_left_lat_flx ,
+                    date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y')as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "crv_spine_flexion" => $row->crv_spine_flexion,
+                    "crv_spine_extension" => $row->crv_spine_extension,
+                    "crv_spine_right_rotation" => $row->crv_spine_right_rotation,
+                    "crv_spine_left_rotation" => $row->crv_spine_left_rotation,
+                    "crv_spine_right_lat_flx" => $row->crv_spine_right_lat_flx,
+                    "crv_spine_left_lat_flx" => $row->crv_spine_left_lat_flx,
+                    "date_of_collection" => $row->date_of_collection,
+                    
+                );
+            }
+            return $data;
+        } else {
 
+            return $data;
+        }
+    }
+
+    
+    
+    public function getSpineDorsalData($membershipno,$validity){
+        $data =array();
+        $sql= "SELECT
+                    dor_spine_flexion ,        
+                    dor_spine_extension   ,    
+                    dor_spine_right_lat_flx  , 
+                    dor_spine_left_lat_flx  , 
+                    date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "dor_spine_flexion" => $row->dor_spine_flexion,
+                    "dor_spine_extension" => $row->dor_spine_extension,
+                    "dor_spine_right_lat_flx" => $row->dor_spine_right_lat_flx,
+                    "dor_spine_left_lat_flx" => $row->dor_spine_left_lat_flx,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
 }

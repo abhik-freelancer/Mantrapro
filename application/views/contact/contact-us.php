@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img src="<?php echo base_url(); ?>application/assets/images/about-us.jpg" class="img-responsive" />
+			<img src="<?php echo base_url(); ?>application/assets/images/contactus-banner.jpg" class="img-responsive" />
 		</div>
 	</div>
 </div>

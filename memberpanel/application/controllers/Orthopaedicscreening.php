@@ -20,23 +20,48 @@ class Orthopaedicscreening  extends CI_Controller
         $this->load->library('session');
     }
     
-    public function spinehealthtest(){
-         if ($this->session->userdata('user_data')) {
+    public function index(){
+           if($this->session->userdata('user_data')){
             $session = $this->session->userdata('user_data');
             $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
             $membershipno = $this->profilemodel->getMembershipNumber($customerId);
             $validity = $this->profilemodel->getValidityString($membershipno);
-            
-            $page = 'healthandfitness/endurancetest';
+             $page = 'healthandfitness/spinehealth';
             $header = "";
             $headercontent="";
-            $result["Vo2Max"] = $this->healthandfitnessmodel->getVo2MaxResult($membershipno,$validity["VALIDITY_STRING"]);
-            $result["pushuptest"] = $this->healthandfitnessmodel->getPushUpTest($membershipno,$validity["VALIDITY_STRING"]);
-            $result["situptest"] = $this->healthandfitnessmodel->getSitUpTest($membershipno,$validity["VALIDITY_STRING"]);
+            
+            $result["cervical"] = $this->healthandfitnessmodel->getSpineCrvicalData($membershipno,$validity["VALIDITY_STRING"]);
+            $result["dorsal"] = $this->healthandfitnessmodel->getSpineDorsalData($membershipno,$validity["VALIDITY_STRING"]);
+            $result["lumber"] = $this->healthandfitnessmodel->lumberSpine($membershipno,$validity["VALIDITY_STRING"]);
+            
+            $result["rShld"] = $this->healthandfitnessmodel->getRightShoulderHealth($membershipno,$validity["VALIDITY_STRING"]);
+            $result["lShld"] = $this->healthandfitnessmodel->getLeftShoulderHealth($membershipno,$validity["VALIDITY_STRING"]);
+            $result["dysscapula"] = $this->healthandfitnessmodel->getScapularDyskinesia($membershipno,$validity["VALIDITY_STRING"]);
+            $result["corestability"] = $this->healthandfitnessmodel->getCoreStability($membershipno,$validity["VALIDITY_STRING"]);
+            
+            $result["righthip"] = $this->healthandfitnessmodel->getRightHeapHealth($membershipno,$validity["VALIDITY_STRING"]);
+            $result["lefthip"] = $this->healthandfitnessmodel->getLeftHeapHealth($membershipno,$validity["VALIDITY_STRING"]);
+            
+            $result["rightankle"] = $this->healthandfitnessmodel->getRightAnkle($membershipno,$validity["VALIDITY_STRING"]);
+            $result["leftankle"] = $this->healthandfitnessmodel->getLeftAnkle($membershipno,$validity["VALIDITY_STRING"]);
+            
+            
+            $result["rightknee"] = $this->healthandfitnessmodel->getRightKnee($membershipno,$validity["VALIDITY_STRING"]);
+            $result["leftknee"] = $this->healthandfitnessmodel->getLeftKnee($membershipno,$validity["VALIDITY_STRING"]);
+            
+            
+            
+            $result["rightMuscles"] = $this->healthandfitnessmodel->getMusclesRight($membershipno,$validity["VALIDITY_STRING"]);
+            $result["leftMuscles"] = $this->healthandfitnessmodel->getMusclesLeft($membershipno,$validity["VALIDITY_STRING"]);
             
             createbody_method($result, $page, $header, $session, $headercontent);
-        }else{
+            
+        }  else {
              redirect('memberlogin', 'refresh');
         }
     }
+    
+   
+    
+    
 }

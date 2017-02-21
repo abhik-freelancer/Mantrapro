@@ -101,7 +101,7 @@ class healthandfitness extends CI_Controller{
             $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
             $membershipno = $this->profilemodel->getMembershipNumber($customerId);
             $validity = $this->profilemodel->getValidityString($membershipno);
-             $page = 'healthandfitness/bloodtest';
+            $page = 'healthandfitness/bloodtest';
             $header = "";
             $headercontent="";
             $result["bloodtest"] = $this->healthandfitnessmodel->getBloodTest($membershipno,$validity["VALIDITY_STRING"]);
@@ -113,4 +113,6 @@ class healthandfitness extends CI_Controller{
              redirect('memberlogin', 'refresh');
         }
     }
+    
+    
 }

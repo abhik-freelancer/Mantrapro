@@ -379,4 +379,376 @@ class healthandfitnessmodel extends CI_Model {
             return $data;
         }
     }
+    
+    public function lumberSpine($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                    `lmb_spine_flexion`,
+                    `lmb_spine_extension`,
+                    `lmb_spine_right_lat_flx`,
+                    `lmb_spine_left_lat_flx`, 
+                    date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "lmb_spine_flexion" => $row->lmb_spine_flexion,
+                    "lmb_spine_extension" => $row->lmb_spine_extension,
+                    "lmb_spine_right_lat_flx" => $row->lmb_spine_right_lat_flx,
+                    "lmb_spine_left_lat_flx" => $row->lmb_spine_left_lat_flx,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    public function getRightShoulderHealth($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                    `shoulder_rgt_flx`,
+                    `shoulder_rgt_ext`,
+                    `shoulder_rgt_int`, 
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "shoulder_rgt_flx" => $row->shoulder_rgt_flx,
+                    "shoulder_rgt_ext" => $row->shoulder_rgt_ext,
+                    "shoulder_rgt_int" => $row->shoulder_rgt_int,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    public function getLeftShoulderHealth($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                   `shoulder_lft_flx`,
+                    `shoulder_lft_ext`,
+                    `shoulder_lft_int`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "shoulder_lft_flx" => $row->shoulder_lft_flx,
+                    "shoulder_lft_ext" => $row->shoulder_lft_ext,
+                    "shoulder_lft_int" => $row->shoulder_lft_int,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    //Scapular Dyskinesia
+    public function getScapularDyskinesia($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                   `dys_lft_scp`,
+                    `dys_rgt_scp`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "dys_lft_scp" => $row->dys_lft_scp,
+                    "dys_rgt_scp" => $row->dys_rgt_scp,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    public function getCoreStability($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                  core_stability,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "core_stability" => $row->core_stability,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+        
+    }
+    
+    public function getRightHeapHealth($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                  hip_rgt_flx,
+                 `hip_rgt_extn`,
+                  `hip_rgt_ext_rot`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "hip_rgt_flx" => $row->hip_rgt_flx,
+                    "hip_rgt_extn"=>$row->hip_rgt_extn,
+                    "hip_rgt_ext_rot"=>$row->hip_rgt_ext_rot,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    public function getLeftHeapHealth($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                    `hip_lft_flx`,
+                    `hip_lft_extn`,
+                    `hip_lft_ext_rot`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "hip_lft_flx" => $row->hip_lft_flx,
+                    "hip_lft_extn"=>$row->hip_lft_extn,
+                    "hip_lft_ext_rot"=>$row->hip_lft_ext_rot,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    public function getRightAnkle($membershipno,$validity){
+         $data=array();
+        $sql= "SELECT
+                    `rgt_ank_dsr_flx`,
+                    `rgt_ank_pln_flx`,
+                    `rgt_ank_flat_foot`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "rgt_ank_dsr_flx" => $row->rgt_ank_dsr_flx,
+                    "rgt_ank_pln_flx"=>$row->rgt_ank_pln_flx,
+                    "rgt_ank_flat_foot"=>$row->rgt_ank_flat_foot,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+     public function getLeftAnkle($membershipno,$validity){
+         $data=array();
+        $sql= "SELECT
+                   `lft_ank_dsr_flx`,
+                    `lft_ank_pln_flx`,
+                    `lft_ank_flat_foot`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "lft_ank_dsr_flx" => $row->lft_ank_dsr_flx,
+                    "lft_ank_pln_flx"=>$row->lft_ank_pln_flx,
+                    "lft_ank_flat_foot"=>$row->lft_ank_flat_foot,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    public function getRightKnee($membershipno,$validity){
+         $data=array();
+        $sql= "SELECT
+                   `rgt_knee_flx`,
+                    `rgt_knee_extn`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "rgt_knee_flx" => $row->rgt_knee_flx,
+                    "rgt_knee_extn"=>$row->rgt_knee_extn,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    public function getLeftKnee($membershipno,$validity){
+         $data=array();
+        $sql= "SELECT
+                   `lft_knee_flx`,
+                    `lft_knee_extn`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "lft_knee_flx" => $row->lft_knee_flx,
+                    "lft_knee_extn"=>$row->lft_knee_extn,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    
+    public function getMusclesRight($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                   `Latissimus_dorsi`,
+                    `ilio_rgt`,
+                    `itb_rgt`,
+                    `pectorals`,
+                    `hamstrings`,
+                    `rectus_femoris`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "Latissimus_dorsi" => $row->Latissimus_dorsi,
+                    "ilio_rgt"=>$row->ilio_rgt,
+                    "itb_rgt"=>$row->itb_rgt,
+                    "pectorals"=>$row->pectorals,
+                    "hamstrings"=>$row->hamstrings,
+                    "rectus_femoris"=>$row->rectus_femoris,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    
+    public function getMusclesLeft($membershipno,$validity){
+        $data=array();
+        $sql= "SELECT
+                   `Latissimus_dorsi_lft`,
+                    `ilio_lft`,
+                    `itb_lft`,
+                    `pectorals_lft`,
+                    `hamstrings_lft`,
+                    `rectus_femoris_lft`,
+                    `gastrosoleus_lft`,
+                     date_format(ortho_screening.`date_of_collection`,'%d-%m-%Y') as date_of_collection
+                    FROM 
+                    `ortho_screening`
+                    WHERE ortho_screening.`membership_no` ='".$membershipno."' AND "
+                . " ortho_screening.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "Latissimus_dorsi_lft" => $row->Latissimus_dorsi_lft,
+                    "ilio_lft"=>$row->ilio_lft,
+                    "itb_lft"=>$row->itb_lft,
+                    "pectorals_lft"=>$row->pectorals_lft,
+                    "hamstrings_lft"=>$row->hamstrings_lft,
+                    "rectus_femoris_lft"=>$row->rectus_femoris_lft,
+                    "date_of_collection"=>$row->date_of_collection
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
+    
+    
 }

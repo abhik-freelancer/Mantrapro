@@ -55,6 +55,71 @@ $("#visualactivity").dataTable({
         searchPlaceholder: "Search..."
     }
 });
+//
+$("#cervical").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    }
+});
+
+$("#dorsal").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    }
+});
+
+
+$("#lumber").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    }
+});
+//Scapularshld
+$("#Scapularshld").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    },
+      "info":     false
+    
+});
+//rightshld
+$("#rightshld").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    },
+     "info":     false
+});
+
+//leftshld
+$("#leftshld").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    },
+     "info":     false
+});
+//corestablity
+$("#corestablity , #rhip,#lhip,#rankle,#lankle,#rknee,#lknee,#rmsl,#lmsl").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    },
+     "info":     false
+});
+
+//rhip
 
 $('.ex1').slider({
         precision: 2,

@@ -449,7 +449,7 @@
                                 </h3>
                                 </a>
                      </div>
-                     <div id="collaps3" class="panel-body collapse">
+                     <div id="collapse3" class="panel-body collapse">
                          <div class="col-lg-6">
                              <div class="panel panel-warning">
                                      <div class="panel-heading">

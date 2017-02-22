@@ -1,11 +1,11 @@
 /*--@CSS Document---*/
 html{
    font-family: 'Roboto', sans-serif;
- /*  height:100%; */
+  height:100%; 
 }
 body{
     font-family: 'Roboto', sans-serif;
-/*	height:100%; */
+	height:100%; 
 	
 	
 }
@@ -63,7 +63,7 @@ textarea{
     width:100%;
    // margin-top:200px;
     margin-top:0px;
-  //  overflow-x:hidden;
+    overflow-x:hidden;
 }
  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   width: 100%;
@@ -1296,151 +1296,6 @@ ul.fa-ul li .badge{
 	text-align:left !important;
 }
 
-/*---------Video Gallery-------*/
-.parralax-video-gallery{
-	//background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)), url("../images/video-gallery.jpg");
-   background:#F8F8F8;
-   height:100%;
-   min-height: 100%; 
-   background-attachment: fixed;
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   padding-top: 50px;
-   padding-bottom: 50px;
-   color:#D7D7D7 !important;
-}
-
-
-
-/*---------------Body Calculator------------*/
-.custom-form-container label{
-	margin-bottom:2px;
-}
-
-.custom-form-container .form-group {
-    margin-bottom: 10px;
-}
-.custom-form-container .form-control{
-	height:30px;
-	border: 1px solid #D1CFCF;
-}
-.body-calculator h1{
-	font-size:4em;
-	color:#F2652C;
-	text-align:center;
-}
-.custom-form-container button[type=submit]{
-	width: 100% !important;
-	height:44px;
-	margin-top:2%;
-	background:#F2652C;
-	color: #FFF !important;
-	/*background: #EFEFEF none repeat scroll 0% 0%;
-	border: 1px solid #CCC;
-	color: #F05328;*/
-	font-weight: 700;
-}
-.body-cal-form-container{
-	background: transparent;
-	border:1px solid #E3E0E0;
-	padding:8% 4%;
-	border-radius:2%;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-	margin-top:15%;
-}
-.body-cal-form-container label{
-	color:#F2652C;
-}
-
-.body-calc-result-view {
-  position: relative;
-  //display:block;
- // float:left;
-  display: inline-table;
-  width: 100px;
-  height: 100px;
-  padding: 4% 1%;
-  margin: 10px;
-  color: #444444;
-  text-align: center;
-  text-decoration: none;
-/*  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
-  -webkit-box-shadow: 0 0 0 1px #F8F8F8 inset, 0 0 0 1px #CCCCCC;
-  box-shadow: 0 0 0 1px #F8F8F8 inset, 0 0 0 1px #CCCCCC; */
-  
- // border: 2px solid #FB8F72;
-  border-radius: 5%;
-}
-.body-calc-result-view>span{
-	font-size: 12px;
-	font-weight: 700;
-	//text-shadow: 2px 1px 2px #271616;
-}
-.body-calc-result-view .label {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  font-size: 0.9em;
-}
-.bdy-cal-result-view1{
-	background:#E33BF2;
-	color:#FFF;
-}
-
-.bdy-cal-result-view2{
-	background:#8F52FF;
-	color:#FFF;
-} 
-.bdy-cal-result-view3{
-	background:#1ED3C1;
-	color:#FFF;
-} 
-.bdy-cal-result-view4{
-	background:#FF5557;
-	color:#FFF;
-}
-.bdy-cal-result-view5{
-	background:#1FC5C8;
-	color:#FFF;
-}
-.bdy-cal-result-view6{
-	background:#3D3846;
-	color:#FFF;
-}
-.bdy-cal-result-view7{
-	background:#C49B12;
-	color:#FFF;
-}
-.bdy-cal-result-view8{
-	background:#FC863D;
-	color:#FFF;
-}
-
-.result-btn-col1 {
-  color: #ffffff;
-  background-color: #a264e7;
-  border-color: #62309a;
-}
-
-.body-calculator h3{
-	text-align: center;
-	font-size: 30px;
-	color: #5F5C5C;
-}
-
-.desktop-view-body-fat-result{
-	display:block;
-}
-.responsive-view-body-fat-result{
-	display:none !important;
-}
-
-
-/*-------------Harvard step test --------------*/
-.harvard-test-result h2{
-	text-align:center;
-}
 
 /*---------Contact Us--------*/
 .google-map-container{
@@ -1721,24 +1576,6 @@ ul.fa-ul li .badge{
 	.fitness-ed-yr{
 	text-align:center !important;	
 	}
-	.desktop-view-body-fat-result{
-		display:none !important;
-	}
-	.responsive-view-body-fat-result{
-		display:block !important;
-	}
-	.body-cal-form-container {
-        margin-top: 2%;
-		padding: 3% 4%;
-	}
-	.body-calc-result-view {
-		width: 106px;
-		height: 106px;
-	}
-	.body-fat-per-result{
-		margin-left:4%;
-	}
-	
 }
 @media only screen and (max-width: 900px) {
 	.responsive-icon{
@@ -1752,20 +1589,10 @@ ul.fa-ul li .badge{
 	}
 	
 }
-@media only screen and (max-width: 891px) {
-	.body-fat-per-result{
-		margin-left:10%;
-	}
-}
 
 @media only screen and (max-width: 873px){
 	.news-item {
     padding: 2% 4px 20%;
-	}
-}
-@media only screen and (max-width: 795px) {
-	.body-fat-per-result{
-		margin-left:0%;
 	}
 }
 
@@ -1803,12 +1630,6 @@ ul.fa-ul li .badge{
 	}
 	
 }	
-@media only screen and (max-width: 719px) {
-	.body-fat-per-result{
-		margin-left:10%;
-	}
-}
-
 @media only screen and (max-width: 682px) {
 	.service-icon{
 		width:46%;
@@ -1904,11 +1725,6 @@ ul.fa-ul li .badge{
 	}
 }
 
-@media only screen and (max-width: 515px) {
-	.body-fat-per-result {
-		margin-left: 5%;
-	}
-}
 
 @media only screen and (max-width: 480px) {
 	#upcoming-events {
@@ -1980,22 +1796,12 @@ ul.fa-ul li .badge{
 		font-size: 17px;
 		color: #F65E3E;
 	}
-	.body-fat-per-result {
-		margin-left: 0%;
-	}
 }
-/*
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
-}*/
-
-@media screen and (max-width: 442px) {
-  .body-calc-result-view{
-	  width:100px;
-  }
 }
-
 
 @media only screen and (max-width: 424px) {
 	.service-icon{
@@ -2022,11 +1828,7 @@ ul.fa-ul li .badge{
     margin-left: 0px !important;
     }
 }	
-@media only screen and (max-width: 421px) {
-	.body-calc-result-view{
-	  width:41%;
-  }
-}
+
 
 @media only screen and (max-width: 410px) {
 	#events-and-offer-box-container {
@@ -2130,15 +1932,6 @@ ul.fa-ul li .badge{
 	#upcoming-events .news-item {
 		padding: 6% 4px 65%;
 	}
-}
-
-@media only screen and (max-width: 291px) {
-	.body-calc-result-view{
-	 width: 96%;
-	 margin-left:10px;
-	 border-radius: 0;
-	 height: 56px;
-  }
 }
 
 

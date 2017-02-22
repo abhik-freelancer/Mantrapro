@@ -606,7 +606,7 @@
 				
 			</div>
 			<div class="more-video">
-				<button type="button" class="btn btn-danger more-videos-btn" onclick="">More Videos</button>
+				<button type="button" class="btn btn-danger more-videos-btn" onclick="window.location.href='<?php echo base_url();?>gallery/video_gallery'">More Videos</button>
 			</div>
 		</div>
 		

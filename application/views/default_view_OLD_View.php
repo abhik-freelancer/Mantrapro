@@ -22,12 +22,8 @@
 	
 	<link href="<?php echo base_url(); ?>application/assets/css/animate.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>application/assets/css/pushy.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/assets/css/amazingslider-1.css">
 	
-
-
-	
-  <!--  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> -->
+<!--	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -389,15 +385,11 @@
 		</li>
 		
 		<!-- End Services -->
-		<li><a href="<?php echo base_url();?>fitness_education">Fitness Education</a></li>
+		<li><a href="#">Event</a></li>
+		<li><a href="#">Fitness Education</a></li>
 		<li><a href="<?php echo base_url();?>nutrition">Nutrition</a></li>
-		<li>
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-               <li><a href="<?php echo base_url();?>gallery/video_gallery">Video Gallery</a></li>
-            </ul>
-		</li>
-		<li><a href="<?php echo base_url();?>body_calculator">Body Calculator</a></li>
+		<li><a href="#">Gallery</a></li>
+		<li><a href="#">Body Calculator</a></li>
 		<li><a href="<?php echo base_url();?>contact">Contact Us</a></li>
 		</ul>
 			<!--	<ul class="nav navbar-nav navbar-right">
@@ -493,16 +485,15 @@
 							<li class="pushy-link"><a href="#">Branch Wise Classes & Consultancy Schedule</a></li>
                         </ul>
                     </li>
-					<li class="pushy-link"><a href="<?php echo base_url();?>fitness_education">Fitness Education</a></li>
+					<li class="pushy-link"><a href="#" >Fitness Education</a></li>
 					<li class="pushy-link"><a href="<?php echo base_url();?>nutrition" >Nutrition</a></li>
                     <li class="pushy-submenu">
                         <button>Gallery <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
                         <ul>
-							<!--<li class="pushy-link"><a href="#">Photo gallery</a></li>-->
-                            <li class="pushy-link"><a href="<?php echo base_url();?>gallery/video_gallery">Video Gallery</a></li>
+							<li class="pushy-link"><a href="#">Photo gallery</a></li>
+                            <li class="pushy-link"><a href="#">Video Gallery</a></li>
                         </ul>
                     </li>
-					<li class="pushy-link"><a href="#">Body Calculator</a></li>
                     <li class="pushy-submenu">
                         <button>Body Calculator <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
                         <ul>
@@ -517,7 +508,8 @@
                 </ul>
             </div>
         </nav>
-		<!-- Site Overlay -->
+
+        <!-- Site Overlay -->
         <div class="site-overlay"></div>
 
   
@@ -571,32 +563,21 @@
     <script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 	<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyBFfcYfF1vd5f6Uv9SXPzqtgxeUuOkFzf0"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
-	 <script src="<?php echo base_url(); ?>application/assets/js/sliderengine/amazingslider.js"></script>
-	 <script src="<?php echo base_url(); ?>application/assets/js/sliderengine/initslider-1.js"></script>
-	
-	
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.bootstrap.newsbox.js"></script>
-	<!--<script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>-->
+    <!--<script src="<?php echo base_url(); ?>application/assets/js/mapplace.js"></script>-->
 	<script src="<?php echo base_url(); ?>application/assets/js/wow.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/mantra-style.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/pushy.min.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/get-pass.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/events.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/mayihelp.js"></script>	
-	<script src="<?php echo base_url(); ?>application/assets/js/bodycalculator/body-calculator.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/contact/contact-us.js"></script>	
-	
-	
-	
-	
 
     <!-- Script to Activate the Carousel -->
 
              
 	
 	<script>
-	
-
 	/*
 jQuery(document).ready(function(){
     $(".dropdown").hover(
@@ -623,9 +604,6 @@ $(document).ready(function(){
     pause: true,
     interval: 4000,
   }); */
-  
- 
-
 });
 
 // When the DOM is ready, run this function
@@ -743,7 +721,6 @@ function closeNav() {
 	});
 }
 	
-
 </script>
 
 </body>

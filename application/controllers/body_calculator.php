@@ -13,11 +13,18 @@ class body_calculator extends CI_Controller {
 	$page = "body_calculator/mantra-body-calculator";
 	$header = "";
 	$session="";
-	$result['venue']=$this->bodycalculatormodel->getLocation();
+	//$result['venue']=$this->bodycalculatormodel->getLocation();
+	$result="";
 	createbody_method($result,$page,$header,$session);
  }
  
- public function InsertOutsideBodyFat(){
+ /*
+	@method InsertOutsideBodyFat
+	@date 22-02-2017
+	@by Mithilesh
+*/
+ 
+ public function calculateBodyFat(){
 	$json_response = array();
 	$outsidebodyfat = array();
 	$entry_date = date("Y-m-d");
@@ -78,8 +85,8 @@ class body_calculator extends CI_Controller {
 			"is_sms_sent" => $this->sendSMS($mobile,$sms_message)
 			
 		);
-		$insertoutsidebodyfat = $this->bodycalculatormodel->InsertIntoOutsideBodyFat($outsidebodyfat);
-			if($insertoutsidebodyfat){
+		$insertStatus = $this->InsertOutsideBodyFat($outsidebodyfat);
+			if($insertStatus){
 				$json_response = array("msg_code"=>1,"msg_data"=>$bodyfatpercentage);
 			}
 			else{
@@ -99,10 +106,347 @@ class body_calculator extends CI_Controller {
 	exit();
 	
 }
+
+	public function InsertOutsideBodyFat($outsidebodyfat){
+		$insertresult = $this->bodycalculatormodel->InsertIntoOutsideBodyFat($outsidebodyfat);	
+		return $insertresult;
+	}
+
+
+
+/*
+	@method InsertOutsideHarvardTest
+	@date 23-02-2017
+	@by Mithilesh
+*/
+
+	public function calculateHarvardTest(){
+		$json_response = array();
+		$outsideharvardtest = array();
+		$entry_date = date("Y-m-d");
+		$firstname = trim($this->input->post('harvard-test-firstname'));
+		$lastname = trim($this->input->post('harvard-test-lastname'));
+		$gender = trim($this->input->post('harvard-test-gender'));
+		$mobile = trim($this->input->post('harvard-test-mobile'));
+		$email = trim($this->input->post('harvard-test-email'));
+		$no_of_sec = trim($this->input->post('no_of_sec'));
+		$pulserate = trim($this->input->post('pulse-rate'));
+		
+		$validation_err = $this->validateHarvardTest($firstname,$lastname,$mobile,$no_of_sec,$pulserate);
+		if($validation_err){
+			$email_validate = $this->validateEmail($email);
+			if($email_validate){
+				$harvardtestresult = $this->bodycalculatormodel->getHarvardTestResult($no_of_sec,$pulserate,$gender);
+				$score = $harvardtestresult['harvardtestScore'];
+				$rating = $harvardtestresult['harvardtestRating'];
+				
+				$message ="Dear ".$firstname.",\nYour Vo2 max is ".$score." which is in ".$rating." category. \n ----- Team Mantra";
+				
+				$outsideharvardtest = array(
+					"entry_date" => $entry_date,
+					"first_name" => $firstname,
+					"last_name" => $lastname,
+					"gender" => $gender,
+					"mobile_no" => $mobile,
+					"email" => $email,
+					"location" => "SELF", // will change later
+					"duration" => $no_of_sec,
+					"pulse_rate" => $pulserate,
+					"score" => $score,
+					"rating" => $rating,
+					//"is_sms_sent" => "N"
+					"is_sms_sent" => $this->sendSMS($mobile,$message)
+				);
+				
+				$insertStatus = $this->insertHarvardTest($outsideharvardtest);	
+				if($insertStatus){
+					$json_response = array("msg_code" => 1, "msg_data" => $harvardtestresult);
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data"=>"There is some error.Please try again...");
+				}
+				
+			}
+			else{
+				$json_response = array("msg_code" => 0, "msg_data" => "Email is not valid");
+			}
+		}
+		else{
+			$json_response = array("msg_code" => 0, "msg_data" => "* Fields are required");
+		}
+		
+		header('Content-Type: application/json');
+		echo json_encode($json_response);
+		exit();
+	}
+	
+	public function insertHarvardTest($outsidesitandreach){
+		$insertresult = $this->bodycalculatormodel->InsertOutsideHarvardTest($outsideharvardtest);	
+		return $insertresult;
+	}
+	
+
+	/*
+	@method calculateSitAndReach
+	@Date 24.02.2016
+	@By Mithilesh
+	*/
+	
+	public function calculateSitAndReach(){
+		$json_response = array();
+		$outsidesitandreach = array();
+		$entry_date = date("Y-m-d");
+		$firstname = trim($this->input->post('sitandreach-firstname'));
+		$lastname = trim($this->input->post('sitandreach-lastname'));
+		$gender = trim($this->input->post('sitandreach-gender'));
+		$dob = trim($this->input->post('sitandreach-dob'));
+		$mobile = trim($this->input->post('sitandreach-mobile'));
+		$email = trim($this->input->post('sitandreach-email'));
+		$age = trim($this->input->post('sitandreach-age'));
+		$distance = trim($this->input->post('sitandreach-distance'));
+		$dateOfBirth = date('Y-m-d',strtotime($dob));
+		
+		$validation_err = $this->validateSitAndReach($firstname,$lastname,$mobile,$distance);
+		if($validation_err){
+			$email_validate = $this->validateEmail($email);
+			if($email_validate){
+				$sitandreachresult = $this->bodycalculatormodel->getSitAndReachTestResult($gender,$distance);
+				$rating = $sitandreachresult['rating'];
+				
+				$message ="Dear ".$firstname.", \n Your Sit And Reach : ".$rating." \n ----- Team Mantra";
+				$outsidesitandreach = array(
+					"entry_date" => $entry_date,
+					"first_name" => $firstname,
+					"last_name" => $lastname,
+					"gender" => $gender,
+					"dob" => $dateOfBirth,
+					"mobile_no" => $mobile,
+					"email" => $email,
+					"location" => 'SELF', // will change later
+					"age" => $age,
+					"distance" => $distance,
+					"rating" => $rating,
+				//	"is_sms_sent" =>'N'
+					"is_sms_sent" => $this->sendSMS($mobile,$message)
+				);
+				
+				$inertStatus= $this->insertSitAndReach($outsidesitandreach);
+				if($inertStatus){
+					$json_response = array("msg_code" => 1, "msg_data"=>$sitandreachresult);
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data"=>"There is some error.Please try again...");
+				}
+			}
+			else{
+				$json_response = array(
+				"msg_code" => 0,
+				"msg_data" => "Email is not valid"
+				);
+			}
+		}
+		else{
+			$json_response = array(
+				"msg_code" => 0,
+				"msg_data" => "* Fields are required"
+			);
+		}
+		
+		
+		header('Content-Type: application/json');
+		echo json_encode($json_response);
+		exit();
+		
+	}
+	
+	public function insertSitAndReach($outsidesitandreach){
+		$insertresult = $this->bodycalculatormodel->InsertintoSitAndReach($outsidesitandreach);	
+		return $insertresult;
+	}
+	
+	
+	/*
+	@method calculatePushUpTest
+	@Date 24.02.2016
+	@By Mithilesh
+	*/
+	
+	public function calculatePushUpTest(){
+		$json_response = array();
+		$outsidepushuptest = array();
+		$entry_date = date("Y-m-d");
+		$firstname = trim($this->input->post('pushup-test-firstname'));
+		$lastname = trim($this->input->post('pushup-test-lastname'));
+		$gender = trim($this->input->post('pushup-test-gender'));
+		$dob = trim($this->input->post('pushup-test-dob'));
+		$mobile = trim($this->input->post('pushup-test-mobile'));
+		$email = trim($this->input->post('pushup-test-email'));
+		$age = trim($this->input->post('pushup-test-age'));
+		$repetitions = trim($this->input->post('pushup-test-repetitions'));
+		$dateOfBirth = date('Y-m-d',strtotime($dob));
+		
+		$validate_err = $this->validatePushUpTest($firstname,$lastname,$mobile,$repetitions);
+		if($validate_err){
+			$email_validate = $this->validateEmail($email);
+			if($email_validate){
+				$pushuptestresult = $this->bodycalculatormodel->getPushUpTestResult($gender,$age,$repetitions);
+				$popavg = $pushuptestresult['popaverage'];
+				$rating = $pushuptestresult['rating'];
+				$score = $pushuptestresult['score'];
+				$message ="Dear ".$firstname.", \nYour Push up repetation is ".$repetitions." which is in ".$rating." category. \n ----- Team Mantra";
+				
+				$outsidepushuptest = array(
+					"entry_date" => $entry_date,
+					"first_name" => $firstname,
+					"last_name" => $lastname,
+					"gender" => $gender,
+					"dob" => date('Y-m-d',strtotime($dob)),
+					"mobile_no" => $mobile,
+					"email" => $email,
+					"location" => 'SELF',
+					"age" => $age,
+					"repetation" => $repetitions,
+					"population_avg" => $popavg,
+					"score" => $score,
+					"rating" => $rating,
+				//	"is_sms_sent" => 'N'
+					"is_sms_sent" => $this->sendSMS($mobile,$message)
+				);
+				
+				$inertStatus= $this->insertOutsidePushUp($outsidepushuptest);
+				if($inertStatus){
+					$json_response = array("msg_code" => 1, "msg_data"=>$pushuptestresult);
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data"=>"There is some error.Please try again...");
+				}
+				
+			}
+			else{
+				$json_response = array(
+				"msg_code" => 0,
+				"msg_data" => "Email is not valid"
+				);
+			}
+		}
+		else{
+			$json_response = array(
+				"msg_code" => 0,
+				"msg_data" => "* Fields are required"
+			);
+		}
+		
+		header('Content-Type: application/json');
+		echo json_encode($json_response);
+		exit();
+	}
+	
+	
+	public function insertOutsidePushUp($outsidepushuptest){
+		$insertresult = $this->bodycalculatormodel->InsertintoOutsidePushUp($outsidepushuptest);	
+		return $insertresult;
+	}
+	
+	
+	public function calculateSitUpTest(){
+		$json_response = array();
+		$outsidesituptest = array();
+		$entry_date = date("Y-m-d");
+		$firstname = trim($this->input->post('situp-test-firstname'));
+		$lastname = trim($this->input->post('situp-test-lastname'));
+		$gender = trim($this->input->post('situp-test-gender'));
+		$dob = trim($this->input->post('situp-test-dob'));
+		$mobile = trim($this->input->post('situp-test-mobile'));
+		$email = trim($this->input->post('situp-test-email'));
+		$age = trim($this->input->post('situp-test-age'));
+		$repetitions = trim($this->input->post('situp-test-repetitions'));
+		$dateOfBirth = date('Y-m-d',strtotime($dob));
+		
+		$validate_err = $this->validateSitUpTest($firstname,$lastname,$mobile,$repetitions);
+		if($validate_err){
+			$email_validate = $this->validateEmail($email);
+			if($email_validate){
+				$situptestresult = $this->bodycalculatormodel->getSitUpTestResult($gender,$age,$repetitions);
+				$popavg = $situptestresult['popaverage'];
+				$rating = $situptestresult['rating'];
+				$score = $situptestresult['score'];
+				$message ="Dear ".$firstname.", \nYour Sit up repetation is ".$repetitions." which is in ".$rating." category. \n ----- Team Mantra";
+				
+				$outsidesituptest = array(
+					"entry_date" => $entry_date,
+					"first_name" => $firstname,
+					"last_name" => $lastname,
+					"gender" => $gender,
+					"dob" => date('Y-m-d',strtotime($dob)),
+					"mobile_no" => $mobile,
+					"email" => $email,
+					"location" => 'SELF',
+					"age" => $age,
+					"repetation" => $repetitions,
+					"pop_avg" => $popavg,
+					"score" => $score,
+					"rating" => $rating,
+				//	"is_sms_sent" => 'N'
+					"is_sms_sent" => $this->sendSMS($mobile,$message)
+				);
+				
+				$inertStatus= $this->insertOutsideSitUp($outsidesituptest);
+				if($inertStatus){
+					$json_response = array("msg_code" => 1, "msg_data"=>$situptestresult);
+				}
+				else{
+					$json_response = array("msg_code" => 2, "msg_data"=>"There is some error.Please try again...");
+				}
+				
+			}
+			else{
+				$json_response = array(
+				"msg_code" => 0,
+				"msg_data" => "Email is not valid"
+				);
+			}
+		}
+		else{
+			$json_response = array(
+				"msg_code" => 0,
+				"msg_data" => "* Fields are required"
+			);
+		}
+		
+		header('Content-Type: application/json');
+		echo json_encode($json_response);
+		exit();
+	}
+	
+	public function insertOutsideSitUp($outsidesituptest){
+		$insertresult = $this->bodycalculatormodel->InsertintoOutsideSitUp($outsidesituptest);	
+		return $insertresult;
+	}
+	
+
+public function getAge(){
+	$response = array();
+	$age="";
+	$dob = trim($this->input->post('dob'));
+	if (preg_match("/\d{2}\-\d{2}-\d{4}/",$dob)){
+	$birthDate = explode("-", $dob);
+	$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+		? ((date("Y") - $birthDate[2]) ) : (date("Y") - $birthDate[2]));
+	
+	$response = array("msg_code" => 1, "msg_data" => $age);
+    }else{
+        $response = array("msg_code" => 0, "msg_data" => "");
+    }
+	header('Content-Type: application/json');
+	echo json_encode($response);
+	exit();
+}
+
  
  private function validateBodyFat($fname,$lname,$mobile,$weight,$waist,$hip){
 	if($fname==""){ return false;}
 	if($lname==""){ return false;}
+	if($mobile==""){ return false;}
 	if($weight==""){ return false;}
 	if($waist==""){ return false;}
 	if($hip==""){ return false;}
@@ -124,6 +468,40 @@ class body_calculator extends CI_Controller {
 		return true;
 	}
 }
+
+	private function validateHarvardTest($fname,$lname,$mobile,$sec,$pulserate){
+		if($fname==""){ return false;}
+		if($lname==""){ return false;}
+		if($mobile==""){ return false;}
+		if($sec==""){ return false;}
+		if($pulserate==""){ return false;}
+		return true;
+	} 
+	
+	private function validateSitAndReach($fname,$lname,$mobile,$distance){
+		if($fname==""){ return false;}
+		if($lname==""){ return false;}
+		if($mobile==""){ return false;}
+		if($distance==""){ return false;}
+		return true;
+	}
+	
+	private function validatePushUpTest($fname,$lname,$mobile,$repetitions){
+		if($fname==""){ return false;}
+		if($lname==""){ return false;}
+		if($mobile==""){ return false;}
+		if($repetitions==""){ return false;}
+		return true;
+	}
+	private function validateSitUpTest($fname,$lname,$mobile,$repetitions){
+		if($fname==""){ return false;}
+		if($lname==""){ return false;}
+		if($mobile==""){ return false;}
+		if($repetitions==""){ return false;}
+		return true;
+	}
+	
+	
 
 	private function sendSMS($phone,$sms_text){
 		$mantra_url = "http://myvaluefirst.com/smpp/sendsms?";

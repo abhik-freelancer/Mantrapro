@@ -1314,6 +1314,12 @@ ul.fa-ul li .badge{
 
 
 /*---------------Body Calculator------------*/
+.no-responsive-view{
+	display:block !important;
+}
+.responsive-view{
+	display:none !important;
+}
 .custom-form-container label{
 	margin-bottom:2px;
 }
@@ -1438,8 +1444,13 @@ ul.fa-ul li .badge{
 
 
 /*-------------Harvard step test --------------*/
+.harvard-step-test .body-cal-form-container{
+	margin-top:0%;
+}
+
 .harvard-test-result h2{
 	text-align:center;
+	font-size:40px;
 }
 
 /*---------Contact Us--------*/
@@ -1738,6 +1749,12 @@ ul.fa-ul li .badge{
 	.body-fat-per-result{
 		margin-left:4%;
 	}
+	.no-responsive-view{
+		display:none !important;
+	}
+	.responsive-view{
+		display:block !important;
+	}
 	
 }
 @media only screen and (max-width: 900px) {
@@ -1946,6 +1963,14 @@ ul.fa-ul li .badge{
 	text-align: center;
 	
 	}
+	.harvard-test-result h2{
+		text-align:center;
+		font-size:25px;
+	}
+	.body-cal-form-container {
+		margin-top: 5% !important;
+		padding: 5% 4% !important;
+	}
 }
 
 @media only screen and (max-width: 465px) {
@@ -1982,6 +2007,10 @@ ul.fa-ul li .badge{
 	}
 	.body-fat-per-result {
 		margin-left: 0%;
+	}
+	
+	.body-calculator h3 {
+		margin-top: 10%;
 	}
 }
 /*
@@ -2075,6 +2104,9 @@ ul.fa-ul li .badge{
 		max-height: 220px;
 		overflow: hidden;
 	}
+	.body-calculator h3{
+		font-size: 22px;
+	}
 }
 @media only screen and (max-width: 360px) {
 	
@@ -2123,6 +2155,9 @@ ul.fa-ul li .badge{
 	.mission-vision-heading {
     font-size: 2.2em;
     text-align: center;
+	}
+	.harvard-test-result h2 {
+		font-size: 20px;
 	}
 }
 

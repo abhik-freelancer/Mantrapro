@@ -3,6 +3,7 @@
 class gallerymodel extends CI_Model{
 	
 	public function getAllVideo(){
+		$data = array();
 		$sql ="SELECT * FROM videogallery WHERE videogallery.is_active='Y' ORDER BY videogallery.id DESC ";
 		$query = $this->db->query($sql);
         if($query->num_rows()> 0){

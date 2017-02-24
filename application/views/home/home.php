@@ -92,7 +92,7 @@
                         <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/mantra-netgym.png" /></div>
                         <h4>NET GYMING</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <div class="more"><a href="<?php echo base_url();?>/memberpanel/" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
+                        <div class="more"><a href="<?php echo base_url();?>memberpanel/" class="btn more-btn">Login &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
         </div>

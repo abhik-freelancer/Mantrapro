@@ -749,6 +749,37 @@ class healthandfitnessmodel extends CI_Model {
         }
     }
     
+    public function getBodyfatpercentage($membershipno,$validity){
+        $data=array();
+         $sql= "SELECT
+                `tran_id`,
+                `date_of_entry`,
+                date_format(`date_of_collection`,'%d-%m-%Y')as date_of_collection,
+                `weight`,
+                `fat_per`,
+                `fat_mass`,
+                `lean_body_mass`
+               FROM `body_composition`
+               WHERE body_composition.`membership_no` ='".$membershipno."' AND body_composition.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                    "weight" => $row->weight,
+                    "fat_per"=>$row->fat_per,
+                    "fat_mass"=>$row->fat_mass,
+                    "lean_body_mass"=>$row->lean_body_mass,
+                    "date_of_collection"=>$row->date_of_collection
+                    
+                );
+            }
+            return $data;
+        } else {
+
+            return $data;
+        }
+    }
+    
     
     
 }

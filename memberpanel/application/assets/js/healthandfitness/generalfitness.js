@@ -120,7 +120,15 @@ $("#corestablity , #rhip,#lhip,#rankle,#lankle,#rknee,#lknee,#rmsl,#lmsl").dataT
 });
 
 //rhip
-
+//bfpercentage
+$("#bfpercentage").dataTable({
+   "ordering": false ,
+    language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    },
+     "info":     false
+});
 $('.ex1').slider({
         precision: 2,
         tooltip:"show",

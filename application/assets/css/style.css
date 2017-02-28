@@ -1166,6 +1166,38 @@ textarea{
 	color:#FFF;
 	text-align:center;
 }
+
+/*----Career-----*/
+.career-form-container{
+	background: transparent;
+	border:0px solid #E3E0E0;
+	padding:8% 4%;
+	border-radius:2%;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	margin-top:1%;
+	//background: linear-gradient(45deg, #e6e6e6, #e9e9e9);
+}
+.career-form-container label{
+	color:#F2652C;
+}
+.career-form-container .file{
+	position:absolute;
+	z-index:2;
+	top:0;
+	left:0;
+	filter: alpha(opacity=0);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	opacity:0;
+	background-color:transparent;
+	color:transparent;
+}
+.resume-file-info{
+	background-color: #FE612E;
+	padding: 1% 3%;
+}
+
+
+
 /*-----------Life Style Health Club---------*/
 
 .parralax-health-style-block2 {
@@ -1241,6 +1273,7 @@ ul.fa-ul li .badge{
 	overflow-y:auto;
 	margin-bottom:10%;
 }
+/*
 .testimonial-page-block .testimonial-img img{
 	width: 100px;
 	height:100px;
@@ -1253,11 +1286,6 @@ ul.fa-ul li .badge{
 	color:#FFF; 
 	
 }
-.diveder-line{
-	border: 1px solid #F8F1F1;
-	width: 11%;
-	margin: 0 auto !important;
-}
 .testimonial-page-block  .person-name{
 	font-weight: 600 !important;
 	padding-top: 2% !important;
@@ -1265,7 +1293,120 @@ ul.fa-ul li .badge{
 .testimonial-page-block .testimonial-desc{
 	padding: 8% 2%;
 }
+.diveder-line{
+	border: 1px solid #F8F1F1;
+	width: 11%;
+	margin: 0 auto !important;
+}
+*/
+.testimonial-page .testimonial-img img{
+	/*width: 100px;
+	height:100px;*/
+	border-radius:100%;
+	border:4px solid #FFF;
 
+}
+.testimonial-page .testimonial-name{
+	text-align:center;
+	color:#323232; 
+}
+
+.testimonial-page  .person-name{
+	font-weight: 600 !important;
+	padding-top: 0% !important;
+}
+.testimonial-page .testimonial-desc{
+	padding: 0% 0%;
+	text-align: center !important;
+}
+
+.diveder-line{
+	clear:both;
+	border: 1px solid #F8F1F1;
+	width: 40%;
+	margin: 0 auto !important;
+}
+.page-testimonial-block{
+	padding-bottom:1% ;
+}
+
+
+/* Content */
+.content {
+    padding-top: 30px;
+}
+
+/* Testimonials */
+.testimonial-page .testimonials{
+	border: 1px solid #EDEDED;
+	padding: 1%;
+	border-radius: 10px;
+	margin-bottom:2%;
+}
+.testimonial-page .testimonials blockquote {
+    background: #f8f8f8 none repeat scroll 0 0;
+    border: medium none;
+    color: #666;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 15px;
+    position: relative;
+}
+.testimonial-page  .testimonials blockquote::before {
+    width: 0; 
+    height: 0;
+	right: 0;
+	bottom: 0;
+	content: " "; 
+	display: block; 
+	position: absolute;
+    border-bottom: 20px solid #fff;    
+	border-right: 0 solid transparent;
+	border-left: 15px solid transparent;
+	border-left-style: inset; /*FF fixes*/
+	border-bottom-style: inset; /*FF fixes*/
+}
+.testimonial-page  .testimonials blockquote::after {
+    width: 0;
+    height: 0;
+    right: 0;
+    bottom: 0;
+    content: " ";
+    display: block;
+    position: absolute;
+    border-style: solid;
+    border-width: 20px 20px 0 0;
+    border-color: #e63f0c transparent transparent transparent;
+}
+.testimonial-page  .testimonials .carousel-info img {
+    border: 1px solid #f5f5f5;
+    border-radius: 150px !important;
+    height: 85px;
+    padding: 3px;
+    width: 85px;
+}
+.testimonial-page  .testimonials .carousel-info {
+    overflow: hidden;
+}
+.testimonial-page  .testimonials .carousel-info img {
+    margin-right: 15px;
+}
+.testimonial-page  .testimonials .carousel-info span {
+    display: block;
+}
+.testimonial-page  .testimonials span.testimonials-name {
+    color: #e6400c;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 23px 0 7px;
+}
+.testimonial-page  .testimonials span.testimonials-post {
+    color: #656565;
+    font-size: 12px;
+	font-weight:700;
+}
+/*end*/
 
 /*--------------Fitness Education---------*/
 .fitness-education h3{
@@ -1295,6 +1436,90 @@ ul.fa-ul li .badge{
 .fitness-ed-yr{
 	text-align:left !important;
 }
+
+/*-----------Service---------------*/
+.select-style {
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+   // background: #fafafa url("../images/down-arrow.png") no-repeat 99% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 102%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+#rateChartAccordion.panel-group {
+    margin-bottom: 4px !important;
+}
+#rateChartAccordion .panel-heading {
+	background:#F2652C;
+	border:1px solid #F2652C;
+	color:#FFF;
+	/*height: 45px !important;
+	line-height:45px !important;*/
+	cursor:pointer;
+}
+#rateChartAccordion .panel-title{
+	font-size:14px;
+}
+#rateChartAccordion a{
+	text-decoration:none;
+	font-weight: 700;
+}
+#branchWiseRate .table{
+	border:1px solid #CCC;
+}
+.facility-heading {
+	padding-top:2%;
+	padding-bottom:2%;
+	background:#FE6F41;
+	border-radius:10px;
+	color:#FFF;
+	font-weight:700;
+	font-size: 18px;
+}
+.facilityDetail .table{
+	border:1px solid #CCC;
+}
+.facilityDetail .table thead{
+	background: #FF7D53 none repeat scroll 0% 0%;
+	color:#FFFFFF;
+	border-bottom:1px solid #FF7D53;
+}
+.facilityDetail h3{
+	font-weight: 600;
+	color: #F06E44;
+}
+
+
+
+/*
+#accordion .glyphicon { margin-right:10px; }
+      .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
+      .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
+      .panel-collapse>.list-group {margin-bottom: 0;}
+      .panel-collapse .list-group-item {border-radius:0;}
+
+      .panel-collapse .list-group .list-group {margin: 0;margin-top: 10px;}
+      .panel-collapse .list-group-item li.list-group-item {margin: 0 -15px;border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item:last-child {padding-bottom: 0;}
+
+      .panel-collapse div.list-group div.list-group{margin: 0;}
+      .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}
+*/
+
 
 /*---------Video Gallery-------*/
 .parralax-video-gallery{

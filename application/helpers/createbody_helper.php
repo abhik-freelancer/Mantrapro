@@ -11,12 +11,15 @@ if ( ! function_exists('createbody_method'))
 	
 	// $CI->load->model('leftmenumodel','',TRUE);
 	 $CI->load->library('template');
+	 $CI->load->model('homemodel'); // For Testimonial
 	 /* leftmenu */
 	 $left_menu = "";//$CI->leftmenumodel->getLeftmenu($data['user_id'],$data['role_id']);
 		 
 	 $data['bodyview'] = $body_content_page;
 	 $data['leftmenusidebar'] = '';
 	 $data['headermenu'] = $body_content_header;
+	 $data['testimonials'] =  $CI->homemodel->getAllTestimonial();
+	 
 	
 	 $CI->template->setHeader($heared_menu_content);
 	 $CI->template->setBody($body_content_data);

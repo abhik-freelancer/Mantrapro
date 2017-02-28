@@ -21,7 +21,7 @@ class homemodel extends CI_Model{
              return $data;
          }
     }
-	
+	 
 	public function InsertIntoFreeGuestPass($guestPassData){
 		try{
                 $this->db->insert("free_guest_pass",$guestPassData);
@@ -52,7 +52,8 @@ class homemodel extends CI_Model{
                     "occupation"=>$rows->occupation,
                     "testimonialImage"=>$rows->testimonialImage,
                     "location"=>$rows->location,
-                    "comment"=>$rows->comment
+                    "comment"=>$rows->comment,
+					"excerpt_comment"=>$this->getExcerptWord($rows->comment,20)
                     );
             }
             return $data;
@@ -62,6 +63,11 @@ class homemodel extends CI_Model{
              return $data;
          }
 	} 
+	
+	public function getExcerptWord($string,$limit){
+		$words = explode( ' ', $string );
+		return implode( ' ', array_slice( $words, 0, $limit ));
+	}
 	
 	public function getTestimonialForActiveCls(){
 		$data=array();
@@ -212,6 +218,7 @@ class homemodel extends CI_Model{
              return $data;
          }
 	}
+	
 	
 	
 }

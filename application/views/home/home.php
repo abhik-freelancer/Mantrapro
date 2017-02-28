@@ -430,12 +430,6 @@
 								</li>
 							<?php } ?>
 							
-								
-								<li class="latest-offers-item">
-									<img src="<?php echo base_url(); ?>application/assets/images/weight-loss.jpg"  class="img-responsive" />
-								</li>
-								
-								
 							</ul>
 					    </div>
 					  </div>

@@ -9,15 +9,16 @@
 <div class="container-fluid">
 	<div class="row row-container">
 		<div class="col-md-12">
-			<h1><span class="first-text-col">M</span>antra <span class="first-text-col">T</span>estimonials</h1>
+			<h1><span class="first-text-col">W</span>hat <span class="first-text-col">M</span>ember <span class="first-text-col">S</span>ays</h1>
+			  
 		</div>
 		
 	</div>
 </div>
 
+<!--
 <div class="container-fluid">
 	<div class="row row-container testimonial-page">
-	
 		<?php if($bodycontent['testimonials']){
 			foreach($bodycontent['testimonials'] as $testimonials){ ?>
 			<div class="col-md-4 col-sm-6 col-xs-12" >
@@ -37,9 +38,34 @@
   <?php }
 		} 
 		?>
-	
-	
-		
-		
 	</div>
 </div>
+-->
+
+<div class="container-fluid content">
+    <div class="row row-container testimonial-page">
+		<?php if($bodycontent['testimonials']){
+			foreach($bodycontent['testimonials'] as $testimonials){
+			?>
+        <div class="col-md-12">
+            <div class="testimonials">
+            	<div class="item">
+               
+                  <div class="carousel-info">
+                    <img alt="" src="<?php echo base_url(); ?>application/assets/images/testimonials/<?php echo $testimonials['testimonialImage'];?>" class="pull-left">
+                    <div class="pull-left">
+                      <span class="testimonials-name"><?php echo $testimonials['name'];?></span>
+                      <span class="testimonials-post"><?php echo $testimonials['occupation'];?></span>
+                    </div>
+                  </div>
+				     <blockquote><p><?php echo $testimonials['comment'];?></p></blockquote>
+                </div>
+            </div>
+        </div>
+		
+		<?php } } ?>
+		
+		
+    </div>
+</div>
+

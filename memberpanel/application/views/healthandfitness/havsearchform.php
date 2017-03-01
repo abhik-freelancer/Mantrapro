@@ -59,36 +59,41 @@
         </div>
         <!-- report section -->
         <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-stethoscope fa-fw"></i>  Blood Pressure</h3>
                             </div>
                             <div class="panel-body">
-                                <a href="#" class="list-group-item">
-                                        <span class="label label-success">Date</span>
-                                        <span class="label label-warning"><?php echo($bodycontent["bloodprs"]["bp_col_date"])?></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                        <span class="label label-success">Systolic</span>
-                                        <span class="label label-warning"><?php echo($bodycontent["bloodprs"]["bp_systolic"])?></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                        <span class="label label-success">Diastolic</span>
-                                        <span class="label label-warning"><?php echo($bodycontent["bloodprs"]["bp_diastolic"])?></span>
-                                </a>
                                 
-                                <a href="#" class="list-group-item">
-                                        <span class="label label-success">Score</span>
-                                        <span class="label label-warning"><?php echo($bodycontent["bloodprs"]["bp_score"])?></span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                        <span class="label label-success">Remarks</span>
-                                        <span class="label label-warning"><?php echo($bodycontent["bloodprs"]["bp_remarks"])?></span>
-                                </a>
+                                <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Systolic</th>
+                                        <th>Diastolic</th>
+                                        <th>Score</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td><?php echo($bodycontent["bloodprs"]["bp_col_date"])?></td>
+                                        <td><?php echo($bodycontent["bloodprs"]["bp_systolic"])?></td>
+                                        <td><?php echo($bodycontent["bloodprs"]["bp_diastolic"])?></td>
+                                        <td><?php echo($bodycontent["bloodprs"]["bp_score"])?></td>
+                                        <td><?php echo($bodycontent["bloodprs"]["bp_remarks"])?></td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                             </div>
                         </div>
                     </div>
+        </div>
+            <div class="row">
                     <div class="col-lg-4">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">

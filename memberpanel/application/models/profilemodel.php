@@ -347,7 +347,7 @@ class profilemodel extends CI_Model {
             
         }
         $healthStatus=array(
-          "bodyFatPercentage"=>$bodyFatPercentage,
+            "bodyFatPercentage"=>$bodyFatPercentage,
             "bodyFatMass"=>$bodyFatMass,
             "bodyLeanMass"=>$bodyLeanMass,
             "waistcurcumferencevalue"=>$waistCircumferenceValue,

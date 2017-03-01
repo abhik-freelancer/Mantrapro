@@ -180,7 +180,7 @@ class body_calculator extends CI_Controller {
 		exit();
 	}
 	
-	public function insertHarvardTest($outsidesitandreach){
+	public function insertHarvardTest($outsideharvardtest){
 		$insertresult = $this->bodycalculatormodel->InsertOutsideHarvardTest($outsideharvardtest);	
 		return $insertresult;
 	}

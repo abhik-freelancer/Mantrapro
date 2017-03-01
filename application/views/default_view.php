@@ -295,18 +295,20 @@
             <p class="team-mantra-desc">
                Mantra health club is promoted by extremely well known entities: Nu Mantra Life Style Health Club Private Limited by Mr. Subhbbrata Bhattacharjee and ,Mr. Dipanjan Bhattacharjee Who are all individually as passionate about healthy life style and fitness.They have a vision to make healthier INDIA by rendering high quality health and fitness service.
             </p>
-             <a href="javascript:void(0)" class="btn cutome-link-btn">More About Team Mantra</a>
+             <a href="<?php echo base_url();?>about/mantra_director" class="btn cutome-link-btn" style="margin-top:10px;">Team Managment</a>
+			 <a href="<?php echo base_url();?>about/mantra_trainer" class="btn cutome-link-btn" style="margin-top:10px;">Trainers</a>
             
          </ul>
       </li>
       <li class="col-sm-4">
          <ul>
-            <li class="dropdown-header">Testimonials</li>
+            <li class="dropdown-header">What Member Says</li>
             <div class="nav-testimonial">
                <div class='row'>
                   <div>
                      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
 						<div class="carousel-inner">
+						<!--
 							<div class="item active">
                               <div class="row">
                                  <div class="col-sm-4 text-center">
@@ -318,7 +320,38 @@
 							
                                  </div>
                               </div>
-                           </div>
+							</div> -->
+							
+						<?php 
+							if($testimonials){
+							$i=1;
+							foreach($testimonials as $member_testimonial){ 
+								if($i==1){
+									$active_class ="active";
+								}
+								else{
+									$active_class = "";
+								}
+							?>
+							
+						    <div class="item <?php echo $active_class;?>">
+                              <div class="row">
+                                 <div class="col-sm-4 text-center">
+                                    <img src="<?php echo base_url(); ?>application/assets/images/testimonials/<?php echo $member_testimonial['testimonialImage'];?>"  class="img-circle" style="width: 80px;height:80px;" >
+                                 </div>
+                                <div class="col-sm-8">
+                                    <p class="testimonial-thought"><?php echo $member_testimonial['excerpt_comment'];?> ...</p>
+                                    <h5 class="person-name"><?php echo $member_testimonial['name'];?> <br><?php echo $member_testimonial['occupation'];?></h5>
+									
+                                </div>
+                              </div>
+                            </div>
+						   
+						<?php 
+							$i++;
+						} }							
+							?>
+							<!--
 						   <div class="item">
                               <div class="row">
                                  <div class="col-sm-4 text-center">
@@ -330,7 +363,9 @@
 									
                                 </div>
                               </div>
-                           </div>
+                           </div> -->
+						   
+						   
                         </div>
 						<!--
 						<a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
@@ -344,7 +379,7 @@
 			
 			<li class="dropdown-header">Career</li>
             <p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
-             <a href="javascript:void(0)" class="btn cutome-link-btn">Apply Now</a>
+             <a href="<?php echo base_url();?>about/career" class="btn cutome-link-btn">Apply Now</a>
          </ul>
       </li>
    </ul>
@@ -369,7 +404,7 @@
 							<ul>
 								<li class="dropdown-header">Branch Wise Rate Chart</li>                            
 									<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
-									<li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+									<li><a href="<?php echo base_url();?>services/rate_chart" class="btn cutome-link-btn">View More</a></li>
 							
 							   
 							</ul>
@@ -481,16 +516,17 @@
                             <li class="pushy-link"><a href="<?php echo base_url();?>about/about_us">  About Us</a></li>
                             <li class="pushy-link"><a href="<?php echo base_url();?>about/mission_and_vision">Mission & Vision</a></li>
                             <li class="pushy-link"><a href="<?php echo base_url();?>about/life_style_health_club">1st Life Style Health Club</a></li>
-							<li class="pushy-link"><a href="#">Team Mantra</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_director">Team Managment</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_trainer">Trainers</a></li>
 							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_testimonial">Testimonials</a></li>
-							<li class="pushy-link"><a href="#">Career</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>about/career">Career</a></li>
                         </ul>
                     </li>
                     <li class="pushy-submenu">
                         <button>Services <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
                         <ul>
 							<li class="pushy-link"><a href="#">Packages Offered</a></li>
-							<li class="pushy-link"><a href="#">Branch Wise Rate Chart</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>services/rate_chart">Branch Wise Rate Chart</a></li>
 							<li class="pushy-link"><a href="#">Branch Wise Classes & Consultancy Schedule</a></li>
                         </ul>
                     </li>
@@ -528,9 +564,10 @@
 <section>
 
 
+
 	<!-- End Mega Menu -->
-	
-	
+	<div id="scroll" style="display: none;" title="Scroll to Top">Top<span></span></div>
+	<!--<a href="javascript:void(0);" id="scroll" title="Scroll to Top" >Top<span></span></a>-->
 	
     <div class="body-view">
  
@@ -576,6 +613,8 @@
 	<script src="<?php echo base_url(); ?>application/assets/js/get-pass.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/events.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/home/mayihelp.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/about/about.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/services/services.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/bodycalculator/body-calculator.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/contact/contact-us.js"></script>	
 	
@@ -583,66 +622,30 @@
 	
 	
 
-    <!-- Script to Activate the Carousel -->
+
 
              
 	
-	<script>
-	
-
-	/*
-jQuery(document).ready(function(){
-    $(".dropdown").hover(
-        function() { $('.dropdown-menu', this).fadeIn("fast");
-        },
-        function() { $('.dropdown-menu', this).fadeOut("fast");
-    });
-});
-*/
+<script>
 $(document).ready(function(){
-   /* $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-            $(this).toggleClass('open');       
-        }
-    );*/
 	
-	$('.dropdown-toggle').dropdown(); 
-	/*  $('#quote-carousel').carousel({
-    pause: true,
-    interval: 4000,
-  }); */
-  
- 
+ $('.dropdown-toggle').dropdown(); 
+ $(window).scroll(function(){ 
+        if ($(this).scrollTop() > 500) { 
+            $('#scroll').fadeIn(); 
+        } else { 
+            $('#scroll').fadeOut(); 
+        } 
+    }); 
+    $('#scroll').click(function(){ 
+        $("html, body").animate({ scrollTop: 0 }, 600); 
+        return false; 
+    }); 
 
 });
 
-// When the DOM is ready, run this function
-
-
-/*
-$(document).ready(function(){
-    $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-            $(this).toggleClass('open');       
-        }
-    );
-});*/
-	
-	
 	new WOW().init();
-              
-
-  $("#upcoming-events").bootstrapNews({
+	$("#upcoming-events").bootstrapNews({
             newsPerPage: 3,
             autoplay: false,
 			pauseOnHover:true,
@@ -722,23 +725,22 @@ $(document).ready(function(){
         }
     }
 
+/*
 function openNav() {
-   // document.getElementById("mobileMenu").style.width = "250px";
 	$("#mobileMenu").css({
 		"width":"250px"
 	});
 }
 
 function closeNav() {
-   // document.getElementById("mobileMenu").style.width = "0";
-	$("#mobileMenu").css({
+   $("#mobileMenu").css({
 		"width":"0px"
 	});
 }
-	
+*/
+
+
 
 </script>
-
 </body>
-
 </html>

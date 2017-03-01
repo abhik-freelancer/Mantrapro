@@ -69,8 +69,8 @@
         <div class="col-md-3 service-box wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="panel">
                     <div class="panel-body">
-                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/mantra-education1.png" /></div>
-                        <h4>THE MANTRA INSTITUTE</h4>
+                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/health-asset-icon.png" /></div>
+                        <h4>HEALTH ASSET VALUE</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
                          <div class="more"><a href="#" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>

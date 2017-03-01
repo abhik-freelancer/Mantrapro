@@ -154,6 +154,25 @@ class about extends CI_Controller {
 		exit();
 	}
 	
+	public function mantra_trainer(){
+		$category="Trainer";
+		$page="about/mantra-trainer";
+		$header = "";
+		$session = "";
+		$result['trainer'] = $this->aboutusmodel->getTeamMantra($category);
+		createbody_method($result,$page,$header,$session);
+	}
+	
+	public function mantra_director(){
+		$page="about/mantra-director";
+		$header = "";
+		$session = "";
+		$result = "";
+		createbody_method($result,$page,$header,$session);
+	}
+	
+	
+	
 	private function validateMantraCareer($firstname,$lastname,$mobile,$branch,$appliedfor){
 		if($firstname==""){return false;}
 		if($lastname==""){return false;}

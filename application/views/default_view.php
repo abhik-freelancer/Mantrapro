@@ -295,7 +295,8 @@
             <p class="team-mantra-desc">
                Mantra health club is promoted by extremely well known entities: Nu Mantra Life Style Health Club Private Limited by Mr. Subhbbrata Bhattacharjee and ,Mr. Dipanjan Bhattacharjee Who are all individually as passionate about healthy life style and fitness.They have a vision to make healthier INDIA by rendering high quality health and fitness service.
             </p>
-             <a href="javascript:void(0)" class="btn cutome-link-btn">More About Team Mantra</a>
+             <a href="<?php echo base_url();?>about/mantra_director" class="btn cutome-link-btn" style="margin-top:10px;">Team Managment</a>
+			 <a href="<?php echo base_url();?>about/mantra_trainer" class="btn cutome-link-btn" style="margin-top:10px;">Trainers</a>
             
          </ul>
       </li>
@@ -515,7 +516,8 @@
                             <li class="pushy-link"><a href="<?php echo base_url();?>about/about_us">  About Us</a></li>
                             <li class="pushy-link"><a href="<?php echo base_url();?>about/mission_and_vision">Mission & Vision</a></li>
                             <li class="pushy-link"><a href="<?php echo base_url();?>about/life_style_health_club">1st Life Style Health Club</a></li>
-							<li class="pushy-link"><a href="#">Team Mantra</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_director">Team Managment</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_trainer">Trainers</a></li>
 							<li class="pushy-link"><a href="<?php echo base_url();?>about/mantra_testimonial">Testimonials</a></li>
 							<li class="pushy-link"><a href="<?php echo base_url();?>about/career">Career</a></li>
                         </ul>
@@ -564,8 +566,8 @@
 
 
 	<!-- End Mega Menu -->
-	
-	
+	<div id="scroll" style="display: none;" title="Scroll to Top">Top<span></span></div>
+	<!--<a href="javascript:void(0);" id="scroll" title="Scroll to Top" >Top<span></span></a>-->
 	
     <div class="body-view">
  
@@ -620,66 +622,30 @@
 	
 	
 
-    <!-- Script to Activate the Carousel -->
+
 
              
 	
-	<script>
-	
-
-	/*
-jQuery(document).ready(function(){
-    $(".dropdown").hover(
-        function() { $('.dropdown-menu', this).fadeIn("fast");
-        },
-        function() { $('.dropdown-menu', this).fadeOut("fast");
-    });
-});
-*/
+<script>
 $(document).ready(function(){
-   /* $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-            $(this).toggleClass('open');       
-        }
-    );*/
 	
-	$('.dropdown-toggle').dropdown(); 
-	/*  $('#quote-carousel').carousel({
-    pause: true,
-    interval: 4000,
-  }); */
-  
-
+ $('.dropdown-toggle').dropdown(); 
+ $(window).scroll(function(){ 
+        if ($(this).scrollTop() > 500) { 
+            $('#scroll').fadeIn(); 
+        } else { 
+            $('#scroll').fadeOut(); 
+        } 
+    }); 
+    $('#scroll').click(function(){ 
+        $("html, body").animate({ scrollTop: 0 }, 600); 
+        return false; 
+    }); 
 
 });
 
-// When the DOM is ready, run this function
-
-
-/*
-$(document).ready(function(){
-    $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-            $(this).toggleClass('open');       
-        }
-    );
-});*/
-	
-	
 	new WOW().init();
-              
-
-  $("#upcoming-events").bootstrapNews({
+	$("#upcoming-events").bootstrapNews({
             newsPerPage: 3,
             autoplay: false,
 			pauseOnHover:true,
@@ -759,24 +725,22 @@ $(document).ready(function(){
         }
     }
 
+/*
 function openNav() {
-   // document.getElementById("mobileMenu").style.width = "250px";
 	$("#mobileMenu").css({
 		"width":"250px"
 	});
 }
 
 function closeNav() {
-   // document.getElementById("mobileMenu").style.width = "0";
-	$("#mobileMenu").css({
+   $("#mobileMenu").css({
 		"width":"0px"
 	});
 }
+*/
 
 
 
 </script>
-
 </body>
-
 </html>

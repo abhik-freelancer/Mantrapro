@@ -41,4 +41,41 @@ class aboutusmodel extends CI_Model{
 		
 	}
 	
+	public function getTeamMantra($category){
+		$data = array();
+		$sql = "SELECT team_mantra.name,
+				team_mantra.designation,
+				team_mantra.description,
+				team_mantra.branch,
+				team_mantra.image,
+				branch_master.BRANCH_NAME
+				FROM team_mantra
+				INNER JOIN branch_master
+				ON team_mantra.branch = branch_master.BRANCH_CODE
+				WHERE team_mantra.category = '".$category."' AND team_mantra.is_active='Y' ORDER BY team_mantra.branch ,team_mantra.name DESC";
+				
+		$query = $this->db->query($sql);		
+		if($query->num_rows()>0){
+			foreach($query->result() as $rows){
+				$data[]=array(
+					"name" => $rows->name,
+					"designation" => $rows->designation,
+					"certification" => $rows->description,
+					"branch" => $rows->BRANCH_NAME,
+					"image" => $rows->image
+				);
+			}
+			return $data;
+		}
+		else{
+			return $data;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 }

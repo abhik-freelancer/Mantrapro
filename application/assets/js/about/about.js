@@ -62,6 +62,23 @@ $(document).ready(function(){
 		
 	});
 	
+	
+	/*Know More*/
+	
+	$("#know-more-btn-director").on("click",function(){
+		$("#more-info-director1").slideDown("slow");
+		$("#know-more-btn-director").hide();
+		$("#show-less-btn-director").show();
+	});
+	$("#show-less-btn-director").on("click",function(){
+		$("#more-info-director1").slideUp("slow");
+		$("#show-less-btn-director").hide();
+		$("#know-more-btn-director").show();
+		
+	});
+	
+	
+	
 });
 
 

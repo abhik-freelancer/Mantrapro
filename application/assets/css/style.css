@@ -43,6 +43,44 @@ textarea{
 	box-shadow: 0px 1px 8px #FEA592 !important;
 }
 
+/*---------Back to top---------*/
+
+
+#scroll {
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color:#F14513;
+    text-indent:-9999px;
+    display:none;
+	z-index:9999;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px
+}
+
+#scroll span {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-8px;
+    margin-top:-12px;
+    height:0;
+    width:0;
+    border:8px solid transparent;
+    border-bottom-color:#ffffff
+}
+#scroll:hover {
+    background-color:#e74c3c;
+    opacity:1;filter:"alpha(opacity=100)";
+    -ms-filter:"alpha(opacity=100)";
+}
+
+
+/*--- end back to top ---*/
 
 .top-header{
     width:100%;
@@ -1408,6 +1446,66 @@ ul.fa-ul li .badge{
 }
 /*end*/
 
+
+/*---------managment---------------*/
+.parralax-team-director {
+    /* The image used */
+   background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.9)), url("../images/gym-weights.jpg");
+   height:100%;
+   min-height: 100%; 
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 50px;
+   padding-bottom: 20px;
+   color:#D7D7D7 !important;
+}
+
+.manrta-director-image{
+	text-align:center;
+}
+.manrta-director-image img{
+	border-radius:100%;
+	border:4px solid #EFEFEF;
+}
+#more-info-director1, #show-less-btn-director{
+	display:none;
+}
+.know-more-director{
+	width:20%;
+	margin:0 auto !important;
+}
+.know-more-director button{
+	width:100%;
+	margin:0 auto;
+}
+
+
+/*-------------Trainer----------*/
+.trainer-info{
+	width:100%;
+	margin:0 auto !important;
+}
+.trainer-info h3 , .trainer-certificates h3 , .trainer-specializations h3{
+	color:#F2652C;
+}
+.trainer-info h4{
+	margin-top:-3%;
+}
+.trainer-info h5{
+	margin-top:-3%;
+}
+.about-trainer , .trainer-certificates, .trainer-rating{
+	//margin-top:10%;
+	color:#656565;
+}
+.trainer-rating .glyphicon-star{
+	color:#F2652C;
+}
+
+
+
 /*--------------Fitness Education---------*/
 .fitness-education h3{
 	color:#F2652C;
@@ -1980,6 +2078,12 @@ ul.fa-ul li .badge{
 	.responsive-view{
 		display:block !important;
 	}
+	.trainer-info{
+		padding-top:18%;
+	}
+	.trainer-info h4,.trainer-info h5{
+	margin-top:0%;
+	}
 	
 }
 @media only screen and (max-width: 900px) {
@@ -2011,7 +2115,8 @@ ul.fa-ul li .badge{
 	}
 }
 
-@media only screen and (max-width: 768px) {
+/*---@768 to 767 --on 01-03-2017 ---*/
+@media only screen and (max-width: 767px) {
 	.service-box{
 		width:60%;
 		float:none;
@@ -2044,6 +2149,9 @@ ul.fa-ul li .badge{
 		padding: 2% 16%;
 	}
 	
+	.trainer-info{
+		padding-top:0%;
+	}
 }	
 @media only screen and (max-width: 719px) {
 	.body-fat-per-result{
@@ -2149,6 +2257,10 @@ ul.fa-ul li .badge{
 @media only screen and (max-width: 515px) {
 	.body-fat-per-result {
 		margin-left: 5%;
+	}
+	.know-more-director{
+		width:60%;
+		margin:0 auto !important;
 	}
 }
 

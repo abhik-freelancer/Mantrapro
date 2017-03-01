@@ -234,7 +234,7 @@
                             
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
+                    <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>

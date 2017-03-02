@@ -75,7 +75,8 @@ textarea{
 }
 #scroll:hover {
     background-color:#e74c3c;
-    opacity:1;filter:"alpha(opacity=100)";
+    opacity:1;
+	filter:"alpha(opacity=100)";
     -ms-filter:"alpha(opacity=100)";
 }
 
@@ -2307,6 +2308,11 @@ ul.fa-ul li .badge{
 	.body-cal-form-container {
 		margin-top: 5% !important;
 		padding: 5% 4% !important;
+	}
+	#scroll{
+		width: 35px;
+		height: 35px;
+		right: 5%;
 	}
 }
 

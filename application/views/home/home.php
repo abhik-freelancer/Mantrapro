@@ -8,16 +8,41 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
+  <!--
     <div class="item active">
       <img src="<?php echo base_url(); ?>application/assets/images/bg4.jpg"  alt="...">
       <div class="carousel-caption">
         Background1
       </div>
-    </div>
+    </div> 
     <div class="item">
      <img src="<?php echo base_url(); ?>application/assets/images/bg5.jpg"  alt="...">
       <div class="carousel-caption">
         Background2
+      </div>
+    </div> -->
+	<div class="item active">
+     <img src="<?php echo base_url(); ?>application/assets/images/mantra-bg1.jpg"  alt="...">
+      <div class="carousel-caption">
+		
+      </div>
+    </div>
+	<div class="item">
+     <img src="<?php echo base_url(); ?>application/assets/images/mantra-bg2.jpg"  alt="...">
+      <div class="carousel-caption">
+		
+      </div>
+    </div>
+	<div class="item">
+     <img src="<?php echo base_url(); ?>application/assets/images/mantra-bg3.jpg"  alt="...">
+      <div class="carousel-caption">
+		
+      </div>
+    </div>
+	<div class="item">
+     <img src="<?php echo base_url(); ?>application/assets/images/mantra-bg4.jpg"  alt="...">
+      <div class="carousel-caption">
+		
       </div>
     </div>
    <!-- <div class="item">
@@ -424,11 +449,14 @@
 					  <div class="row">
 					     <div class="col-xs-12">
 					        <ul id="latest-offers">
-							<?php foreach($bodycontent['latestOffer'] as $latestoffer){?>
+							
+							<?php
+							if($bodycontent['latestOffer']){
+							foreach($bodycontent['latestOffer'] as $latestoffer){?>
 								<li class="latest-offers-item">
 									<img src="<?php echo base_url(); ?>/admin/upload/latestoffer/resize-offer-img/<?php echo $latestoffer['offer_image'];?>" class="img-responsive"/>
 								</li>
-							<?php } ?>
+							<?php }} ?>
 							
 							</ul>
 					    </div>

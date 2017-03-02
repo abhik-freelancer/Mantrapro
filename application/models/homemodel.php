@@ -201,7 +201,7 @@ class homemodel extends CI_Model{
 	
 	public function getLatestOffer(){
 		$data = array();
-		$sql = "SELECT * FROM latest_offers WHERE latest_offers.is_active='Y'";
+		 $sql = "SELECT * FROM latest_offers WHERE latest_offers.is_active='Y'";
 		 $query = $this->db->query($sql);
          if($query->num_rows()> 0){
               foreach ($query->result() as $rows) {
@@ -212,7 +212,7 @@ class homemodel extends CI_Model{
                     "offer_image"=>$rows->offer_image
                     );
             }
-            return $data;
+			return $data;
         }
 		else{
              return $data;

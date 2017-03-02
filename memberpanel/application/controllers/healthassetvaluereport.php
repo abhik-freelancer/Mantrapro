@@ -44,6 +44,8 @@ class healthassetvaluereport  extends CI_Controller{
             $result["situptest"]=$this->healthassetvaluemodel->getLatestSitupTest($membershipno,$validityString);
             //getLatestUpperBodyjoinmobility
             $result["pushup"]=$this->healthassetvaluemodel->getLatestPushUp($membershipno,$validityString);
+            $result["sitandreach"]=$this->healthassetvaluemodel->getLatestSitAndReach($membershipno,$validityString); // Flexibility (Sit & Reach)
+            $result["harvardtest"]=$this->healthassetvaluemodel->getLatestHarvardStepTest($membershipno,$validityString);
             $result["bodyjointmobility"]=$this->healthassetvaluemodel->getLatestUpperBodyjoinmobility($membershipno,$validityString);
             $result["lowerjointmobility"]=$this->healthassetvaluemodel->getLatestLowerBodyjoinmobility($membershipno,$validityString);
             $result["muscleflexibility"]=$this->healthassetvaluemodel->getMuscleOrthoFlex($membershipno,$validityString);
@@ -51,10 +53,11 @@ class healthassetvaluereport  extends CI_Controller{
             $result["bodycompassmnt"]=$this->healthassetvaluemodel->getBodycompoassmnt($membershipno,$validityString);
             //getWaistHipRatio
             $result["WaistHipRatio"]=$this->healthassetvaluemodel->getWaistHipRatio($membershipno,$validityString);
+            $result["waistCircumfrence"]=$this->healthassetvaluemodel->getWaistHipRatio($membershipno,$validityString);
             
             $result["bodygirth"]=$this->healthassetvaluemodel->getGirthmsrmnt($membershipno,$validityString);
             
-             $result["bloodtst"]=$this->healthassetvaluemodel->getBloodTest($membershipno,$validityString);
+             $result["bloodtest"]=$this->healthassetvaluemodel->getBloodTest($membershipno,$validityString);
 
 
             

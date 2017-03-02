@@ -475,7 +475,57 @@ label{
 	font-size:10px;
 }
 
-
+/*-----------------Hav Report Styling--------------*/
+.hav-row-container {
+	margin-top:-4%;
+}
+.hav-report-container table{
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 14px;
+	color: #C03700;
+	text-align: center;
+	border-collapse: collapse;
+	margin-bottom: 10px;
+}
+.hav_table{
+	width:100%;
+	border:1px solid #FF9073;
+	
+}
+.hav-report-container .table-responsive h4{
+	color: #4D4747;
+	font-size: 14px;
+	font-weight: 700;
+}
+.hav_table .row_heading1{
+    background-color: #FF9073;
+	height:30px;
+	max-height:35px;
+	font-weight:700;
+	color: #FFF;
+}
+.hav_table .row_heading2{
+    background-color: #EA6440;
+	height:30px;
+	font-weight:700;
+	color: #FFF;
+}
+.hav_table .row_result1, .hav_table .row_result2{
+    background-color: #FFF;
+	height:30px;
+	max-height:35px;
+}
+.row_heading1 td ,.row_result1  td{
+	text-align:center;
+	border:1px solid #FF9073;
+}
+.row_heading2 td ,.row_result2  td{
+	text-align:center;
+	border:1px solid #EA6440;
+}
+.hav_table span.label{
+	font-size:90% !important;
+}
 
 
 

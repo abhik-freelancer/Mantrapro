@@ -71,7 +71,7 @@ class healthassetvaluemodel extends CI_Model {
                     "bp_systolic"=>$row->bp_systolic,
                     "bp_diastolic"=>$row->bp_diastolic,
                     "bp_remarks"=>$row->bp_remarks,
-                    "bp_score"=>$row->bp_score,
+                    "bp_score"=>$row->bp_score
                    
                         
                     
@@ -147,7 +147,7 @@ class healthassetvaluemodel extends CI_Model {
                     "rm_result"=>$row->rm_result,
                     "rm_remarks"=>$row->rm_remarks,   
                     "rm_score"=>$row->rm_score,
-                    "rm_max"=>$row->rm_max,
+                    "rm_max"=>$row->rm_max
                     
                 );
                     
@@ -224,7 +224,7 @@ class healthassetvaluemodel extends CI_Model {
                     "site_up_repetation"=>$row->site_up_repetation,
                     "site_up_score"=>$row->site_up_score,
                     "site_up_max"=>$row->site_up_max,
-                    "site_up_rmks"=>$row->site_up_rmks,   
+                    "site_up_rmks"=>$row->site_up_rmks
                    
                     
                 );
@@ -261,19 +261,72 @@ class healthassetvaluemodel extends CI_Model {
                     "push_up_repetation"=>$row->push_up_repetation,
                     "push_up_score"=>$row->push_up_score,
                     "push_up_max"=>$row->push_up_max,
-                    "push_up_rmks"=>$row->push_up_rmks,
-                   
-
-                   
-                        
-                    
+                    "push_up_rmks"=>$row->push_up_rmks
                 );
-                    
         }
         
         return $data;  
     }
-    
+	
+	public function getLatestSitAndReach($membershipno,$validity){
+		$data = array();
+		 $sql="SELECT 
+		`hav_master`.`id`,
+		 DATE_FORMAT(`hav_master`.`sit_nd_reach_date`,'%d-%m-%Y') AS sitandreachDt,
+		`hav_master`.`sit_nd_reach_age`,
+		`hav_master`.`sit_nd_reach_distance`,
+		`hav_master`.`sit_nd_reach_avg_pop`,
+		`hav_master`.`sit_nd_reach_score`,
+		`hav_master`.`sit_nd_reach_rating`
+		 FROM `hav_master` WHERE `hav_master`.`id` =(
+                 SELECT 
+                MAX(`hav_master`.`id`) FROM hav_master
+                WHERE `hav_master`.`membership_no` ='".$membershipno."' AND `hav_master`.`validity_string` = '".$validity."' )";
+		$query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $data =array(
+                    "id" => $row->id,
+                    "sitandreachDt"=>$row->sitandreachDt,
+                    "sit_nd_reach_age"=>$row->sit_nd_reach_age,
+                    "sit_nd_reach_distance"=>$row->sit_nd_reach_distance,
+                    "sit_nd_reach_avg_pop"=>$row->sit_nd_reach_avg_pop,
+                    "sit_nd_reach_score"=>$row->sit_nd_reach_score,
+                    "sit_nd_reach_rating"=>$row->sit_nd_reach_rating
+                );
+        }
+		return $data;
+        
+	}
+	
+	public function getLatestHarvardStepTest($membershipno,$validity){
+		$sql = "SELECT 
+			`hav_master`.`id`,
+			 DATE_FORMAT(`hav_master`.`harvard_col_dt`,'%d-%m-%Y') AS harvardColDt,
+			`hav_master`.`harvard_duration`,
+			`hav_master`.`harvard_pulse_rate`,
+			`hav_master`.`harvard_score`,
+			`hav_master`.`harvard_rating`,
+			`hav_master`.`harvard_max_score`
+			 FROM `hav_master` 
+			 WHERE `hav_master`.`id` =
+			 ( SELECT  MAX(`hav_master`.`id`) FROM hav_master WHERE `hav_master`.`membership_no` ='".$membershipno."' AND `hav_master`.`validity_string` = '".$validity."' )";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$data = array(
+				"id" => $row->id,
+                "harvardColDt"=>$row->harvardColDt,
+                "duration"=>$row->harvard_duration,
+                "pulse_rate"=>$row->harvard_pulse_rate,
+                "harvard_score"=>$row->harvard_score,
+                "harvard_rating"=>$row->harvard_rating,
+                "harvard_max_score"=>$row->harvard_max_score
+			);
+		}
+	}
+   
     public function getLatestUpperBodyjoinmobility($membershipno,$validity){
         $data=array();
         $sql="SELECT `hav_master`.`id`,
@@ -523,7 +576,7 @@ class healthassetvaluemodel extends CI_Model {
                     "mid_abdomen"=>$row->mid_abdomen,
                     "lwr_abdomen"=>$row->lwr_abdomen,
                     "lwr_bdy_thigh"=>$row->lwr_bdy_thigh,
-                    "lwr_bdy_calf"=>$row->lwr_bdy_calf,
+                    "lwr_bdy_calf"=>$row->lwr_bdy_calf
                     
                     
                     );
@@ -533,25 +586,16 @@ class healthassetvaluemodel extends CI_Model {
         return $data;  
     }
     
-     public function getBloodTest($membershipno,$validity){
-        $data=array(
-                   "bldTestDt"=>NULL,
-                    "test_desc"=>NULL,
-                    "reading"=>NULL,
-                    "remarks"=>NULL,
-                    "score"=>NULL,
-                    "max"=>NULL,
-        );
+    public function getBloodTest($membershipno,$validity){
+		$data=array();
         $sql="SELECT 
-                DATE_FORMAT(
-                  `hav_blood_detail`.`date`,
-                  '%d-%m-%Y'
-                ) AS bldTestDt,
+			`hav_master`.`id` AS havmasterID,
+             DATE_FORMAT( `hav_blood_detail`.`date`,'%d-%m-%Y' ) AS bldTestDt,
                 `blood_test_master`.`test_desc`,
                 `hav_blood_detail`.`reading`,
                 `hav_blood_detail`.`remarks`,
                 `hav_blood_detail`.`score`,
-                `hav_blood_detail`.`max`,
+                `hav_blood_detail`.`max` AS max_score,
                 `hav_master`.`membership_id` 
             FROM
               `hav_blood_detail` 
@@ -566,22 +610,23 @@ class healthassetvaluemodel extends CI_Model {
         
        $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
-                $row = $query->row();
-                $data =array(
-                    
-                    "bldTestDt"=>$row->bldTestDt,
-                    "test_desc"=>$row->test_desc,
-                    "reading"=>$row->reading,
-                    "remarks"=>$row->remarks,
-                    "score"=>$row->score,
-                    "max"=>$row->max,
-                    
-                    
-                    
+            foreach($query->result() as $rows){
+                $data[] =array(
+					"havmasterID" => $rows->havmasterID,
+                    "bldTestDt" => $rows->bldTestDt,
+                    "test_desc" => $rows->test_desc,
+                    "reading" => $rows->reading,
+                    "remarks" => $rows->remarks,
+                    "score" => $rows->score,
+                    "max_score" => $rows->max_score
                     );
+			}
+			return $data;
                     
         }
+		else{
         
-        return $data;  
+        return $data;
+		}		
     }
 }

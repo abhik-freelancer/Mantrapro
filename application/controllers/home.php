@@ -21,10 +21,10 @@ class Home extends CI_Controller {
 	$result['events'] = $this->homemodel->getAllEvents($today_dt);
 	$result['webBranch'] = $this->homemodel->getWebBranch();
 	$result['latestOffer'] = $this->homemodel->getLatestOffer();
-	
-	/*echo "<pre>";
-		print_r($result['events']);
-	echo "</pre>";*/
+	/*
+	echo "<pre>";
+		print_r($result['latestOffer']);
+	echo "</pre>"; */
 	
 		
 	createbody_method($result,$page,$header,$session);

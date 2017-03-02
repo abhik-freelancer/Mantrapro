@@ -2,7 +2,7 @@
     <div class="container-fluid hav-report-container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header page-label">Health Asset Value</h1>
+                <h1 class="page-header page-label">Health Asset Value (HAV)</h1>
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>

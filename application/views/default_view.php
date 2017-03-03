@@ -615,6 +615,7 @@
 	<script src="<?php echo base_url(); ?>application/assets/js/home/mayihelp.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/about/about.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/services/services.js"></script>	
+	<script src="<?php echo base_url(); ?>application/assets/js/fitnesseducation/fitness-education.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/bodycalculator/body-calculator.js"></script>	
 	<script src="<?php echo base_url(); ?>application/assets/js/contact/contact-us.js"></script>	
 	

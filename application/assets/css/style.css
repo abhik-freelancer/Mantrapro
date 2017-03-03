@@ -49,7 +49,7 @@ textarea{
 #scroll {
     position:fixed;
     right:10px;
-    bottom:10px;
+    bottom:40px;
     cursor:pointer;
     width:50px;
     height:50px;
@@ -1535,6 +1535,40 @@ ul.fa-ul li .badge{
 .fitness-ed-yr{
 	text-align:left !important;
 }
+.fitnessEnqForm .form-group{
+	margin-bottom: 12px !important;
+	
+}
+.fitnessEnqForm label{
+	margin-bottom: 2px !important;
+	
+}
+
+.fitnessEnqForm .input-group-addon {
+	color: #EB5726;
+    background-color: #F8F8F8;
+	border: 1px solid #CCC;
+}
+.fitnessEnqForm label{
+	color:#EB5726;
+}
+.fitnessEnqForm input  , 
+.fitnessEnqForm textarea{
+	border: 1px solid #CCC;
+}
+/*
+.contact-submit{
+	width:100%;
+	margin:0 auto;
+}  
+.contact-submit .btn{
+	width:100%;
+	background-color:#EB5726 !important;
+	border-color:#EB5726 !important;
+	font-weight:700;
+}
+*/
+
 
 /*-----------Service---------------*/
 .select-style {
@@ -1847,6 +1881,43 @@ ul.fa-ul li .badge{
 	max-height:600px !important;
 }
 
+.contact-enquiry-container .jumbotron {
+background: #F97A3E none repeat scroll 0% 0%;
+color: #FFF;
+border-radius: 0px;
+}
+.contact-enquiry-container .jumbotron h1 small{
+	color:#DEDEDE;
+}
+.jumbotron-sm {
+padding-top: 24px;
+padding-bottom: 24px; 
+}
+.contact-enquiry-container .input-group-addon {
+	color: #EB5726;
+    background-color: #F8F8F8;
+	border: 1px solid #CCC;
+}
+.contact-enquiry-container label{
+	color:#EB5726;
+}
+.contact-enquiry-container input  , 
+.contact-enquiry-container textarea{
+	border: 1px solid #CCC;
+}
+
+.contact-submit{
+	width:100%;
+	margin:0 auto;
+}  
+.contact-submit .btn{
+	width:100%;
+	background-color:#EB5726 !important;
+	border-color:#EB5726 !important;
+	font-weight:700;
+}
+
+
 
 
 
@@ -2152,6 +2223,10 @@ ul.fa-ul li .badge{
 	
 	.trainer-info{
 		padding-top:0%;
+	}
+	.contact-submit{
+		margin-top:2%;
+		margin-bottom:1%;
 	}
 }	
 @media only screen and (max-width: 719px) {

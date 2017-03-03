@@ -172,5 +172,63 @@
 </div>
 
 
+<div class="container-fluid" style="background:#f8f8f8;padding:1% 0;">
+	<div class="row row-container">
+		
+		
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<h1 style="text-align:center;color:#F2652C;">Ask From Us</h1>
+			<img src="<?php echo base_url();?>/application/assets/images/ask-us.png" class="img-responsive" style="width:45%;"/>
+		</div>
+		
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<form id="fitnessEnqForm" name="fitnessEnqForm" class="fitnessEnqForm">
+					<div class="form-group">
+						<label for="name">Name</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="text" class="form-control" id="fitnessedu-enq-name" name="fitnessedu-enq-name" placeholder="Enter your name" />
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+								<input type="text" class="form-control" id="fitnessedu-enq-email" name="fitnessedu-enq-email" placeholder="Enter your email" />
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="mobile">Mobile</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+								<input type="text" class="form-control" id="fitnessedu-enq-mobile" name="fitnessedu-enq-mobile" placeholder="Enter your mobile no" onKeyUp="numericFilter(this);" />
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="name">Message</label>
+						<textarea name="fitnessedu-enq-message" id="fitnessedu-enq-message" class="form-control" rows="2" cols="25" placeholder="Message"></textarea>
+					</div>
+					<div class="enq-captcha">
+						<?php echo $bodycontent["widget"];?>
+						<?php echo $bodycontent["script"];?>
+					</div>
+				
+			
+				
+					<div class="" style="width:100%;margin:2% auto;">
+						<button class="btn btn-danger" style="width:100%;background:#EB5726;border-color:#EB5726;">Submit</button>
+					</div>
+			</form>
+			
+			<div class="fitnessedu-enq-error" style="padding:1%;">
+				<p id="fitnessedu-enq-error" class="error-style" style="color:#F95340;"></p>
+			</div>
+			
+		</div>
+		
+	</div>
+</div>
+
+
 
 

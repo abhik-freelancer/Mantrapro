@@ -81,9 +81,11 @@
                 <div class="panel-body">
                         <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/magic-mantra-icon2.png" /></div>
                          <h4>MAGIC MANTRA</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <p><!--This lifestyle modification program is planned scientifically to invigorate people into shedding weight in a healthy manner. Mantra MMWL package adds a magical touch to life.-->
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+						</p>
                   <div class="more">
-					<a href="#" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a> 
+					<a href="<?php echo base_url();?>home/magic_mantra" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a> 
 					</div>      
                 </div>
             </div> 
@@ -96,7 +98,9 @@
                     <div class="panel-body">
                         <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/health-asset-icon.png" /></div>
                         <h4>HEALTH ASSET VALUE</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <p><!-- With the help of HEALTH ASSET VALUE (HAV) report you can easily track down Your progress and can easily be alert if any significant changes is coming in to your body.-->
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+						</p>
                          <div class="more"><a href="#" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
@@ -107,7 +111,7 @@
                         <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/packages-offerd1.png" /></div>
                           <h4>PACKAGES OFFERED</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                       <div class="more"><a href="#" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
+                       <div class="more"><a href="<?php echo base_url();?>services/rate_chart" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
         </div>

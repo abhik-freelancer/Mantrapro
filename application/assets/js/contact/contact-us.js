@@ -47,6 +47,7 @@ $(document).ready(function(){
 					$("#contact-enquiry-error").html(response.status_msg);
 					$("#contact-enquiry-form")[0].reset();
 					
+					
 				}
 				else if(response.status_code==2){
 					$("#contact-enquiry-error").css("color","#F95340");

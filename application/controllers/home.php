@@ -31,6 +31,14 @@ class Home extends CI_Controller {
          //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
  }
 
+ public function magic_mantra(){
+	$page = 'home/mantra-magic-mantra';
+	 $header = "";
+	 $session="";
+	 $result = "";
+	 createbody_method($result, $page, $header, $session);
+ }
+ 
 
  public function getpass(){
 	

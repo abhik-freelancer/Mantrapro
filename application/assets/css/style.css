@@ -440,6 +440,7 @@ textarea{
   
 }
 .service-box p{
+    /*text-align:center; */
     text-align:center;
 }
 .more{
@@ -473,14 +474,23 @@ textarea{
 	color:#FFF !important;
 	border-radius: 4px;
 	transition:.2s;
-	
 }
+.more:hover a{color:#FFF !important;}
+
 
 .mantra-btn{
 	width:100%;
 	background:none;
 	border:1px solid #F2652C;
 	height:45px;
+}
+
+.service-box:hover{
+	/*margin-top: -10px;
+    border: 0px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+  //  background: rgba(200, 200, 200, 0.1);
+    transition: 0.5s; */
 }
 
 .bg-overlay {
@@ -499,6 +509,100 @@ textarea{
     width:92%;
     margin:0 auto;
 }
+
+
+
+/*-------MAGIC MANTRA ------*/
+.revolutionary-item1,.revolutionary-item2,.revolutionary-item3{height:100px;}
+
+.magic-mantra-container .list-group-item.active{font-weight:700 !important;}
+.magic-mantra-container .list-group-item.active, .magic-mantra-container .list-group-item.active:hover, .magic-mantra-container .list-group-item.active:focus {
+    z-index: 2;
+    color: #FFF;
+    background-color: #F5573D !important;
+    border-color: #F5573D !important;
+}
+
+.revol-step{
+	background:#F2F2F2;
+	border:0px solid #CCC;
+	border-radius:2px;
+	//padding:2%;
+	padding-bottom:5%;
+}
+.revol-step .revol-title {
+	background:#FF603E;
+	padding:1% 0;
+	text-align:center;
+	color:#FFF;
+	font-weight:700;
+}
+.revol-step .revol-img img{
+	border-radius:0px;
+	width:100%;
+	max-width:100%;
+}
+.revol-step .revol-description{
+	padding-left:4%;
+}
+
+
+.revolutionary-step1-container{
+	width: 50%;
+	margin: 2% auto;
+	height:100px;
+	background: #F54326;
+	padding: 3% 2%;
+	border-radius: 105px;
+}
+.revolutionary-step2-container{
+	width: 68%;
+	margin: 2% auto;
+	height:100px;
+	background: #FB8624 ;
+	padding: 3% 2%;
+	border-radius: 105px;
+}
+.revolutionary-step3-container{
+	width: 82%;
+	margin: 2% auto;
+	height:100px;
+	background: #61B454  ;
+	padding: 3% 2%;
+	border-radius: 105px;
+}
+.step-no{
+	width:20%;
+	float:left;
+	font-size:45px;
+	font-weight:700;
+	color:#FFF;
+	line-height: 46px;
+}
+
+.step-description{
+	width:75%;
+	float:right;
+}
+.step-description p{
+	color: rgb(255, 255, 255);
+	font-weight: 700;
+	margin: 0px 0px 0px;
+}
+.step-description img{
+	width:16px;
+	border-radius: 0px !important;
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	display: inline-table !important;
+}
+
+.revolutionary-cache{
+	font-size:4em;
+	text-align:center;
+	color:#F2652D;
+}
+
 
 
 /* ------ Free Guest Pass ----------*/
@@ -2156,6 +2260,9 @@ padding-bottom: 24px;
 	.trainer-info h4,.trainer-info h5{
 	margin-top:0%;
 	}
+	.mmwl-package-bet-head{
+		text-align:center;
+	}
 	
 }
 @media only screen and (max-width: 900px) {
@@ -2174,17 +2281,25 @@ padding-bottom: 24px;
 	.body-fat-per-result{
 		margin-left:10%;
 	}
+	.revolutionary-cache{
+		font-size:3em;
+	}
 }
 
 @media only screen and (max-width: 873px){
 	.news-item {
     padding: 2% 4px 20%;
 	}
+	.revolutionary-step1-container{ width:60%;}
+	.revolutionary-step2-container{width:80%;}
+	.revolutionary-step3-container{width:90%;}
+	
 }
 @media only screen and (max-width: 795px) {
 	.body-fat-per-result{
 		margin-left:0%;
 	}
+	.revolutionary-item1,.revolutionary-item2,.revolutionary-item3{height:120px;}
 }
 
 /*---@768 to 767 --on 01-03-2017 ---*/
@@ -2228,11 +2343,18 @@ padding-bottom: 24px;
 		margin-top:2%;
 		margin-bottom:1%;
 	}
+	.revolutionary-item1,.revolutionary-item2,.revolutionary-item3{height:auto;}
 }	
 @media only screen and (max-width: 719px) {
 	.body-fat-per-result{
 		margin-left:10%;
 	}
+}
+
+@media only screen and (max-width:690px){
+	.revolutionary-step1-container{ width:90%;}
+	.revolutionary-step2-container{width:90%;}
+	.revolutionary-step3-container{width:90%;}
 }
 
 @media only screen and (max-width: 682px) {
@@ -2328,6 +2450,10 @@ padding-bottom: 24px;
 	.testimonial-page-block .testimonial-desc{
 		padding: 2% 4%;
 	}
+	.step-no {
+	line-height: 65px;
+    padding-left: 3%;
+	}
 }
 
 @media only screen and (max-width: 515px) {
@@ -2388,6 +2514,9 @@ padding-bottom: 24px;
 		width: 35px;
 		height: 35px;
 		right: 5%;
+	}
+	.step-description p {
+		font-size: 13px;
 	}
 }
 
@@ -2468,6 +2597,9 @@ padding-bottom: 24px;
 	.fa-ul {
     margin-left: 0px !important;
     }
+	.revolutionary-step1-container{ width:98%;}
+	.revolutionary-step2-container{width:98%;}
+	.revolutionary-step3-container{width:98%;}
 }	
 @media only screen and (max-width: 421px) {
 	.body-calc-result-view{

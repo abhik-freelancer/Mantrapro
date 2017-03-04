@@ -24,6 +24,7 @@ $(document).ready(function(){
 					$("#fitnessedu-enq-error").html(response.status_msg);
 					$("#fitnessedu-enq-error")[0].reset();
 					
+					
 				}
 				else if(response.status_code==2){
 					$("#fitnessedu-enq-error").css("color","#F95340");

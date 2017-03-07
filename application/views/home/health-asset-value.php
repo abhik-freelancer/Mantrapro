@@ -16,6 +16,30 @@
 	</div>
 </div>
 
+
+<div class="container-fluid">
+	<div class="row row-container health-asset-value-member">
+		<div class="col-md-6" style="margin-bottom:2%;">
+			<img src="<?php echo base_url();?>application/assets/images/havbanner.jpg" class="img-responsive" />
+		</div>
+		<div class="col-md-6">
+			<div class="list-group">
+			  <a href="javascript:;" class="list-group-item active">
+				<span class="glyphicon glyphicon-pushpin"></span> Member Detail
+			  </a>
+			  <a href="javascript:;" class="list-group-item">Name : Mr. Amit Kumar Roy  </a>
+			  <a href="javascript:;" class="list-group-item">Gender : M </a>
+			  <a href="javascript:;" class="list-group-item">Reg. Mobile : 9433245057</a>
+			  <a href="javascript:;" class="list-group-item">Age(in yrs) : 35</a>
+			  <a href="javascript:;" class="list-group-item">Health Asset Value for the month of Jan 2017 : 250 points</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
 <div class="container-fluid">
 	<div class="row row-container health-asset-value-container">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -476,28 +500,20 @@
 		
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" style="background:#F8F8F8;padding:2%;">
 	<div class="row row-container">
 		<div class="col-md-12">
-			<img src="<?php echo base_url();?>application/assets/images/hav-img.jpg" class="img-responsive"/>
+			<img src="<?php echo base_url();?>application/assets/images/hav-img.jpg" class="img-responsive hav-large" />
+			<img src="<?php echo base_url();?>application/assets/images/hav-img.jpg" class="img-responsive hav-small" style="width:300px;height:98px;" />
 		</div>
 		<div class="col-md-12">
-			<p>Kind Regards</p>
-			<p>Team Mantra</p>
-			<p>www.mantrahealthzone.co.in</p>
+			<p>Kind Regards<br>
+			Team Mantra</br>
+			www.mantrahealthzone.co.in</p>
+			<p>
+				Disclaimer<br>
+					The information given on this page through various calculations is designed to help you make informed about your health.It is not intended as a subatitute for the advise or treatment that may have been prescribed by your physician. These calculations are not accurate for pregnant or nursing women or children. Before adhering to any recommendations, you should consult with your physician.
+			</p>
 		</div>
 	</div>
 </div>
-
-
-
-
-<!--
-<img src="<?php echo base_url();?>application/assets/images/hav.jpg" class="img-responsive"/>
-
-Kind Regards
-Team Mantra
-www.mantrahealthzone.co.in
-
-Disclaimer
-The information given on this page through various calculations is designed to help you make informed about your health.It is not intended as a subatitute for the advise or treatment that may have been prescribed by your physician. These calculations are not accurate for pregnant or nursing women or children. Before adhering to any recommendations, you should consult with your physician.-->

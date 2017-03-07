@@ -604,11 +604,22 @@ textarea{
 }
 
 /*-----Hav Report---------*/
+.health-asset-value-member .list-group  .active{
+	background-color: #F36C37;
+	border-color: #F36C37;
+}
+ .health-asset-value-member  .list-group-item.active:hover, .health-asset-value-member  .list-group-item.active:focus {
+    z-index: 2;
+    color: #FFF;
+    background-color: #F36C37;
+    border-color: #F36C37;
+	opacity:.8;
+}
 
 .health-asset-value-container table{
 	//width:98%;
-	
 }
+	
 .table-responsive{
 	border:0px solid #FFF;
 	border-radius:10px;
@@ -700,25 +711,25 @@ textarea{
 .fatpercentage-tr-odd{background:#E8D5BD;}
 
 
-/*--------Oxy Saturation Level------------*/
+/*--------Waist Hip------------*/
 .waisthip-heading{background:#9937B4;}
 .waisthip-td-head{background:#9937B4;color:#FFF;font-weight:700;}
 .waisthip-tr-even{background:#CB9CD8;}
 .waisthip-tr-odd{background:#E2C8E9;}
 
-/*--------Oxy Saturation Level------------*/
+/*--------Body Girth : Upperbody------------*/
 .bdygirthup-heading{background:#2FA894;}
 .bdygirthup-td-head{background:#2FA894;color:#FFF;font-weight:700;}
 .bdygirthup-tr-even{background:#A0CDC5;}
 .bdygirthup-tr-odd{background:#CCE6E1;}
 
-/*--------Abdomen------------*/
+/*--------Body Girth: Abdomen------------*/
 .abdomen-heading{background:#385BB3;}
 .abdomen-td-head{background:#385BB3;color:#FFF;font-weight:700;}
 .abdomen-tr-even{background:#B1C0E5;}
 .abdomen-tr-odd{background:#C8D1E6;}
 
-/*--------LowerBody------------*/
+/*--------Body Girth : LowerBody------------*/
 .bodygirthlwr-heading{background:#4E7A43;}
 .bodygirthlwr-td-head{background:#4E7A43;color:#FFF;font-weight:700;}
 .bodygirthlwr-tr-even{background:#819A7B;}
@@ -730,7 +741,8 @@ textarea{
 .bloodtest-tr-even{background:#F1AFD8;}
 .bloodtest-tr-odd{background:#FDD9EF;}
 
-
+.hav-large{display:block !important;}
+.hav-small{display:none !important;}
 
 
 
@@ -2194,7 +2206,8 @@ padding-bottom: 24px;
 @import url(http://fonts.googleapis.com/css?family=Fjalla+One);
 @import url(http://fonts.googleapis.com/css?family=Gudea);
 .footer1 {
-   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.5)), url("../images/footerbg.jpg");
+  // background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.5)), url("../images/footerbg.jpg");
+  background-image: linear-gradient(rgba(215, 66, 25, 0.7), rgba(0, 0, 0, 0.5)), url("../images/footerbg.jpg");
    height:100%;
    min-height: 100%; 
    background-attachment: fixed;
@@ -2263,7 +2276,11 @@ padding-bottom: 24px;
 	width:95%;
 }
 .widget_nav_menu ul li a{
+	text-decoration:none;
 	color:#FFF !important;
+}
+.widget_nav_menu ul li a:hover{
+	color:#FC844C !important;
 }
 
 
@@ -2994,6 +3011,8 @@ padding-bottom: 24px;
 		max-height: 192px;
 		overflow: hidden;
 	}
+	.hav-large{display:none !important;}
+	.hav-small{display:block !important;}
 	
 }
 

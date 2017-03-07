@@ -405,8 +405,6 @@
 								<li class="dropdown-header">Branch Wise Rate Chart</li>                            
 									<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
 									<li><a href="<?php echo base_url();?>services/rate_chart" class="btn cutome-link-btn">View More</a></li>
-							
-							   
 							</ul>
 						</li>
 						<li class="col-sm-4">
@@ -599,7 +597,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column left -->
             <ul class="list-unstyled clear-margins"><!-- widgets -->
                 <li class="widget-container widget_nav_menu"><!-- widgets list -->
-                    <h1 class="title-widget">Footer1</h1>
+                <!--    <h1 class="title-widget">Footer1</h1> -->
                     <ul>
                         <li><a  href="<?php echo base_url(); ?>"><i class="fa fa-angle-double-right"></i> Home </a></li>
                         <li><a  href="<?php echo base_url(); ?>about/mission_and_vision"><i class="fa fa-angle-double-right"></i> Mission & Vision</a></li>
@@ -612,10 +610,10 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column left -->
             <ul class="list-unstyled clear-margins"><!-- widgets -->
                 <li class="widget-container widget_nav_menu"><!-- widgets list -->
-                    <h1 class="title-widget">Footer2</h1>
+                <!--    <h1 class="title-widget">Footer2</h1> -->
                     <ul>
  						<li><a  href="<?php echo base_url(); ?>home/magic_mantra"><i class="fa fa-angle-double-right"></i>  Magic Mantra </a></li>
-                        <li><a  href="<?php echo base_url(); ?>"><i class="fa fa-angle-double-right"></i>  Health Asset Value </a></li>
+                        <li><a  href="<?php echo base_url(); ?>home/health_asset_value"><i class="fa fa-angle-double-right"></i>  Health Asset Value </a></li>
                         <li><a  href="<?php echo base_url(); ?>services/rate_chart"><i class="fa fa-angle-double-right"></i>  Packages Offered  </a></li>
                         <li><a  href="<?php echo base_url(); ?>about/mantra_testimonial"><i class="fa fa-angle-double-right"></i>  Testimonials </a></li>
                     </ul>
@@ -625,7 +623,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column left -->
             <ul class="list-unstyled clear-margins"><!-- widgets -->
                 <li class="widget-container widget_nav_menu"><!-- widgets list -->
-                    <h1 class="title-widget">Footer3</h1>
+                   <!-- <h1 class="title-widget">Footer3</h1> -->
                     <ul>
 						<li><a href="<?php echo base_url(); ?>about/career"><i class="fa fa-angle-double-right"></i> Career</a></li>
 						<li><a href="<?php echo base_url(); ?>gallery/video_gallery"><i class="fa fa-angle-double-right"></i> Video Gallery</a></li>
@@ -638,7 +636,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column center -->
             <ul class="list-unstyled clear-margins"><!-- widgets -->
                 <li class="widget-container widget_recent_news"><!-- widgets list -->
-                    <h1 class="title-widget">Contact Detail </h1>
+                  <!--  <h1 class="title-widget">Contact Detail </h1> -->
                         <div class="footerp"> 
                             <h2 class="title-median">MANTRA LIFE STYLE HEALTH CLUB</h2>
                             <p><b>Email id:</b> <a href="">info@mantrahealthzone.co.in</a></p>

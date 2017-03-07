@@ -582,17 +582,103 @@
       ?>
     </div>
         <!-- Footer -->
-        <footer>
+<footer class="footer1"> 
+			<!--
             <div class="row">
                 <div class="col-lg-12">
 					<div class="footer-section">
 						<p>Copyright &copy; 2016 MANTRA. All Rights Reserved.</p>
 					</div>
                 </div>
-            </div>
-        </footer>
+            </div> -->
+			
+<!--footer-->
 
-    </div>
+<div class="container">
+	<div class="row"><!-- row -->
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column left -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+                <li class="widget-container widget_nav_menu"><!-- widgets list -->
+                    <h1 class="title-widget">Footer1</h1>
+                    <ul>
+                        <li><a  href="<?php echo base_url(); ?>"><i class="fa fa-angle-double-right"></i> Home </a></li>
+                        <li><a  href="<?php echo base_url(); ?>about/mission_and_vision"><i class="fa fa-angle-double-right"></i> Mission & Vision</a></li>
+                        <li><a  href="<?php echo base_url(); ?>about/life_style_health_club"><i class="fa fa-angle-double-right"></i> 1st Life Style Health Club</a></li>
+                        <li><a  href="<?php echo base_url(); ?>about/mantra_trainer"><i class="fa fa-angle-double-right"></i> Trainers</a></li>
+					</ul>
+                </li>
+            </ul>
+        </div><!-- widgets column left end -->
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column left -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+                <li class="widget-container widget_nav_menu"><!-- widgets list -->
+                    <h1 class="title-widget">Footer2</h1>
+                    <ul>
+ 						<li><a  href="<?php echo base_url(); ?>home/magic_mantra"><i class="fa fa-angle-double-right"></i>  Magic Mantra </a></li>
+                        <li><a  href="<?php echo base_url(); ?>"><i class="fa fa-angle-double-right"></i>  Health Asset Value </a></li>
+                        <li><a  href="<?php echo base_url(); ?>services/rate_chart"><i class="fa fa-angle-double-right"></i>  Packages Offered  </a></li>
+                        <li><a  href="<?php echo base_url(); ?>about/mantra_testimonial"><i class="fa fa-angle-double-right"></i>  Testimonials </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- widgets column left end -->
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column left -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+                <li class="widget-container widget_nav_menu"><!-- widgets list -->
+                    <h1 class="title-widget">Footer3</h1>
+                    <ul>
+						<li><a href="<?php echo base_url(); ?>about/career"><i class="fa fa-angle-double-right"></i> Career</a></li>
+						<li><a href="<?php echo base_url(); ?>gallery/video_gallery"><i class="fa fa-angle-double-right"></i> Video Gallery</a></li>
+						<li><a href="javascript:;"><i class="fa fa-angle-double-right"></i> Terms & Condition</a></li>
+						<li><a href="javascript:;"><i class="fa fa-angle-double-right"></i> Privacy Policy</a></li>
+					</ul>
+                </li>
+                </ul>
+        </div><!-- widgets column left end -->
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><!-- widgets column center -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+                <li class="widget-container widget_recent_news"><!-- widgets list -->
+                    <h1 class="title-widget">Contact Detail </h1>
+                        <div class="footerp"> 
+                            <h2 class="title-median">MANTRA LIFE STYLE HEALTH CLUB</h2>
+                            <p><b>Email id:</b> <a href="">info@mantrahealthzone.co.in</a></p>
+                        </div>
+                        <div class="social-icons">
+							<ul class="nomargin">
+								<a href="javascript:;"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+								<a href="javascript:;"><i class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
+								<a href="javascript:;"><i class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+							</ul>
+                        </div>
+                </li>
+            </ul>
+        </div>
+		
+     </div>
+	</div>
+</footer>
+<!--header-->
+
+<div class="footer-bottom">
+	<div class="container-fluid">
+		<div class="row row-container">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="copyright">
+					Copyright &copy; 2017 MANTRA. All Rights Reserved.
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="design">
+					<a target="" href="javascript:;">Design & Development by Softhought</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+			
+
+
+
     <!-- /.container -->
 
     <!-- jQuery ---->

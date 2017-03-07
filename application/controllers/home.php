@@ -32,11 +32,19 @@ class Home extends CI_Controller {
  }
 
  public function magic_mantra(){
-	$page = 'home/mantra-magic-mantra';
+	 $page = 'home/mantra-magic-mantra';
 	 $header = "";
 	 $session="";
 	 $result = "";
 	 createbody_method($result, $page, $header, $session);
+ }
+ 
+ public function health_asset_value(){
+	$page = 'home/health-asset-value';
+	$header = "";
+	$session = "";
+	$result = "";
+	createbody_method($result, $page, $header, $session);
  }
  
 

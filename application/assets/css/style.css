@@ -603,6 +603,136 @@ textarea{
 	color:#F2652D;
 }
 
+/*-----Hav Report---------*/
+
+.health-asset-value-container table{
+	//width:98%;
+	
+}
+.table-responsive{
+	border:0px solid #FFF;
+	border-radius:10px;
+}
+.health-asset-value-container .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+   
+    border: 1px solid #FFF !important;
+}
+
+.health-asset-value-container table tr th{
+	font-weight:700;
+	color:#FFF;
+}
+
+.health-asset-value-container  h2{
+	color:#F2652D;
+} 
+.health-asset-value-container  h4{
+	color:#626262;
+} 
+.health-asset-value-container  h5{
+	color:#D8560F;
+} 
+
+/*--------Blood Presure------------*/
+.bp-heading{background:#F69649;}
+.bp-td-head{background:#F69649;color:#FFF;font-weight:700;}
+.bp-tr-even{background:#FACAA4;}
+.bp-tr-odd{background:#FDE2CD;}
+
+/*--------Oxy Saturation Level------------*/
+.oxy-level-heading{background:#F742A0;}
+.oxy-level-td-head{background:#F742A0;color:#FFF;font-weight:700;}
+.oxy-level-tr-even{background:#FFAAD6;}
+.oxy-level-tr-odd{background:#FFC8E5;}
+
+/*--------Strength------------*/
+.strength-heading{background:#4AACC7;}
+.strength-td-head{background:#4AACC7;color:#FFF;font-weight:700;}
+.strength-tr-even{background:#A3D5E0;}
+.strength-tr-odd{background:#D2EBF0;}
+
+/*--------VoMax------------*/
+.vomax-heading{background:#9DBB59;}
+.vomax-td-head{background:#9DBB59;color:#FFF;font-weight:700;}
+.vomax-tr-even{background:#CDDDAE;}
+.vomax-tr-odd{background:#E7ECD6;}
+
+
+/*--------Sit Up Test------------*/
+.situp-heading{background:#C2514D;}
+.situp-td-head{background:#C2514D;color:#FFF;font-weight:700;}
+.situp-tr-even{background:#DEA7A4;}
+.situp-tr-odd{background:#EFD3D2;}
+
+
+/*--------Push Up Test------------*/
+.pushup-heading{background:#5181BF;}
+.pushup-td-head{background:#5181BF;color:#FFF;font-weight:700;}
+.pushup-tr-even{background:#A6C0DB;}
+.pushup-tr-odd{background:#D2E0EB;}
+
+
+/*--------Upper Body joint Mobility------------*/
+.uprbdy-heading{background:#D34825;}
+.uprbdy-td-head{background:#D34825;color:#FFF;font-weight:700;}
+.uprbdy-tr-even{background:#E69581;}
+.uprbdy-tr-odd{background:#EEBEB1;}
+
+
+/*--------Lower Body joint Mobility------------*/
+.lwrbdy-heading{background:#06BEC1;}
+.lwrbdy-td-head{background:#06BEC1;color:#FFF;font-weight:700;}
+.lwrbdy-tr-even{background:#96D5D6;}
+.lwrbdy-tr-odd{background:#C7E4E5;}
+
+
+/*--------Muscle Flexibility------------*/
+.flexibility-heading{background:#8264A0;}
+.flexibility-td-head{background:#8264A0;color:#FFF;font-weight:700;}
+.flexibility-tr-even{background:#C0B1D0;}
+.flexibility-tr-odd{background:#DED6E5;}
+
+
+/*-------- Fat % ------------*/
+.fatpercentage-heading{background:#BB6A00;}
+.fatpercentage-td-head{background:#BB6A00;color:#FFF;font-weight:700;}
+.fatpercentage-tr-even{background:#D2B389;}
+.fatpercentage-tr-odd{background:#E8D5BD;}
+
+
+/*--------Oxy Saturation Level------------*/
+.waisthip-heading{background:#9937B4;}
+.waisthip-td-head{background:#9937B4;color:#FFF;font-weight:700;}
+.waisthip-tr-even{background:#CB9CD8;}
+.waisthip-tr-odd{background:#E2C8E9;}
+
+/*--------Oxy Saturation Level------------*/
+.bdygirthup-heading{background:#2FA894;}
+.bdygirthup-td-head{background:#2FA894;color:#FFF;font-weight:700;}
+.bdygirthup-tr-even{background:#A0CDC5;}
+.bdygirthup-tr-odd{background:#CCE6E1;}
+
+/*--------Abdomen------------*/
+.abdomen-heading{background:#385BB3;}
+.abdomen-td-head{background:#385BB3;color:#FFF;font-weight:700;}
+.abdomen-tr-even{background:#B1C0E5;}
+.abdomen-tr-odd{background:#C8D1E6;}
+
+/*--------LowerBody------------*/
+.bodygirthlwr-heading{background:#4E7A43;}
+.bodygirthlwr-td-head{background:#4E7A43;color:#FFF;font-weight:700;}
+.bodygirthlwr-tr-even{background:#819A7B;}
+.bodygirthlwr-tr-odd{background:#B6C6B2;}
+
+/*--------Blood Test------------*/
+.bloodtest-heading{background:#C6348E;}
+.bloodtest-td-head{background:#C6348E;color:#FFF;font-weight:700;}
+.bloodtest-tr-even{background:#F1AFD8;}
+.bloodtest-tr-odd{background:#FDD9EF;}
+
+
+
+
 
 
 /* ------ Free Guest Pass ----------*/
@@ -2027,6 +2157,7 @@ padding-bottom: 24px;
 
 
 /*--------------*/
+/*
 .footer-section{
 	width:100%;
 	margin-top:1%;
@@ -2036,8 +2167,185 @@ padding-bottom: 24px;
 	color:#FFF;
 	line-height:80px;
 }
+*/
+
+/*
+
+.footer1 {
+   background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("../images/footerbg.jpg");
+   height:100%;
+   min-height: 100%; 
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 50px;
+   padding-bottom: 20px;
+   color:#D7D7D7 !important;
+}
+*/
 
 
+
+/************************************************************
+*************************Footer******************************
+*************************************************************/
+
+@import url(http://fonts.googleapis.com/css?family=Fjalla+One);
+@import url(http://fonts.googleapis.com/css?family=Gudea);
+.footer1 {
+   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.5)), url("../images/footerbg.jpg");
+   height:100%;
+   min-height: 100%; 
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 50px;
+   padding-bottom: 20px;
+   color:#D7D7D7 !important;
+}
+
+
+
+.title-widget {
+	color: #E74C3C;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1;
+	position: relative;
+	text-transform: uppercase;
+	font-family: 'Fjalla One', sans-serif;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 25px;
+	margin-left: 0;
+	padding-left: 28px;
+}
+
+.title-widget::before {
+    background-color: #ea5644;
+    content: "";
+    height: 22px;
+    left: 0px;
+    position: absolute;
+    top: -2px;
+    width: 5px;
+}
+
+
+
+.widget_nav_menu ul {
+    list-style: outside none none;
+    padding-left: 0;
+}
+
+.widget_archive ul li {
+    background-color: rgba(0, 0, 0, 0.3);
+    content: "";
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 7px;
+    width: 3px;
+}
+
+
+.widget_nav_menu ul li {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+	position: relative;
+    text-transform: uppercase;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 7px;
+    padding-bottom: 0px;
+	width:95%;
+}
+.widget_nav_menu ul li a{
+	color:#FFF !important;
+}
+
+
+.title-median {
+    color: #FEFEFE;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0 0 15px;
+    text-transform: uppercase;
+	font-family: 'Fjalla One', sans-serif;
+}
+
+.footerp p {font-family: 'Gudea', sans-serif; }
+
+.social-icons ul a{
+	color:#FFF;
+}
+
+#social:hover {
+    			-webkit-transform:scale(1.1); 
+-moz-transform:scale(1.1); 
+-o-transform:scale(1.1); 
+			}
+			#social {
+				-webkit-transform:scale(0.8);
+                /* Browser Variations: */
+-moz-transform:scale(0.8);
+-o-transform:scale(0.8); 
+-webkit-transition-duration: 0.5s; 
+-moz-transition-duration: 0.5s;
+-o-transition-duration: 0.5s;
+			}           
+/* 
+    Only Needed in Multi-Coloured Variation 
+                                               */
+			.social-fb:hover {
+				color: #3B5998;
+			}
+			.social-tw:hover {
+				color: #4099FF;
+			}
+			.social-gp:hover {
+				color: #d34836;
+			}
+			.social-em:hover {
+				color: #f39c12;
+			}
+			.nomargin { margin:0px; padding:0px;}
+
+
+
+
+
+.footer-bottom {
+    background-color: #F2652D;
+    min-height: 30px;
+    width: 100%;
+}
+.footer-bottom .row-container{
+	margin:0 auto !important;
+}
+.copyright {
+    color: #fff;
+    line-height: 30px;
+    min-height: 30px;
+    padding: 7px 0;
+}
+.design {
+    color: #fff;
+    line-height: 30px;
+    min-height: 30px;
+    padding: 7px 0;
+    text-align: right;
+}
+.design a {
+    color: #fff;
+}
+
+
+/************************************************************
+*************************Footer******************************
+*************************************************************/
 
 /*-----------------Custome Responsive CSS----------------*/
 @media only screen and (max-width: 1275px) {
@@ -2261,6 +2569,12 @@ padding-bottom: 24px;
 	margin-top:0%;
 	}
 	.mmwl-package-bet-head{
+		text-align:center;
+	}
+	.copyright {
+		text-align:center;
+	}
+	.design {
 		text-align:center;
 	}
 	

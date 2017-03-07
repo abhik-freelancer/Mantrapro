@@ -101,7 +101,7 @@
                         <p><!-- With the help of HEALTH ASSET VALUE (HAV) report you can easily track down Your progress and can easily be alert if any significant changes is coming in to your body.-->
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
 						</p>
-                         <div class="more"><a href="#" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
+                         <div class="more"><a href="<?php echo base_url();?>home/health_asset_value" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
         </div>

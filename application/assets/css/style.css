@@ -3248,6 +3248,25 @@ padding-bottom: 24px;
 	//	padding: 5% 4px 48%;
 	}
 }
+
+@media only screen and (max-width: 326px){
+	.mantra-cache-line {
+		padding-left: 21%;
+	}
+	.log-container-left {
+		float: none;
+		width: 100%;
+	}
+	.mantra-logo{
+		padding-left: 31%;
+    }
+	.log-container-right {
+		float: none;
+		width: 100%;
+		padding-left: 5%;
+	}
+}
+
 @media only screen and (max-width: 320px) {
 	.service-icon{
 		width:67%;
@@ -3276,6 +3295,19 @@ padding-bottom: 24px;
 	 border-radius: 0;
 	 height: 56px;
   }
+  .mantra-cache-line {
+		padding-left:18%;
+	}
+	.log-container-left {
+		float: none;
+		width: 100%;
+	}
+	.mantra-logo{
+		padding-left: 28%;
+    }
+	.log-container-right {
+		padding-left: 0%;
+	}
 }
 
 

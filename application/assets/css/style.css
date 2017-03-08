@@ -108,6 +108,11 @@ textarea{
     src: url('../fonts/futuraBTbook.ttf');
 }
 
+@font-face {
+    font-family: 'aparajita';
+    src: url('../fonts/aparajita.ttf');
+}
+
 .header-top-left{
 width:60%;
 height:131px;
@@ -171,7 +176,7 @@ font-size: 3em;
 
 .mantra-title{
 	font-size: 5.1em;
-	font-family: none;
+	font-family: initial;
 	font-weight: bold;
 	color:#F1652A;
 }
@@ -185,7 +190,7 @@ font-size: 3em;
 	font-family: arial;
 }
 .mantra-title-catch-line{
-	font-family: none;
+	font-family: initial;
 	font-size: 1.7em;
 	font-weight: 600;
 	margin-top: -25px;

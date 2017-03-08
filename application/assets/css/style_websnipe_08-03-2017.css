@@ -36,7 +36,6 @@ textarea{
     padding-left:0;
     padding-right:0;
     position:relative;
-	overflow-x:hidden;
   
 }
 .validation-error{
@@ -83,114 +82,20 @@ textarea{
 
 
 /*--- end back to top ---*/
-/*
+
 .top-header{
     width:100%;
     height:119px;
 }
 .top-header img{
 		width:100%;
-}*/
+}
 
 .affix {
       top: 0;
       width: 100%;
      }
 
-	 
-@font-face {
-    font-family: 'scriptina';
-    src: url('../fonts/SCRIPTIN.ttf');
-}
-
-@font-face {
-    font-family: 'futuraBTbook';
-    src: url('../fonts/futuraBTbook.ttf');
-}
-
-.header-top-left{
-width:60%;
-height:131px;
-float:left;
-background: #f2652d; /* Old browsers */
-background: -moz-linear-gradient(left, #f2652d 0%, #f2652d 49%, #f26f39 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #f2652d 0%,#f2652d 49%,#f26f39 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #f2652d 0%,#f2652d 49%,#f26f39 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2652d', endColorstr='#f26f39',GradientType=1 ); /* IE6-9 */
-}
-.mantra-cache-line{
-	margin-left:10%;
-	padding-top: 2%;
-}
-.inspired{
-font-family: futuraBTbook;
-color: rgb(255, 255, 255);
-font-weight: 700;
-font-size: 3em;
-}
-.by{
-	font-family: scriptina;
-	color: #FFF;
-	font-size: 3em;
-	font-weight: bold;
-}
-.fitness{
-	font-family: Helvetica;
-	color: #FFF;
-	font-size: 2.5em;
-	margin-left: 90px;
-	margin-top: -16px;
-	letter-spacing: 4px;
-}
-.header-top-right{
-	width:40%;
-	float:right;
-	height:131px;
-	padding-left:4% !important;
-	background: #f26f39;
-	background: -moz-linear-gradient(left, #f26f39 0%, #f68356 10%, #fad0c0 23%, #fefefe 49%, #fdeae3 65%, #fdeae3 65%, #f9c4af 81%, #f6a07d 91%, #f37d4d 100%); 
-	background: -webkit-linear-gradient(left, #f26f39 0%,#f68356 10%,#fad0c0 23%,#fefefe 49%,#fdeae3 65%,#fdeae3 65%,#f9c4af 81%,#f6a07d 91%,#f37d4d 100%); 
-	background: linear-gradient(to right, #f26f39 0%,#f68356 10%,#fad0c0 23%,#fefefe 49%,#fdeae3 65%,#fdeae3 65%,#f9c4af 81%,#f6a07d 91%,#f37d4d 100%); 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f26f39', endColorstr='#f37d4d',GradientType=1 ); /* IE6-9 */
-	
-}
-.mantra-logo-container{width:100%;}
-.log-container-left{
-	width:15%;
-	float:left;
-}
-.log-container-right{
-	width:84%;
-	float:right;
-	
-}
-.mantra-logo{
-	position: absolute;
-	top: 16px;
-}
-
-.mantra-title{
-	font-size: 5.1em;
-	font-family: none;
-	font-weight: bold;
-	color:#F1652A;
-}
-.registered{
-	font-size: 29px;
-	font-weight: bold;
-	position: absolute;
-	/*top: 10%;
-	right: 18%;*/
-	color: #323232;
-	font-family: arial;
-}
-.mantra-title-catch-line{
-	font-family: none;
-	font-size: 1.7em;
-	font-weight: 600;
-	margin-top: -25px;
-	margin-left: 8px;
-}
 
 .body-view{
     position: relative;
@@ -2488,8 +2393,6 @@ padding-bottom: 24px;
 	.row-container{
 		width:94% !important;
 	}
-	.header-top-left{width:50%;}
-	.header-top-right{width:50%;}
 	
 }
 
@@ -2693,10 +2596,6 @@ padding-bottom: 24px;
 	}
 	
 }
-@media only screen and (max-width: 925px) {
-	.header-top-left{width:40%;}
-	.header-top-right{width:60%;}
-}
 @media only screen and (max-width: 900px) {
 	.responsive-icon{
 		display:block !important;
@@ -2776,59 +2675,6 @@ padding-bottom: 24px;
 		margin-bottom:1%;
 	}
 	.revolutionary-item1,.revolutionary-item2,.revolutionary-item3{height:auto;}
-	
-	#header-top{
-		background: #ef5517; /* Old browsers */
-		background: -moz-linear-gradient(top, #ef5517 0%, #fad5c6 70%, #ffffff 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, #ef5517 0%,#fad5c6 70%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, #ef5517 0%,#fad5c6 70%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef5517', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-	}
-	.header-top-left{
-		width:100%;
-		//float:none;
-		background:none;
-		height:auto;
-	}
-   .mantra-cache-line {
-		/*width: 27%;*/
-		padding-left: 40%;
-		margin: 0 auto;
-		border: 0px solid #CCC;
-		padding-top:1%;
-	}
-	.inspired {font-size: 2em;}
-	.by {font-size: 2em;}
-	.fitness {
-		font-size: 1.9em;
-		letter-spacing: 2px;
-		margin-left: 59px;
-		margin-top: -11px;
-		}
-	
-	.header-top-right{
-		width:100%;
-		background:none;
-		height:auto;
-		margin-top: -18px;
-		}
-	.mantra-logo-container {
-		width: 70%;
-		margin-left:24%;
-	}
-	.mantra-logo {
-		position: relative;
-		top:10px;
-	}
-	.mantra-title {
-		font-size: 4.1em;
-	}
-	.mantra-title-catch-line {
-		
-		margin-top: -22px;
-		font-size: 1.4em;
-		margin-left:0px;
-	}
 }	
 @media only screen and (max-width: 719px) {
 	.body-fat-per-result{
@@ -2840,9 +2686,6 @@ padding-bottom: 24px;
 	.revolutionary-step1-container{ width:90%;}
 	.revolutionary-step2-container{width:90%;}
 	.revolutionary-step3-container{width:90%;}
-	
-	
-	
 }
 
 @media only screen and (max-width: 682px) {
@@ -2867,20 +2710,6 @@ padding-bottom: 24px;
 	.mantra-bout-text {
     width: 98%;
     margin: 5% auto;
-	}
-	
-	.mantra-cache-line {
-		padding-left: 35%;
-		padding-top: 1%;
-	}
-	.mantra-logo-container {
-		width: 70%;
-		margin-left: 20%;
-	}
-	.mantra-logo {
-		position: relative;
-		top: 10px;
-		max-width:100%;
 	}
 }
 @media only screen and (max-width: 636px) {
@@ -2922,9 +2751,6 @@ padding-bottom: 24px;
 	width:100% !important;
 	margin:0 auto;
 	}
-	.mantra-logo {
-		top: 15px;
-    }
 }
 
 @media only screen and (max-width: 535px) {
@@ -2959,17 +2785,6 @@ padding-bottom: 24px;
 	line-height: 65px;
     padding-left: 3%;
 	}
-	
-	.mantra-cache-line {
-		padding-left: 30%;
-		padding-top: 1%;
-	}
-	.mantra-logo-container {
-		width: 70%;
-		margin-left: 15%;
-	}
-	
-	
 }
 
 @media only screen and (max-width: 515px) {
@@ -3033,31 +2848,6 @@ padding-bottom: 24px;
 	}
 	.step-description p {
 		font-size: 13px;
-	}
-	/*
-	.mantra-cache-line {
-		padding-left: 27%;
-		padding-top: 1%;
-	}
-	.mantra-logo-container {
-		width: 70%;
-		margin-left: 10%;
-	}
-	*/
-	.mantra-logo-container {
-		width: 70%;
-		margin-left: 17%;
-	}
-	.mantra-title-catch-line {
-		margin-top: -16px;
-		margin-left: -1px;
-		font-size: 15px;
-	}
-	.mantra-logo {
-		top: 9px;
-	}
-	.mantra-title {
-		font-size: 3.2em;
 	}
 }
 
@@ -3171,9 +2961,6 @@ padding-bottom: 24px;
     font-size: 2.8em;
     text-align:center;
 	}
-	.mantra-logo {
-		top: 14px;
-	}
 }
 
 @media only screen and (max-width: 380px) {
@@ -3200,12 +2987,6 @@ padding-bottom: 24px;
 	}
 	.body-calculator h3{
 		font-size: 22px;
-	}
-	.mantra-cache-line {
-		padding-left: 24%;
-    }
-	.mantra-logo-container {
-		margin-left: 13%;
 	}
 }
 @media only screen and (max-width: 360px) {

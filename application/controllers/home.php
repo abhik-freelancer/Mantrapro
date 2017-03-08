@@ -47,6 +47,16 @@ class Home extends CI_Controller {
 	createbody_method($result, $page, $header, $session);
  }
  
+ /*
+  public function test(){
+	$page = 'home/test';
+	$header = "";
+	$session = "";
+	$result = "";
+	createbody_method($result, $page, $header, $session);
+ }
+ */
+ 
 
  public function getpass(){
 	

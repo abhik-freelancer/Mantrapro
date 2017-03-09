@@ -21,6 +21,7 @@ class profilemodel extends CI_Model {
         $sql = "SELECT `customer_master`.`CUS_ID`,
                 `customer_master`.`CUS_NAME`,
                 `customer_master`.`CUS_PHONE`,
+                `customer_master`.`CUS_BRANCH`,
                 `customer_master`.`CUS_PHONE2`,
                 `customer_master`.`CUS_ADRESS`,
                 `customer_master`.`CUS_PIN`,
@@ -44,6 +45,7 @@ class profilemodel extends CI_Model {
             $memberData = array(
                 "CUS_ID" => $row->CUS_ID,
                 "CUS_NAME" => $row->CUS_NAME,
+                "CUS_BRANCH" => $row->CUS_BRANCH,
                 "CUS_PHONE" => $row->CUS_PHONE,
                 "CUS_PHONE2" => $row->CUS_PHONE2,
                 "CUS_ADRESS" => $row->CUS_ADRESS,

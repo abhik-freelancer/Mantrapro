@@ -527,8 +527,37 @@ label{
 	font-size:90% !important;
 }
 
+/******************************
+*********** FEEDBACK **********
+*******************************/
+
+.feedBackFormContainer{
+	width:96%;
+	margin:0 auto;
+	font-size: 13px;
+}
+.feedback-col-container{
+	width: 96%;
+	padding: 2%;
+	background: #F0F0F0 none repeat scroll 0% 0%;
+	border-radius: 20px; 
+}
+/*
+.feedback-left{
+	width:4%;
+	float:left;  
+}
+.feedback-left .badge{
+	background-color: #FF483B;
+}*/
+.feedback-right{
+	width:100%;
+	//float:left;
+}
 
 
+
+/*-----------Responsive View--------*/
 @media only screen and (max-width:1345px){
 	.portfolio-view-container .panel-footer  	.nav > li >a{
 	padding: 7px 12px;
@@ -679,6 +708,12 @@ label{
 	.dataTables_info{
 		padding-left: 16px !important;
 	}
+	.feedback-col-container {
+		width: 98%;
+		padding: 2%;
+		background: #F8F8F8 none repeat scroll 0% 0%;
+		border-radius: 8px;
+	}
 }
 @media only screen and (max-width:460px) {
 	.container-fluid{
@@ -699,7 +734,6 @@ label{
 
 
 
-//again comoi
 
 
 

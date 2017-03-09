@@ -15,6 +15,7 @@
     <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- data table css -->
     <link href="<?php echo base_url(); ?>application/assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	
     <!-- Custom CSS --
     <link href="<?php echo base_url(); ?>application/assets/css/sb-admin.css" rel="stylesheet">
 	<!-- Morris Charts CSS --
@@ -32,6 +33,7 @@
 	<link href="<?php echo base_url(); ?>application/assets/css/metisMenu.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>application/assets/css/sb-admin-2.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>application/assets/css/morris.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>application/assets/css/magic-check.css" rel="stylesheet">
 	
 
 	
@@ -235,7 +237,7 @@
                         </ul>
                     </li>
                     <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
-					<li><a href="#"><i class="fa fa-external-link-square"></i> Feedback</a></li>
+					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-external-link-square"></i> Feedback</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
@@ -249,6 +251,7 @@
 		
 		
 		 <!--content  inserted here--->
+		 
 	     <?php if($bodyview)  : ?>  
     
                 
@@ -258,6 +261,7 @@
 		 <?php
 		   endif; 
 		  ?>
+		
 
     </div>
     <!-- /#wrapper -->
@@ -269,6 +273,9 @@
 
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script>
+	<!--for temporary  add file from folder-->
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
@@ -286,6 +293,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/profile/profile.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/healthandfitness/generalfitness.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/feedback/feedbackJS.js"></script>
    
     
     

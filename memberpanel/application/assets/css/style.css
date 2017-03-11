@@ -469,11 +469,13 @@ label{
 .btn-custom{
 	color: #FFF;
 	background-color: #F3724F;
+	
 	}
 .portfolio-view-container .dropdown-menu > li > a{
 	
 	font-size:10px;
 }
+
 
 /*-----------------Hav Report Styling--------------*/
 .hav-row-container {
@@ -554,6 +556,52 @@ label{
 	width:100%;
 	//float:left;
 }
+
+/******************************
+*********** Application **********
+*******************************/
+
+.custom-button{
+	color: #FFF;
+	background-color: #F8582D;
+	font-weight: 700;
+}
+.error-style{
+	font-weight: bold;
+	color: #FF7F70;
+}
+.validation-error{
+	border: 1px solid #F23D17 !important;
+	box-shadow: 0px 1px 8px #FEA592 !important;
+}
+.custom-button:hover , .custom-button:focus {
+	color:#FFF;
+}
+
+.appExtFormContainer{
+	background: #EAEAEA none repeat scroll 0% 0%;
+	padding: 3%;
+	border-radius: 10px;
+}
+
+
+.appExtFormContainer .file{
+	position:absolute;
+	z-index:2;
+	top:0;
+	left:0;
+	filter: alpha(opacity=0);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	opacity:0;
+	background-color:transparent;
+	color:transparent;
+}
+
+.supporting-file-info{
+	background-color: #FE612E;
+	padding: 1% 3%;
+}
+
 
 
 

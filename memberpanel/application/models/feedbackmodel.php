@@ -9,10 +9,6 @@ if (!defined('BASEPATH'))
  * and open the template in the editor.
  */
 
-/**
- * Description of profilemodel
- * @author Abhik
- */
 class feedbackmodel extends CI_Model {
 	
 	 public function  insertintoFeedback($insertArray){

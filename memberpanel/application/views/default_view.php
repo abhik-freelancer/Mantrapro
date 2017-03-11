@@ -216,8 +216,7 @@
 								
 								</li>
 								<li><a href="<?php echo(base_url());?>healthandfitness/generalmedicalassesment">General Medical Assessment</a></li>
-								
-                                                                <li><a href="<?php echo(base_url());?>Orthopaedicscreening">Orthopaedic Screening</a></li>
+								<li><a href="<?php echo(base_url());?>Orthopaedicscreening">Orthopaedic Screening</a></li>
 								
                                                                 
 <!--                                                                <li><a href="#">Archieves</a></li>
@@ -238,7 +237,7 @@
                     </li>
                     <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
 					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-external-link-square"></i> Feedback</a></li>
-					<li><a href="#"><i class="fa fa-external-link-square"></i> Applications</a></li>
+					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-external-link-square"></i> Applications</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
 				
@@ -294,6 +293,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/healthandfitness/generalfitness.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/feedback/feedbackJS.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/member_application/applications.js"></script>
    
     
     

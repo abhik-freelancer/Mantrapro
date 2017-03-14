@@ -19,7 +19,6 @@ $(document).ready(function(){
 		 var formData = new FormData($(this)[0]);
 		$.ajax({
 				type: "POST",
-				type: "POST",
 				url: basepath + 'applications/applicationExtension',
 				dataType: "json",
 				processData: false,

@@ -126,6 +126,30 @@ class profilemodel extends CI_Model {
         return $membervalidity;
         
     }
+	
+	//getFinancialYear Using Cuurent Date
+	
+	public function getFinancialYear(){
+		$currDt = date("Y-m-d");
+		$yearid = 0;
+		$where = "starting_date <= '".$currDt."' AND ending_date >= '".$currDt."'";
+		$this->db->select('year_id');
+		$this->db->from('year_master');
+		$this->db->where($where);
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$yearid = $row->year_id;
+			return $yearid;
+		}
+		else{
+			$yearid = 0;
+		}
+	
+	}
+	
+	
     
     public function  insertbodycomposition($data){
         

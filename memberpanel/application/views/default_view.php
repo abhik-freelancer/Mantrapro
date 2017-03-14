@@ -238,7 +238,7 @@
                     <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
 					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-external-link-square"></i> Feedback</a></li>
 					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-external-link-square"></i> Applications</a></li>
-					<li><a href="#"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
+					<li><a href="<?php echo base_url();?>dietary_management"><i class="fa fa-external-link-square"></i> Dietary Management</a></li>
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
 				
                     </ul>
@@ -294,6 +294,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/healthandfitness/generalfitness.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/feedback/feedbackJS.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/member_application/applications.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/dietary_management/dietary_management.js"></script>
    
     
     

@@ -38,6 +38,7 @@
 |
 */
 
+
 $route['default_controller'] = "memberlogin";//"memberdashboard";
 $route['404_override'] = '';
 

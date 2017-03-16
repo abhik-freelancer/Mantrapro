@@ -52,6 +52,21 @@ $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'mantrahe_data';
+
+/*
+
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'mantrahe_admin';
+$db['default']['password'] = 'admin#12@2015';
+$db['default']['database'] = 'mantrahe_data';
+*/
+/* Mantra database connection info
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'mantrahe_admin';
+$db['default']['password'] = 'admin#12@2015';
+$db['default']['database'] = 'mantrahe_data';
+*/
+
 /* websnipe database connection info
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'mantradiet';

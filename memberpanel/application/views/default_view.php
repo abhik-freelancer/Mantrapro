@@ -43,7 +43,8 @@
 	<link href="<?php echo base_url(); ?>application/assets/css/bootstrap-datepicker.css" rel="stylesheet">
 	<!-- Bootstrap datepicer end -->
 	
-	
+	<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />-->
+	<link href="<?php echo base_url(); ?>application/assets/css/bootstrapselect.min.css" rel="stylesheet">
 	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -239,7 +240,7 @@
 					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-external-link-square"></i> Feedback</a></li>
 					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-external-link-square"></i> Applications</a></li>
 					
-					 <li>
+					<li>
                          <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-external-link-square"></i>  Diet <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
                         <ul id="portfolio" class="collapse nav nav-second-level">
@@ -254,6 +255,16 @@
 					
 					
 					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
+					
+					<li>
+                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-external-link-square"></i>  Member's Family <span class=" glyphicon glyphicon-menu-down" ></span>
+                         </a>
+                        <ul id="portfolio" class="collapse nav nav-second-level">
+                            <li><a href="<?php echo base_url();?>memberfamily">Family List</a></li>
+                        <li><a href="javascript:;">Family Test Report</a></li>
+                            
+                        </ul>
+                    </li>
 				
                     </ul>
                 </div>
@@ -288,13 +299,15 @@
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.js"></script>
 	<!--for temporary  add file from folder-->
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>-->
 	
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-confirmation.min.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
-	    <script src="<?php echo base_url(); ?>application/assets/js/dataTbleBootstrap.js"></script>
-	 <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
+	<script src="<?php echo base_url(); ?>application/assets/js/dataTbleBootstrap.js"></script>
+	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
+	<script src="<?php echo base_url(); ?>application/assets/js/bootstrapselect.min.js"></script>
 	
 	 <script src="<?php echo base_url(); ?>application/assets/js/metisMenu.min.js"></script>
 	 <script src="<?php echo base_url(); ?>application/assets/js/raphael.min.js"></script>
@@ -309,6 +322,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/feedback/feedbackJS.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/member_application/applications.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/dietary_management/dietary_management.js"></script>
+    <script src="<?php echo base_url(); ?>application/assets/js/memberfamily/memberfamily.js"></script>
    
     
     

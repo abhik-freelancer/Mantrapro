@@ -635,7 +635,7 @@ label{
 .modal-header-success {
     color:#fff;
     padding:9px 15px;
-    border-bottom:1px solid #eee;
+    border-bottom:0px solid #eee;
     background-color: #5cb85c;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
@@ -660,6 +660,29 @@ label{
 	height:440px;
 	overflow-y:scroll;
 }
+
+/***********************************
+*******Member's Family**************
+************************************/
+
+.memberFamilyFormContainer{
+	background: #EAEAEA none repeat scroll 0% 0%;
+	padding: 3%;
+	border-radius: 10px;
+	margin-top: 2%;
+	font-size: 13px;
+}
+.tableHead{
+	background: #F96D48 none repeat scroll 0% 0%;
+	color: #FFF !important;
+}
+.tablerowOdd{
+	background-color: #FFDBD6 !important;
+}
+.tablerowEven{
+	background: #FFB597 none repeat scroll 0% 0% !important;
+}
+
 
 /*-----------Responsive View--------*/
 @media only screen and (max-width:1345px){
@@ -817,6 +840,9 @@ label{
 		padding: 2%;
 		background: #F8F8F8 none repeat scroll 0% 0%;
 		border-radius: 8px;
+	}
+	.modal-header-success h3{
+		font-size:18px;
 	}
 }
 @media only screen and (max-width:460px) {

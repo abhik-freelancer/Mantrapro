@@ -259,9 +259,16 @@
 					<li>
                          <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-external-link-square"></i>  Member's Family <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
-                        <ul id="portfolio" class="collapse nav nav-second-level">
+                        <ul class="collapse nav nav-second-level">
                             <li><a href="<?php echo base_url();?>memberfamily">Family List</a></li>
-                        <li><a href="javascript:;">Family Test Report</a></li>
+							<li>
+								<a href="javascript:void(0);" data-toggle="collapse"> Add Report <span class=" glyphicon glyphicon-menu-down" ></span></a>
+								<ul class="collapse nav nav-second-level"> 
+									<li><a href="<?php echo base_url();?>memberfamily/addbloodpressure">Blood Pressure</a></li>
+									<li><a href="javascript:;">Blood Test</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">Family Test Report</a></li>
                             
                         </ul>
                     </li>

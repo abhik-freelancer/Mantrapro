@@ -28,7 +28,7 @@
 		
 	<div class="container-fluid">
 		<div class="table-responsive"> 
-			<table id="memberFamilyList" class="table table-striped table-bordered" cellspacing="0" width="100%">
+			<table id="memberFamilyList" class="table table-striped listingtable" cellspacing="0" width="100%">
 				<thead class="tableHead">
 					<tr>
 						<th>#</th>

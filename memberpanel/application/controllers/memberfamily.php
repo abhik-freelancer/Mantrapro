@@ -183,6 +183,259 @@ class memberfamily extends CI_Controller{
 		return $update;
 	}
 	
+	
+	// Blood Pressure Report search
+	
+	public function bloodpressurelist(){
+		 if ($this->session->userdata('user_data')) {
+            $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $page = 'memberfamily/bloodpressure-test-search';
+            $header = "";
+            $headercontent="";
+			$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
+		   createbody_method($result, $page, $header, $session, $headercontent);
+         }
+		 else{
+             redirect('memberlogin', 'refresh');
+         }
+	}
+	
+	
+	// Blood Pressure Report
+	
+	public function getBloodTestReport(){
+		if ($this->session->userdata('user_data')) {
+            $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            
+			$fromDt = $this->input->post('fromDate');
+			$toDt = $this->input->post('toDate');
+			$relatinshipId = $this->input->post('membr-relatinship');
+			$memFamilyId = $this->input->post('membr-family-name');
+			// $relatinshipId = 18 = self ... data from gen_medical_ass table
+			if($relatinshipId==18){
+				$result['bpReport'] = $this->memberfamilymodel->getMemberBloodPressureData($fromDt,$toDt,$customerId);
+			}
+			else{
+				$result['bpReport'] = $this->memberfamilymodel->getBloodPresureData($fromDt,$toDt,$relatinshipId,$memFamilyId,$customerId);
+			}
+			
+			$page = 'memberfamily/bloodpressure-test-list';
+			$display = $this->load->view($page,$result);
+			echo $display;
+			
+         }
+		 else{
+             redirect('memberlogin', 'refresh');
+         }
+	}
+	
+	
+	// Edit Blood Pressure Data
+	public function editbloodpressure(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+            if($this->uri->segment(3)===FALSE){
+			$bpEditId = 0;
+			}else{
+				$bpEditId = $this->uri->segment(3);
+				$datafrom = $this->uri->segment(4);
+				$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
+				$result['editBloodPressData'] = $this->memberfamilymodel->getBloodPressureDataById($bpEditId,$datafrom);
+			
+				$page = 'memberfamily/edit-memberfamily-bloodpressure';
+				$header = "";
+				$headercontent="";
+				createbody_method($result, $page, $header, $session, $headercontent);
+				
+			}
+			
+		}else{
+			redirect('memberlogin', 'refresh');
+		}
+		
+	}
+	
+	
+	
+	// Add View Blood Pressure For Member Family
+	
+	public function addbloodpressure(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			$customerId = ($session["CUS_ID"]!="" ? $session["CUS_ID"]:0);
+			$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
+			$page = 'memberfamily/add-memberfamily-bloodpressure';
+			
+			$header="";
+			$headercontent = "";
+			createbody_method($result, $page, $header, $session, $headercontent);
+		}
+		else{
+			redirect('memberlogin' , 'refresh');
+		}
+	}
+	
+	public function getMemberFamily(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			$customerId = ($session["CUS_ID"]!="" ? $session["CUS_ID"]:0);
+			$relationid = trim($this->input->post('relationid'));
+			$result['memberFamilyName'] = $this->memberfamilymodel->getMemberFamilyByRelation($customerId,$relationid);
+			$page = 'memberfamily/member-family-name-view';
+			$display = $this->load->view($page,$result);
+			echo $display;
+		}
+		else{
+			redirect('memberlogin' , 'refresh');
+		}
+	}
+	
+	public function saveBloodPressure(){
+		if($this->session->userdata('user_data')){
+			$response = array();
+			$insertArray = array();
+			
+			$session = $this->session->userdata('user_data');
+			$customerId = ($session["CUS_ID"]!="" ? $session["CUS_ID"]:0);
+			$membershipno = $this->profilemodel->getMembershipNumber($customerId);
+			$customerDtl = $this->profilemodel->getCustomerByCustId($customerId);
+			$finYearId = $this->profilemodel->getFinancialYear();
+			
+			
+			$relationshipId = trim($this->input->post('membr-relatinship'));
+			$memberfamilyId = trim($this->input->post('membr-family-name'));
+			$systolic = htmlspecialchars($this->input->post('systolic',TRUE));
+			$diastolic = htmlspecialchars($this->input->post('diastolic',TRUE));
+			$pulserate = htmlspecialchars($this->input->post('pulserate',TRUE));
+			$collectiondate = htmlspecialchars($this->input->post('collectiondate',TRUE));
+			$validate = array(
+				"select"=>array($relationshipId,$memberfamilyId),
+				 "text" => array($systolic,$diastolic,$pulserate)
+			);
+			
+			$validate_err = $this->validateData($validate);
+			if($validate_err){
+				
+				
+				// 18 = Entry done by members self... Self and this data will save gen_medical_ass table 
+				if($relationshipId==18){
+					$insertArray = array(
+						"date_of_col" =>  date('Y-m-d',strtotime($collectiondate)),
+						"member_id" => $customerId,
+						"mmbership_no" => $membershipno,
+						"branch_code" => $customerDtl['CUS_BRANCH'],
+						"card_code" => $customerId,
+						"blood_prs_date" =>  date('Y-m-d',strtotime($collectiondate)),
+						"blood_prs_time" => NULL,
+						"blood_prs_am_pm" => NULL,
+						"systolic_msr" => $systolic,
+						"diastolic_msr" => $diastolic,
+						"pulse_msr" => $pulserate,
+						"prs_remarj" => "",
+						"user_id" => 80, // 80 = member user_id *** Memberself : entry done by member
+						"fin_id" => $finYearId
+					);
+					
+					$status = $this->insertBloodPressure($insertArray,'SELF');
+				}
+				else{
+					$insertArray = array(
+					"relationship_id" => $relationshipId,
+					"member_family_id" => $memberfamilyId,
+					"systolic" => $systolic,
+					"diastolic" => $diastolic,
+					"pulse_rate" => $pulserate,
+					"collection_date" => date('Y-m-d',strtotime($collectiondate))
+					);
+					$status = $this->insertBloodPressure($insertArray,'FAMILY');
+				}
+				/*
+				echo "<pre>";
+					print_r($insertArray);
+				echo "</pre>";
+				*/
+				if($status){
+					$response = array(
+						"msg_code" => 1,
+						"msg_data" => " Saved successfully",
+					);
+				}
+				else{
+					$response = array(
+						"msg_code" => 0,
+						"msg_data" => "There is some problem.Please try again later..."
+					);
+				}
+			}
+			else{
+				//echo "Not Validate";
+				$response = array(
+					"msg_code" => 0,
+					"msg_data" => "All Fields are required"
+				);
+			}
+			
+			header('Content-Type:application/json');
+			echo json_encode($response);
+			exit;
+			
+		}
+		else{
+			redirect('memberlogin', 'refresh');
+		}
+		
+	}
+	
+	public function insertBloodPressure($insertArray,$condition){
+		if($condition=="SELF"){
+			$insert = $this->memberfamilymodel->insertIntoGeneralMedicalAssmnt($insertArray);
+		}
+		if($condition=="FAMILY"){
+			$insert = $this->memberfamilymodel->insertIntoMemberFamilyBPTest($insertArray);
+		}
+		
+		return $insert;
+	}
+	
+	public function validateData($validatedata){
+		$select_err= $this->validateSelectField($validatedata['select']);
+		$text_err = $this->validateTextField($validatedata['text']);
+		if($select_err AND $text_err){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
+		
+	}
+	
+	private function validateSelectField($select_field){
+	//	print_r($select_field);
+	$total = sizeof($select_field);
+		for ($x = 0; $x < $total; $x++) {
+			$value = $select_field[$x];
+			if($value=="0"){
+				return FALSE;
+			}
+		} 
+		return TRUE;
+	}
+	private function validateTextField($text_field){
+	//	print_r($text_field);
+	$total = sizeof($text_field);
+		for ($x = 0; $x < $total; $x++) {
+			$textvalue = $text_field[$x];
+			if($textvalue==""){
+				return FALSE;
+			}
+		} 
+		return TRUE;
+	}
+	
+	
+	
 	private function validateMemberFamily($relationship,$name,$age,$bloodgrp){
 		if($relationship=="0"){return false;}
 		if($name==""){return false;}

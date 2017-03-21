@@ -228,7 +228,12 @@ body{
     text-decoration: none;
     background-color: #EEE;
 }
-
+.memberpanelFormContainer{
+	background:#EAEAEA;
+	padding:2%;
+	margin-top:3%;
+	border-radius:10px;
+}
 
 /*-----------------data table------------*/
 .table-responsive {
@@ -672,17 +677,51 @@ label{
 	margin-top: 2%;
 	font-size: 13px;
 }
-.tableHead{
+
+
+.listingtable .tableHead{
 	background: #F96D48 none repeat scroll 0% 0%;
 	color: #FFF !important;
 }
-.tablerowOdd{
+.listingtable .tablerowOdd td,.listingtable .tablerowEven td{
+	font-size:13px !important;
+	font-weight:500;
+	border:1px solid #FFF !important:
+	
+}
+ .listingtable .tablerowOdd{
 	background-color: #FFDBD6 !important;
 }
-.tablerowEven{
+.listingtable .tablerowEven{
 	background: #FFB597 none repeat scroll 0% 0% !important;
 }
 
+
+@keyframes loadtextAnimat {
+    0%   {opacity:1;}
+    25%  {opacity:0;}
+    50%  {opacity:1;}
+    75%  {opacity:0;}
+    100% {opacity:1;}
+}
+
+.loading-text {
+	text-align: center;
+	font-weight: 700;
+	color: #FF644B;
+   -webkit-animation: loadtextAnimat 5s infinite;
+   -moz-animation: loadtextAnimat 5s infinite;
+    animation: loadtextAnimat 5s infinite;
+	
+}
+.loader{
+	width:100%;
+}
+.loader img{
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
 
 /*-----------Responsive View--------*/
 @media only screen and (max-width:1345px){

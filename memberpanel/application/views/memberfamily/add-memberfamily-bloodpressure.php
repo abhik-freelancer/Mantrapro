@@ -100,7 +100,7 @@
 		<!-- Modal content-->
 		<div class="modal-content">
 		  <div class="modal-header modal-header-success">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='<?php echo base_url();?>memberfamily'">×</button>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='<?php echo base_url();?>memberfamily/bloodpressurelist'">×</button>
             <h3><i class="glyphicon glyphicon-thumbs-up"></i> <span id="bpsavesuccessmsg"></span></h3>
 			
 			<!--		
@@ -112,7 +112,7 @@
 			
 		  </div> -->
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='<?php echo base_url();?>memberfamily'">Close</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='<?php echo base_url();?>memberfamily/bloodpressurelist'">Close</button>
 		  </div>
 		</div>
 

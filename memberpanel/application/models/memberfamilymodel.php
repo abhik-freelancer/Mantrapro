@@ -219,7 +219,7 @@ class memberfamilymodel extends CI_Model{
 	function getMemberBloodPressureData($fromDt=NULL,$toDate=NULL,$customerId=NULL){
 		$data = array();
 		if($fromDt!="" AND $toDate!=""){
-			$dateWhere = ' AND collection_date BETWEEN "'. date('Y-m-d',strtotime($fromDt)). '" AND "'.date('Y-m-d',strtotime($toDate)).'"';
+			$dateWhere = ' AND date_of_col BETWEEN "'. date('Y-m-d',strtotime($fromDt)). '" AND "'.date('Y-m-d',strtotime($toDate)).'"';
 		}
 		else{
 			$dateWhere = '';
@@ -271,7 +271,7 @@ class memberfamilymodel extends CI_Model{
 				$data = array(
 					"bpTestID" => $row->tran_id,
 					"nameid" => $row->mmbership_no,
-					"name" => "",
+					"name" => "Select", // for memberself ...will not select any name
 					"relation" => 18 , // Self
 					"collection_date" => $row->date_of_col,
 					"systolic" => $row->systolic_msr,
@@ -314,7 +314,7 @@ class memberfamilymodel extends CI_Model{
 					"systolic" => $row->systolic,
 					"diastolic" => $row->diastolic,
 					"pulse_rate" => $row->pulse_rate,
-					"dataFrom" => "S" // S = Self (member self data) , Data taken from gen_medical_ass table
+					"dataFrom" => "F" // F = Family , data taken from member_family_bp_test
 				);
 				return $data;
 			}
@@ -359,6 +359,43 @@ class memberfamilymodel extends CI_Model{
             echo $err->getTraceAsString();
         }
 	}
+	
+	
+	public function updateGenMedAssmnt($updateArry,$id){
+		try {
+            $this->db->trans_begin();
+			$this->db->where('tran_id', $id);
+            $this->db->update('gen_medical_ass', $updateArry);
+
+            if($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+        } catch (Exception $err) {
+            echo $err->getTraceAsString();
+        }
+	}
+	public function updateMemFamilyBldPressure($updateArry,$id){
+		try {
+            $this->db->trans_begin();
+			$this->db->where('id', $id);
+            $this->db->update('member_family_bp_test', $updateArry);
+
+            if($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+        } catch (Exception $err) {
+            echo $err->getTraceAsString();
+        }
+	}
+	
 	
 }
 

@@ -31,13 +31,15 @@
 		<div class="bloodPressureFormContainer">
 			<div class="row">
 			
-			<form class="bloodPressureForm" id="bloodPressureForm" method="post">
+			<form class="editbloodPressureForm" id="editbloodPressureForm" method="post">
+			<input type="hidden" name="dataFrom" id="dataFrom" value="<?php echo $bodycontent['editBloodPressData']['dataFrom']; ?>" />
+			<input type="hidden" name="bpID" id="bpID" value="<?php echo $bodycontent['editBloodPressData']['bpTestID']; ?>" />
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="membr-relatinship">Relationship</label>
 							<?php if($bodycontent['editBloodPressData']['relation']==18){
 								$atrribute ="disabled";
-							}else{$atrribute ="";}?> relation
+							}else{$atrribute ="";}?> 
 						
 							<select id="membr-relatinship" name="membr-relatinship" class="searchabledropdown form-control" data-show-subtext="true" data-live-search="true" <?php echo $atrribute;?>>
 								<option value="0">Select</option>
@@ -67,36 +69,36 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="systolic">Systolic</label>
-							<input type="text" class="form-control" id="systolic" name="systolic" placeholder="" autocomplete="off" value="" onKeyup="numericFilter(this);"//>
+							<input type="text" class="form-control" id="systolic" name="systolic" placeholder="" autocomplete="off" value="<?php echo $bodycontent['editBloodPressData']['systolic'];?>" onKeyup="numericFilter(this);"//>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="diastolic">Diastolic</label>
-							<input type="text" class="form-control" id="diastolic" name="diastolic" placeholder="" autocomplete="off" value="" onKeyup="numericFilter(this);" />
+							<input type="text" class="form-control" id="diastolic" name="diastolic" placeholder="" autocomplete="off" value="<?php echo $bodycontent['editBloodPressData']['diastolic'];?>" onKeyup="numericFilter(this);" />
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="pulserate">Pulse Rate</label>
-							<input type="text" class="form-control" id="pulserate" name="pulserate" placeholder="" autocomplete="off" value="" onKeyup="numericFilter(this);" />
+							<input type="text" class="form-control" id="pulserate" name="pulserate" placeholder="" autocomplete="off" value="<?php echo $bodycontent['editBloodPressData']['pulse_rate'];?>" onKeyup="numericFilter(this);" />
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="pulserate">Collection Date</label>
-							<input type="text" class="form-control" id="collectiondate" name="collectiondate" placeholder="" autocomplete="off" value="<?php echo date("d-m-Y");?>" />
+							<input type="text" class="form-control" id="collectiondate" name="collectiondate" placeholder="" autocomplete="off" value="<?php echo date('d-m-Y',strtotime($bodycontent['editBloodPressData']['collection_date']));?>" readonly style="cursor:initial;"/>
 					</div>
 				</div>
 				
 				<div class="col-md-12">
-					<button type="submit" class="btn custom-button" style="width:100%;margin-top: 2%;">Save</button>
+					<button type="submit" class="btn custom-button" style="width:100%;margin-top: 2%;">Update</button>
 				</div>
 			</form>
 				<!-- Error -->
 				<div class="col-md-12">
-					<div class="bldpressure-err" style="padding:1%;">
-						<p id="bldpressure-err" class="error-style" style="color:#F95340;"></p>
+					<div class="bldpressureupd-err" style="padding:1%;">
+						<p id="bldpressureupd-err" class="error-style" style="color:#F95340;"></p>
 					</div>
 				</div>
 				
@@ -105,25 +107,17 @@
 	</div>
 </div>
 
-	<div id="memFamlyBPsaveModal" class="modal fade" role="dialog" style="position:fixed; top:35%;left:0%;">
+	<div id="memFamlyBPeditModal" class="modal fade" role="dialog" style="position:fixed; top:35%;left:0%;">
 	  <div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
 		  <div class="modal-header modal-header-success">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='<?php echo base_url();?>memberfamily'">×</button>
-            <h3><i class="glyphicon glyphicon-thumbs-up"></i> <span id="bpsavesuccessmsg"></span></h3>
-			
-			<!--		
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title">Message</h4>-->
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='<?php echo base_url();?>memberfamily/bloodpressurelist'">x</button>
+            <h3><i class="glyphicon glyphicon-thumbs-up"></i> <span id="bpupdsuccessmsg"></span></h3>
 		  </div>
-		  <!--
-		  <div class="modal-body">
-			
-		  </div> -->
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='<?php echo base_url();?>memberfamily'">Close</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='<?php echo base_url();?>memberfamily/bloodpressurelist'">Close</button>
 		  </div>
 		</div>
 

@@ -234,6 +234,69 @@ $(document).ready(function(){
 	});
 	
 	
+	// Edit Blood Pressure
+	
+	
+	$("#editbloodPressureForm").on("submit",function(event){
+		event.preventDefault();
+	
+		if(validateBloodPressure()){
+		$.ajax({
+				type: "POST",
+				url: basepath + 'memberfamily/updateBloodPresure',
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data: $(this).serialize(),
+				success:function(result){
+					if(result.msg_code==0){
+						$("#bldpressureupd-err").html(result.msg_data);
+					}
+					else if(result.msg_code==1){
+						$("#bldpressureupd-err").html("");
+						$("#bpupdsuccessmsg").html(result.msg_data);
+						$('#memFamlyBPeditModal').modal({backdrop: 'static', keyboard: false})  
+						$("#memFamlyBPeditModal").modal('show');
+					}
+					else if(result.msg_code==2){
+						$("#bldpressureupd-err").html(result.msg_data);
+					}
+					else{
+						window.location.href = basepath + 'memberlogin';
+					}
+				},
+			error: function (jqXHR, exception) {
+				var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+              //  alert(msg);  
+            }
+		});
+		}
+		else{
+			return false;
+		}
+		
+		
+	});
+	
+	
+	
+	
+	
+	
 });
 
 

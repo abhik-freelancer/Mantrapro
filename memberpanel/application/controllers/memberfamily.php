@@ -257,6 +257,93 @@ class memberfamily extends CI_Controller{
 		
 	}
 	
+	public function updateBloodPresure(){
+		if($this->session->userdata('user_data')){
+		$session = $this->session->userdata('user_data');
+		$response = array();
+		$updateArray = array();
+		
+			$bpeditID = html_escape($this->input->post('bpID',TRUE));
+			$relationshipId = trim($this->input->post('membr-relatinship'));
+			$memberfamilyId = trim($this->input->post('membr-family-name'));
+			$systolic = html_escape($this->input->post('systolic',TRUE));
+			$diastolic = html_escape($this->input->post('diastolic',TRUE));
+			$pulserate = html_escape($this->input->post('pulserate',TRUE));
+			$collectiondate = html_escape($this->input->post('collectiondate',TRUE));
+			
+			$datafrom = html_escape($this->input->post('dataFrom',TRUE));
+			
+			$validate = array(
+				"select"=>array($relationshipId,$memberfamilyId),
+				 "text" => array($systolic,$diastolic,$pulserate)
+			);
+			$validate_err = $this->validateData($validate);
+			if($validate_err){
+				if($datafrom=="S"){
+					// S= Self ---- update member self blood pressure data
+					$updateArray = array(
+						"systolic_msr" => $systolic,
+						"diastolic_msr" => $diastolic,
+						"pulse_msr" => $pulserate,
+						"date_of_col" => date('Y-m-d',strtotime($collectiondate)),
+						"blood_prs_date" => date('Y-m-d',strtotime($collectiondate))
+					);
+				}
+				else{
+					// F=Family  ---- update memberfamily blood pressure data
+					$updateArray = array(
+						"relationship_id" => $relationshipId,
+						"member_family_id" => $memberfamilyId,
+						"systolic" => $systolic,
+						"diastolic" => $diastolic,
+						"pulse_rate" => $pulserate,
+						"collection_date" => date('Y-m-d',strtotime($collectiondate))
+					);
+				}
+				
+			/*	echo "<pre>";
+				print_r($updateArray);
+				echo "</pre>";
+				*/
+				$status = $this->updateBloodPressureData($updateArray,$bpeditID ,$datafrom);
+				if($status){
+					$response = array(
+					"msg_code" => 1,
+					"msg_data" => "Updated Successfully"
+					);
+				}else{
+					$response = array(
+					"msg_code" => 2,
+					"msg_data" => "There is some problem. Please try again later..."
+					);
+				}
+			}
+			else{
+				$response = array(
+					"msg_code" => 0,
+					"msg_data" => "All Fields are required"
+				);
+			}
+			
+		header('Content-Type:application/json');
+		echo json_encode($response);
+		exit;
+		
+		}else{
+			redirect('memberlogin', 'refresh');
+		}
+	}
+	
+	public function updateBloodPressureData($updateArray,$bpeditID ,$datafrom){
+		if($datafrom=="S"){
+			$update = $this->memberfamilymodel->updateGenMedAssmnt($updateArray,$bpeditID); // Update member self data
+		}
+		else{
+			$update = $this->memberfamilymodel->updateMemFamilyBldPressure($updateArray,$bpeditID); // Update member self data
+		}
+		return $update;
+	}
+	
 	
 	
 	// Add View Blood Pressure For Member Family
@@ -306,10 +393,10 @@ class memberfamily extends CI_Controller{
 			
 			$relationshipId = trim($this->input->post('membr-relatinship'));
 			$memberfamilyId = trim($this->input->post('membr-family-name'));
-			$systolic = htmlspecialchars($this->input->post('systolic',TRUE));
-			$diastolic = htmlspecialchars($this->input->post('diastolic',TRUE));
-			$pulserate = htmlspecialchars($this->input->post('pulserate',TRUE));
-			$collectiondate = htmlspecialchars($this->input->post('collectiondate',TRUE));
+			$systolic = html_escape($this->input->post('systolic',TRUE));
+			$diastolic = html_escape($this->input->post('diastolic',TRUE));
+			$pulserate = html_escape($this->input->post('pulserate',TRUE));
+			$collectiondate = html_escape($this->input->post('collectiondate',TRUE));
 			$validate = array(
 				"select"=>array($relationshipId,$memberfamilyId),
 				 "text" => array($systolic,$diastolic,$pulserate)

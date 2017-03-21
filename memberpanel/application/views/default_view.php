@@ -205,7 +205,7 @@
 						</li>
 						
 						<li>
-							<a href="javascript:void(0);" data-toggle="collapse"> Health & Fitness <span class=" glyphicon glyphicon-menu-down" ></span></a>
+							<a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Health & Fitness <span class=" glyphicon glyphicon-menu-down" ></span></a>
 							<ul class="collapse nav nav-second-level">
 								<li>
 									<a href="javascript:void(0);" data-toggle="collapse" > General Fitness Assessment <span class="glyphicon glyphicon-menu-down"></span></a>
@@ -228,7 +228,7 @@
                     
                     
                     <li>
-                         <a href="javascript:void(0);" data-toggle="collapse"> Portfolio <span class=" glyphicon glyphicon-menu-down" ></span>
+                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Portfolio <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
                         <ul id="portfolio" class="collapse nav nav-second-level">
                             <li><a href="<?php echo base_url(); ?>portfolio">Body Composition</a></li>
@@ -236,12 +236,12 @@
                             
                         </ul>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-external-link-square"></i> Health Asset Value</a></li>
-					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-external-link-square"></i> Feedback</a></li>
-					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-external-link-square"></i> Applications</a></li>
+                    <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Health Asset Value</a></li>
+					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Feedback</a></li>
+					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Applications</a></li>
 					
 					<li>
-                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-external-link-square"></i>  Diet <span class=" glyphicon glyphicon-menu-down" ></span>
+                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>  Diet <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
                         <ul id="portfolio" class="collapse nav nav-second-level">
                             <li><a href="<?php echo base_url();?>dietary_management">Diet List</a></li>
@@ -254,21 +254,21 @@
 					<li><a href="<?php echo base_url();?>dietary_management"><i class="fa fa-external-link-square"></i> Dietary Management</a></li> -->
 					
 					
-					<li><a href="#"><i class="fa fa-external-link-square"></i> Other Reports</a></li>
+					<li><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Other Reports</a></li>
 					
 					<li>
-                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-external-link-square"></i>  Member's Family <span class=" glyphicon glyphicon-menu-down" ></span>
+                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>  Member's Family <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
                         <ul class="collapse nav nav-second-level">
-                            <li><a href="<?php echo base_url();?>memberfamily">Family List</a></li>
+                            <li><a href="<?php echo base_url();?>memberfamily"><i class="fa fa-star" aria-hidden="true"></i> Family List</a></li>
 							<li>
-								<a href="javascript:void(0);" data-toggle="collapse"> Add Report <span class=" glyphicon glyphicon-menu-down" ></span></a>
+								<a href="javascript:void(0);" data-toggle="collapse">Test Report <span class=" glyphicon glyphicon-menu-down" ></span></a>
 								<ul class="collapse nav nav-second-level"> 
-									<li><a href="<?php echo base_url();?>memberfamily/addbloodpressure">Blood Pressure</a></li>
-									<li><a href="javascript:;">Blood Test</a></li>
+									<li><a href="<?php echo base_url();?>memberfamily/bloodpressurelist"><i class="fa fa-star" aria-hidden="true"></i> Blood Pressure</a></li>
+									<li><a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i> Blood Test</a></li>
 								</ul>
 							</li>
-							<li><a href="javascript:;">Family Test Report</a></li>
+							
                             
                         </ul>
                     </li>

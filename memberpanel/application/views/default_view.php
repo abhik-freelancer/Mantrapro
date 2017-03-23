@@ -265,7 +265,7 @@
 								<a href="javascript:void(0);" data-toggle="collapse">Test Report <span class=" glyphicon glyphicon-menu-down" ></span></a>
 								<ul class="collapse nav nav-second-level"> 
 									<li><a href="<?php echo base_url();?>memberfamily/bloodpressurelist"><i class="fa fa-star" aria-hidden="true"></i> Blood Pressure</a></li>
-									<li><a href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i> Blood Test</a></li>
+									<li><a href="<?php echo base_url();?>memberfamily/bloodtestlist"><i class="fa fa-star" aria-hidden="true"></i> Blood Test</a></li>
 								</ul>
 							</li>
 							

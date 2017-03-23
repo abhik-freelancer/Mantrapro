@@ -163,7 +163,7 @@ class memberfamilymodel extends CI_Model{
 		else{
 			$dateWhere = '';
 			}
-		if($relatinshipId!="0"){
+		if($relatinshipId!="0" AND $memFamilyId=="0"){
 			$whereRelationshipId = " AND member_family_bp_test.relationship_id=".$relatinshipId;
 		}
 		else{
@@ -395,6 +395,177 @@ class memberfamilymodel extends CI_Model{
             echo $err->getTraceAsString();
         }
 	}
+	
+	
+	/***********************BLOOD TEST**********************/
+	
+	public function getBloodTestList(){
+		$data = array();
+			$this->db->select("*")
+					 ->from("blood_test_master");
+		$query = $this->db->get();
+		if($query->num_rows()>0){
+			foreach($query->result() as $rows){
+				$data[] = array(
+					"blood_id" =>$rows->blood_id,
+					"test_desc" => $rows->test_desc
+				);
+			}
+			return $data;
+		}
+		else{
+			return $data;
+		}
+	}
+	
+	public function getBloodTestUnitByID($bloodTestID=NULL){
+		$data = array();
+			$this->db->select(
+							'blood_test_master.blood_id,
+							unit_master.unit_id,
+							unit_master.unit_desc'
+							)
+						->from('blood_test_master')
+						->join('unit_master','unit_master.unit_id=blood_test_master.unit_id','inner')
+						->where('blood_test_master.blood_id',$bloodTestID);
+			$query = $this->db->get();
+			//echo $this->db->last_query();
+			if($query->num_rows()>0):
+			$row = $query->row();
+				$data = array(
+					"unit_id" => $row->unit_id,
+					"unit_desc" => $row->unit_desc
+				);
+				return $data;
+			else:
+				return $data;
+			endif;
+			
+	}
+	
+	public function getMemberBloodTestRecord($fromDt="",$toDt="",$bldtestId=NULL,$customerId=NULL){
+		$data = array();
+		
+		if($fromDt!="" AND $toDt!=""){
+			$whereDt = " AND blood_test.date_of_collection BETWEEN '".date('Y-m-d',strtotime($fromDt))."' AND '".date('Y-m-d',strtotime($toDt))."'";
+		}
+		else{
+			$whereDt = "";
+		}
+		// Blood Test Where Clause
+		if($bldtestId!="0"){
+			$whereBldtestId = " AND blood_test.test_id=".$bldtestId;
+		}
+		else{
+			$whereBldtestId = "";
+		}
+		$sql = "SELECT 
+				blood_test.`tran_id` AS bloodTestID,
+				blood_test.`date_of_collection`,
+				blood_test.`reading`,
+				blood_test.`membership_no`,
+				blood_test_master.test_desc
+				FROM blood_test
+				INNER JOIN blood_test_master
+				ON blood_test_master.blood_id=blood_test.`test_id`
+				WHERE blood_test.`member_id`=".$customerId ." ".$whereDt." ".$whereBldtestId." " ;
+		
+			$query = $this->db->query($sql);
+			//echo $this->db->last_query();
+			
+			if($query->num_rows()>0){
+			foreach($query->result() as $rows){
+				$data[] = array(
+					"bloodTestID" => $rows->bloodTestID,
+					"collection_date" => $rows->date_of_collection,
+					"reading" => $rows->reading,
+					"relation" => 'Self',
+					"name" => $rows->membership_no,
+					"test_desc" => $rows->test_desc
+				);
+			}
+			return $data;
+			}
+			else{
+				return $data;
+			}
+		
+	}
+	
+	
+	
+	public function getMemberFamilyBloodTestRecord($fromDt="",$toDt="",$relatinshipId=NULL,$memFamilyId=NULL,$bldtestId=NULL,$customerId=NULL){
+		
+		$data = array();
+		// From Date To Date Where Clause
+		if($fromDt!="" AND $toDt!=""){
+			$whereDt = " AND member_family_blood_test.collection_date BETWEEN '".date('Y-m-d',strtotime($fromDt))."' AND '".date('Y-m-d',strtotime($toDt))."'";
+		}
+		else{
+			$whereDt = "";
+		}
+		// Relationship Where Clause
+		if($relatinshipId!="0" AND $memFamilyId=="0"){
+			$whereRelation = " AND member_family_blood_test.relationship_id=".$relatinshipId;
+		}
+		else{
+			$whereRelation = "";
+		}
+		// Realtionship And Member Family Where Clause
+		if($relatinshipId!="0" AND $memFamilyId!="0"){
+			$whereFamily = " AND member_family_blood_test.relationship_id=".$relatinshipId ." AND member_family_blood_test.member_family_id=".$memFamilyId;
+		}else{
+			$whereFamily = "";
+		}
+		// Blood Test Where Clause
+		if($bldtestId!="0"){
+			$whereBldtestId = " AND member_family_blood_test.blood_test_id=".$bldtestId;
+		}
+		else{
+			$whereBldtestId = "";
+		}
+		
+		$sql = "SELECT 
+			member_family_blood_test.`id` AS bloodTestID,
+			member_family_blood_test.`collection_date`,
+			member_family_blood_test.`reading`,
+			relationship_master.`relation`,
+			members_family.`name`,
+			blood_test_master.test_desc
+			FROM member_family_blood_test
+			INNER JOIN relationship_master
+			ON relationship_master.`id`=member_family_blood_test.`relationship_id`
+			INNER JOIN members_family
+			ON members_family.`id`=member_family_blood_test.`member_family_id`
+			INNER JOIN blood_test_master
+			ON blood_test_master.blood_id=member_family_blood_test.`blood_test_id`
+			WHERE members_family.`membership_id`=".$customerId." ".$whereDt." ".$whereRelation." ".$whereFamily." ".$whereBldtestId."
+			ORDER BY member_family_blood_test.`blood_test_id`,member_family_blood_test.`collection_date` DESC";
+	
+		$query = $this->db->query($sql);
+		//echo $this->db->last_query();
+		
+		if($query->num_rows()>0){
+			foreach($query->result() as $rows){
+				$data[] = array(
+					"bloodTestID" => $rows->bloodTestID,
+					"collection_date" => $rows->collection_date,
+					"reading" => $rows->reading,
+					"relation" => $rows->relation,
+					"name" => $rows->name,
+					"test_desc" => $rows->test_desc
+				);
+			}
+			return $data;
+		}
+		else{
+			return $data;
+		}
+		
+	}
+	
+	
+	
 	
 	
 }

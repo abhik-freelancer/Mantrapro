@@ -293,6 +293,162 @@ $(document).ready(function(){
 	});
 	
 	
+	/*--------------3---------------*/
+	
+	$("#blood-test").on("change",function(){
+		var bloodtestid = $(this).val();
+		
+		$.ajax({
+				type: "POST",
+				url: basepath + 'memberfamily/getBloodTestUnit',
+				dataType: "html",
+				//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data:{bloodtestid:bloodtestid},
+				success:function(result){
+					$("#bloodTestUnit").html(result);
+					//$('.searchabledropdown').selectpicker();
+				},
+				error: function (jqXHR, exception) {
+					var msg = '';
+					if (jqXHR.status === 0) {
+						msg = 'Not connect.\n Verify Network.';
+					} else if (jqXHR.status == 404) {
+						msg = 'Requested page not found. [404]';
+					} else if (jqXHR.status == 500) {
+						msg = 'Internal Server Error [500].';
+					} else if (exception === 'parsererror') {
+						msg = 'Requested JSON parse failed.';
+					} else if (exception === 'timeout') {
+						msg = 'Time out error.';
+					} else if (exception === 'abort') {
+						msg = 'Ajax request aborted.';
+					} else {
+						msg = 'Uncaught Error.\n' + jqXHR.responseText;
+					}
+					alert(msg);  
+				}
+			});
+	});
+	
+	$("#bloodTestForm").on("submit",function(event){
+		event.preventDefault();
+		//validateBloodTest();
+		if(validateBloodTest()){
+		$.ajax({
+				type: "POST",
+				url: basepath + 'memberfamily/saveBloodTest',
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data:$(this).serialize(),
+				success:function(result){
+					
+					if(result.msg_code==0){
+						$("#bldtest-err").html(result.msg_data);
+					}
+					else if(result.msg_code==1){
+						$("#bldtest-err").html("");
+						$("#bldtestsavesuccessmsg").html(result.msg_data);
+						$('#memFamlyBloodTestsaveModal').modal({backdrop: 'static', keyboard: false})  
+						$("#memFamlyBloodTestsaveModal").modal('show');
+					}
+					else if(result.msg_code==2){
+						$("#bldtest-err").html(result.msg_data);
+					}
+					else{
+						window.location.href= basepath + 'memberlogin';
+					}
+				},
+				error: function (jqXHR, exception) {
+					var msg = '';
+					if (jqXHR.status === 0) {
+						msg = 'Not connect.\n Verify Network.';
+					} else if (jqXHR.status == 404) {
+						msg = 'Requested page not found. [404]';
+					} else if (jqXHR.status == 500) {
+						msg = 'Internal Server Error [500].';
+					} else if (exception === 'parsererror') {
+						msg = 'Requested JSON parse failed.';
+					} else if (exception === 'timeout') {
+						msg = 'Time out error.';
+					} else if (exception === 'abort') {
+						msg = 'Ajax request aborted.';
+					} else {
+						msg = 'Uncaught Error.\n' + jqXHR.responseText;
+					}
+					//alert(msg);  
+				}
+			});
+			}else{
+				return false;
+			}
+			
+	});
+	
+	
+	$("#bloodTestSearchForm").on("submit",function(event){
+		event.preventDefault();
+		$("#bldtestLoader").css("display","block");
+		$.ajax({
+				type: "POST",
+				url: basepath + 'memberfamily/getBloodTestList',
+				dataType: "html",
+				//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data:$(this).serialize(),
+				success:function(result){
+					$("#bldtestLoader").css("display","none");
+					$("#bloodTestList").html(result);
+					var table = $('#bloodTestData').DataTable({
+							"columnDefs": [
+								{ "visible": false, "targets": 2 }
+							],
+							//"order": [[ 2, 'asc' ]],
+							"ordering": false,
+							"displayLength": 25,
+							"drawCallback": function ( settings ) {
+								var api = this.api();
+								var rows = api.rows( {page:'current'} ).nodes();
+								var last=null;
+					 
+								api.column(2, {page:'current'} ).data().each( function ( group, i ) {
+									if ( last !== group ) {
+										$(rows).eq( i ).before(
+											'<tr class="group" style="background:#FF966C;color:#FFF;font-weight:600;font-size: 13px;"><td colspan="6"><span class="glyphicon glyphicon-star"></span> '+group+'</td></tr>'
+										);
+					 
+										last = group;
+									}
+								} );
+							}
+						} );
+ 
+				},
+				error: function (jqXHR, exception) {
+					var msg = '';
+					if (jqXHR.status === 0) {
+						msg = 'Not connect.\n Verify Network.';
+					} else if (jqXHR.status == 404) {
+						msg = 'Requested page not found. [404]';
+					} else if (jqXHR.status == 500) {
+						msg = 'Internal Server Error [500].';
+					} else if (exception === 'parsererror') {
+						msg = 'Requested JSON parse failed.';
+					} else if (exception === 'timeout') {
+						msg = 'Time out error.';
+					} else if (exception === 'abort') {
+						msg = 'Ajax request aborted.';
+					} else {
+						msg = 'Uncaught Error.\n' + jqXHR.responseText;
+					}
+					//alert(msg);  
+				}
+			});
+		
+	});
+	
+	
+	
+	
+	
 	
 	
 	
@@ -400,3 +556,65 @@ function validateBloodPressure(){
 	return true;
 
 }
+
+
+	function validateBloodTest(){
+	
+		var relationshipId = $("#membr-relatinship").val();
+		var familynameId = $("#membr-family-name").val();
+		var bldtestid = $("#blood-test").val();
+		var unitid = $("#blood-test-unit").val();
+		var reading = $("#reading").val();
+		var collectiondate = $("#bld-test-col-date").val();
+		
+		var error = "";
+		var up_icon = '<span class="glyphicon glyphicon-hand-up"></span>';
+		$("#membr-relatinship , #membr-family-name , #blood-test , #blood-test-unit , #reading , #bld-test-col-date").removeClass('validation-error');
+		$("#bldtest-err").html(error);
+		
+		//alert(relationshipId);
+		
+			if(relationshipId=="0"){
+				error = up_icon+" Please select relationship";
+				$("#membr-relatinship").addClass('validation-error');
+				$("#bldtest-err").html(error);
+				return false;
+			}
+			if(familynameId=="0"){ 
+				error = up_icon+" Please select family name";
+				$("#membr-family-name").addClass('validation-error');
+				$("#bldtest-err").html(error);
+				return false;
+			}
+			if(bldtestid=="0"){
+				error = up_icon+" Please select test";
+				$("#blood-test").addClass('validation-error');
+				$("#bldtest-err").html(error);
+				return false;
+			}
+			if(unitid=="0"){
+				error = up_icon+" Please select unit";
+				$("#blood-test-unit").addClass('validation-error');
+				$("#bldtest-err").html(error);
+				return false;
+			}
+			if(reading==""){
+				error = up_icon+" Please enter reading value";
+				$("#reading").addClass('validation-error');
+				$("#bldtest-err").html(error);
+				return false;
+			}
+			if(collectiondate==""){
+				error = up_icon+" Please select collection date";
+				$("#bld-test-col-date").addClass('validation-error');
+				$("#bldtest-err").html(error);
+				return false;
+			}
+			return false;
+			
+			
+			
+			
+	
+	}
+

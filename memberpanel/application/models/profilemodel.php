@@ -14,6 +14,8 @@ if (!defined('BASEPATH'))
  * @author Abhik
  */
 class profilemodel extends CI_Model {
+	
+	
 
     public function getCustomerByCustId($customerId = NULL) {
 

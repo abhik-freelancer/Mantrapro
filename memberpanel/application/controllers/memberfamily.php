@@ -22,6 +22,8 @@ class memberfamily extends CI_Controller{
         $this->load->library('session');
     }
     
+	/********************** 1.MEMBER FAMILY LIST / ADD / EDIT **************************/
+	
     public function index(){
          if ($this->session->userdata('user_data')) {
             $session = $this->session->userdata('user_data');
@@ -184,7 +186,16 @@ class memberfamily extends CI_Controller{
 	}
 	
 	
-	// Blood Pressure Report search
+	
+/************************** 2.MEMBER FAMILY BLOOD PRESSURE LIST / ADD / EDIT **************************/
+	
+	
+	// Blood Pressure Report Listing
+	/* @bloodpressurelist 
+	 * @date 20-03-2017
+	 * @BY Mithilesh
+	 */ 
+	 
 	
 	public function bloodpressurelist(){
 		 if ($this->session->userdata('user_data')) {
@@ -202,8 +213,7 @@ class memberfamily extends CI_Controller{
 	}
 	
 	
-	// Blood Pressure Report
-	
+	// Blood Pressure Report Data 
 	public function getBloodTestReport(){
 		if ($this->session->userdata('user_data')) {
             $session = $this->session->userdata('user_data');
@@ -457,7 +467,7 @@ class memberfamily extends CI_Controller{
 				}
 			}
 			else{
-				//echo "Not Validate";
+				
 				$response = array(
 					"msg_code" => 0,
 					"msg_data" => "All Fields are required"
@@ -472,7 +482,6 @@ class memberfamily extends CI_Controller{
 		else{
 			redirect('memberlogin', 'refresh');
 		}
-		
 	}
 	
 	public function insertBloodPressure($insertArray,$condition){
@@ -485,6 +494,189 @@ class memberfamily extends CI_Controller{
 		
 		return $insert;
 	}
+	
+	
+/**************************3. MEMBER FAMILY BLOOD TEST LIST / ADD / EDIT **************************/
+	
+	public function bloodtestlist(){
+		if ($this->session->userdata('user_data')) {
+            $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $page = 'memberfamily/blood-test-search';
+            $header = "";
+            $headercontent = "";
+			$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
+			$result['bloodTestList'] = $this->memberfamilymodel->getBloodTestList();
+		    createbody_method($result, $page, $header, $session, $headercontent);
+         }
+		 else{
+             redirect('memberlogin', 'refresh');
+         }
+	}
+	
+	public function getBloodTestList(){
+		if ($this->session->userdata('user_data')) {
+            $session = $this->session->userdata('user_data');
+            $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+			
+			$fromDt = $this->input->post('fromDate');
+			$toDt = $this->input->post('toDate');
+			$relatinshipId = $this->input->post('membr-relatinship');
+			$memFamilyId = $this->input->post('membr-family-name');
+			$bldtestId = $this->input->post('blood-test-id');
+			
+			if($relatinshipId==18){
+				$result['bloodtestReport'] = $this->memberfamilymodel->getMemberBloodTestRecord($fromDt,$toDt,$bldtestId,$customerId);
+				
+			}
+			else{
+				$result['bloodtestReport'] = $this->memberfamilymodel->getMemberFamilyBloodTestRecord($fromDt,$toDt,$relatinshipId,$memFamilyId,$bldtestId,$customerId);
+			}
+			
+			$page = 'memberfamily/blood-test-list';
+			$display = $this->load->view($page,$result);
+			echo $display;
+			
+		}
+		 else{
+             redirect('memberlogin', 'refresh');
+         }
+	}
+	
+	
+	public function addbloodtest(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			$customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $page = 'memberfamily/add-memberfamily-bloodtest';
+            $header = "";
+            $headercontent = "";
+			$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
+			$result['bloodTestList'] = $this->memberfamilymodel->getBloodTestList();
+		    createbody_method($result, $page, $header, $session, $headercontent);
+		}
+		else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	public function getBloodTestUnit(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			$bloodtestid = $this->input->post('bloodtestid');
+			$result['bloodtestunit'] = $this->memberfamilymodel->getBloodTestUnitByID($bloodtestid);
+			$page = 'memberfamily/blood-test-unit-dropdown';
+			$display = $this->load->view($page,$result);
+			echo $display;
+			/*echo "<pre>";
+				print_r($result['bloodtestunit']);
+			echo "</pre>";*/
+		}
+		else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	public function saveBloodTest(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			$customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+			$membershipno = $this->profilemodel->getMembershipNumber($customerId);
+			$validity = $this->profilemodel->getValidityString($membershipno);
+			$customerDtl = $this->profilemodel->getCustomerByCustId($customerId);
+			$finYearId = $this->profilemodel->getFinancialYear(); // get financial year using current date
+			
+			$response = array();
+			$insertArray = array();
+			$relationshipId = $this->input->post('membr-relatinship');
+			$memberfamilyId = $this->input->post('membr-family-name');
+			$bloodtestid = $this->input->post('blood-test');
+			$bldtestunit = $this->input->post('blood-test-unit');
+			$reading = html_escape($this->input->post('reading',TRUE));
+			$collection_date = html_escape($this->input->post('bld-test-col-date'),TRUE);
+			
+			$validate = array(
+				"select"=>array($relationshipId,$bloodtestid,$bldtestunit),
+				 "text" => array($reading,$collection_date)
+			);
+			
+			$validate_err = $this->validateData($validate);
+			if($validate_err){
+				if($relationshipId==18){
+					$insertArray = array(
+					"date_of_entry" => date('Y-m-d',strtotime($collection_date)),
+					"date_of_collection" => date('Y-m-d',strtotime($collection_date)),
+					"member_id" => $customerId,
+					"membership_no" => $membershipno,
+					"test_id" => $bloodtestid,
+					"reading" => $reading,
+					"validity_string" => $validity["VALIDITY_STRING"],
+					"branch_code" => $customerDtl['CUS_BRANCH'],
+					"card_code" => $customerDtl['CUS_CARD'],
+					"user_id" => 80, // entry from member self
+					"fin_id" => $finYearId
+					);
+					$status = $this->insertBloodTest($insertArray ,'S'); //S = Self .. entry for member self
+				}
+				else{
+					$insertArray = array(
+					"collection_date" => date('Y-m-d',strtotime($collection_date)),
+					"relationship_id" => $relationshipId,
+					"member_family_id" => $memberfamilyId,
+					"blood_test_id" => $bloodtestid,
+					"unit_id" => $bldtestunit,
+					"reading" => $reading
+					);
+					$status = $this->insertBloodTest($insertArray ,'F'); //F = Family ... Entry for members family
+				}
+				
+				if($status){
+					$response = array(
+						"msg_code" => 1,
+						"msg_data" => " Successfully saved"
+					);
+				}
+				else{
+					$response = array(
+						"msg_code" => 2,
+						"msg_data" => " There is something error"
+					);
+				}
+			}
+			else{
+				echo "Not validate";
+				$response = array(
+					"msg_code" => 0,
+					"msg_data" => " All fields are required"
+				);
+			}
+			
+			header('Content-Type:application/json');
+			echo json_encode($response);
+			exit;
+			
+		}else{
+				redirect('memberlogin','refresh');
+		}
+	}
+	
+	public function insertBloodTest($insertArray,$entryfor){
+		if($entryfor=="S"){
+			$insert = $this->insertupdatemodel->insertData('blood_test',$insertArray); //insertData('tablename','insertArray');
+		}
+		else{
+			$insert = $this->insertupdatemodel->insertData('member_family_blood_test',$insertArray);
+		}
+		return $insert;
+	}
+	
+	
+	
+	
+	
+	
+	
+/************************ COMMON METHODS *********************/
 	
 	public function validateData($validatedata){
 		$select_err= $this->validateSelectField($validatedata['select']);

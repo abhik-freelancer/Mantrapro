@@ -79,10 +79,10 @@
         <div class="col-md-3 service-box wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
            <div class="panel">
                 <div class="panel-body">
-                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/magic-mantra-icon2.png" /></div>
+                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/magic-mantra-icon2.png" class="img-responsive"/></div>
                          <h4>MAGIC MANTRA</h4>
                         <p><!--This lifestyle modification program is planned scientifically to invigorate people into shedding weight in a healthy manner. Mantra MMWL package adds a magical touch to life.-->
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+						Mantra MMWL package adds a magical touch to life.This package is planned scientifically to invigorate people to become health conscious. The very purpose of the program is to help seekers lose non-essential fat in the body and gain a life full of vigour.
 						</p>
                   <div class="more">
 					<a href="<?php echo base_url();?>home/magic_mantra" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a> 
@@ -96,10 +96,11 @@
         <div class="col-md-3 service-box wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="panel">
                     <div class="panel-body">
-                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/health-asset-icon.png" /></div>
+                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/health-asset-icon.png" class="img-responsive"/></div>
                         <h4>HEALTH ASSET VALUE</h4>
-                        <p><!-- With the help of HEALTH ASSET VALUE (HAV) report you can easily track down Your progress and can easily be alert if any significant changes is coming in to your body.-->
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+                        <p>We are introducing Health Asset Value Report (HAV) for our  esteem members. The very purpose of this programme is to help members assess the status of their health essentially via health and fitness assessment and to know the Health Asset Value (HAV).
+						<!--
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod? -->
 						</p>
                          <div class="more"><a href="<?php echo base_url();?>home/health_asset_value" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
@@ -108,9 +109,9 @@
         <div class="col-md-3 service-box wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
              <div class="panel">
                    <div class="panel-body">
-                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/packages-offerd1.png" /></div>
+                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/packages-offerd1.png" class="img-responsive"/></div>
                           <h4>PACKAGES OFFERED</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <p>Mantra offers 26 different packages keeping the requirements and ailments of Members in mind. There are various combination packages too, like Gym package, Value plus  Platinum package etc so that members can select and choose as per their likes and preferences.</p>
                        <div class="more"><a href="<?php echo base_url();?>services/rate_chart" class="btn more-btn">More &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
@@ -118,9 +119,9 @@
         <div class="col-md-3 service-box wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="panel">
                     <div class="panel-body">
-                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/mantra-netgym.png" /></div>
+                        <div class="service-icon"><img src="<?php echo base_url(); ?>application/assets/images/mantra-netgym.png" class="img-responsive"/></div>
                         <h4>NET GYMING</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <p>"Net Gyming" is a Member portal, with all the medical and fitness data keeping facility for members and their families which is pioneer in the health and fitness sector. Members can see and control all the membership related issues by login in.</p>
                         <div class="more"><a href="<?php echo base_url();?>memberpanel/" class="btn more-btn">Login &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></div>
                     </div>
             </div>
@@ -154,7 +155,7 @@
 					<p>One Day Free Guest Pass</p>
 				</div>
 				<div class="guest-pass-desc">
-					<p>Donec elit magna, consectetur ac enim in, ornare maximus nisi.</p>
+					<p>Rush... for your free guest pass</p>
 				</div>
 				<div class="guest-pass-link">
 					<button type="button" class="guest-pass-btn" onclick="window.location.href='<?php echo base_url()?>home/getpass'">Get Your Pass</button>
@@ -184,6 +185,7 @@
 			
 				<div class="item active">
 					<?php 
+					 $dirname = site_url()."images/testimonials_photo";
 						$active_testimonail_count =1;
 					foreach($bodycontent['activeTestimonial'] as $activeTestimonial){
 						if($active_testimonail_count%2==0){
@@ -192,18 +194,24 @@
 						else{
 							$sml_device_cls = '';
 						}
+						
 						?>
 						<div class="col-md-6 col-sm-12 <?php echo $sml_device_cls;?>">
 								<div class="testimonial-block">
 									<div class="block-text rel zmin">
 										<a title="" href="#"></a>
 											<div class="person-text rel">
-											<img alt="" src="<?php echo base_url();?>application/assets/images/<?php echo  $activeTestimonial['testimonialImage'];?>"><br>
-											<p style="text-align:center;" class="testimonial-name"><?php echo $activeTestimonial['name'];?>
-											<span>, <?php echo $activeTestimonial['location'];?></span> </p>
+											<img alt="" src="<?php echo  $dirname."/".$activeTestimonial['testimonialImage'];?>" style="width:85px !important;height:85px !important;padding:3px;border-radius:150px !important;" ><br>
+											<p style="text-align:center;" class="testimonial-name">
+											<?php echo ucwords(strtolower($activeTestimonial['name']));?>
+											<span>, <?php echo ucwords(strtolower($activeTestimonial['location']));?></span> </p>
 											</div>
 										<p class="testimonial-comment">
-											<?php echo $activeTestimonial['comment'];?>
+										
+											<?php 
+											$testimonialoutput1 = preg_replace('/[^a-zA-Z0-9\/_|+ .-]/',' ', $activeTestimonial['comment']);
+											echo $testimonialoutput1;?> 
+											... <a href="<?php echo base_url();?>about/mantra_testimonial">Read more</a>
 										</p>
 									</div>
 									
@@ -243,12 +251,17 @@
 							
 							<div class="block-text rel zmin">
 							<div class="person-text rel">
-								<img alt="" src="<?php echo base_url();?>application/assets/images/<?php echo  $witoutactiveTestimonial['testimonialImage'];?>"><br>
-								<p style="text-align:center;" class="testimonial-name"><?php echo $witoutactiveTestimonial['name'];?>
-								<span>, <?php echo $witoutactiveTestimonial['location'];?></span></a>
+								<img alt="" src="<?php echo $dirname."/".$witoutactiveTestimonial['testimonialImage'];?>"  style="width:85px !important;height:85px !important;padding:3px;border-radius:150px !important;" ><br>
+								<p style="text-align:center;" class="testimonial-name">
+								<?php echo ucwords(strtolower($witoutactiveTestimonial['name']));?>
+								<span>, <?php echo ucwords(strtolower($witoutactiveTestimonial['location']));?></span></a>
 							</div>
-								<a title="" href="#"></a>
-							<p class="testimonial-comment"><?php echo $witoutactiveTestimonial['comment'];?></p>
+								<a title="" href="#"></a>  
+							<p class="testimonial-comment"><?php  
+							$testimonialoutput2 = preg_replace('/[^a-zA-Z0-9\/_|+ .-]/',' ', $witoutactiveTestimonial['comment']);
+							echo $testimonialoutput2;?>
+							... <a href="<?php echo base_url();?>about/mantra_testimonial">Read more</a>
+							</p>
 							</div>
 							
 						</div>
@@ -259,102 +272,7 @@
 				$nooftestimonial = $nooftestimonial+1;
 				}?>
 				
-				
-				
-			<!--
-                    <div class="item active">
-                	    <div class="col-md-6 col-sm-12">
-							<div class="testimonial-block">
-								<div class="block-text rel zmin">
-									<a title="" href="#">Hercules</a>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia tempor viverra. Vestibulum malesuada vitae ligula in cursus. Morbi id efficitur dui. Morbi placerat quis nisl quis semper. Mauris felis tellus, aliquet id arcu eget, suscipit rhoncus neque. Nam velit metus, iaculis sed lobortis id, eleifend nec mi.
-									</p>
-								</div>
-								<div class="person-text rel">
-									<img alt="" src="http://myinstantcms.ru/images/img13.png">
-									<a title="" href="#">Anna</a>
-									<i>from Glasgow, Scotland</i>
-								</div>
-							</div>
-						</div>
-            			<div class="col-md-6 col-sm-12 hidden-sm hidden-xs testimonial-border-right">
-						    <div class="testimonial-block">
-								<div class="block-text rel zmin">
-									<a title="" href="#">The Purge: Anarchy</a>
-								   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia tempor viverra. Vestibulum malesuada vitae ligula in cursus. Morbi id efficitur dui. Morbi placerat quis nisl quis semper. Mauris felis tellus, aliquet id arcu eget, suscipit rhoncus neque. Nam velit metus, iaculis sed lobortis id, eleifend nec mi.</p>
-								</div>
-								<div class="person-text rel">
-								   <img alt="" src="http://myinstantcms.ru/images/img13.png">
-									<a title="" href="#">Ella Mentree</a>
-									<i>United States</i>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				
-                    <div class="item">
-                        <div class="col-md-6 col-sm-12 testimonial-border-right">
-							 <div class="testimonial-block">
-								<div class="block-text rel zmin">
-									<a title="" href="#">Hercules</a>
-								   
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia tempor viverra. Vestibulum malesuada vitae ligula in cursus. Morbi id efficitur dui. Morbi placerat quis nisl quis semper. Mauris felis tellus, aliquet id arcu eget, suscipit rhoncus neque. Nam velit metus, iaculis sed lobortis id, eleifend nec mi.</p>
-								</div>
-								<div class="person-text rel">
-									<img alt="" src="http://myinstantcms.ru/images/img13.png">
-									<a title="" href="#">Anna</a>
-									<i>from Glasgow, Scotland</i>
-								</div>
-							  </div>
-						</div>
-            			<div class="col-md-6 col-sm-12 hidden-sm hidden-xs testimonial-border-right">
-						  <div class="testimonial-block">
-								<div class="block-text rel zmin">
-									<a title="" href="#">The Purge: Anarchy</a>
-								   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia tempor viverra. Vestibulum malesuada vitae ligula in cursus. Morbi id efficitur dui. Morbi placerat quis nisl quis semper. Mauris felis tellus, aliquet id arcu eget, suscipit rhoncus neque. Nam velit metus, iaculis sed lobortis id, eleifend nec mi.</p>
-								</div>
-								<div class="person-text rel">
-									<img alt="" src="http://myinstantcms.ru/images/img14.png">
-									<a title="" href="#">Ella Mentree</a>
-									<i>United States</i>
-								</div>
-						  </div>
-						</div>
-					</div>
-				 
-				
-				  
-                    <div class="item">
-                        <div class="col-md-6 col-sm-12 testimonial-border-right">
-						  <div class="testimonial-block">
-        				    <div class="block-text rel zmin">
-						        <a title="" href="#">Hercules</a>
-							   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia tempor viverra. Vestibulum malesuada vitae ligula in cursus. Morbi id efficitur dui. Morbi placerat quis nisl quis semper. Mauris felis tellus, aliquet id arcu eget, suscipit rhoncus neque. Nam velit metus, iaculis sed lobortis id, eleifend nec mi.</p>
-							</div>
-							<div class="person-text rel">
-								<img alt="" src="http://myinstantcms.ru/images/img14.png">
-						        <a title="" href="#">Ella Mentree</a>
-								<i>United States</i>
-							</div>
-						  </div>
-						</div>
-            			<div class="col-md-6 col-sm-12 hidden-sm hidden-xs testimonial-border-right">
-						  <div class="testimonial-block">
-						    <div class="block-text rel zmin">
-						        <a title="" href="#">The Purge: Anarchy</a>
-							    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia tempor viverra. Vestibulum malesuada vitae ligula in cursus. Morbi id efficitur dui. Morbi placerat quis nisl quis semper. Mauris felis tellus, aliquet id arcu eget, suscipit rhoncus neque. Nam velit metus, iaculis sed lobortis id, eleifend nec mi.</p>
-					        </div>
-							<div class="person-text rel">
-								<img alt="" src="http://myinstantcms.ru/images/img14.png">
-						        <a title="" href="#">Ella Mentree</a>
-								<i>United States</i>
-							</div>
-						  </div>
-						</div>
-					</div>    
-					-->
+		
 					
                 </div>
 				</div>
@@ -460,7 +378,12 @@
 								<li class="latest-offers-item">
 									<img src="<?php echo base_url(); ?>/admin/upload/latestoffer/resize-offer-img/<?php echo $latestoffer['offer_image'];?>" class="img-responsive"/>
 								</li>
-							<?php }} ?>
+								
+							<?php }}else{ ?>
+							<li class="latest-offers-item">
+								<img src="<?php echo base_url(); ?>application/assets/images/no-offer-img.png" class="img-responsive"/>
+							</li>
+						<?php	} ?>
 							
 							</ul>
 					    </div>
@@ -490,7 +413,9 @@
 			<p>How Can We Help You ?</p>
 		</div>
 		<div class="help-desc">
-			<p>Maecenas in faucibus dui. Ut dictum blandit cursus. Cras ut sagittis dolor. Nulla finibus dignissim ex, a porttitor turpis blandit ac. Curabitur et pulvinar lorem, in luctus tellus.</p>
+			<p><!--Maecenas in faucibus dui. Ut dictum blandit cursus. Cras ut sagittis dolor. Nulla finibus dignissim ex, a porttitor turpis blandit ac. Curabitur et pulvinar lorem, in luctus tellus.-->
+			Please give your details so that we can help you in a better way
+			</p>
 		</div>
 		<div class="help-icon">
 			<span class="glyphicon glyphicon-hand-right"></span>
@@ -628,7 +553,7 @@
 				<p>Walk through</p>
 			</div>
 			<div class="video-desc">
-				<p>Maecenas in faucibus dui. Ut dictum blandit cursus. Cras ut sagittis dolor. Nulla finibus dignissim ex, a porttitor turpis blandit ac.</p>
+				<p>Lets have a quick gym tour through</p>
 				
 			</div>
 			<div class="more-video">

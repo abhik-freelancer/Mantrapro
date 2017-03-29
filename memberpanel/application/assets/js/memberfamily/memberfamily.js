@@ -397,8 +397,18 @@ $(document).ready(function(){
 				success:function(result){
 					$("#bldtestLoader").css("display","none");
 					$("#bloodTestList").html(result);
+					
+					/*
+						$('#bloodTestData').DataTable( {
+							dom: 'Bfrtip',
+							buttons: [
+								'print'
+							]
+						} );*/
+						
+					
 					var table = $('#bloodTestData').DataTable({
-							"columnDefs": [
+						"columnDefs": [
 								{ "visible": false, "targets": 2 }
 							],
 							//"order": [[ 2, 'asc' ]],
@@ -418,8 +428,11 @@ $(document).ready(function(){
 										last = group;
 									}
 								} );
+								
 							}
+							
 						} );
+						
  
 				},
 				error: function (jqXHR, exception) {

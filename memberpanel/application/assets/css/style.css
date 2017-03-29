@@ -326,6 +326,22 @@ label{
 
 }
 
+/*********************************/
+/************* DASHBOARD *********/
+/*********************************/
+
+.casbck-terms-condition ul{
+	list-style:none;
+	font-size:13px;
+}
+.cashback-applied-msg{
+	text-align: center;
+	font-size: 20px;
+	color: #036C08;
+}
+
+
+
 /*------------Portfolio ---------------*/
 
 
@@ -882,6 +898,9 @@ label{
 	}
 	.modal-header-success h3{
 		font-size:18px;
+	}
+	.memberpanelFormContainer{
+		background:none;
 	}
 }
 @media only screen and (max-width:460px) {

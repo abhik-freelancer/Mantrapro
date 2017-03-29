@@ -22,7 +22,7 @@ $(document).ready(function(){
 				else if(response.status_code==1){
 					$("#fitnessedu-enq-error").css("color","#0EA74B");
 					$("#fitnessedu-enq-error").html(response.status_msg);
-					$("#fitnessedu-enq-error")[0].reset();
+					$("#fitnessEnqForm")[0].reset();
 					
 					
 				}

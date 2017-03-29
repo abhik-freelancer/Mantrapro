@@ -532,16 +532,22 @@ font-size: 3em;
     text-align:center;
     margin-top:-10px;
 }
+/*
 .service-icon{
     width:64%;
     margin:0 auto;
 }
+*/
 .service-box img{
-  
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
 }
 .service-box p{
     /*text-align:center; */
-    text-align:center;
+    text-align:justify;
+	max-height:300px;
+	height:150px;
 }
 .more{
     width:75%;
@@ -701,6 +707,10 @@ font-size: 3em;
 	font-size:4em;
 	text-align:center;
 	color:#F2652D;
+}
+
+.magic-mantra-container ul li{
+	margin-top:2%;
 }
 
 /*-----Hav Report---------*/
@@ -2498,12 +2508,21 @@ padding-bottom: 24px;
 	
 }
 
+@media only screen and (max-width: 1165px){
+	.service-box p{
+		height:170px;
+	}
+}
+
 
 
 @media only screen and (max-width: 1128px) {
-	.service-icon{
+	/*.service-icon{
 		width:82%;
 		margin:0 auto;
+	}*/
+	.service-box p{
+		height:190px;
 	}
 	.service-box h4{
 		text-align:center;
@@ -2561,7 +2580,11 @@ padding-bottom: 24px;
 	}
 	
 }
-
+@media only screen and (max-width: 1005px) {
+	.service-box p {
+		height: 210px;
+	}
+}
 
 @media only screen and (max-width: 991px) {
 	.service-box{
@@ -2569,16 +2592,19 @@ padding-bottom: 24px;
 		float:left;
 		border-right: 0px solid #F5F5F5;
 	}
-	.service-icon{
+	/* .service-icon{
 		width:45%;
 		margin:0 auto;
 		
-	}
+	} */
 	.service-box h4{
 		text-align:center;
 		margin-top:-10px;
 		font-size: 1.5em;
 		font-weight:bold;
+	}
+	.service-box p {
+		height:110px;
 	}
 	.guest-img-container img{
 		margin: 0 auto;
@@ -2746,10 +2772,13 @@ padding-bottom: 24px;
 		float:none;
 		margin:0 auto;
 	}
-	.service-icon{
+	/* .service-icon{
 		width:41%;
 		margin:0 auto;
 		
+	} */
+	.service-box p {
+		height:auto;
 	}
 	#events-and-offer-box-container {
 		width: 75%;
@@ -2851,11 +2880,11 @@ padding-bottom: 24px;
 }
 
 @media only screen and (max-width: 682px) {
-	.service-icon{
+	/* .service-icon{
 		width:46%;
 		margin:0 auto;
 		
-	}
+	} */
 	#upcoming-events {
 		height: 280px;
 		max-height: 280px;
@@ -2894,11 +2923,11 @@ padding-bottom: 24px;
 		float:none;
 		margin:0 auto;
 	}
-	.service-icon{
+	/* .service-icon{
 		width:32%;
 		margin:0 auto;
 		
-	}
+	} */
 	#events-and-offer-box-container {
 		width: 96%;
 		margin: 0px auto;
@@ -2933,11 +2962,11 @@ padding-bottom: 24px;
 }
 
 @media only screen and (max-width: 535px) {
-	.service-icon{
+	/* .service-icon{
 		width:38%;
 		margin:0 auto;
 		
-	}
+	} */
 	.mantra-heading-text{
 		font-size:2.8em;
 	}
@@ -3120,11 +3149,11 @@ padding-bottom: 24px;
 
 
 @media only screen and (max-width: 424px) {
-	.service-icon{
+	/* .service-icon{
 		width:47%;
 		margin:0 auto;
 		
-	}
+	} */ 
 	.mantra-heading-text{
 		font-size:2em;
 	}
@@ -3187,11 +3216,11 @@ padding-bottom: 24px;
 		float:none;
 		margin:0 auto;
 	}
-	.service-icon{
+	/* .service-icon{
 		width:55%;
 		margin:0 auto;
 		
-	}
+	} */
 	.guest-pass-title p {
 		font-size: 2em;
 	}
@@ -3273,11 +3302,11 @@ padding-bottom: 24px;
 }
 
 @media only screen and (max-width: 320px) {
-	.service-icon{
+	/* .service-icon{
 		width:67%;
 		margin:0 auto;
 		
-	}
+	} */
 	.mission-vision-heading {
     font-size: 2.2em;
     text-align: center;

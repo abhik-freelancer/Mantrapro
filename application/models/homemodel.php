@@ -42,7 +42,7 @@ class homemodel extends CI_Model{
 	
 	public function getAllTestimonial(){
 		$data=array();
-		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id`";
+		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id` DESC";
 		 $query = $this->db->query($sql);
          if($query->num_rows()> 0){
               foreach ($query->result() as $rows) {
@@ -64,14 +64,11 @@ class homemodel extends CI_Model{
          }
 	} 
 	
-	public function getExcerptWord($string,$limit){
-		$words = explode( ' ', $string );
-		return implode( ' ', array_slice( $words, 0, $limit ));
-	}
+	
 	
 	public function getTestimonialForActiveCls(){
 		$data=array();
-		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id`  LIMIT 2 ";
+		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id` DESC LIMIT 2 ";
 		 $query = $this->db->query($sql);
          if($query->num_rows()> 0){
               foreach ($query->result() as $rows) {
@@ -81,7 +78,8 @@ class homemodel extends CI_Model{
                     "occupation"=>$rows->occupation,
                     "testimonialImage"=>$rows->testimonialImage,
                     "location"=>$rows->location,
-                    "comment"=>$rows->comment
+                    "comment"=>$this->getExcerptWord($rows->comment,25)
+                  //  "comment"=>$rows->comment
                     );
             }
             return $data;
@@ -94,7 +92,7 @@ class homemodel extends CI_Model{
 	
 	public function getTestimonialForWithoutActiveCls(){
 		$data=array();
-		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id`  LIMIT 100 OFFSET 2 ";
+		$sql = "SELECT * FROM testimonial WHERE testimonial.`is_active`='Y' ORDER BY `id` DESC LIMIT 100 OFFSET 2 ";
 		 $query = $this->db->query($sql);
          if($query->num_rows()> 0){
               foreach ($query->result() as $rows) {
@@ -104,7 +102,8 @@ class homemodel extends CI_Model{
                     "occupation"=>$rows->occupation,
                     "testimonialImage"=>$rows->testimonialImage,
                     "location"=>$rows->location,
-                    "comment"=>$rows->comment
+                    "comment"=>$this->getExcerptWord($rows->comment,25)
+                   // "comment"=>$rows->comment
                     );
             }
             return $data;
@@ -114,6 +113,12 @@ class homemodel extends CI_Model{
              return $data;
          }
 	} 
+	
+	public function getExcerptWord($string,$limit){
+		$words = explode( ' ', $string );
+		return implode( ' ', array_slice( $words, 0, $limit ));
+	}
+	
 	
 	public function getAllEvents($today_dt){
 		$data = array();

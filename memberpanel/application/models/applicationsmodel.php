@@ -10,7 +10,7 @@ class applicationsmodel extends CI_Model{
 		$this->db->from('card_master');
 		$this->db->where($where);
 		$query = $this->db->get();
-		
+		//echo $this->db->last_query();
 		if($query->num_rows() > 0) {
             $row = $query->row();
 			$extensionDys = $row->application_limit_days;

@@ -1,5 +1,5 @@
 <?php 
-
+/*
 if ( ! function_exists('sessiondata_method'))
 {
     function sessiondata_method()
@@ -29,3 +29,4 @@ if ( ! function_exists('sessiondata_method'))
 		 }
     }   
 }
+*/

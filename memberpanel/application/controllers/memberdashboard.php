@@ -62,6 +62,150 @@ class memberdashboard extends CI_Controller {
             redirect('memberlogin', 'refresh');
         }
     }
+	
+	public function applycashback(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			
+			$customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $page = 'memberdashboard/cash-back-apply';
+            $membershipNumber = $this->profilemodel->getMembershipNumber($customerId);
+            $latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
+            $fromdate = ($latestvalidity["fromdate"]==""?"":$latestvalidity["fromdate"]);
+            $todate = ($latestvalidity["validupto"]==""?"":$latestvalidity["validupto"]);
+			$validityString = $fromdate." - ".$todate;
+			$header ="";
+			$result['memberid']=$customerId;
+			$result['membershipNumber']=$membershipNumber;
+			$result['validityString']=$validityString;
+			$result["cashbackdata"] = $this->dashboardmodel->getMemberCashBackPoint($membershipNumber,$validityString);
+			
+			createbody_method($result, $page, $header, $session);
+			
+		}else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	public function checkCashBackApplied(){
+		if($this->session->userdata('user_data')){
+			$response = array();
+			$membership_no =  trim($this->input->post('membership',TRUE));
+			$latestvalidity = $this->profilemodel->getValidityString($membership_no);
+			$isApplied = $this->dashboardmodel->checkCashBackApplied($membership_no,$latestvalidity['VALIDITY_STRING']);
+			$response = array(
+				"msg_code"=>1,
+				"msg_data"=>$isApplied
+			);
+			header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
+		}
+		else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	public function processCashBack(){
+		if($this->session->userdata('user_data')){
+			$response = array();
+			$insertArry = array();
+			$session = $this->session->userdata('user_data');
+			$customerId = trim($this->input->post('member-id',TRUE));
+			$customerDtl = $this->profilemodel->getCustomerByCustId($customerId);
+			$membership_no = trim($this->input->post('membership-no',TRUE));
+			$validity = trim($this->input->post('member-validity',TRUE));
+			$cashbackamount = trim($this->input->post('cashback-amount',TRUE));
+			$cashbackpoint = trim($this->input->post('cashback-point',TRUE));
+			
+			$latestvalidity = $this->profilemodel->getValidityString($membership_no);
+			
+			$checkCashBackEligibility = $this->checkCashBackEligibility($latestvalidity["validupto"],$customerDtl['CUS_CARD']);
+			if($checkCashBackEligibility){
+				$insertArry = array(
+					"member_id" => $customerId,
+					"membership_no" => $membership_no,
+					"validity_period" => $latestvalidity['VALIDITY_STRING'],
+					"apply_date" => date('Y-m-d'),
+					"cash_bck_point" => $cashbackpoint,
+					"cash_bck_amt" => $cashbackamount,
+					"is_approved" => 'N',
+					"is_redeemed" => 'N'
+				);
+				$status = $this->insertupdatemodel->insertData('cash_back_admin',$insertArry ); 
+				if($status){
+					$response = array(
+					"msg_code" => 1,
+					"msg_data" => "Cash back applied successfully."
+					);
+				}
+				else{
+					$response = array(
+					"msg_code" => 2,
+					"msg_data" => "There is something error.Please try again later..."
+					);
+				}
+			}
+			else{
+				$response = array(
+					"msg_code" => 0,
+					"msg_data" => "You can apply cash back before 10 days from the date of expiry."
+				);
+			}
+			
+			header('Content-Type:application/json');
+			echo json_encode($response);
+			exit;
+				
+		}
+		else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	private function checkCashBackEligibility($validupto,$cardcode){
+		$isApllicable = false;
+		$validupto = date('Y-m-d',strtotime($validupto));
+		$cardExtDys = $this->dashboardmodel->getCardExtensionDays($cardcode);
+		
+		$till_apply_days =  date('Y-m-d', strtotime($validupto. ' + '.$cardExtDys .' days'));
+		
+		$remaing_dys = 10;
+		$upto_apply_dys = $remaing_dys+$cardExtDys;
+	
+		$date = date('Y-m-d');
+		
+		// Start date of cashback apply 
+		$cur_dt=date_create($date);
+		$start_date=date_create($validupto);
+		$diff=date_diff($cur_dt,$start_date);
+		$start_apply_days = $diff->format("%R%a days");
+		
+	
+	//	echo "Start Aplly date ".$start_apply_days;
+		
+	
+		// Till Aplly date cash back 
+		$date1=date_create($date);
+		$till_date=date_create($till_apply_days);
+		
+		$diff=date_diff($date1,$till_date);
+		$till_apply_days = $diff->format("%R%a days");
+		
+		/*
+			echo "<br>";
+			echo "Till Apply date ".$till_apply_days;
+			echo "<br>***";*/
+		
+		if($start_apply_days>0 && $start_apply_days<10 && $till_apply_days<=$upto_apply_dys){
+			$isApllicable = true;
+		}
+		if($start_apply_days>10 && $till_apply_days>$upto_apply_dys){
+			$isApllicable = false;
+		}
+		
+	return 	$isApllicable ;
+	}
 
 }
 

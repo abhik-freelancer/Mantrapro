@@ -21,15 +21,18 @@
 <?php if($bodycontent['trainer']){
 	$i = 0;
 	foreach($bodycontent['trainer'] as $trainer){ 
-	$i++;
+	
 	if($i%2==0){
 		$background_style = 'style="background:#F5F7F7;"';
-		$imgname ='trainers-p-4.jpg';
+		$imgname ='trainer_icon1.png';
 	}
 	else{
 		$background_style = 'style="background:#FFFFFF;"';
-		$imgname ='trainers-p-1.jpg';
+		$imgname ='trainer_icon1.png';
 	}
+	if($trainer['about']==""){echo "";}else{
+		
+		$i++;
 	?>
 
 <div class="container-fluid" <?php echo $background_style;?>>
@@ -48,7 +51,7 @@
 						<h5><?php echo $trainer['branch'];?></h5>
 					</div>
 					<div class="about-trainer">
-						<p>Phasellus pretium metus nec tellus molestie consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+						<p><?php echo $trainer['about'];?></p>
 					</div>
 				</div>
 			</div>
@@ -60,7 +63,7 @@
 			</div>
 			<div class="trainer-specializations">
 				<h3>SPECIALIZATIONS:</h3>
-				<p>Lorem Ipsum , Lorem Ipsum , Lorem Ipsum</p>
+				<p><?php echo $trainer['specialization']; ?></p>
 			</div>
 			<div class="trainer-rating">
 				<p>Trainer Rating : <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p>
@@ -70,7 +73,7 @@
 </div>
 	
 	
-<?php } } ?>
+	<?php } } } ?>
 
 <!--
 <div class="container-fluid">

@@ -16,6 +16,7 @@ $(document).ready(function(){
 	$("#applicationExtForm").on("submit",function(event){
 		event.preventDefault();
 		//validateApplicationExtForm();
+		if(validateApplicationExtForm()){
 		 var formData = new FormData($(this)[0]);
 		$.ajax({
 				type: "POST",
@@ -64,6 +65,9 @@ $(document).ready(function(){
               //  alert(msg);  
             }
 		});
+		}else{
+			return false;
+		}
 		
 	});
 	

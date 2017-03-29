@@ -9,7 +9,7 @@
     <meta name="description" content="Mantra health zone">
     <meta name="author" content="">
 
-    <title>Mantra</title>
+    <title>MANTRA : Lifestyle Health Club</title>
 
     <!-- Custom css -->
     <link rel="stylesheet" href="<?php echo base_url();?>application/assets/css/style.css" />
@@ -149,13 +149,13 @@
 				<div class="nav-mantra-director">
 				   <div class="mantra-direct-left">
 					  <img src="<?php echo base_url(); ?>application/assets/images/subhabrata_bhattacharjee.jpg" class="">
-					  <p>Mr. Subhabrata Bhattacharjee</p>
-					  <p class="director">Director</p>
+					  <p>Subhabrata Bhattacharjee</p>
+					  <p class="director" style="color: #FF6B3B;">Founder and Director</p>
 				   </div>
 				   <div class="mantra-direct-right">
 					  <img src="<?php echo base_url(); ?>application/assets/images/dipanjan_bhattacharjee.jpg">
-					  <p>Mr. Dipanjan Bhattacharjee</p>
-					  <p class="director">Director</p>
+					  <p>Dipanjan Bhattacharjee</p>
+					  <p class="director" style="color: #FF6B3B;">Founder and Director</p>
 				   </div>
 				</div>
 				<p class="team-mantra-desc">
@@ -179,6 +179,7 @@
 							<?php 
 								if($testimonials){
 								$i=1;
+								$dirname = site_url()."images/testimonials_photo";
 								foreach($testimonials as $member_testimonial){ 
 									if($i==1){
 										$active_class ="active";
@@ -191,10 +192,12 @@
 								<div class="item <?php echo $active_class;?>">
 								  <div class="row">
 									 <div class="col-sm-4 text-center">
-										<img src="<?php echo base_url(); ?>application/assets/images/testimonials/<?php echo $member_testimonial['testimonialImage'];?>"  class="img-circle" style="width: 80px;height:80px;" >
+										<img src="<?php echo $dirname."/".$member_testimonial['testimonialImage'];?>"  class="img-circle" style="width: 80px;height:80px;" >
 									 </div>
 									<div class="col-sm-8">
-										<p class="testimonial-thought"><?php echo $member_testimonial['excerpt_comment'];?> ...</p>
+										<p class="testimonial-thought"><?php
+										$output_testimonial = preg_replace('/[^a-zA-Z0-9\/_|+ .-]/',' ',$member_testimonial['excerpt_comment']);
+										echo $output_testimonial;?> ...</p>
 										<h5 class="person-name"><?php echo $member_testimonial['name'];?> <br><?php echo $member_testimonial['occupation'];?></h5>
 										
 									</div>
@@ -218,7 +221,7 @@
 				<li class="divider"></li>
 				
 				<li class="dropdown-header">Career</li>
-				<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+				<p>If you want to stay fit and healthy throughout your life, then forget all "magic and tantra" and simply believe in the purity of "Mantra"!</p>
 				 <a href="<?php echo base_url();?>about/career" class="btn cutome-link-btn">Apply Now</a>
 			 </ul>
 		  </li>
@@ -233,23 +236,24 @@
 				<ul class="dropdown-menu mega-dropdown-menu">
 				<div class="container">
 					<div class="row">
+					<!--
 						<li class="col-sm-4">
 							<ul>
 								<li class="dropdown-header">Packages Offered</li>  
 								Download Admision Form
 							</ul>
-						</li>
+						</li> -->
 						<li class="col-sm-4">
 							<ul>
 								<li class="dropdown-header">Branch Wise Rate Chart</li>                            
-									<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+									<p>If you want to stay fit and healthy throughout your life, then forget all "magic and tantra" and simply believe in the purity of "Mantra"!</p>
 									<li><a href="<?php echo base_url();?>services/rate_chart" class="btn cutome-link-btn">View More</a></li>
 							</ul>
 						</li>
 						<li class="col-sm-4">
 							<ul>
 								<li class="dropdown-header">Branch Wise Classes & Consultancy Schedule</li>    
-								<p>If you want to stay fit and healthy throughout your life, then forget all “magic and tantra” and simply believe in the purity of “Mantra”!</p>
+								<p></p>
 									<li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
 								
 							</ul>
@@ -403,7 +407,7 @@
                   <!--  <h1 class="title-widget">Contact Detail </h1> -->
                         <div class="footerp"> 
                             <h2 class="title-median">MANTRA LIFE STYLE HEALTH CLUB</h2>
-                            <p><b>Email id:</b> <a href="">info@mantrahealthzone.co.in</a></p>
+                           <!-- <p><b>Email id:</b> <a href="">info@mantrahealthzone.co.in</a></p>-->
                         </div>
                         <div class="social-icons">
 							<ul class="nomargin">

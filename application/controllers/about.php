@@ -78,7 +78,9 @@ class about extends CI_Controller {
 			$email_validate = $this->validateEmail($email);
 			if($email_validate){
 				if($_FILES['career-resume']['error']!=4){
-					$dir = APPPATH . 'assets/career-resume/';
+					//$dir = APPPATH . 'assets/career-resume/';
+					 $dir = $_SERVER['DOCUMENT_ROOT'].'/images/career_resume';
+					
                     $config = array(
                         'upload_path' => $dir,
                         'allowed_types' => 'docx|doc|pdf',

@@ -14,9 +14,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- data table css -->
-    <link href="<?php echo base_url(); ?>application/assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>application/assets/css/dataTables.bootstrap.min.css" rel="stylesheet">  
 	
-    <!-- Custom CSS --
+	<!-- Custom CSS --
     <link href="<?php echo base_url(); ?>application/assets/css/sb-admin.css" rel="stylesheet">
 	<!-- Morris Charts CSS --
     <link href="<?php echo base_url(); ?>application/assets/css/plugins/morris.css" rel="stylesheet">
@@ -307,6 +307,7 @@
 	<!--for temporary  add file from folder-->
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>-->
+
 	
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
@@ -322,6 +323,7 @@
 	 <script src="<?php echo base_url(); ?>application/assets/js/sb-admin-2.js"></script>
          <!-- <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-slider.js"></script>-->
 
+    <script src="<?php echo base_url(); ?>application/assets/js/memberdashboard/memberdashboard.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/changepass/changepass.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/profile/profile.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/portfolio/portfolio.js"></script>

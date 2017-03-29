@@ -44,8 +44,10 @@ class aboutusmodel extends CI_Model{
 	public function getTeamMantra($category){
 		$data = array();
 		$sql = "SELECT team_mantra.name,
+				team_mantra.about,
 				team_mantra.designation,
 				team_mantra.description,
+				team_mantra.specialization,
 				team_mantra.branch,
 				team_mantra.image,
 				branch_master.BRANCH_NAME
@@ -59,8 +61,10 @@ class aboutusmodel extends CI_Model{
 			foreach($query->result() as $rows){
 				$data[]=array(
 					"name" => $rows->name,
+					"about" => $rows->about,
 					"designation" => $rows->designation,
 					"certification" => $rows->description,
+					"specialization" => $rows->specialization,
 					"branch" => $rows->BRANCH_NAME,
 					"image" => $rows->image
 				);

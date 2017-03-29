@@ -57,7 +57,6 @@ class applications  extends CI_Controller{
 			$customerDtl = $this->profilemodel->getCustomerByCustId($customerId);
 	        $isAppliedMember = $this->applicationsmodel->getIsMemberAlreadyApplied($membershipno,$latestvalidity['VALIDITY_STRING']);
 			$appextCardLimitDys = $this->applicationsmodel->getApplicationExtLimitDys($customerDtl['CUS_CARD']);
-			
 			$request_frm_dt = trim($this->input->post('request-from-date'));
 			$request_to_dt = trim($this->input->post('request-to-date'));
 			
@@ -101,7 +100,8 @@ class applications  extends CI_Controller{
 								
 							}
 							else{
-								$dir = APPPATH . 'assets/application_extension/';
+								//$dir = APPPATH . 'assets/application_extension/';
+								$dir = $_SERVER['DOCUMENT_ROOT'].'/images/appext';
 								$config = array(
 									'upload_path' => $dir,
 									'allowed_types' => 'docx|doc|pdf|jpg|png',

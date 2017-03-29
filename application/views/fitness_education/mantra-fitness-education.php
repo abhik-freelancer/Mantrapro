@@ -178,7 +178,7 @@
 		
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<h1 style="text-align:center;color:#F2652C;">Ask From Us</h1>
-			<img src="<?php echo base_url();?>/application/assets/images/ask-us.png" class="img-responsive" style="width:45%;"/>
+			<img src="<?php echo base_url();?>application/assets/images/ask-us.png" class="img-responsive" style="width:45%;"/>
 		</div>
 		
 		<div class="col-md-6 col-sm-6 col-xs-12">

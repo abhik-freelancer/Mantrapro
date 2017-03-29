@@ -126,4 +126,45 @@ class dashboardmodel extends CI_Model {
         return $packagehistory;
         
     }
+	
+	public function checkCashBackApplied($mebership,$validity){
+		$isApplied = "";
+		$where = array(
+			"membership_no" => $mebership, 
+			"validity_period" => $validity
+		);
+		
+		$this->db->select('*')
+				->from('cash_back_admin')
+				->where($where);
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		if($query->num_rows()>0){
+			$isApplied='Y';
+		}
+		else{
+			$isApplied='N';
+		}
+		return $isApplied;
+	}
+	
+	public function getCardExtensionDays($cardcode){
+		$where = array(
+			"CARD_CODE" => $cardcode,
+			"IS_ACTIVE" => 'Y'
+		);
+		$this->db->select('card_master.EXTENSION_DAYS')
+				->from('card_master')
+				->where($where);
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$extensionDys = $row->EXTENSION_DAYS;
+		}else{
+			$extensionDys = 0;
+		}
+		return $extensionDys;
+	}
 }

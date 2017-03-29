@@ -45,20 +45,22 @@
 <div class="container-fluid content">
     <div class="row row-container testimonial-page">
 		<?php if($bodycontent['testimonials']){
+			 $dirname = site_url()."images/testimonials_photo";
 			foreach($bodycontent['testimonials'] as $testimonials){
+				$testimonialoutput = preg_replace('/[^a-zA-Z0-9\/_|+ .-]/',' ', $testimonials['comment']);
 			?>
         <div class="col-md-12">
             <div class="testimonials">
             	<div class="item">
                
                   <div class="carousel-info">
-                    <img alt="" src="<?php echo base_url(); ?>application/assets/images/testimonials/<?php echo $testimonials['testimonialImage'];?>" class="pull-left">
+                    <img alt="" src="<?php echo $dirname."/".$testimonials['testimonialImage'];?>" class="pull-left">
                     <div class="pull-left">
                       <span class="testimonials-name"><?php echo $testimonials['name'];?></span>
                       <span class="testimonials-post"><?php echo $testimonials['occupation'];?></span>
                     </div>
                   </div>
-				     <blockquote><p><?php echo $testimonials['comment'];?></p></blockquote>
+				     <blockquote><p><?php echo $testimonialoutput;?></p></blockquote>
                 </div>
             </div>
         </div>

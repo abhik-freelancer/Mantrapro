@@ -9,7 +9,7 @@ $(document).ready(function(){
 	
 	$("#careerForm").on("submit",function(event){
 		event.preventDefault();
-	//	validateCareerForm();
+	if(validateCareerForm()){
 		 var formData = new FormData($(this)[0]);
 		    $.ajax({
             type: "POST",
@@ -26,6 +26,7 @@ $(document).ready(function(){
 			  else if(result.msg_code==1){ 
 				$("#career-form-error").css('color','#259819');
 				$("#career-form-error").html(result.msg_data); 
+				$("#careerForm")[0].reset();
 			  }
 			  else if(result.msg_code==2){
 				$("#career-form-error").css('color','#F95340');
@@ -59,6 +60,9 @@ $(document).ready(function(){
              //   alert(msg);
             }
         });
+		}else{
+			return false;
+		}
 		
 	});
 	

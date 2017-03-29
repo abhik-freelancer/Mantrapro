@@ -13,6 +13,61 @@
 				<span class="first-text-col">H</span>ealth <span class="first-text-col">A</span>sset <span class="first-text-col">V</span>alue 
 			</h1>
         </div> 
+		<div class="col-md-12">
+			<p class="about-first-head">In today's world we are busy chasing wealth and used to avoid the most crucial wealth – 'Our Own Health...' while all of us are aware of the age old saying "Health is the Greatest Wealth!". <br>Mantra, the fast life style health club of the Kolkata, makes a resolution to spread "Health is the Greatest Wealth" awareness among the mantra members and focuses on increasing this critical wealth... </p>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid" style="background:#F8F8F8;">
+	<div class="row row-container health-asset-value-member">
+		<div class="col-md-12">
+			<p>In view of this, for the first time in INDIA, we are introducing Health Asset Value Report ( H A V) for our  esteem members. The very purpose of this programme is to help members assess the status of their health essentially via health and fitness assessment and to know the Health Asset Value (HAV). </p>
+		</div>
+		<div class="col-md-12">
+			 <p>Through Six Exclusive health and fitness Assessment Programme we will assess your health and fitness level and will give you a Health Asset value (HAV) report. 
+			 This exclusive HAV report will encourage you with the following: </p>
+		</div>
+		
+		<div style="">
+			<div class="col-md-6 col-sm-6">
+				<div class="list-group">
+				  <a href="javascript:;" class="list-group-item active ">
+					<span class="glyphicon glyphicon-pushpin"></span> Prevention
+				  </a>
+				  <a href="javascript:;" class="list-group-item revolutionary-item1">To help you take preventive measures on health and fitness issues  and lastly and most importantly 
+				  </a>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<div class="list-group">
+				  <a href="javascript:;" class="list-group-item active ">
+					<span class="glyphicon glyphicon-pushpin"></span> Goal 
+				  </a>
+				  <a href="javascript:;" class="list-group-item revolutionary-item1">To help you to set your fitness goal
+				  </a>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<div class="list-group">
+				  <a href="javascript:;" class="list-group-item active ">
+					<span class="glyphicon glyphicon-pushpin"></span> Motivation 
+				  </a>
+				  <a href="javascript:;" class="list-group-item revolutionary-item1">To stay motivated on a daily exercise routine 
+				  </a>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<div class="list-group">
+				  <a href="javascript:;" class="list-group-item active ">
+					<span class="glyphicon glyphicon-pushpin"></span> Rating  
+				  </a>
+				  <a href="javascript:;" class="list-group-item revolutionary-item1">To help you to know your fitness rating. 
+				  </a>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 </div>
 
@@ -24,7 +79,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="list-group">
-			  <a href="javascript:;" class="list-group-item active">
+			  <a href="javascript:;" class="list-group-item active" style="background:#0093D8;border-color:#0093D8;">
 				<span class="glyphicon glyphicon-pushpin"></span> Member Detail
 			  </a>
 			  <a href="javascript:;" class="list-group-item">Name : Mr. Amit Kumar Roy  </a>
@@ -500,6 +555,10 @@
 		
 	</div>
 </div>
+
+
+
+<!--
 <div class="container-fluid" style="background:#F8F8F8;padding:2%;">
 	<div class="row row-container">
 		<div class="col-md-12">
@@ -517,3 +576,4 @@
 		</div>
 	</div>
 </div>
+-->

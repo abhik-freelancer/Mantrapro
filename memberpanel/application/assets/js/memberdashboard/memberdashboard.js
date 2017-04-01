@@ -2,7 +2,11 @@ $(window).load(function(){
 	var basepath = $("#basepath").val();
 	var membership = $("#membership-no").val();
 	var validity = $("#member-validity").val();
-
+	var point = $(" #cashback-point").val();
+	var amount = $("#cashback-amount").val();
+	
+	
+	
 	$.ajax({
 		type: "POST",
 				url: basepath + 'memberdashboard/checkCashBackApplied',
@@ -42,6 +46,7 @@ $(window).load(function(){
               //  alert(msg);  
             }
 	});
+	
 	
 });
 

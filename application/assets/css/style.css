@@ -2009,6 +2009,96 @@ ul.fa-ul li .badge{
       .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}
 */
 
+/*************yoga classes*************/
+
+i.icon-2x {
+  font-size: 30px;
+}
+
+.color-light{
+    color:#FFFFFF;
+}
+
+/*Colored Content Boxes
+------------------------------------*/
+.yoga-class-block{
+  padding: 20px 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius:8px;
+}
+
+.yoga-class-block p,
+.yoga-class-block h2 {
+  color: #fff;
+}
+
+.yoga-class-block h2 {
+  margin-top:10px;
+}
+
+.yoga-class-block h2 a:hover{
+  text-decoration: none;
+}
+
+.yoga-class-block,
+.yoga-class-block {
+  background: #fafafa;
+  border: solid 1px #eee; 
+}
+.barrackpore-block{
+	 background: #A460A3;
+}
+.chiriamore-block{
+	background: #e67e22;
+}
+.laketown-block{
+	background: #0B8DB7;
+}
+
+.mediation-class .table > thead > tr > th {
+	border-bottom: 0px solid #DDD;
+    text-align: center;
+	color:#FFF;
+}
+.mediation-class .barrackpore-block .table-striped>thead>tr{
+	background:#763B8C;
+}
+.mediation-class .chiriamore-block .table-striped>thead>tr{
+	background:#BC5C07;
+}
+.mediation-class .laketown-block .table-striped>thead>tr{
+	background:#027093;
+}
+.mediation-class .barrackpore-block .table-striped>tbody>tr:nth-child(odd){
+	background:#E7D0F2;
+	border:none;
+}
+.mediation-class .barrackpore-block .table-striped>tbody>tr:nth-child(even){
+	background:#D499DD;
+	border:none;
+}
+.mediation-class .chiriamore-block .table-striped>tbody>tr:nth-child(odd){
+	background:#FFD3B7;
+	border:none;
+}
+.mediation-class .chiriamore-block .table-striped>tbody>tr:nth-child(even){
+	background:#FBA677;
+	border:none;
+}
+.mediation-class .laketown-block .table-striped>tbody>tr:nth-child(odd){
+	background:#BFE1EC;
+	border:none;
+}
+.mediation-class .laketown-block .table-striped>tbody>tr:nth-child(even){
+	background:#78BACF;
+	border:none;
+}
+
+.mediation-class  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border: 0px solid #FFF !important;
+}
+
 
 /*---------Video Gallery-------*/
 .parralax-video-gallery{

@@ -132,7 +132,9 @@ class memberdashboard extends CI_Controller {
 					"is_approved" => 'N',
 					"is_redeemed" => 'N'
 				);
-				$status = $this->insertupdatemodel->insertData('cash_back_admin',$insertArry ); 
+				
+			
+				$status = $this->insertupdatemodel->insertData('cash_back_admin',$insertArry); 
 				if($status){
 					$response = array(
 					"msg_code" => 1,

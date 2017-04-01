@@ -52,6 +52,19 @@ public function getFacilty(){
 	createbody_method($result,$page,$header,$session);
 }
 
+public function yoga_and_meditation_class(){
+	$page = 'services/yoga-and-medition-classes';
+	$header="";
+	$session="";
+	$result="";
+	createbody_method($result,$page,$header,$session);
+	
+	
+}
+
+
+
+
 }
 
 ?>

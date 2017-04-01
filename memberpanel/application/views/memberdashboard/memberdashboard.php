@@ -41,9 +41,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="javascript:;">
                                 <div class="panel-footer">
+									<?php if($bodycontent["cashbackdata"]["total_point"]>0){?>
+									
                                     <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/applycashback">Apply Cash Back</a></span>
+									
+									<?php }else{echo '<span class="pull-left">Cash Back</span>';}?>
+									
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>

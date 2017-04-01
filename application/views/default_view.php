@@ -245,16 +245,24 @@
 						</li> -->
 						<li class="col-sm-4">
 							<ul>
-								<li class="dropdown-header">Branch Wise Rate Chart</li>                            
+								<li class="dropdown-header">Services and Tariff</li>                            
 									<p>If you want to stay fit and healthy throughout your life, then forget all "magic and tantra" and simply believe in the purity of "Mantra"!</p>
 									<li><a href="<?php echo base_url();?>services/rate_chart" class="btn cutome-link-btn">View More</a></li>
 							</ul>
 						</li>
 						<li class="col-sm-4">
 							<ul>
-								<li class="dropdown-header">Branch Wise Classes & Consultancy Schedule</li>    
+								<li class="dropdown-header">Classes & Consultancy Schedule</li>    
 								<p></p>
 									<li><a href="javascript:void(0)" class="btn cutome-link-btn">View More</a></li>
+								
+							</ul>
+						</li>
+						<li class="col-sm-4">
+							<ul>
+								<li class="dropdown-header">Yoga & Meditation Classes</li>    
+								<p></p>
+								<li><a href="<?php echo base_url();?>services/yoga_and_meditation_class" class="btn cutome-link-btn">View More</a></li>
 								
 							</ul>
 						</li>
@@ -270,7 +278,7 @@
                <li><a href="<?php echo base_url();?>gallery/video_gallery">Video Gallery</a></li>
             </ul>
 		</li>
-		<li><a href="<?php echo base_url();?>body_calculator">Body Calculator</a></li>
+		<li><a href="<?php echo base_url();?>body_calculator">Fitness Calculators</a></li>
 		<li><a href="<?php echo base_url();?>contact">Contact Us</a></li>
 		</ul>
 			
@@ -302,8 +310,9 @@
                         <button>Services <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
                         <ul>
 							<li class="pushy-link"><a href="#">Packages Offered</a></li>
-							<li class="pushy-link"><a href="<?php echo base_url();?>services/rate_chart">Branch Wise Rate Chart</a></li>
-							<li class="pushy-link"><a href="#">Branch Wise Classes & Consultancy Schedule</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>services/rate_chart">Services and Tariff</a></li>
+							<li class="pushy-link"><a href="#">Classes & Consultancy Schedule</a></li>
+							<li class="pushy-link"><a href="<?php echo base_url();?>services/yoga_and_meditation_class">Yoga & Meditation Classes</a></li>
                         </ul>
                     </li>
 					<li class="pushy-link"><a href="<?php echo base_url();?>fitness_education">Fitness Education</a></li>
@@ -315,7 +324,7 @@
                             <li class="pushy-link"><a href="<?php echo base_url();?>gallery/video_gallery">Video Gallery</a></li>
                         </ul>
                     </li>
-					<li class="pushy-link"><a href="<?php echo base_url();?>body_calculator">Body Calculator</a></li>
+					<li class="pushy-link"><a href="<?php echo base_url();?>body_calculator">Fitness Calculators</a></li>
                     
                     <li class="pushy-link"><a href="<?php echo base_url();?>contact">Contact Us</a></li>
                     

@@ -41,8 +41,13 @@ class memberlogin extends CI_Controller {
            
            
  }
+	 header("Access-Control-Allow-Origin: *");
+	
+	/* $this->output->set_content_type('application/json', 'utf-8')
+                ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))->_display();*/
     header('Content-Type: application/json');
     echo json_encode( $json_response );
+   exit;
  }
  
  private function setSessionData($result=NULL){

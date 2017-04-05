@@ -542,7 +542,7 @@
 	<div class="row" id="video-section-box-container">
 		<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 			<div class="embed-responsive embed-responsive-16by9 video-container">
-				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3jg6HxLyH3I" frameborder="0" allowfullscreen ></iframe>
+				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mm-tnM6ShtI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen ></iframe>
 			</div>
 		</div>
 		<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">

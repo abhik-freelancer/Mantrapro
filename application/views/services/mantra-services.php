@@ -10,7 +10,7 @@
     <div class="row row-container ">
         <div class="col-md-12">
             <h1>
-			<span class="first-text-col">B</span>ranch <span class="first-text-col">W</span>ise <span class="first-text-col">R</span>ate <span class="first-text-col">C</span>hart
+				<span class="first-text-col">S</span>ervices & <span class="first-text-col">T</span>ariff 
 			</h1>
         </div>
 		

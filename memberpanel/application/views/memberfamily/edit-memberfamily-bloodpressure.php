@@ -47,6 +47,7 @@
 									<option value="<?php echo $relationship['id'];?>" <?php if($bodycontent['editBloodPressData']['relation']==$relationship['id']){echo "selected";}else{echo "";}?>><?php echo $relationship['relation'];?></option>
 								<?php endforeach;?>
 							</select>
+							<input type="hidden" id="relation_text" name="relation_text" />
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -88,6 +89,16 @@
 					<div class="form-group">
 						<label for="pulserate">Collection Date</label>
 							<input type="text" class="form-control" id="collectiondate" name="collectiondate" placeholder="" autocomplete="off" value="<?php echo date('d-m-Y',strtotime($bodycontent['editBloodPressData']['collection_date']));?>" readonly style="cursor:initial;"/>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="collectiontime">Collection Time <span class="clear-time label label-primary" id="reset-time">Clear Time</span></label>
+						<div class="input-group bootstrap-timepicker timepicker">
+							<input id="collectiontime" name="collectiontime" type="text" class="collectiontime form-control" value="<?php echo $bodycontent['editBloodPressData']['collection_time'];?>" style="cursor: pointer;">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						</div>
 					</div>
 				</div>
 				

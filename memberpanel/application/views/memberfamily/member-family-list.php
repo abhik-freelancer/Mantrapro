@@ -2,14 +2,14 @@
 	<div class="container-fluid">
 		<div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header page-label">Member's Family List</h1>
+                <h1 class="page-header page-label">Your Family List</h1>
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>
                     </li>
 
                     <li class="active">
-                        <i class="fa fa-edit"></i> Member's Family
+                        <i class="fa fa-edit"></i> Your Family
                     </li>
                 </ol>
             </div>
@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="header-panel-info">
-					<a href="<?php echo base_url();?>memberfamily/addeditmemberfamily" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Family</a>
+					<a href="<?php echo base_url();?>memberfamily/addeditmemberfamily" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Your Family</a>
 				</div>
 			</div>
 		</div>

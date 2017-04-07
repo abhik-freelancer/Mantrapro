@@ -183,6 +183,7 @@ class memberfamilymodel extends CI_Model{
 			  member_family_bp_test.`diastolic`,
 			  member_family_bp_test.`pulse_rate`,
 			  member_family_bp_test.`collection_date`,
+			  DATE_FORMAT(member_family_bp_test.`collection_time`,'%l:%i %p') as collection_time,
 			  members_family.`name`,
 			  relationship_master.`relation`
 			FROM
@@ -202,6 +203,7 @@ class memberfamilymodel extends CI_Model{
 					"name" => $rows->name,
 					"relation" => $rows->relation,
 					"collection_date" => $rows->collection_date,
+					"collection_time" => $rows->collection_time,
 					"systolic" => $rows->systolic,
 					"diastolic" => $rows->diastolic,
 					"pulse_rate" => $rows->pulse_rate,
@@ -235,6 +237,7 @@ class memberfamilymodel extends CI_Model{
 					"name" => $rows->mmbership_no,
 					"relation" => 'Self',
 					"collection_date" => $rows->date_of_col,
+					"collection_time" => $this->getTimeOfMemberBloodPressure($rows->colection_time,$rows->blood_prs_am_pm),
 					"systolic" => $rows->systolic_msr,
 					"diastolic" => $rows->diastolic_msr,
 					"pulse_rate" => $rows->pulse_msr,
@@ -247,6 +250,8 @@ class memberfamilymodel extends CI_Model{
 			return $data;
 		}
 	}
+	
+	
 	
 	public function getBloodPressureDataById($bldprID = NULL,$from = ""){
 		if($from=="S"){
@@ -274,6 +279,7 @@ class memberfamilymodel extends CI_Model{
 					"name" => "Select", // for memberself ...will not select any name
 					"relation" => 18 , // Self
 					"collection_date" => $row->date_of_col,
+					"collection_time" => $this->getTimeOfMemberBloodPressure($row->colection_time,$row->blood_prs_am_pm),
 					"systolic" => $row->systolic_msr,
 					"diastolic" => $row->diastolic_msr,
 					"pulse_rate" => $row->pulse_msr,
@@ -293,6 +299,7 @@ class memberfamilymodel extends CI_Model{
 						   member_family_bp_test.member_family_id,
 						   member_family_bp_test.relationship_id,
 						   member_family_bp_test.collection_date,
+						   member_family_bp_test.collection_time,
 						   member_family_bp_test.systolic,
 						   member_family_bp_test.diastolic,
 						   member_family_bp_test.pulse_rate,
@@ -311,6 +318,7 @@ class memberfamilymodel extends CI_Model{
 					"name" => $row->name,
 					"relation" => $row->relationship_id,
 					"collection_date" => $row->collection_date,
+					"collection_time" => $row->collection_time,
 					"systolic" => $row->systolic,
 					"diastolic" => $row->diastolic,
 					"pulse_rate" => $row->pulse_rate,
@@ -322,6 +330,18 @@ class memberfamilymodel extends CI_Model{
 				return $data;
 			}
 	}
+	
+	public function getTimeOfMemberBloodPressure($time,$amPm){
+		if(!empty($time)){
+			$time_format = date("H:i:s",strtotime($time))." ".$amPm;
+		}
+		else{
+			$time_format='';
+		}
+		
+		return $time_format;
+	}
+	
 	
 	
 	public function insertIntoMemberFamilyBPTest($insertArray){

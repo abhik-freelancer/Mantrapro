@@ -129,6 +129,33 @@ class profilemodel extends CI_Model {
         
     }
 	
+/*
+	// get Member's actual expiry date
+	public function getMemberActualExpDate($membershipno,$validitystr){
+		$actualExpadte = "";
+		$where = array(
+			"membership_no"=>$membershipno,
+			"validity_period"=>$validitystr
+		);
+		$this->db->select('application_extension.grant_days')
+				->from('application_extension')
+				->where($where)
+				->order_by('application_extension.date_of_application, application_extension.tran_id desc')
+				->limit(1);
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		if($query->num_rows()>0){
+			$row = $query->row();
+			return $row->grant_days;
+		}
+		
+	}*/
+	
+	
+	
+	
+	
+	
 	//getFinancialYear Using Cuurent Date
 	
 	public function getFinancialYear(){

@@ -27,6 +27,15 @@ $(document).ready(function(){
         forceParse: false
 	});
 	
+	$('.collectiontime').timepicker({
+		defaultTime: '',
+        minuteStep: 1
+        });
+	
+	$("#reset-time").click(function(){
+		$('#collectiontime').val("");
+	})
+	
 	$("#memberfamilyForm").on("submit",function(event){
 		event.preventDefault();
 		//validateMemberFamily();
@@ -82,16 +91,27 @@ $(document).ready(function(){
 	$("#membr-relatinship").on("change",function(){
 		var relationid = $(this).val();
 		var relation= $("#membr-relatinship option:selected").text();
-		if(relation=="Self" && relationid==18){
-			 $('#membr-family-name').prop('disabled', 'disabled');
+		$("#relation_text").val(relation);
+		if(relation=="Self"){
+			
+			var notext = "";
+			var optionVal = "";
+				optionVal+='<select id="membr-family-name" name="membr-family-name" class="searchabledropdown form-control" data-show-subtext="true" data-live-search="true">';
+				optionVal+='<option vlaue="">Member Self</option>'
+				optionVal+='</select>';
+			$("#memFamilyName").html(optionVal);
+			$('.searchabledropdown').selectpicker();
+			$('#membr-family-name').prop('disabled', 'disabled');
 			 $("#memFamilyName .searchabledropdown .btn").css({
 				 "background":"#E0E0E0",
 				"cursor":"not-allowed"
 			 });
 		}
 		else{
-			 $('#membr-family-name').prop('disabled', false);
-			 $("#memFamilyName .searchabledropdown .btn").css({});
+			var textname = "Name";
+			$("label[for=membr-family-name]").text(textname);
+			$('#membr-family-name').prop('disabled', false);
+			$("#memFamilyName .searchabledropdown .btn").css({});
 			 
 			 
 			 
@@ -518,7 +538,9 @@ function validateMemberFamily(){
 
 function validateBloodPressure(){
 	var relationshipId = $("#membr-relatinship").val();
+	var relationText = $("#membr-relatinship option:selected").text();
 	var familynameId = $("#membr-family-name").val();
+	
 	var systolic = $("#systolic").val();
 	var diastolic = $("#diastolic").val();
 	var pulserate = $("#pulserate").val();
@@ -535,11 +557,13 @@ function validateBloodPressure(){
 		$("#bldpressure-err").html(error);
 		return false;
 	}
-	if(familynameId=="0"){
-		error = up_icon+" Please select name";
-		$("#membr-family-name").addClass('validation-error');
-		$("#bldpressure-err").html(error);
-		return false;
+	if(relationText!="Self"){
+		if(familynameId=="0"){
+			error = up_icon+" Please select name";
+			$("#membr-family-name").addClass('validation-error');
+			$("#bldpressure-err").html(error);
+			return false;
+		}
 	}
 	if(systolic==""){
 		error = up_icon+" Please enter systolic value";
@@ -574,6 +598,7 @@ function validateBloodPressure(){
 	function validateBloodTest(){
 	
 		var relationshipId = $("#membr-relatinship").val();
+		var relationText = $("#membr-relatinship option:selected").text();
 		var familynameId = $("#membr-family-name").val();
 		var bldtestid = $("#blood-test").val();
 		var unitid = $("#blood-test-unit").val();
@@ -593,11 +618,13 @@ function validateBloodPressure(){
 				$("#bldtest-err").html(error);
 				return false;
 			}
-			if(familynameId=="0"){ 
-				error = up_icon+" Please select family name";
-				$("#membr-family-name").addClass('validation-error');
-				$("#bldtest-err").html(error);
-				return false;
+			if(relationText!="Self"){
+				if(familynameId=="0"){ 
+					error = up_icon+" Please select family name";
+					$("#membr-family-name").addClass('validation-error');
+					$("#bldtest-err").html(error);
+					return false;
+				}
 			}
 			if(bldtestid=="0"){
 				error = up_icon+" Please select test";

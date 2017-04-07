@@ -167,4 +167,70 @@ class dashboardmodel extends CI_Model {
 		}
 		return $extensionDys;
 	}
+	
+	/***************************************************/
+	/********************** RENEWAL ******************/
+	/***************************************************/
+	
+	public function getTaxPercentage($yearId){
+		$tax_rate = 0;
+		$where = array("year_id"=>$yearId,"is_active"=>'Y');
+		$this->db->select('year_master.service_tax')
+				->from('year_master')
+				->where($where);
+		$query = $this->db->get();
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$tax_rate = $row->service_tax;
+		}
+		return $tax_rate;
+					
+	}
+	
+	
+	public function getRenewalSubscriptionAmount($branch,$card)
+	{
+		$renewalRate = 0;
+		$where = array("branch_code" => $branch,"card_code" => $card);
+			$this->db->select('rate_detail.renewal_rate')
+					->from('rate_detail')
+					->where($where);
+		$query = $this->db->get();
+		
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$renewalRate = $row->renewal_rate;
+		}
+		else{
+			$renewalRate = 0;
+		}
+		return $renewalRate;
+	}
+	
+	public function getApprovedCashBackAmt($membership,$validtystr){
+		$cashbackAmt = 0;
+		$where = array(
+			"cash_back_admin.membership_no" =>$membership,
+			"cash_back_admin.validity_period" =>$validtystr,
+			"cash_back_admin.is_approved" =>'Y',
+			"cash_back_admin.is_redeemed" =>'N'
+		);
+		
+		$this->db->select('cash_back_admin.cash_bck_amt')
+				 ->from('cash_back_admin')
+				 ->where($where);
+		$query = $this->db->get();
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$cashbackAmt = $row->cash_bck_amt;
+		}
+		else{
+			$cashbackAmt = 0;
+		}
+		return $cashbackAmt;
+		
+	}
+	
+	
+	
 }

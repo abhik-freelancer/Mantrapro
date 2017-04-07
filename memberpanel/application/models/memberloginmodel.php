@@ -19,6 +19,7 @@ class memberloginmodel extends CI_Model{
                 "CUS_ID"=>$row->id,
                 "MEMBERSHIP_NO"=>$row->MEMBERSHIP_NO,
                 "CUS_NAME"=>$row->CUS_NAME
+				
             );
 
           return $data;
@@ -28,7 +29,8 @@ class memberloginmodel extends CI_Model{
         }
         
     }
-    
+	
+	
     public function getMaxCustomerId($mobilenumber){
         $customerId=0;
         $sql="SELECT MAX(`customer_master`.`CUS_ID`)AS id

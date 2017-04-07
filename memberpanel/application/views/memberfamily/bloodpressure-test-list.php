@@ -15,6 +15,7 @@ echo "</pre>";*/
 						<th>Relation</th>
 						<th>Name</th>
 						<th>Collection Date</th>
+						<th>Collection Time</th>
 						<th>Systolic</th>
 						<th>Diastolic</th>
 						<th>Pulse Rate</th>
@@ -38,6 +39,7 @@ echo "</pre>";*/
 								<td><?php echo $bp_report['relation'];?></td>
 								<td><?php echo $bp_report['name'];?></td>
 								<td><?php echo date('d-m-Y',strtotime($bp_report['collection_date']));?></td>
+								<td align="center"><?php echo $bp_report['collection_time'];?></td>
 								<td><?php echo $bp_report['systolic'];?></td>
 								<td><?php echo $bp_report['diastolic'];?></td>
 								<td><?php echo $bp_report['pulse_rate'];?></td>

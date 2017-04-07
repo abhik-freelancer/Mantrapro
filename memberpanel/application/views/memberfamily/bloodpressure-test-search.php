@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header page-label">Blood Pressure List</h1>
+                <h1 class="page-header page-label">View Blood Pressure Reading</h1>
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>

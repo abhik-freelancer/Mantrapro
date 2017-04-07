@@ -41,6 +41,7 @@
 	<link href="<?php echo base_url(); ?>application/assets/css/style.css" rel="stylesheet">
 	<!-- Bootstrap datepicker -->
 	<link href="<?php echo base_url(); ?>application/assets/css/bootstrap-datepicker.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>application/assets/css/bootstrap-timepicker.min.css" rel="stylesheet">
 	<!-- Bootstrap datepicer end -->
 	
 	<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />-->
@@ -315,6 +316,7 @@
     <script src="<?php echo base_url(); ?>application/assets/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/dataTbleBootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-datepicker.js"></script>
+	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap-timepicker.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/assets/js/bootstrapselect.min.js"></script>
 	
 	 <script src="<?php echo base_url(); ?>application/assets/js/metisMenu.min.js"></script>

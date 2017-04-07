@@ -18,6 +18,7 @@ class memberdashboard extends CI_Controller {
             $session = $this->session->userdata('user_data');
             $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
             
+			$packageExpmsg="";
             $page = 'memberdashboard/memberdashboard';
             $membershipNumber = $this->profilemodel->getMembershipNumber($customerId);
             $latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
@@ -29,13 +30,19 @@ class memberdashboard extends CI_Controller {
             $validupto = date('Y-m-d',  strtotime($todate));
             $validfrom = date('Y-m-d',  strtotime($fromdate));
             $totalExtentiondate = date('Y-m-d',strtotime($validupto. ' +'.$grantDays.' days'));
-            $currentDate =date('Y-m-d');
-            
+			$currentDate =date('Y-m-d');
+			if($currentDate < $totalExtentiondate){
+				$packageExpmsg = "Days left for expired";
+			}
+			else{
+					$packageExpmsg = " Package Expierd";
+			}
+			
             $date1 = DateTime::createFromFormat('Y-m-d', $totalExtentiondate);
             $date2 = DateTime::createFromFormat('Y-m-d', $currentDate);
 
             $diffDays = $date2->diff($date1)->format("%a");
-            
+			
             $subscriptionamount = $this->profilemodel->getSubscriptionAmountOfMember($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
             $paidAmount = $this->profilemodel->getPaidAmount($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
             
@@ -48,6 +55,7 @@ class memberdashboard extends CI_Controller {
             $header = "";
             
             $result["cashbackdata"] = $this->dashboardmodel->getMemberCashBackPoint($membershipNumber,$validityString);
+            $result["packagExpirystatus"]=$packageExpmsg;
             $result["remain"]=$diffDays;
             $result["validupto"]=$todate;
             $result["attpercentage"]=  $this->dashboardmodel->getAttendanceRate($validfrom,$validupto,$membershipNumber);
@@ -208,6 +216,89 @@ class memberdashboard extends CI_Controller {
 		
 	return 	$isApllicable ;
 	}
+	
+	
+	public function renewpackage(){
+		if($this->session->userdata('user_data')){
+			$session = $this->session->userdata('user_data');
+			
+			$customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+			$membershipNumber = $this->profilemodel->getMembershipNumber($customerId);
+            $latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
+            $fromdate = ($latestvalidity["fromdate"]==""?"":$latestvalidity["fromdate"]);
+            $todate = ($latestvalidity["validupto"]==""?"":$latestvalidity["validupto"]);
+			$validityString = $fromdate." - ".$todate;
+			
+			$grantDays = 0;
+			$next_start_dt="";
+			$grantDays = $this->dashboardmodel->getExtensionDays($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
+			
+			
+			
+            $validupto = date('Y-m-d',  strtotime($todate));
+            $validfrom = date('Y-m-d',  strtotime($fromdate));
+            $actualExpryDt = date('Y-m-d',strtotime($validupto. ' +'.$grantDays.' days'));
+			$validity_pd = date('d-m-Y',strtotime($validfrom ))." - ".date('d-m-Y',strtotime($actualExpryDt));
+			// Next Start Date 
+			$plusDay = 1;
+			if($grantDays>0){
+				$next_start_dt = date('Y-m-d', strtotime($actualExpryDt. ' + '.$plusDay.' days')); 
+			}
+			else{
+				$next_start_dt = date('Y-m-d', strtotime($validupto. ' + '.$plusDay.' days')); 
+			}
+			
+			$member = $this->profilemodel->getCustomerByCustId($customerId);
+			$renewal_rate = $this->dashboardmodel->getRenewalSubscriptionAmount($member['CUS_BRANCH'],$member['CUS_CARD']);
+			$cashbackAmt =  $this->dashboardmodel->getApprovedCashBackAmt($membershipNumber,$validityString);
+			$renewalAmount = $renewal_rate - $cashbackAmt;
+			$yearId = $this->profilemodel->getFinancialYear();
+			$taxPercentage = $this->dashboardmodel->getTaxPercentage($yearId);
+			$taxAmount = $renewalAmount*$taxPercentage/100;
+			$totalPayableAmount = $renewalAmount+$taxAmount;
+			
+			$page = 'memberdashboard/renew-package-form';
+			$header="";
+			
+			$result = array(
+				"customer_id"=>$customerId,
+				"membershipno"=>$membershipNumber,
+				"member_name"=>$member['CUS_NAME'],
+				"membermobileno"=>$member['CUS_PHONE'],
+				"branchcode" =>$member['CUS_BRANCH'],
+				"validity_pd"=>$validity_pd,
+				"subscription"=>$renewal_rate,
+				"nextstartdate"=>$next_start_dt,
+				"paymentdate"=>date('Y-m-d'),
+				"cashbackamount"=>$cashbackAmt,
+				"renewalamount"=>$renewalAmount,
+				"taxpercentage"=>$taxPercentage,
+				"netpayable"=>$totalPayableAmount,
+			);
+			
+			
+            createbody_method($result, $page, $header, $session);
+		}else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	
+	public function processrenewal(){
+		if($this->session->userdata('user_data'))
+		{
+			$posts['_POST'] = $this->input->post();
+			$page = 'memberdashboard/proceessrenewal';
+			$this->load->view($page,$posts);
+			
+		}
+		else
+		{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	
 
 }
 

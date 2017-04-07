@@ -41,6 +41,7 @@
 									<option value="<?php echo $relationship['id'];?>" ><?php echo $relationship['relation'];?></option>
 								<?php endforeach;?>
 							</select>
+							<input type="hidden" id="relation_text" name="relation_text" />
 					</div>
 				</div>
 				<div class="col-md-6">

@@ -739,6 +739,14 @@ label{
 	display:block;
 }
 
+.clear-time{
+	position: absolute;	
+	right: 22px !important;
+	text-align: center;
+	cursor: pointer;
+}
+
+
 /*-----------Responsive View--------*/
 @media only screen and (max-width:1345px){
 	.portfolio-view-container .panel-footer  	.nav > li >a{

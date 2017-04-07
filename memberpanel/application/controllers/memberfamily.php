@@ -253,7 +253,6 @@ class memberfamily extends CI_Controller{
 				$datafrom = $this->uri->segment(4);
 				$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
 				$result['editBloodPressData'] = $this->memberfamilymodel->getBloodPressureDataById($bpEditId,$datafrom);
-			
 				$page = 'memberfamily/edit-memberfamily-bloodpressure';
 				$header = "";
 				$headercontent="";
@@ -272,16 +271,52 @@ class memberfamily extends CI_Controller{
 		$session = $this->session->userdata('user_data');
 		$response = array();
 		$updateArray = array();
+		$time = NULL;
+		$amPm = NULL;
 		
 			$bpeditID = html_escape($this->input->post('bpID',TRUE));
 			$relationshipId = trim($this->input->post('membr-relatinship'));
+			$relation_text = trim($this->input->post('relation_text',TRUE));
 			$memberfamilyId = trim($this->input->post('membr-family-name'));
 			$systolic = html_escape($this->input->post('systolic',TRUE));
 			$diastolic = html_escape($this->input->post('diastolic',TRUE));
 			$pulserate = html_escape($this->input->post('pulserate',TRUE));
 			$collectiondate = html_escape($this->input->post('collectiondate',TRUE));
-			
 			$datafrom = html_escape($this->input->post('dataFrom',TRUE));
+			$collectiontime = html_escape($this->input->post('collectiontime',TRUE));
+			
+			if($relation_text=="Self"){
+				if($collectiontime!=""){
+				$array_time  = preg_split("/[\s,]+/", $collectiontime);
+				$time = date('H:i:s',strtotime($array_time[0]));
+				$amPm = $array_time[1];
+				}
+				else{
+					$time = NULL;
+					$amPm = NULL;
+				}
+			}
+			else{
+				if($collectiontime!=""){
+					$time = date('H:i:s',strtotime($collectiontime));
+				}
+				else{
+					$time = NULL;
+				}
+			}
+			
+			
+			/*
+			if($collectiontime!=""){
+				$time = date('H:i:s',strtotime($collectiontime));
+			}
+			else{
+				$time = NULL;
+				//echo "Empty Col Time ".$collectiontime;
+			}
+			*/
+			
+			
 			
 			$validate = array(
 				"select"=>array($relationshipId,$memberfamilyId),
@@ -296,7 +331,9 @@ class memberfamily extends CI_Controller{
 						"diastolic_msr" => $diastolic,
 						"pulse_msr" => $pulserate,
 						"date_of_col" => date('Y-m-d',strtotime($collectiondate)),
-						"blood_prs_date" => date('Y-m-d',strtotime($collectiondate))
+						"blood_prs_date" => date('Y-m-d',strtotime($collectiondate)),
+						"colection_time" => $time,
+						"blood_prs_am_pm" => $amPm
 					);
 				}
 				else{
@@ -307,7 +344,8 @@ class memberfamily extends CI_Controller{
 						"systolic" => $systolic,
 						"diastolic" => $diastolic,
 						"pulse_rate" => $pulserate,
-						"collection_date" => date('Y-m-d',strtotime($collectiondate))
+						"collection_date" => date('Y-m-d',strtotime($collectiondate)),
+						"collection_time" => $time
 					);
 				}
 				
@@ -393,6 +431,8 @@ class memberfamily extends CI_Controller{
 		if($this->session->userdata('user_data')){
 			$response = array();
 			$insertArray = array();
+			$time = NULL;
+			$amPm = NULL;
 			
 			$session = $this->session->userdata('user_data');
 			$customerId = ($session["CUS_ID"]!="" ? $session["CUS_ID"]:0);
@@ -403,10 +443,32 @@ class memberfamily extends CI_Controller{
 			
 			$relationshipId = trim($this->input->post('membr-relatinship'));
 			$memberfamilyId = trim($this->input->post('membr-family-name'));
+			$relation_text = trim($this->input->post('relation_text',TRUE));
 			$systolic = html_escape($this->input->post('systolic',TRUE));
 			$diastolic = html_escape($this->input->post('diastolic',TRUE));
 			$pulserate = html_escape($this->input->post('pulserate',TRUE));
 			$collectiondate = html_escape($this->input->post('collectiondate',TRUE));
+			$collectiontime = html_escape($this->input->post('collectiontime',TRUE));
+			
+			if($relation_text=="Self"){
+				if($collectiontime!=""){
+				$array_time  = preg_split("/[\s,]+/", $collectiontime);
+				$time = date('H:i:s',strtotime($array_time[0]));
+				$amPm = $array_time[1];
+				}
+				else{
+					$time = NULL;
+					$amPm = NULL;
+				}
+			}
+			else{
+				if($collectiontime!=""){
+					$time = date('H:i:s',strtotime($collectiontime));
+				}
+				else{
+					$time = NULL;
+				}
+			}
 			$validate = array(
 				"select"=>array($relationshipId,$memberfamilyId),
 				 "text" => array($systolic,$diastolic,$pulserate)
@@ -417,7 +479,7 @@ class memberfamily extends CI_Controller{
 				
 				
 				// 18 = Entry done by members self... Self and this data will save gen_medical_ass table 
-				if($relationshipId==18){
+				if($relation_text=="Self"){
 					$insertArray = array(
 						"date_of_col" =>  date('Y-m-d',strtotime($collectiondate)),
 						"member_id" => $customerId,
@@ -425,8 +487,8 @@ class memberfamily extends CI_Controller{
 						"branch_code" => $customerDtl['CUS_BRANCH'],
 						"card_code" => $customerId,
 						"blood_prs_date" =>  date('Y-m-d',strtotime($collectiondate)),
-						"blood_prs_time" => NULL,
-						"blood_prs_am_pm" => NULL,
+						"colection_time" => $time,
+						"blood_prs_am_pm" => $amPm,
 						"systolic_msr" => $systolic,
 						"diastolic_msr" => $diastolic,
 						"pulse_msr" => $pulserate,
@@ -444,7 +506,8 @@ class memberfamily extends CI_Controller{
 					"systolic" => $systolic,
 					"diastolic" => $diastolic,
 					"pulse_rate" => $pulserate,
-					"collection_date" => date('Y-m-d',strtotime($collectiondate))
+					"collection_date" => date('Y-m-d',strtotime($collectiondate)),
+					"collection_time" => $time
 					);
 					$status = $this->insertBloodPressure($insertArray,'FAMILY');
 				}

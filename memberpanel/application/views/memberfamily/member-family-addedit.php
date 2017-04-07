@@ -4,9 +4,9 @@
 		<div class="row">
             <div class="col-lg-12">
 			<?php if($bodycontent['mode']=="Edit"){?>
-                <h1 class="page-header page-label">Member's Family Edit</h1>
+                <h1 class="page-header page-label">Your Family - Edit</h1>
 			<?php }else{?>
-				<h1 class="page-header page-label">Member's Family Add</h1>
+				<h1 class="page-header page-label">Your Family - Add</h1>
 			<?php } ?>
                 <ol class="breadcrumb">
                     <li>
@@ -14,7 +14,7 @@
                     </li>
 
                     <li class="active">
-                        <i class="fa fa-edit"></i> Member's Family
+                        <i class="fa fa-edit"></i>Your Family
                     </li>
                 </ol>
             </div>
@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="header-panel-info">
-					<a href="<?php echo base_url();?>memberfamily" class="btn btn-mantra"><span class=" glyphicon glyphicon-eye-open"></span> View Family List</a>
+					<a href="<?php echo base_url();?>memberfamily" class="btn btn-mantra"><span class=" glyphicon glyphicon-eye-open"></span> View Your Family List</a>
 				</div>
 			</div>
 		</div>

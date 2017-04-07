@@ -41,11 +41,12 @@
 									<option value="<?php echo $relationship['id'];?>" ><?php echo $relationship['relation'];?></option>
 								<?php endforeach;?>
 							</select>
+							<input type="hidden" id="relation_text" name="relation_text" />
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="membr-family-name">Name</label>
+						<label for="membr-family-name" id="mem-famly-name-lbl">Name</label>
 						<div id="memFamilyName" class="memFamilyName">
 							<select id="membr-family-name" name="membr-family-name" class="searchabledropdown form-control" data-show-subtext="true" data-live-search="true">
 								<option value="0">Select</option>
@@ -73,8 +74,18 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="pulserate">Collection Date</label>
-							<input type="text" class="form-control" id="collectiondate" name="collectiondate" placeholder="" autocomplete="off" value="<?php echo date("d-m-Y");?>" />
+						<label for="collectiondate">Collection Date</label>
+							<input type="text" class="form-control" id="collectiondate" name="collectiondate" placeholder="" readonly autocomplete="off" value="<?php echo date("d-m-Y");?>" style="cursor: pointer;" />
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="collectiontime">Collection Time <span class="clear-time label label-primary" id="reset-time">Clear Time</span></label>
+						<div class="input-group bootstrap-timepicker timepicker">
+							<input id="collectiontime" name="collectiontime" type="text" class="collectiontime form-control"  style="cursor: pointer;">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						</div>
 					</div>
 				</div>
 				

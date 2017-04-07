@@ -64,13 +64,13 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo($bodycontent["remain"]); ?></div>
-                                        <div>Days left for expiry !</div>
+                                        <div><?php echo($bodycontent['packagExpirystatus']);?></div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="javascript:;">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Renewal&nbsp; <?php echo($bodycontent["validupto"]);?></span>
+                                    <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/renewpackage">Renewal</a>&nbsp; <?php echo($bodycontent["validupto"]);?></span>
                                     <span class="pull-right"><i class="fa fa-clock-o right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>

@@ -340,6 +340,85 @@ label{
 	color: #036C08;
 }
 
+.renewalForm h2{
+	clear: both;
+	font-size: 17px;
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 7px;
+	color: rgb(98, 98, 98);
+	box-shadow: 2px 2px 2px 2px #CCC;
+	background: #F96736;
+	border-radius: 10px;
+	height: 35px;
+	line-height: 35px;
+	color: #FFF;
+	font-weight: 700;
+}
+.payment-warning
+{
+	clear: both;
+	font-size: 14px;
+	padding-left: 20px;
+	padding-top: 8px !important;
+	color: #0B5F8D;
+}
+
+
+.panel-primary {
+    border-color: none;
+}
+.panel-primary > .panel-heading {
+   border:0;
+}
+
+.dashboard-cashback-block-footer{
+	background: #156395;
+	color: #FFF;
+}
+.dashboard-cashback-block-footer a {
+	color:#FFF;
+	font-weight:700;
+	
+}
+
+.dashboard-renewal-block-footer{
+	background: #0F8937 none repeat scroll 0% 0%;
+	color: #FFF;
+}
+.dashboard-renewal-block-footer a{
+	color:#FFF;
+	font-weight:700;
+}
+.dashboard-attendance-block-footer{
+	background: #BF7506;
+	color: #FFF;
+}
+.dashboard-attendance-block-footer a {
+	color:#FFF;
+	font-weight:700;
+	
+} 
+
+/*DUE BLOCK*/
+.dashboard-due-block
+{
+border:0;	
+}
+
+.dashboard-due-block  > .panel-heading{
+	background:#F98B73 ;
+}
+
+.dashboard-due-block-footer{
+	background: #FB521B;
+	color: #FFF;
+}
+.dashboard-due-block-footer a {
+	color:#FFF;
+	font-weight:700;
+	
+}
+
 
 
 /*------------Portfolio ---------------*/

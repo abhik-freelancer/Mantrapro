@@ -4,13 +4,28 @@ $HASHING_METHOD = 'sha512'; // md5,sha1
 $ACTION_URL = "https://secure.ebs.in/pg/ma/payment/request/";
 
 // This post.php used to calculate hash value using md5 and redirect to payment page.
-if(isset($_POST['secretkey']))
+if(isset($_POST['secretkey'])){
 	$_SESSION['SECRET_KEY'] = $_POST['secretkey'];
-else
-	$_SESSION['SECRET_KEY'] = ''; //set your secretkey here
+	
+}
 
+else{
+	$_SESSION['SECRET_KEY'] = ''; //set your secretkey here
+	
+	
+}
+
+
+
+
+/*
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+*/
 
 $hashData = $_SESSION['SECRET_KEY'];
+
 
 unset($_POST['secretkey']);
 unset($_POST['submitted']);

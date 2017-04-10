@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <a href="javascript:;">
-                                <div class="panel-footer">
+                                <div class="panel-footer dashboard-cashback-block-footer">
 									<?php if($bodycontent["cashbackdata"]["total_point"]>0){?>
 									
                                     <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/applycashback">Apply Cash Back</a></span>
@@ -69,11 +69,11 @@
                                 </div>
                             </div>
                             <a href="javascript:;">
-                                <div class="panel-footer">
-                                    <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/renewpackage">Renewal</a>&nbsp; <?php echo($bodycontent["validupto"]);?></span>
+                                <div class="panel-footer dashboard-renewal-block-footer">
+									<span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/renewpackage"><blink>Renewal</blink></a>&nbsp; <?php //echo($bodycontent["validupto"]);?></span>
                                     <span class="pull-right"><i class="fa fa-clock-o right"></i></span>
                                     <div class="clearfix"></div>
-                                </div>
+								</div>
                             </a>
                         </div>
                     </div>
@@ -91,8 +91,8 @@
                                 </div>
                             </div>
                             <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
+                                <div class="panel-footer dashboard-attendance-block-footer">
+                                    <span class="pull-left"><a href="javascript:;">View Details</a></span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-primary dashboard-due-block">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -112,9 +112,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
+                            <a href="javascript:;">
+                                <div class="panel-footer dashboard-due-block-footer">
+                                    <span class="pull-left"><a> View Details</a></span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>

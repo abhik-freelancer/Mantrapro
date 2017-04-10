@@ -284,7 +284,8 @@ class memberdashboard extends CI_Controller {
 	}
 	
 	
-	public function processrenewal(){
+	public function processrenewal()
+	{
 		if($this->session->userdata('user_data'))
 		{
 			$posts['_POST'] = $this->input->post();
@@ -298,6 +299,266 @@ class memberdashboard extends CI_Controller {
 		}
 	}
 	
+	public function paymentresponse()
+	{
+		
+		
+		
+		if($this->session->userdata('user_data'))
+		{
+			$posts['_POST'] = $this->input->post();
+			$page = 'memberdashboard/paymentresponse';
+			$this->load->view($page,$posts);
+		}
+		else
+		{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	public function paymentconfirm()
+	{
+		if($this->session->userdata('user_data'))
+		{
+			$posts = $this->input->post();
+			$HASHING_METHOD = 'sha512';  
+			
+			//$hashData = $_SESSION['SECRET_KEY'];
+			$hashData = "9198beab24537d04cb37bb7b2fc44f91"; // don't change this secreate key
+			
+			$response = array();
+			ksort($posts);
+			foreach ($posts as $key => $value){
+				if (strlen($value) > 0 && $key != 'SecureHash') 
+				{
+					 $hashData .= '|'.$value;
+				}
+			}
+			if (strlen($hashData) > 0) 
+			{
+				$secureHash = strtoupper(hash($HASHING_METHOD , $hashData));
+				if($secureHash != $posts['SecureHash']){
+					echo '<h1>Error!</h1>';
+					echo '<p>Hash validation failed from confirm page</p>';
+					exit;
+				}
+				else 
+				{
+					$successMsg = $posts['Status'];
+					
+					if($successMsg=="SUCCESS")
+					{
+						// Insert array initialize 
+						$insertPaymentMaster = array();
+						$insertrenewaltable = array();
+						$insertOnlinePayment = array();
+						
+						$msg_to_user = "Your payment is successfully made.";
+						$payment_status = "Y";
+						
+						$grantDays = 0;
+						$next_start_dt="";
+						$renewal_tag="";
+						$curr_date = date("Y-m-d");
+						$membershipNumber = $this->profilemodel->getMembershipNumber($posts['customerID']);
+						$latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
+						$fromdate = ($latestvalidity["fromdate"]==""?"":$latestvalidity["fromdate"]);
+						$todate = ($latestvalidity["validupto"]==""?"":$latestvalidity["validupto"]);
+						$validityString = $fromdate." - ".$todate;
+						$member = $this->profilemodel->getCustomerByCustId($posts['customerID']);
+						$grantDays = $this->dashboardmodel->getExtensionDays($membershipNumber,$latestvalidity["VALIDITY_STRING"]);
+						
+						$validupto = date('Y-m-d',strtotime($todate));
+						$validfrom = date('Y-m-d',strtotime($fromdate));
+						$actualExpryDt = date('Y-m-d',strtotime($validupto. ' +'.$grantDays.' days'));
+						$validity_pd = date('d-m-Y',strtotime($validfrom ))." - ".date('d-m-Y',strtotime($actualExpryDt));
+						// Next Start Date 
+						$plusDay = 1;
+						if($grantDays>0){
+							$next_start_dt = date('Y-m-d', strtotime($actualExpryDt. ' + '.$plusDay.' days')); 
+						}
+						else{
+							$next_start_dt = date('Y-m-d', strtotime($validupto. ' + '.$plusDay.' days')); 
+						}
+						$renewal_rate = $this->dashboardmodel->getRenewalSubscriptionAmount($member['CUS_BRANCH'],$member['CUS_CARD']);
+						$cashbackAmt =  $this->dashboardmodel->getApprovedCashBackAmt($membershipNumber,$validityString);
+						$renewalAmount = $renewal_rate - $cashbackAmt;
+						$yearId = $this->profilemodel->getFinancialYear();
+						$taxPercentage = $this->dashboardmodel->getTaxPercentage($yearId);
+						$taxAmount = $renewalAmount*$taxPercentage/100;
+						$totalPayableAmount = $renewalAmount+$taxAmount;
+						// get Card Duration
+						$card_duration = $this->dashboardmodel->getCardDuration($member['CUS_CARD']);
+						// getting New Validity String
+						//$newValidityString = $this->getNewValidityString($next_start_dt,$card_duration);
+						$open_date=$next_start_dt;
+						$opening_date = explode("-",$open_date);
+						$valid_upto = date('Y-m-d',strtotime('+'.$card_duration.' day',mktime(0,0,0,$opening_date[1],$opening_date[2],$opening_date[0])));
+						$newValidityString=$open_date." - ".$valid_upto;
+						
+						
+						if($actualExpryDt>=$curr_date){
+							$renewal_tag = "RA"; //RA = Renewal Advance  
+						}else{
+							$renewal_tag = "R";
+						}
+						$receiptSerial = $this->dashboardmodel->getReceiptSerialbyBranch($member['CUS_BRANCH'],$yearId);
+						$newreceiptSerial = $receiptSerial+1;
+						$previousPaymentInfo = $this->dashboardmodel->getPreviousPaymentInfo($membershipNumber,$latestvalidity["VALIDITY_STRING"]); 
+						
+						$insertrenewaltable = array(
+							"customer_id" => $posts['customerID'],
+							"renewal_date" => $next_start_dt,
+							"BRANCH_CODE" => $member['CUS_BRANCH'],
+							"user_id" => 80, // Member self
+							"FIN_ID" => $yearId
+						);
+						
+						$insertPaymentMaster = array(
+							"MEMBERSHIP_NO" =>$membershipNumber,
+							"CARD_CODE" =>$member['CUS_CARD'],
+							"FROM_DT" =>$open_date,
+							"VALID_UPTO" =>$valid_upto,
+							"EXPIRY_DT" =>$valid_upto,
+							"ADMISSION" =>0,
+							"SUBSCRIPTION" =>$renewal_rate,
+							"PRM_AMOUNT" =>$renewalAmount,
+							"AMOUNT" => $renewalAmount,
+							"MNTN_CHG" =>0,
+							"SERVICE_TAX" =>$taxPercentage,
+							"TOTAL_AMOUNT" =>$totalPayableAmount,
+							"PAYMENT_DT" => date('Y-m-d'),
+							"FRESH_RENEWAL" =>$renewal_tag,
+							"BRANCH_CODE" => $member['CUS_BRANCH'],
+							"RENEW_ID" => NULL,
+							"USER_ID" => 80 ,
+							"FIN_ID" =>$yearId,
+							"RCPT_NO" =>$newreceiptSerial,
+							"PAYMENT_MODE" =>'ONP', // ONP = Online Payment
+							"CUST_ID" => $posts['customerID'],
+							"VALIDITY_STRING" =>$newValidityString,
+							"payment_from" =>'REN',
+							"collection_at" =>$member['CUS_BRANCH']
+						);
+						
+						$insertOnlinePayment = array(
+							"online_payment_id" => $posts['PaymentID'], 
+							"transaction_id" => $posts['TransactionID'],
+							"payment_master_id" => NULL, // payment master table refrence 
+							"payment_status" => $payment_status, 
+							"processing_date" => date('Y-m-d')
+						);
+						
+						
+						$insertData = $this->dashboardmodel->insertintoTable($insertrenewaltable,$insertPaymentMaster,$insertOnlinePayment,$previousPaymentInfo['PAYMENT_ID']);
+						
+						if($insertData)
+						{
+							$data = array(
+								"CustomerName" => $member['CUS_NAME'],
+								"paidAmt" => $posts['Amount'],
+								"status" => $posts['Status'],
+								"iscomplete" => 'Y',
+								"usermsg" => 'Your payment is successfully made'
+							);
+							
+							
+						}
+						else
+						{
+							$data = array(
+								"status" => $posts['Status'],
+								"iscomplete" => 'N',
+								"usermsg" => 'Unexpected error.'
+							);
+						}
+					}
+					else{
+						$insertOnlinePayment  =array();
+						$msg_to_user = "Your transaction has been decline.";
+						$payment_status = "N";
+						
+						$insertOnlinePayment = array(
+							"online_payment_id" => $posts['PaymentID'], 
+							"transaction_id" => $posts['TransactionID'],
+							"payment_master_id" => NULL, // payment master table refrence 
+							"payment_status" => $payment_status, 
+							"processing_date" => date('Y-m-d')
+						);
+					
+						$insertData = $this->dashboardmodel->insertintoOnlinePayment($insertOnlinePayment);
+						
+						if($insertData)
+						{
+							$data = array(
+								"status" => $posts['Status'],
+								"iscomplete" => 'N',
+								"usermsg" => 'Your transaction has been decline.'
+							);
+						}
+						else
+						{
+							$data = array(
+								"status" => $posts['Status'],
+								"iscomplete" => 'N',
+								"usermsg" => 'Your transaction has been decline.'
+							);
+						}
+					}
+					
+					
+					
+					$page = 'memberdashboard/paymentconfirmation';
+					$this->load->view($page,$data);
+					
+				}
+			}
+			 else 
+				{
+					echo '<h1>Error!</h1>';
+					echo '<p>Invalid response</p>';
+					exit;
+				}
+			
+			
+		}
+		else{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	/*private function getNewValidityString($next_start_dt,$card_duration)
+	{
+		$open_date=$next_start_dt;
+		$opening_date = explode("-",$open_date);
+		$valid_upto = date('Y-m-d',strtotime('+'.$card_duration.' day',mktime(0,0,0,$opening_date[1],$opening_date[2],$opening_date[0])));
+		$valid_string=$open_date." - ".$valid_upto;
+		return $valid_string;
+	}*/
+	
+	
+	
+	
+	public function getMacAddress()
+	{
+		ob_start(); 
+		system('ipconfig /all');
+		$mac = ob_get_contents();
+		ob_clean();
+		
+		
+		$name = "Physical";
+		$pmac = strpos($mac,$name);
+		$macAddress = substr($mac,($pmac+36),17);
+		//echo "Mac Address<br>";
+		//echo $mac;
+		
+		//echo "****fdf****<br>";
+		//echo $pmac+36;
+		
+		//echo "********<br>";
+		echo $macAddress;
+	}
 	
 
 }

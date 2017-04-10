@@ -230,6 +230,151 @@ class dashboardmodel extends CI_Model {
 		return $cashbackAmt;
 		
 	}
+
+	public function getCardDuration($cardCode)
+	{
+		$cardduration = 0;
+		$where = array(
+				"CARD_CODE"=>$cardCode,
+				"IS_ACTIVE"=>'Y'
+				);
+		$this->db->select('card_master.CARD_ACTIVE_DAYS')
+				 ->from('card_master')
+				 ->where($where);
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+		{
+			$row = $query->row();
+			$cardduration = $row->CARD_ACTIVE_DAYS;
+		}
+		else
+		{
+			$cardduration = 0;
+		}
+		return $cardduration;
+		
+		
+	}
+	
+	// get Receipt serial no by branch and yearid
+	
+	public function getReceiptSerialbyBranch($branch,$yearid)
+	{
+		$latestSerialNo = 0;
+		$where = array(
+			"BRANCH_CODE" => $branch,
+			"FIN_ID" => $yearid
+		);
+		
+		$this->db->select('MAX(payment_master.RCPT_NO) AS latestSerial')
+				 ->from('payment_master')
+				 ->where($where);
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+		{
+			$row = $query->row();
+			$latestSerialNo = $row->latestSerial;
+		}
+		else
+		{
+			$latestSerialNo = 0;
+		}
+		return $latestSerialNo;
+		
+	}
+	
+	public function getPreviousPaymentInfo($membership,$validity)
+	{
+		$paymentInfo = array();
+		$sql = "SELECT 
+				payment_master.PAYMENT_ID,
+				payment_master.MEMBERSHIP_NO,
+				payment_master.FROM_DT,
+				payment_master.VALID_UPTO,
+				payment_master.EXPIRY_DT,
+				payment_master.RENEW_ID,
+				payment_master.VALIDITY_STRING,
+				payment_master.FRESH_RENEWAL
+				FROM
+				  payment_master 
+				WHERE 
+				payment_master.MEMBERSHIP_NO='".$membership."'
+				AND payment_master.VALIDITY_STRING='".$validity."'
+				AND payment_master.FRESH_RENEWAL != 'D' 
+				AND payment_master.FRESH_RENEWAL != 'P' 
+				AND payment_master.FRESH_RENEWAL != 'C'
+				ORDER BY PAYMENT_ID DESC
+				LIMIT 1";
+				
+		$query = $this->db->query($sql);
+        if ($query->num_rows() > 0) 
+		{
+                // If need more result we can add later.....
+				$row = $query->row();
+                $paymentInfo=array(
+                    "PAYMENT_ID"=>$row->PAYMENT_ID
+                );
+             
+		}
+		else{
+			$paymentInfo = array();
+		}
+		return $paymentInfo;
+	}
+	
+	public function insertintoTable($insertRenewal=array(),$insertPayemntMaster=array(),$insertOnlinePayment=array(),$previousPaymentID=NULL)
+	{
+		$updatePaymentRenewal =array();
+		$updateRenewal =array();
+		$updateOnlinePayment =array();
+		try
+		{
+		
+			$this->db->trans_begin();
+			
+			// insert into renewaltable
+            $this->db->insert('renewaltable', $insertRenewal);
+			$renewalId = $this->db->insert_id();
+			
+			// update payment master with renewal id
+			$updatePaymentRenewal['RENEW_ID']=$renewalId;
+			$this->db->where('PAYMENT_ID', $previousPaymentID);
+			$this->db->update('payment_master', $updatePaymentRenewal); 
+			
+			// Insert into payment master
+			$this->db->insert('payment_master', $insertPayemntMaster);
+			$payment_masterID = $this->db->insert_id();
+			
+			$updateRenewal = array(
+				"payment_id" => $payment_masterID
+			);
+			$this->db->where('renew_id', $renewalId);
+			$this->db->update('renewaltable', $updateRenewal); 
+			
+			// Insert into Online payment
+			$this->db->insert('online_payment_status', $insertOnlinePayment);
+			$onlinePymentId = $this->db->insert_id();
+			$updateOnlinePayment = array(
+				"payment_master_id" => $payment_masterID 
+			);
+			// Update Online Payment Status with payment master ID
+			$this->db->where('id', $onlinePymentId );
+			$this->db->update('online_payment_status', $updateOnlinePayment); 
+			
+				
+			if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } else {
+                $this->db->trans_commit();
+                return true;
+            }
+		}
+		catch (Exception $exc) 
+		{
+            echo $exc->getTraceAsString();
+        }
+	}
 	
 	
 	

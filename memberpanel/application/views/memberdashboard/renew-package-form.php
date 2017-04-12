@@ -117,8 +117,7 @@
 						<input name="country" type="hidden" value="IND" />
 						<input name="postal_code" type="hidden" value="700001" />
 						<input name="phone" type="hidden" value="<?php echo $bodycontent['membermobileno']; ?>" /> 
-						<input name="phone" type="hidden" value="9143039959" />
-						<input name="email" type="hidden" value="<?php echo "mithileshkumarrouth@yahoo.in"; ?>" />
+						<input name="email" type="hidden" value="<?php echo $bodycontent['memberemail']; ?>" />
 					</div>
 				</div>
 				
@@ -132,7 +131,7 @@
 				</div>
 			</form>
 			
-			<p class="payment-warning">* Please follow all steps to get your receipt print.</p>
+			<!-- <p class="payment-warning">* Please follow all steps to get your receipt print.</p>-->
 			
 			
 		</div>

@@ -265,6 +265,7 @@ class memberdashboard extends CI_Controller {
 				"membershipno"=>$membershipNumber,
 				"member_name"=>$member['CUS_NAME'],
 				"membermobileno"=>$member['CUS_PHONE'],
+				"memberemail"=>$member['CUS_EMAIL'],
 				"branchcode" =>$member['CUS_BRANCH'],
 				"validity_pd"=>$validity_pd,
 				"subscription"=>$renewal_rate,
@@ -446,7 +447,8 @@ class memberdashboard extends CI_Controller {
 							"transaction_id" => $posts['TransactionID'],
 							"payment_master_id" => NULL, // payment master table refrence 
 							"payment_status" => $payment_status, 
-							"processing_date" => date('Y-m-d')
+							"processing_date" => date('Y-m-d'),
+							"payment_from" => 'REN'
 						);
 						
 						
@@ -483,7 +485,8 @@ class memberdashboard extends CI_Controller {
 							"transaction_id" => $posts['TransactionID'],
 							"payment_master_id" => NULL, // payment master table refrence 
 							"payment_status" => $payment_status, 
-							"processing_date" => date('Y-m-d')
+							"processing_date" => date('Y-m-d'),
+							"payment_from" => 'REN'
 						);
 					
 						$insertData = $this->dashboardmodel->insertintoOnlinePayment($insertOnlinePayment);

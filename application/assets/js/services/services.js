@@ -11,17 +11,31 @@ $(document).ready(function(){
 		var branch = $("#branch").val();
 		getBranchWiseRate(basepath,branch);
 	});
+	
+	$('.datepicker').datepicker({
+            autoclose: true,
+			todayHighlight: true,
+            format: 'dd-mm-yyyy',
+			forceParse: false
+			
+	});
+	
+	
 });
 
 function getBranchWiseRate(basepath,branch){
 			$.ajax({
             type: "POST",
             url: basepath + 'services/getBranchWiseRate',
-            dataType: "json",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            dataType: "html",
+          //  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data:{branch:branch},
             success: function (result) {
+				$("#branchWiseRate").html(result);
+			//	$("#rateChartAccordion").find('.panel-collapse:first').addClass("in");	
+			
 				
+			/*
 			var rateHtmlView = '';
 				console.log(result);
 				$.each(result, function(i,codeprefix) {
@@ -41,7 +55,7 @@ function getBranchWiseRate(basepath,branch){
 					rateHtmlView+='<div id="'+ratechartTargetId+'" class="panel-collapse collapse ">';
 					/*
 					rateHtmlView+='<h3>'+codeprefix.category_name+'</h3>';*/
-					
+				/*	
 					rateHtmlView+='<div class="table-responsive">';
 					
 					
@@ -94,6 +108,8 @@ function getBranchWiseRate(basepath,branch){
 				$("#branchWiseRate").html(rateHtmlView);
 				$("#rateChartAccordion").find('.panel-collapse:first').addClass("in");	
 				
+				*/
+				
 				
 			}, 
 			error: function (jqXHR, exception) {
@@ -116,6 +132,115 @@ function getBranchWiseRate(basepath,branch){
                // alert(msg);  
             }
 			});
+}
+
+	
+function validateRegForm()
+{
+	var name = $("#onlinereg-name").val();
+	var dob = $("#onlinereg-dob").val();
+	var mobile = $("#onlinereg-mobile").val();
+	var email = $("#onlinereg-email").val();
+	var address = $("#onlinereg-address").val();
+	var zipcode = $("#onlinereg-zipcode").val();
+	var city = $("#onlinereg-city").val();
+	var state = $("#onlinereg-state").val();
+	var country = $("#onlinereg-country").val();
+
+	
+	var phone_valid = /^([0-9]{10})$/;
+	var email_validate = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	var dobvalidation =  /^\d{1,2}-\d{1,2}-\d{4}$/;
+	
+	var error = '';
+	var up_icon = '<span class="glyphicon glyphicon-hand-up"></span>';
+	$("#onlinereg-name , #onlinereg-dob , #onlinereg-mobile, #onlinereg-email,#onlinereg-address,#onlinereg-zipcode,#onlinereg-city,#onlinereg-state,#onlinereg-country").removeClass('validation-error');
+	$("#onlinereg-error").html(error);
+	
+	if(name=="")
+	{
+		error = up_icon+" Name is required";
+		$("#onlinereg-name").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(dob==""){
+		error = up_icon+" DOB is required";
+		$("#onlinereg-dob").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	} 
+	
+	if(dobvalidation.test(dob)==false){
+		error = up_icon+" DOB is not valid";
+		$("#onlinereg-dob").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+		
+	}
+	
+	if(mobile==""){
+		error = up_icon+" Mobile no is required";
+		$("#onlinereg-mobile").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(phone_valid.test(mobile)==false){
+		error = up_icon+" Mobile no is not valid";
+		$("#onlinereg-mobile").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(email=="")
+	{
+		error = up_icon+" Email is required";
+		$("#onlinereg-email").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(email_validate.test(email)==false)
+	{
+		error = up_icon+" Email is not valid";
+		$("#onlinereg-email").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(address=="")
+	{
+		error = up_icon+" Please write your address";
+		$("#onlinereg-address").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(zipcode=="")
+	{
+		error = up_icon+" Please write your zip code";
+		$("#onlinereg-zipcode").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(city=="")
+	{
+		error = up_icon+" Please write your city name";
+		$("#onlinereg-city").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(state=="")
+	{
+		error = up_icon+" Please write your state name";
+		$("#onlinereg-state").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	if(country=="")
+	{
+		error = up_icon+" Please write your country name";
+		$("#onlinereg-country").addClass('validation-error');
+		$("#onlinereg-error").html(error);
+		return false;
+	}
+	return true;
 }
 
 

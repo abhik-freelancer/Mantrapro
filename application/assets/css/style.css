@@ -508,6 +508,7 @@ font-size: 3em;
 
 
 
+
 .mantra-heading-text{
     width:98%;
     padding-top:2%;
@@ -516,6 +517,10 @@ font-size: 3em;
     color: #F2652C;
     font-weight: 600;
 }
+
+/************************************************/
+/*********************SERVICES******************/
+/**********************************************/
 .service-container{
     width:96%;
     margin:0 auto;
@@ -1948,10 +1953,24 @@ ul.fa-ul li .badge{
 .select-style select:focus {
     outline: none;
 }
-#rateChartAccordion.panel-group {
-    margin-bottom: 4px !important;
+#branchWiseRate table thead
+{
+	background: rgb(237, 234, 234) none repeat scroll 0% 0%;
+	color: rgb(50, 50, 50);
 }
-#rateChartAccordion .panel-heading {
+#branchWiseRate table tbody
+{
+	color: rgb(50, 50, 50);
+	background: rgb(224, 224, 224) none repeat scroll 0% 0%;
+}
+#branchWiseRate  .panel-group {
+    margin-bottom: 5px !important;
+}
+#branchWiseRate #rateChartAccordion .panel-collapse {
+    margin-top: 14px !important;
+}
+
+#branchWiseRate #rateChartAccordion  .panel-heading {
 	background:#F2652C;
 	border:1px solid #F2652C;
 	color:#FFF;
@@ -1959,10 +1978,10 @@ ul.fa-ul li .badge{
 	line-height:45px !important;*/
 	cursor:pointer;
 }
-#rateChartAccordion .panel-title{
+#branchWiseRate #rateChartAccordion .panel-title{
 	font-size:14px;
 }
-#rateChartAccordion a{
+#branchWiseRate #rateChartAccordion a{
 	text-decoration:none;
 	font-weight: 700;
 }
@@ -1986,11 +2005,38 @@ ul.fa-ul li .badge{
 	color:#FFFFFF;
 	border-bottom:1px solid #FF7D53;
 }
-.facilityDetail h3{
+.facilityDetail h5{
 	font-weight: 600;
 	color: #F06E44;
 }
 
+/*********************************************************************/
+/***************************ONLINE REGISTARTION**********************/
+/*******************************************************************/
+
+.formContainer
+{
+	background: transparent none repeat scroll 0% 0%;
+	border: 1px solid #E3E0E0;
+	padding:1% 4%;
+	border-radius: 2%;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
+	margin-top: 15%;
+	padding-bottom:4%;
+}
+.formContainer label
+{
+	color: #F84F17;
+	font-size: 13px;
+}
+.regformheading
+{
+	font-size: 24px;
+	font-weight: 600;
+	color: #FF4800;
+	padding-bottom: 5px;
+	border-bottom: 1px dashed #FC7131;
+}
 
 
 /*

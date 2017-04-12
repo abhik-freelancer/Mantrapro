@@ -15,6 +15,7 @@
 |
 */
 $config['base_url']	= '/Mantrapro';
+//$config['base_url']	= 'http://mantrahealthzone.co.in/';
 
 /*
 |--------------------------------------------------------------------------

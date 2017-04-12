@@ -16,28 +16,22 @@
 	</div>
 	<div class="row row-container" style="margin-top:0px !important;">
 		<div class="col-md-12">
-			<a href="#" style="text-decoration:none;"><h2 style="text-align:center;">
+			<a href="<?php echo base_url()?>services/onlineregistration/<?php echo $bodycontent['cardDtl']['card_id'];?>/<?php echo $bodycontent['branchcode'];?>" style="text-decoration:none;"><h2 style="text-align:center;">
 			<span class="label label-success">Buy Now</span></h2></a>
 		</div>
 	</div>
 	
 
 	<div class="row row-container facilityDetail">
-		<!--
 		<div class="col-md-12">
-			<?php 
-				if($bodycontent['cardDtl']){
-					echo "<h2>".$bodycontent['cardDtl']['card_desc']." (".$bodycontent['cardDtl']['card_code'].")"."</h2>";
-				}
-			?>
+			<h3 style="color:#FF8E70;">Mantra <?php echo $bodycontent['cardDtl']['card_desc'];?> Facility Chart</h3>
 		</div>
-		-->
 	
 		<div class="col-md-12">
 			<?php 
 				if($bodycontent['complDtl']){
 			?>
-			<h3>Complimentary</h3>
+			<h5>Complimentary</h5>
 			<div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
@@ -62,33 +56,83 @@
 			</div>
 				<?php } else{echo "";}?>
 		</div>
+		<?php if($bodycontent['workoutDtl'] OR $bodycontent['healthandfitness']){ ?>
+		<div class="col-md-12">
+			<h3 style="color:#FF8E70;">Key package facilities</h3>
+		</div>
+		<?php }else{echo "";} ?>
+		
+		<!--Work Out -->
+		<div class="col-md-12">
+		<?php
+			if($bodycontent['workoutDtl'])
+					{
+						?>
+						<h5>Work out facilities</h5>
+						<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Description</th>
+									<th style="text-align:right;">Qty</th>
+								</tr>
+							</thead>
+							<tbody>
+					
+					<?php $m=1;
+						foreach($bodycontent['workoutDtl'] as $workoutDtl)
+						{?>
+						<tr>
+								<td><?php echo $m++; ?></td>
+								<td><?php echo $workoutDtl['workout_coupon_title']; ?></td>
+								<td><?php echo $workoutDtl['workoutqty']; ?></td>
+						</tr>
+							
+				<?php	} ?>
+						 </tbody>
+						</table>
+						</div>
+				<?php 
+					} ?>
+		</div>
+		
+		
+		
+		
 		
 		<div class="col-md-12">
-		<?php if($bodycontent['packagePart']) { ?>
-			<h3>Work Out & Fitness</h3>
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
+		<?php
+			if($bodycontent['healthandfitness'])
+					{
+						?>
+						<h5>Health & Fitness assessment facilities</h5>
+						<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Description</th>
+									<th style="text-align:right;">Qty</th>
+								</tr>
+							</thead>
+							<tbody>
+					
+					<?php $n=1;
+						foreach($bodycontent['healthandfitness'] as $healthandfitness)
+						{?>
 						<tr>
-							<th>#</th>
-							<th>Description</th>
-							<th style="text-align:right;">Qty</th>
+							<td><?php echo $n++; ?></td>
+							<td><?php echo $healthandfitness['HF_coupon_title']; ?></td>
+							<td><?php echo $healthandfitness['HF_qty']; ?></td>
 						</tr>
-					</thead>
-					<tbody>
-					<?php 
-						$i = 1;
-						foreach($bodycontent['packagePart'] as $complimentaryDtl){ ?>
-						<tr>
-							<td><?php echo $i++; ?></td>
-							<td><?php echo $complimentaryDtl['coupon_title'];?></td>
-							<td align="right"><?php echo $complimentaryDtl['qty'];?></td>
-						</tr>	
-					<?php }	 ?>
-					</tbody>
-				</table>
-			</div>
-		<?php } else{ echo "";}?>
+							
+				<?php	} ?>
+						 </tbody>
+						</table>
+						</div>
+				<?php 
+					} ?>
 		</div>
 		
 		

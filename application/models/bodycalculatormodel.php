@@ -2,9 +2,9 @@
 
 class bodycalculatormodel extends CI_Model{
 	
-	/*public function getLocation(){
+	public function getLocation(){
 		$data = array();
-		$sql = "SELECT * FROM location ORDER BY loc_name";
+		$sql = "SELECT * FROM location  WHERE loc_code NOT IN ('FE','SELF') ORDER BY loc_name";
 		$query = $this->db->query($sql);
 		if($query->num_rows()>0){
 			foreach($query->result() as $rows){
@@ -19,7 +19,7 @@ class bodycalculatormodel extends CI_Model{
 		else{
 			return $data;
 		}
-	}*/
+	}
 	
 	public function getBodyFatPercentage($weight,$waist,$hip,$sex){
         

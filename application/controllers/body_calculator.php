@@ -13,8 +13,8 @@ class body_calculator extends CI_Controller {
 	$page = "body_calculator/mantra-body-calculator";
 	$header = "";
 	$session="";
-	//$result['venue']=$this->bodycalculatormodel->getLocation();
-	$result="";
+	$result['venue']=$this->bodycalculatormodel->getLocation();
+	
 	createbody_method($result,$page,$header,$session);
  }
  
@@ -28,7 +28,7 @@ class body_calculator extends CI_Controller {
 	$json_response = array();
 	$outsidebodyfat = array();
 	$entry_date = date("Y-m-d");
-//	$venue = trim($this->input->post('bodyfat-venue'));
+	$venue = trim($this->input->post('bodyfat-venue'));
 	$firstname = trim($this->input->post('bodyfat-firstname'));
 	$lastname = trim($this->input->post('bodyfat-lastname'));
 	$gender = trim($this->input->post('bodyfat-gender'));
@@ -70,7 +70,7 @@ class body_calculator extends CI_Controller {
 			"gender" => $sex,
 			"mobile_no" => $mobile,
 			"email" => $email,
-			"location" => 'SELF', // SELF = From Website
+			"location" => $venue, 
 			"weight" => $weight,
 			"waist_size" => $waist,
 			"hip_size" => $hip,
@@ -124,6 +124,7 @@ class body_calculator extends CI_Controller {
 		$json_response = array();
 		$outsideharvardtest = array();
 		$entry_date = date("Y-m-d");
+		$venue = trim($this->input->post('harvardtest-venue'));
 		$firstname = trim($this->input->post('harvard-test-firstname'));
 		$lastname = trim($this->input->post('harvard-test-lastname'));
 		$gender = trim($this->input->post('harvard-test-gender'));
@@ -149,7 +150,7 @@ class body_calculator extends CI_Controller {
 					"gender" => $gender,
 					"mobile_no" => $mobile,
 					"email" => $email,
-					"location" => "SELF", // will change later
+					"location" => $venue,
 					"duration" => $no_of_sec,
 					"pulse_rate" => $pulserate,
 					"score" => $score,
@@ -196,6 +197,7 @@ class body_calculator extends CI_Controller {
 		$json_response = array();
 		$outsidesitandreach = array();
 		$entry_date = date("Y-m-d");
+		$venue = trim($this->input->post('sitandreach-venue'));
 		$firstname = trim($this->input->post('sitandreach-firstname'));
 		$lastname = trim($this->input->post('sitandreach-lastname'));
 		$gender = trim($this->input->post('sitandreach-gender'));
@@ -222,7 +224,7 @@ class body_calculator extends CI_Controller {
 					"dob" => $dateOfBirth,
 					"mobile_no" => $mobile,
 					"email" => $email,
-					"location" => 'SELF', // will change later
+					"location" => $venue, 
 					"age" => $age,
 					"distance" => $distance,
 					"rating" => $rating,
@@ -275,6 +277,7 @@ class body_calculator extends CI_Controller {
 		$json_response = array();
 		$outsidepushuptest = array();
 		$entry_date = date("Y-m-d");
+		$venue = trim($this->input->post('pushup-venue'));
 		$firstname = trim($this->input->post('pushup-test-firstname'));
 		$lastname = trim($this->input->post('pushup-test-lastname'));
 		$gender = trim($this->input->post('pushup-test-gender'));
@@ -303,7 +306,7 @@ class body_calculator extends CI_Controller {
 					"dob" => date('Y-m-d',strtotime($dob)),
 					"mobile_no" => $mobile,
 					"email" => $email,
-					"location" => 'SELF',
+					"location" => $venue,
 					"age" => $age,
 					"repetation" => $repetitions,
 					"population_avg" => $popavg,
@@ -351,7 +354,8 @@ class body_calculator extends CI_Controller {
 	public function calculateSitUpTest(){
 		$json_response = array();
 		$outsidesituptest = array();
-		$entry_date = date("Y-m-d");
+		$entry_date = date("Y-m-d"); 
+		$venue = trim($this->input->post('pushup-venue'));
 		$firstname = trim($this->input->post('situp-test-firstname'));
 		$lastname = trim($this->input->post('situp-test-lastname'));
 		$gender = trim($this->input->post('situp-test-gender'));
@@ -380,7 +384,7 @@ class body_calculator extends CI_Controller {
 					"dob" => date('Y-m-d',strtotime($dob)),
 					"mobile_no" => $mobile,
 					"email" => $email,
-					"location" => 'SELF',
+					"location" => $venue,
 					"age" => $age,
 					"repetation" => $repetitions,
 					"pop_avg" => $popavg,

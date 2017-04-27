@@ -245,8 +245,8 @@
                          <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>  Diet <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
                         <ul id="portfolio" class="collapse nav nav-second-level">
-                            <li><a href="<?php echo base_url();?>dietary_management">Diet List</a></li>
-                        <li><a href="<?php echo base_url();?>dietary_management/diet_chart">Dietary Management</a></li>
+                        <li><a href="<?php echo base_url();?>dietary_management/diet_chart">Diet List</a></li>
+                        <li><a href="<?php echo base_url();?>dietary_management">Dietary Management</a></li>
                             
                         </ul>
                     </li>

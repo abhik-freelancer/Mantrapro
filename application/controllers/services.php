@@ -116,7 +116,12 @@ public function proceedtopayment()
 	$cus_address = $address." ".$city;
 	
 	
-	$parameter_string = $name."*".$gender."*".$dob."*".$mobile."*".$email."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable."*".$cus_address."*".$zipcode;
+	/*$parameter_string = $name."*".$gender."*".$dob."*".$mobile."*".$email."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable."*".$cus_address."*".$zipcode;*/
+	
+	$parameter_string = $name."*".$gender."*".$dob."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable;
+	
+	
+	
 	
 	//$namestring = $this->encrypt_string($parameter_string);
 	$namestring = $parameter_string;
@@ -211,7 +216,9 @@ public function paymentconfirmation()
 			{
 				
 			/*$parameter_string = $name."*".$gender."*".$dob."*".$mobile."*".$email."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable;*/
-				
+			
+	/*	$parameter_string = $name."*".$gender."*".$dob."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable;
+		*/
 				$account_master = array();
 				$customer_insert = array();
 				$payment_insert = array();
@@ -223,15 +230,23 @@ public function paymentconfirmation()
 				$cus_name = $customerDtl[0];
 				$cus_sex = $customerDtl[1];
 				$cus_dob = $customerDtl[2];
-				$cus_mobile = $customerDtl[3];
-				$cus_email = $customerDtl[4];
-				$cus_branch = $customerDtl[5];
-				$cus_package = $customerDtl[6];
-				$subscriptionAmt = $customerDtl[7];
-				$serviceTaxrate = $customerDtl[8];
-				$netPayableAmt = $customerDtl[9];
-				$cus_address = $customerDtl[10];
-				$zip_code = $customerDtl[11];
+				//$cus_mobile = $customerDtl[3];
+				//$cus_email = $customerDtl[4];
+				$cus_branch = $customerDtl[3];
+				$cus_package = $customerDtl[4];
+				$subscriptionAmt = $customerDtl[5];
+				$serviceTaxrate = $customerDtl[6];
+				$netPayableAmt = $customerDtl[7];
+				//$cus_address = $customerDtl[10];
+				//$zip_code = $customerDtl[11];
+				
+				$cus_mobile = $posts['customerPhone'];
+				$cus_email = $posts['customerEmail'];
+				$address = $posts['customerAddress'];
+				$city = $posts['customerCity'];
+				$state = $posts['customerState'];
+				$zip_code = $posts['customerZipCode'];
+				$cus_address = $address." ".$city." ".$state;
 				
 				$finYear = $this->servicemodel->getFinancialYear();
 				$serial_no = $this->getSerialNoByBranchAndPackage($cus_branch,$cus_package);

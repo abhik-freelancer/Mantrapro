@@ -82,6 +82,13 @@ if (strlen($hashData) > 0) {
 		$confirmData['Status'] = $_POST['paymentStatus'];
 		$confirmData['Amount'] = $_POST['Amount'];
 		$confirmData['customerID'] = $_POST['BillingName'];
+		$confirmData['customerPhone'] = $_POST['BillingPhone'];
+		$confirmData['customerAddress'] = $_POST['BillingAddress'];
+		$confirmData['customerCity'] = $_POST['BillingCity'];
+		$confirmData['customerState'] = $_POST['BillingState'];
+		$confirmData['customerZipCode'] = $_POST['BillingPostalCode'];
+		$confirmData['customerEmail'] = $_POST['BillingEmail'];
+	
 		
 		$hashData = "9198beab24537d04cb37bb7b2fc44f91"; // do not change this secreate key
 

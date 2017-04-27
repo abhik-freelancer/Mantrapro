@@ -9,6 +9,7 @@ class memberdashboard extends CI_Controller {
         parent::__construct();
         $this->load->model('dashboardmodel', '', TRUE);
         $this->load->model('profilemodel', '', TRUE);
+		$this->load->model('healthassetvaluemodel','',TRUE);
         $this->load->library('session');
         $this->load->helper('date');
     }
@@ -60,8 +61,13 @@ class memberdashboard extends CI_Controller {
             $result["validupto"]=$todate;
             $result["attpercentage"]=  $this->dashboardmodel->getAttendanceRate($validfrom,$validupto,$membershipNumber);
             $result["paymentdue"] = ($subscriptionamount - $paidAmount);
-            $result["packagehistory"] = $this->dashboardmodel->getPackageHistory($customermobile,$latestvalidity["VALIDITY_STRING"]);
-            
+            $result["packagehistory"] = $this->dashboardmodel->getPackageHistory($customermobile,$latestvalidity["VALIDITY_STRING"]);  
+			$result["activePackages"] = $this->dashboardmodel->getActivepackages($customermobile);
+			$result["havdata"]=$this->healthassetvaluemodel->getLatestHAVdata($membershipNumber,$validityString);
+		
+           /* echo "<pre>";
+            print_r($result["havdata"]);
+            echo "</pre>";*/
             
             createbody_method($result, $page, $header, $session);
             //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
@@ -70,6 +76,31 @@ class memberdashboard extends CI_Controller {
             redirect('memberlogin', 'refresh');
         }
     }
+	
+	/*------------PAYMENT INFO DETAIL-------------*/
+	public function getPaymentInfo()
+	{
+		if($this->session->userdata('user_data'))
+		{
+			$membership_no = $this->input->post('mno',TRUE);
+			$validity = $this->input->post('validity',TRUE);
+			
+			$mno = base64_decode($membership_no);
+			$validity_str = base64_decode($validity);
+			$result['paymentDtlInfo'] = $this->dashboardmodel->getPaymentInfoDetail($mno,$validity_str);
+			
+			$page = 'memberdashboard/payment-detail-info';
+			$display = $this->load->view($page,$result);
+			echo $display;
+		}
+		else
+		{
+			 redirect('memberlogin', 'refresh');
+		}
+	}
+	
+	/*------------END PAYMENT INFO DETAIL-------------*/
+	
 	
 	public function applycashback(){
 		if($this->session->userdata('user_data')){

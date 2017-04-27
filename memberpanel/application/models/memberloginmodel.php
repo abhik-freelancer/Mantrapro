@@ -10,7 +10,7 @@ class memberloginmodel extends CI_Model{
               FROM `customer_master`
               WHERE 
               `customer_master`.`CUS_ID` = ".$this->db->escape($maxCustomerId)." AND"
-                . " customer_master.PASS =  ".$this->db->escape($password)."";
+                . " customer_master.PASS =  ".$this->db->escape($password)." AND customer_master.pack_type='M'";
         
          $query = $this->db->query($sql);
          if($query->num_rows()> 0){
@@ -35,7 +35,7 @@ class memberloginmodel extends CI_Model{
         $customerId=0;
         $sql="SELECT MAX(`customer_master`.`CUS_ID`)AS id
               FROM `customer_master`
-              WHERE 
+              WHERE `customer_master`.pack_type='M' AND
               `customer_master`.`CUS_PHONE` = ".$this->db->escape($mobilenumber);
         
          $query = $this->db->query($sql);

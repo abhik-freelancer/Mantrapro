@@ -107,7 +107,8 @@ class dashboardmodel extends CI_Model {
                 `card_master` ON customer_master.`CUS_CARD` = card_master.`CARD_CODE` 
                 INNER JOIN
                 payment_master ON customer_master.`MEMBERSHIP_NO` = payment_master.`MEMBERSHIP_NO`
-                WHERE  customer_master.`CUS_PHONE` ='".$mobileno."' AND payment_master.`SUBSCRIPTION` IS NOT NULL
+                WHERE  customer_master.`CUS_PHONE` ='".$mobileno."' 
+				/*AND payment_master.`SUBSCRIPTION` IS NOT NULL*/
                 ORDER BY payment_master.`FROM_DT` DESC  LIMIT 0,6";
         $query = $this->db->query($sql);
         
@@ -126,6 +127,213 @@ class dashboardmodel extends CI_Model {
         return $packagehistory;
         
     }
+	
+	/*--------MIthilesh-------*/
+	/*---Getting all active package -----*/
+	
+	public function getActivepackages($mobileno)
+	{
+		$data = array();
+		$where = array(
+			"customer_master.CUS_PHONE" => $mobileno,
+			"customer_master.IS_ACTIVE" => 'Y'
+		);
+		$this->db->select(
+			'customer_master.CUS_NAME,
+			 customer_master.MEMBERSHIP_NO,
+			 customer_master.CUS_CARD,
+			 customer_master.pack_type,
+			 card_master.CARD_DESC'			 
+			)
+		    ->from('customer_master')
+			->join('card_master','card_master.CARD_CODE=customer_master.CUS_CARD','LEFT')
+			->where($where);
+		$query = $this->db->get();
+		
+		//echo $this->db->last_query();
+		
+		if($query->num_rows()>0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$data[] = array(
+					"membership_no" => $row->MEMBERSHIP_NO,
+					"cus_card" => $row->CUS_CARD,
+					"cus_name" => $row->CUS_NAME,
+					"pack_type" => $row->pack_type,
+					"card_desc" => $row->CARD_DESC,
+					"paymentInfo" => $this->getPaymentInfo($row->MEMBERSHIP_NO)
+				);
+			}
+			return $data;
+		}
+		return $data;
+			
+	}
+	
+	public function getPaymentInfo($membership)
+	{
+		$data = array();
+		$date = date('Y-m-d');
+		$sql = "SELECT * FROM payment_master
+				WHERE payment_master.`MEMBERSHIP_NO`='".$membership."'
+				AND payment_master.`FRESH_RENEWAL` IN ('R','F')
+				AND payment_master.VALID_UPTO >= '".$date."' 
+				AND payment_master.FROM_DT < '".$date."'
+				ORDER BY payment_master.PAYMENT_ID DESC , payment_master.`VALID_UPTO` DESC
+				LIMIT 1";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0)
+		{
+			$row = $query->row();
+			$data = array(
+				"from_dt" => $row->FROM_DT,
+				"validupto_dt" => $row->VALID_UPTO,
+				"subscription" => $row->SUBSCRIPTION,
+				"paid_amount" => $row->AMOUNT,
+				"validity_string" => $row->VALIDITY_STRING,
+				"fresh_renewal" => $row->FRESH_RENEWAL,
+				"due_amount" => $this->getDueAmount($membership,$row->VALIDITY_STRING)
+			);
+		}
+		else
+		{
+			$data = array();
+		}
+		
+		return $data;
+	}
+	
+	
+	public function getDueAmount($membership,$validity)
+	{
+		$dueAmount = 0;
+		$totalSubscription = $this->getTotalSubscriptionAmount($membership,$validity);
+		$totalPaid = $this->getTotalPaidAmount($membership,$validity);
+		$dueAmount = $totalSubscription-$totalPaid;
+		return $dueAmount;
+	}
+	
+	private function getTotalSubscriptionAmount($membership,$validity)
+	{
+		$totalSubscriptionAmount = 0;
+		$sql = "SELECT 
+			COALESCE(SUM(payment_master.`SUBSCRIPTION`),0) AS totalSubscription
+			FROM payment_master 
+			WHERE MEMBERSHIP_NO = '".$membership."' 
+			  AND VALIDITY_STRING = '".$validity."' 
+			  AND (FRESH_RENEWAL != 'P' AND FRESH_RENEWAL != 'D') 
+			  ORDER BY payment_id DESC ";
+			  
+	    $query = $this->db->query($sql);
+		if($query->num_rows()>0)
+		{
+			$row = $query->row();
+			$totalSubscriptionAmount = $row->totalSubscription;
+		}
+		return $totalSubscriptionAmount;
+	}
+	
+	private function getTotalPaidAmount($membership,$validity)
+	{
+		$totalPaidAmt = 0;
+		$sql = "SELECT 
+			  (
+			  COALESCE(SUM(payment_master.AMOUNT),0) + 
+			  COALESCE(SUM(payment_master.DISCOUNT_CONV),0)+
+			  COALESCE(SUM(payment_master.DISCOUNT_OFFER),0) + 
+			  COALESCE(SUM(payment_master.DISCOUNT_NEGO),0) + 
+			  COALESCE(SUM(payment_master.CASHBACK_AMT),0)
+			  ) AS totalPaidAmount FROM payment_master 
+			  WHERE MEMBERSHIP_NO = '".$membership."' 
+			  AND VALIDITY_STRING = '".$validity."'
+			  AND FRESH_RENEWAL != 'P' 
+			  ORDER BY payment_id DESC ";
+			  
+			$query = $this->db->query($sql);
+			if($query->num_rows()>0)
+			{
+				$row = $query->row();
+				$totalPaidAmt = $row->totalPaidAmount;
+			}
+			return $totalPaidAmt;
+	}
+	
+	
+	public function getPaymentInfoDetail($mno,$validity)
+	{
+		$data = array();
+		$where = array(
+			"payment_master.MEMBERSHIP_NO" => $mno,
+			"payment_master.VALIDITY_STRING" => $validity
+		);
+		$ignore = array('P');
+		$this->db->_protect_identifiers=false;
+			$this->db->select('payment_master.PAYMENT_DT,
+							   payment_master.SUBSCRIPTION,
+							   payment_master.AMOUNT,
+							   payment_master.payment_from,
+							   (COALESCE(payment_master.DISCOUNT_CONV,0)+
+							   COALESCE(payment_master.DISCOUNT_OFFER,0) + 
+							   COALESCE(payment_master.DISCOUNT_NEGO,0) + 
+							   COALESCE(payment_master.CASHBACK_AMT,0)) AS totalDiscount
+							 ')
+					 ->from('payment_master')
+					 ->where($where)
+					 ->where_not_in('payment_master.FRESH_RENEWAL',$ignore);
+		
+		    $query = $this->db->get();
+			//echo $this->db->last_query();
+			if($query->num_rows()>0)
+			{
+				foreach($query->result() as $rows):
+					$data[] = array(
+						"payment_date" => $rows->PAYMENT_DT,
+						"subscription" => $rows->SUBSCRIPTION,
+						"amountpaid" => $rows->AMOUNT,
+						"totaldiscount" => $rows->totalDiscount,
+						"payment_from" => $rows->payment_from,
+						"payment_for_txt" => $this->getPaymentForLabel($rows->payment_from)
+					); 
+				endforeach;
+			}
+			return $data;
+	}
+	
+
+	
+	public function getPaymentForLabel($payment_from="")
+	{	$payment_for_label = "";
+		
+
+	switch ($payment_from) {
+		case "REG":
+			return $payment_for_label= "Registration";
+			break;
+		case "REN":
+			return $payment_for_label= "Renewal";
+			break;
+		case "CON":
+			return $payment_for_label= "Package Conversion";
+			break;
+		case "CHL":
+			return $payment_for_label = "Child Package";
+			break;
+		case "DUE":
+			return $payment_for_label = "Due Paid";
+		case "compl":
+			return $payment_for_label = "Complimentary Product";
+		case "PRODSALE":
+			return $payment_for_label = "Product Purchase";
+		default:
+			return $payment_for_label = "";
+		}
+	
+	
+	}
+	
+	
 	
 	public function checkCashBackApplied($mebership,$validity){
 		$isApplied = "";

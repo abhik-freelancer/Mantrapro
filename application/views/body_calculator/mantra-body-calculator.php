@@ -58,17 +58,17 @@
 			<div class="body-cal-form-container">
 				<form id="bodyfatForm" name="bodyfatForm" method="post">
 				
-				<!--
+				
 				<div class="form-group">
 					<label for="bodyfat-venue">Venue</label>
 					<select class="form-control" id="bodyfat-venue" name="bodyfat-venue">
 						<?php foreach($bodycontent['venue'] as $venue){ ?>
-							<option value="<?php echo $venue['loc_code'];?>" ><?php echo $venue['loc_name'];?></option>
+							<option value="<?php echo $venue['loc_code'];?>" <?php if($venue['loc_code']=='WE'){echo "selected";}else{echo "";}?> ><?php echo $venue['loc_name'];?></option>
 							
 						<?php } ?>
 					</select>
 					
-				</div>-->
+				</div>
 				
 				  <div class="row">
 					<div class="col-md-6">
@@ -201,17 +201,17 @@
 			</div>
 			<div class="body-cal-form-container">
 				<form id="harvardTestForm" name="harvardTestForm" method="post">
-				<!--
+			
 				<div class="form-group">
-					<label for="bodyfat-venue">Venue</label>
-					<select class="form-control" id="bodyfat-venue" name="bodyfat-venue">
+					<label for="harvardtest-venue">Venue</label>
+					<select class="form-control" id="harvardtest-venue" name="harvardtest-venue">
 						<?php foreach($bodycontent['venue'] as $venue){ ?>
-							<option value="<?php echo $venue['loc_code'];?>" ><?php echo $venue['loc_name'];?></option>
+							<option value="<?php echo $venue['loc_code'];?>" <?php if($venue['loc_code']=='WE'){echo "selected";}else{echo "";}?> ><?php echo $venue['loc_name'];?></option>
 							
 						<?php } ?>
 					</select>
 					
-				</div>-->
+				</div>
 				
 				  <div class="row">
 					<div class="col-md-6">
@@ -305,17 +305,17 @@
 			<div class="body-cal-form-container" style="margin-top:1%;">
 				<form id="sitAndReachForm" name="sitAndReachForm" method="post">
 				
-				<!--
+				
 				<div class="form-group">
-					<label for="bodyfat-venue">Venue</label>
-					<select class="form-control" id="bodyfat-venue" name="bodyfat-venue">
+					<label for="sitandreach-venue">Venue</label>
+					<select class="form-control" id="sitandreach-venue" name="sitandreach-venue">
 						<?php foreach($bodycontent['venue'] as $venue){ ?>
-							<option value="<?php echo $venue['loc_code'];?>" ><?php echo $venue['loc_name'];?></option>
+							<option value="<?php echo $venue['loc_code'];?>" <?php if($venue['loc_code']=='WE'){echo "selected";}else{echo "";}?>><?php echo $venue['loc_name'];?></option>
 							
 						<?php } ?>
 					</select>
 					
-				</div>-->
+				</div>
 				
 				  <div class="row">
 					<div class="col-md-6">
@@ -406,17 +406,17 @@
 			</div>
 			<div class="body-cal-form-container">
 				<form id="pushUpTestForm" name="pushUpTestForm" method="post">
-				<!--
+				
 				<div class="form-group">
-					<label for="bodyfat-venue">Venue</label>
-					<select class="form-control" id="bodyfat-venue" name="bodyfat-venue">
+					<label for="pushup-venue">Venue</label>
+					<select class="form-control" id="pushup-venue" name="pushup-venue">
 						<?php foreach($bodycontent['venue'] as $venue){ ?>
-							<option value="<?php echo $venue['loc_code'];?>" ><?php echo $venue['loc_name'];?></option>
+							<option value="<?php echo $venue['loc_code'];?>" <?php if($venue['loc_code']=='WE'){echo "selected";}else{echo "";}?> ><?php echo $venue['loc_name'];?></option>
 							
 						<?php } ?>
 					</select>
 					
-				</div>-->
+				</div>
 				
 				  <div class="row">
 					<div class="col-md-6">
@@ -517,17 +517,17 @@
 			<div class="body-cal-form-container" style="margin-top:1%;">
 				<form id="sitUpTestForm" name="sitUpTestForm" method="post">
 				
-				<!--
+				
 				<div class="form-group">
-					<label for="bodyfat-venue">Venue</label>
-					<select class="form-control" id="bodyfat-venue" name="bodyfat-venue">
+					<label for="pushup-venue">Venue</label>
+					<select class="form-control" id="pushup-venue" name="pushup-venue">
 						<?php foreach($bodycontent['venue'] as $venue){ ?>
-							<option value="<?php echo $venue['loc_code'];?>" ><?php echo $venue['loc_name'];?></option>
+							<option value="<?php echo $venue['loc_code'];?>" <?php if($venue['loc_code']=='WE'){echo "selected";}else{echo "";}?>><?php echo $venue['loc_name'];?></option>
 							
 						<?php } ?>
 					</select>
 					
-				</div>-->
+				</div>
 				
 				  <div class="row">
 					<div class="col-md-6">

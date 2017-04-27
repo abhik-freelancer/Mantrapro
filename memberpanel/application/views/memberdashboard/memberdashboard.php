@@ -104,11 +104,11 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-inr fa-5x"></i>
+                                        <i class="fa fa-star fa-5x"></i> 
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo($bodycontent["paymentdue"]); ?></div>
-                                        <div>Due amount !</div>
+                                        <div class="huge"><?php echo($bodycontent["havdata"]["hav_total_percent"]); ?></div>
+                                        <div>HAV (<?php echo($bodycontent["havdata"]["month"]); ?>) <?php echo $bodycontent["havdata"]["year"]; ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -208,18 +208,28 @@
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover table-striped">
-                                        <thead>
+                                        <thead style="background:#2BB161;color:#FFF;">
                                             <tr>
+											    <!--
                                                 <th>Membership No.</th>
                                                 <th>Package</th>
                                                 <th>Start Date</th>
                                                 <th>Valid upto</th>
-                                                <th>Amount(Inr)</th>
+                                                <th>Amount(Inr)</th>-->
+												<th>Membership No</th>
+												<th>Name</th>
+												<th>Validity</th>
+												<th>Package</th>
+												<th>Package Rate</th>
+												<th>Due</th>
+												<th>Info</th>
+												<th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+										
+										<!-- closed on 21.04.2017
                                         <?php if($bodycontent["packagehistory"]) {
-                                            
                                          foreach ($bodycontent["packagehistory"] as $content) {
                                         ?>
                                            
@@ -238,7 +248,37 @@
                                         <?php 
                                             }
                                          }
-                                         ?>   
+                                         ?> 
+										 -->
+										 
+										 <?php // $count_size = ($bodycontent["activePackages"]['paymentInfo']); 
+												foreach($bodycontent["activePackages"] as $packageActive)
+												{
+													 $count = sizeof($packageActive['paymentInfo']);
+												     if($count>0)
+													 { 
+												      $validity = base64_encode($packageActive['paymentInfo']['validity_string']);
+												    ?>
+												<tr style="background:#BDDDB9;font-weight:700;">
+													<td><?php echo $packageActive['membership_no']; ?></td>
+													<td><?php echo $packageActive['cus_name']; ?></td>
+													<td><?php echo date('d-m-Y',strtotime($packageActive['paymentInfo']['from_dt']))." To ". date('d-m-Y',strtotime($packageActive['paymentInfo']['validupto_dt'])) ; ?></td>
+													<td><?php echo $packageActive['card_desc']; ?></td>
+													<td align="right"><?php echo $packageActive['paymentInfo']['subscription']; ?></td>
+													<td align="right"><?php echo number_format($packageActive['paymentInfo']['due_amount'],2); ?></td>
+													<td>
+													<a href="javascript:void(0);" data-toggle="modal" data-membership="<?php echo base64_encode($packageActive['membership_no']);?>" data-validity="<?php echo $validity; ?>" data-target="#paymentInfo" class="paymentInfo"> <span class="glyphicon glyphicon-info-sign" style="font-size: 16px;"></span></a> 
+													
+													</td>
+													<td><span style="color:#068D46;font-weight:700;text-decoration:underline;">ACTIVE</span></td>
+												</tr>		 
+														 
+														 
+										<?php		 }
+												}
+										 ?>
+
+										 
                                         </tbody>
                                     </table>
                                 </div>
@@ -257,3 +297,30 @@
 
         </div>
         <!-- /#page-wrapper -->
+		
+		
+		<!----- payment Info Modal -->
+
+	
+<!---- FRESH COUNT DETAIL ----->
+<div id="paymentInfo" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content" class="">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" >&times;</button>
+					<h4 class="modal-title" style="font-family: verdana;font-size: 17px;text-align: center;color: #747474;"></h4>
+					<h3 style="text-align:center;"> <span class="label label-warning">Payment Detail(s)</span></h3>
+				  </div>
+				  <div class="modal-body" id="payment_info_detail" style="height:400px;max-height:400px;overflow-y:scroll;">
+					
+				  </div>
+				  <div class="modal-footer" >
+					<button type="button" class="btn btn-success" data-dismiss="modal" style="font-family:verdana;font-size:12px;" >Close</button>
+				  </div>
+		</div>
+	</div>
+</div>
+
+		
+		

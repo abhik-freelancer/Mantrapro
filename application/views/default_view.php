@@ -247,7 +247,8 @@
 							<ul>
 								<li class="dropdown-header">Services and Tariff</li>                            
 									<p>If you want to stay fit and healthy throughout your life, then forget all "magic and tantra" and simply believe in the purity of "Mantra"!</p>
-									<li><a href="<?php echo base_url();?>services/rate_chart" class="btn cutome-link-btn">View More</a></li>
+									<!--
+									<li><a href="<?php echo base_url();?>services/rate_chart" class="btn cutome-link-btn">View More</a></li>-->
 							</ul>
 						</li>
 						<li class="col-sm-4">
@@ -310,7 +311,7 @@
                         <button>Services <span class="glyphicon glyphicon-chevron-down" style="float:right;"></span></button>
                         <ul>
 							<li class="pushy-link"><a href="#">Packages Offered</a></li>
-							<li class="pushy-link"><a href="<?php echo base_url();?>services/rate_chart">Services and Tariff</a></li>
+						<!--	<li class="pushy-link"><a href="<?php echo base_url();?>services/rate_chart">Services and Tariff</a></li>-->
 							<li class="pushy-link"><a href="#">Classes & Consultancy Schedule</a></li>
 							<li class="pushy-link"><a href="<?php echo base_url();?>services/yoga_and_meditation_class">Yoga & Meditation Classes</a></li>
                         </ul>

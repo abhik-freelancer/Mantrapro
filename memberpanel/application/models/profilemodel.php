@@ -29,7 +29,7 @@ class profilemodel extends CI_Model {
                 `customer_master`.`CUS_PIN`,
                 `customer_master`.`CUS_EMAIL`,
                 `customer_master`.`CUS_SEX`,
-                `customer_master`.`CUS_BLOOD_GRP`,customer_master.`CUS_CARD`,
+				`customer_master`.`CUS_BLOOD_GRP`,customer_master.`CUS_CARD`,
                 
                 DATE_FORMAT(`customer_master`.`CUS_DOB`,'%d-%m-%Y') AS CUS_DOB,
                 `card_master`.`CARD_DESC`,
@@ -183,7 +183,8 @@ class profilemodel extends CI_Model {
     public function  insertbodycomposition($data){
         
          try {
-                $this->db->trans_begin();
+			 
+				$this->db->trans_begin();
                 $this->db->insert('body_composition', $data);
 
             if ($this->db->trans_status() === FALSE) {
@@ -314,7 +315,7 @@ class profilemodel extends CI_Model {
         return $paymentDue;
     }
     
-    public function getBodyFatPercentage($weight,$waist,$hip,$sex){
+    public function getBodyFatPercentage($weight,$waist_navel,$waist,$hip,$sex){
         
         $healthStatus=array();
         $weight= $weight * 2.20462;
@@ -338,7 +339,8 @@ class profilemodel extends CI_Model {
             
             if($sex=="M"){
                 
-                $mBf = -98.42 + 4.15 * $waist - 0.082 * $weight;
+                $mBf = -98.42 + 4.15 * $waist_navel - 0.082 * $weight;
+            //    $mBf = -98.42 + 4.15 * $waist - 0.082 * $weight;
                 //waist curcumference
                 if($waist >0 && $waist <31.5){
                     $waistCircumferenceValue=15;
@@ -363,7 +365,8 @@ class profilemodel extends CI_Model {
                 }
                 
             }else{ 
-                $mBf = (-76.76) + (4.15 * $waist) - (0.082 * $weight);
+        //        $mBf = (-76.76) + (4.15 * $waist) - (0.082 * $weight);
+                $mBf = (-76.76) + (4.15 * $waist_navel) - (0.082 * $weight);
                 //waist curcumference
                 if($waist >0 && $waist <28.5){
                     $waistCircumferenceValue=15;

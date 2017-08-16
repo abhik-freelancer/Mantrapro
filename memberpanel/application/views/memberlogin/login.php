@@ -77,10 +77,17 @@
 		<input type="password" placeholder="Enter your password" class="form-control custom-input" name="pwd" id="pwd" required>
                 <p class="help-block">Your default password is your date of birth (e.g.1990-12-31).</p>
 
-		<button type="submit" id="memeberlogin" class="custom-button">Login</button>
+		<button type="submit" id="memeberlogin" class="custom-button memeberlogin">Login</button>
 		<!--<input type="checkbox" checked="checked" ><span class="remeber-me"> Remember me</span>-->
 		 <span class="psw"><a href="#"> Forgot password?</a></span>
+		 
+		 
+		 <div class="verifying-account" style="width:100%;clear:both;display:none;">
+			<img src="<?php echo base_url();?>application/assets/images/reload.gif" style="margin-left:auto;margin-right:auto;display:block;"/>
+			<p style="text-align:center;color:#F66434;letter-spacing:1px;">Verifying your account.Please wait...</p>
+		 </div>
 	</div>
+		
 	</div>
 </div>
 

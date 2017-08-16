@@ -10,6 +10,7 @@ class memberdashboard extends CI_Controller {
         $this->load->model('dashboardmodel', '', TRUE);
         $this->load->model('profilemodel', '', TRUE);
 		$this->load->model('healthassetvaluemodel','',TRUE);
+		$this->load->model('gstmastermodel','',TRUE);
         $this->load->library('session');
         $this->load->helper('date');
     }
@@ -51,7 +52,14 @@ class memberdashboard extends CI_Controller {
           //  getAttendanceRate($fromDate,$validUpto,$memberNo)
             $customer = $this->profilemodel->getCustomerByCustId($customerId);
             $customermobile=$customer["CUS_PHONE"];
+			
+			
+			$profilepic = array(
+						"gender" => $customer['CUS_SEX'],
+						"profile_image" => $customer['image_name']
+						);
             
+			
             
             $header = "";
             
@@ -63,12 +71,14 @@ class memberdashboard extends CI_Controller {
             $result["paymentdue"] = ($subscriptionamount - $paidAmount);
             $result["packagehistory"] = $this->dashboardmodel->getPackageHistory($customermobile,$latestvalidity["VALIDITY_STRING"]);  
 			$result["activePackages"] = $this->dashboardmodel->getActivepackages($customermobile);
+			$result["advancePackage"] = $this->dashboardmodel->getAdvancepackages($customermobile);
 			$result["havdata"]=$this->healthassetvaluemodel->getLatestHAVdata($membershipNumber,$validityString);
-		
-           /* echo "<pre>";
+			$result['profile_img'] = $profilepic;
+			/*
+            echo "<pre>";
             print_r($result["havdata"]);
-            echo "</pre>";*/
-            
+            echo "</pre>";
+            */
             createbody_method($result, $page, $header, $session);
             //($body_content_data = '',$body_content_page = '',$body_content_header='',$data,$heared_menu_content='')
         } else {
@@ -206,12 +216,12 @@ class memberdashboard extends CI_Controller {
 	
 	private function checkCashBackEligibility($validupto,$cardcode){
 		$isApllicable = false;
-		$validupto = date('Y-m-d',strtotime($validupto));
+		//echo "Valid Upto ".$validupto = date('Y-m-d',strtotime($validupto));
 		$cardExtDys = $this->dashboardmodel->getCardExtensionDays($cardcode);
 		
 		$till_apply_days =  date('Y-m-d', strtotime($validupto. ' + '.$cardExtDys .' days'));
 		
-		$remaing_dys = 10;
+		$remaing_dys = 300;
 		$upto_apply_dys = $remaing_dys+$cardExtDys;
 	
 		$date = date('Y-m-d');
@@ -237,11 +247,24 @@ class memberdashboard extends CI_Controller {
 			echo "<br>";
 			echo "Till Apply date ".$till_apply_days;
 			echo "<br>***";*/
+		/*	echo "<br>";
+			echo "Start Days ".$start_apply_days;
+			echo "</br>";
+			
+			echo "<br>";
+			echo "Till Appply Days ".$till_apply_days;
+			echo "</br>";
+			
+			echo "<br>";
+			echo "Upto apply days ".$upto_apply_dys;
+			echo "</br>";
+			*/
+			
 		
-		if($start_apply_days>0 && $start_apply_days<10 && $till_apply_days<=$upto_apply_dys){
+		if($start_apply_days>=0 && $start_apply_days<=300 && $till_apply_days<=$upto_apply_dys){
 			$isApllicable = true;
 		}
-		if($start_apply_days>10 && $till_apply_days>$upto_apply_dys){
+		if($start_apply_days>300 && $till_apply_days>$upto_apply_dys){
 			$isApllicable = false;
 		}
 		
@@ -282,11 +305,24 @@ class memberdashboard extends CI_Controller {
 			$member = $this->profilemodel->getCustomerByCustId($customerId);
 			$renewal_rate = $this->dashboardmodel->getRenewalSubscriptionAmount($member['CUS_BRANCH'],$member['CUS_CARD']);
 			$cashbackAmt =  $this->dashboardmodel->getApprovedCashBackAmt($membershipNumber,$validityString);
+			$result['cgstRateOpt'] = $this->gstmastermodel->getGSTRate('CGST'); // getting CGST Rate Options
+			$result['sgstRateOpt'] = $this->gstmastermodel->getGSTRate('SGST'); // getting CGST Rate Options
+			
+			$cgstRate = $result['cgstRateOpt'][0]['rate']; // Need to change when rate is more than one 
+			$sgstRate = $result['sgstRateOpt'][0]['rate']; // Need to change when rate is more than one 
+
+			
+			
 			$renewalAmount = $renewal_rate - $cashbackAmt;
 			$yearId = $this->profilemodel->getFinancialYear();
 			$taxPercentage = $this->dashboardmodel->getTaxPercentage($yearId);
 			$taxAmount = $renewalAmount*$taxPercentage/100;
-			$totalPayableAmount = $renewalAmount+$taxAmount;
+			
+			$cgstAmt = $cgstRate*$renewalAmount/100;
+			$sgstAmt = $sgstRate*$renewalAmount/100;
+			$totatlTaxableAmt = $cgstAmt+$sgstAmt;
+			
+			$totalPayableAmount = $renewalAmount+$totatlTaxableAmt;
 			
 			$page = 'memberdashboard/renew-package-form';
 			$header="";
@@ -305,7 +341,12 @@ class memberdashboard extends CI_Controller {
 				"cashbackamount"=>$cashbackAmt,
 				"renewalamount"=>$renewalAmount,
 				"taxpercentage"=>$taxPercentage,
-				"netpayable"=>$totalPayableAmount,
+				"cgstRateOpt" => $result['cgstRateOpt'],
+				"sgstRateOpt" => $result['sgstRateOpt'],
+				"cgstAmt" => $cgstAmt,
+				"sgstAmt" => $sgstAmt,
+				"totalTaxableAmt" => $totatlTaxableAmt,
+				"netpayable"=> $totalPayableAmount
 			);
 			
 			
@@ -417,8 +458,19 @@ class memberdashboard extends CI_Controller {
 						$renewalAmount = $renewal_rate - $cashbackAmt;
 						$yearId = $this->profilemodel->getFinancialYear();
 						$taxPercentage = $this->dashboardmodel->getTaxPercentage($yearId);
-						$taxAmount = $renewalAmount*$taxPercentage/100;
-						$totalPayableAmount = $renewalAmount+$taxAmount;
+						
+						//$taxAmount = $renewalAmount*$taxPercentage/100;
+						
+						
+						$rowCGSTRate = $this->gstmastermodel->GetGSTRateByIdAndType('CGST',1); // 1 need to change later
+						$rowSGSTRate = $this->gstmastermodel->GetGSTRateByIdAndType('SGST',2); // 2 need to change later
+						
+						$cgstAmt = $rowCGSTRate*$renewalAmount/100;
+						$sgstAmt = $rowSGSTRate*$renewalAmount/100;
+						
+						$totalTaxable = $cgstAmt + $sgstAmt;
+						
+						$totalPayableAmount = $renewalAmount+$totalTaxable;
 						// get Card Duration
 						$card_duration = $this->dashboardmodel->getCardDuration($member['CUS_CARD']);
 						// getting New Validity String
@@ -457,7 +509,11 @@ class memberdashboard extends CI_Controller {
 							"PRM_AMOUNT" =>$renewalAmount,
 							"AMOUNT" => $renewalAmount,
 							"MNTN_CHG" =>0,
-							"SERVICE_TAX" =>$taxPercentage,
+							"SERVICE_TAX" =>NULL,
+							"CGST_RATE_ID" => 1,
+							"CGST_AMT" => $cgstAmt,
+							"SGST_RATE_ID" => 2,
+							"SGST_AMT" => $sgstAmt,
 							"TOTAL_AMOUNT" =>$totalPayableAmount,
 							"PAYMENT_DT" => date('Y-m-d'),
 							"FRESH_RENEWAL" =>$renewal_tag,

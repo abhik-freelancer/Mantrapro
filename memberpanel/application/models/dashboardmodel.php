@@ -150,7 +150,7 @@ class dashboardmodel extends CI_Model {
 			->where($where);
 		$query = $this->db->get();
 		
-		//echo $this->db->last_query();
+		//$this->db->last_query();
 		
 		if($query->num_rows()>0)
 		{
@@ -179,7 +179,7 @@ class dashboardmodel extends CI_Model {
 				WHERE payment_master.`MEMBERSHIP_NO`='".$membership."'
 				AND payment_master.`FRESH_RENEWAL` IN ('R','F')
 				AND payment_master.VALID_UPTO >= '".$date."' 
-				AND payment_master.FROM_DT < '".$date."'
+				AND payment_master.FROM_DT <= '".$date."'
 				ORDER BY payment_master.PAYMENT_ID DESC , payment_master.`VALID_UPTO` DESC
 				LIMIT 1";
 		
@@ -203,6 +203,67 @@ class dashboardmodel extends CI_Model {
 		}
 		
 		return $data;
+	}
+	
+	
+	
+	/*---------Get Advance Packages---------*/
+	public function getAdvancepackages($mobileno)
+	{
+		$data =array();
+		  $sql = "SELECT 
+				  customer_master.CUS_ID AS id,
+				  customer_master.CUS_CARD,
+				  customer_master.CUS_NAME,
+				  customer_master.pack_type,
+				  card_master.CARD_DESC,	
+				  payment_master.`MEMBERSHIP_NO`,
+				  payment_master.`VALIDITY_STRING`,
+				  payment_master.FROM_DT,
+				  payment_master.`VALID_UPTO`, 
+				  payment_master.`SUBSCRIPTION`, 
+				  payment_master.`AMOUNT`, 
+				  payment_master.`FRESH_RENEWAL` 
+				FROM
+				  payment_master 
+				  INNER JOIN customer_master 
+				  ON customer_master.`MEMBERSHIP_NO` = payment_master.`MEMBERSHIP_NO` 
+				   INNER JOIN card_master
+				   ON card_master.`CARD_CODE`=customer_master.`CUS_CARD` 
+				WHERE payment_master.`MEMBERSHIP_NO` IN 
+				(
+				  SELECT customer_master.`MEMBERSHIP_NO` FROM customer_master 
+				WHERE 
+					customer_master.`CUS_PHONE` = '".$mobileno."'
+					AND customer_master.`IS_ACTIVE` = 'Y'
+				) 
+				    AND payment_master.`FROM_DT` > CURDATE() 
+				    AND payment_master.`FRESH_RENEWAL` IN ('F', 'R') ORDER BY payment_master.FROM_DT,payment_master.PAYMENT_ID";
+				
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0)
+			{
+				foreach($query->result() as $rows):
+					$data[] = array(
+						"membership_no" => $rows->MEMBERSHIP_NO,
+						"cus_card" => $rows->CUS_CARD,
+						"cus_name" => $rows->CUS_NAME,
+						"pack_type" => $rows->pack_type,
+						"card_desc" => $rows->CARD_DESC,
+						"from_dt" => $rows->FROM_DT,
+						"validupto_dt" => $rows->VALID_UPTO,
+						"subscription" => $rows->SUBSCRIPTION,
+						"paid_amount" => $rows->AMOUNT,
+						"validity_string" => $rows->VALIDITY_STRING,
+						"fresh_renewal" => $rows->FRESH_RENEWAL,
+						"due_amount" => $this->getDueAmount($rows->MEMBERSHIP_NO,$rows->VALIDITY_STRING)
+					); 
+				endforeach;
+				
+				return $data;
+			}
+			return $data;
+		
 	}
 	
 	

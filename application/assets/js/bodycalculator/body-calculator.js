@@ -3,6 +3,13 @@
 $(document).ready(function(){
 	var basepath = $("#basepath").val();
 	
+	
+	$("#body-fat-dob").on("change",function(event){
+		var dob = $("#body-fat-dob").val();
+		calculateAge(basepath,dob,'body-fat-age'); // basepath, dob , selector
+		
+	});
+	
 	// Body Fat 
 	$("#bodyfatForm").on("submit",function(event){
 		event.preventDefault();
@@ -162,7 +169,7 @@ $(document).ready(function(){
 	
 	
 	/*------Sit And Reach------------*/
-	$('#sitandreach-dob , #pushup-test-dob , #situp-test-dob').datepicker({
+	$('#body-fat-dob,#sitandreach-dob , #pushup-test-dob , #situp-test-dob').datepicker({
             autoclose: true,
 			todayHighlight: true,
             format: 'dd-mm-yyyy',
@@ -386,9 +393,11 @@ $(document).ready(function(){
 function validateBodyFatForm(){
 	var firstname = $("#bodyfat-firstname").val();
 	var lastname = $("#bodyfat-lastname").val();
+	var dob = $("#body-fat-dob").val();
 	var mobile = $("#bodyfat-mobile").val();
 	var email = $("#bodyfat-email").val();
 	var weight = $("#txt_weight").val();
+	var waist_navel = $("#txt_waist_navel").val();
 	var waist = $("#txt_waist").val();
 	var hip = $("#txt_hip").val();
 	var phone_valid = /^([0-9]{10})$/;
@@ -396,7 +405,7 @@ function validateBodyFatForm(){
 	
 	var error = "";
 	var up_icon = '<span class="glyphicon glyphicon-hand-up"></span>';
-	$("#bodyfat-firstname , #bodyfat-lastname , #bodyfat-mobile, #bodyfat-email , #txt_weight , #txt_waist , #txt_hip").removeClass('validation-error');
+	$("#bodyfat-firstname , #bodyfat-lastname ,#body-fat-dob, #bodyfat-mobile, #bodyfat-email , #txt_weight , #txt_waist_navel, #txt_waist , #txt_hip").removeClass('validation-error');
 	$("#bodyfat-error").html(error);
 	
 	if(firstname==""){
@@ -408,6 +417,12 @@ function validateBodyFatForm(){
 	if(lastname==""){
 		error = up_icon+" Last Name is required";
 		$("#bodyfat-lastname").addClass('validation-error');
+		$("#bodyfat-error").html(error);
+		return false;
+	}
+	if(dob==""){
+		error = up_icon+" DOB is required";
+		$("#body-fat-dob").addClass('validation-error');
 		$("#bodyfat-error").html(error);
 		return false;
 	}
@@ -443,6 +458,19 @@ function validateBodyFatForm(){
 		$("#bodyfat-error").html(error);
 		return false;
 	}
+	if(waist_navel==""){
+		error = up_icon+" Enter waist navel size";
+		$("#txt_waist_navel").addClass('validation-error');
+		$("#bodyfat-error").html(error);
+		return false;
+	}
+	if(waist_navel<=0){
+		error = up_icon+" Enter your real waist navel size";
+		$("#txt_waist_navel").addClass('validation-error');
+		$("#bodyfat-error").html(error);
+		return false;
+	}
+	
 	if(waist==""){
 		error = up_icon+" Enter waist size";
 		$("#txt_waist").addClass('validation-error');
@@ -455,6 +483,7 @@ function validateBodyFatForm(){
 		$("#bodyfat-error").html(error);
 		return false;
 	}
+	
 	if(hip==""){
 		error = up_icon+" Enter hip size";
 		$("#txt_hip").addClass('validation-error');

@@ -5,6 +5,9 @@ $(document).ready(function () {
         var mobile = $("#member").val() || "";
         var pwd = $("#pwd").val() || "";
 
+		$(".memeberlogin").css("display","none");
+		$(".verifying-account").css("display","block");
+		
         $.ajax({
             type: "POST",
             url: basepath + 'memberlogin/login',
@@ -13,11 +16,15 @@ $(document).ready(function () {
             data: {mobile: mobile, pwd: pwd},
             success: function (result) {
                 if (result.msg_code == 0) {
-
+					$(".memeberlogin").css("display","block");
+					$(".verifying-account").css("display","none");
                     $("#msgdiv").show();
                     $("#msgText").html(result.msg_data);
+					
 
                 } else if(result.msg_code == 3) {
+					$(".memeberlogin").css("display","block");
+					$(".verifying-account").css("display","none");
                     $("#msgdiv").show();
                     $("#msgText").html(result.msg_data);
                 }else if(result.msg_code == 1){

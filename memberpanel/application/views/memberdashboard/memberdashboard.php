@@ -5,9 +5,25 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Welcome <small><?php echo  $CUS_NAME; ?></small>
+						<div class="profile-pic">
+							<div style="">
+								<?php 
+									if($bodycontent['profile_img']['profile_image']==""){
+									if($bodycontent['profile_img']['gender']=="M"){
+									?>
+										<img src="<?php echo base_url();?>application/assets/images/Profilepicture/male_icon.png" />
+									<?php }if($bodycontent['profile_img']['gender']=="F"){?>
+										<img src="<?php echo base_url();?>application/assets/images/Profilepicture/femaleicon.png" />
+									<?php }} else{ ?>
+										<img src="<?php echo base_url();?>application/assets/images/Profilepicture/<?php echo $bodycontent['profile_img']['profile_image']; ?>" />
+								<?php } ?>
+								
+							</div>
+						</div>
+						<h1 class="page-header" style="margin: 10px;font-size:24px;color:#E95B2E;">
+                            Welcome <?php echo  $CUS_NAME; ?>
                         </h1>
+						
                         <ol class="breadcrumb">
                             <li class="active">
                                 <i class="fa fa-dashboard"></i> Dashboard
@@ -32,18 +48,19 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
+								<!--
                                     <div class="col-xs-3">
                                         <i class="fa fa-money fa-5x"></i>
-                                    </div>
+                                    </div> -->
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo($bodycontent["cashbackdata"]["total_point"]); ?></div>
-                                        <div>Cashback point !</div>
+                                        <div class="huge"><?php echo number_format($bodycontent["cashbackdata"]["cash_back_amt"],2); ?></div>
+                                        <div>Cashback Amount !</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="javascript:;">
                                 <div class="panel-footer dashboard-cashback-block-footer">
-									<?php if($bodycontent["cashbackdata"]["total_point"]>0){?>
+									<?php if($bodycontent["cashbackdata"]["cash_back_amt"]>0){?>
 									
                                     <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/applycashback">Apply Cash Back</a></span>
 									
@@ -107,8 +124,16 @@
                                         <i class="fa fa-star fa-5x"></i> 
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo($bodycontent["havdata"]["hav_total_percent"]); ?></div>
-                                        <div>HAV (<?php echo($bodycontent["havdata"]["month"]); ?>) <?php echo $bodycontent["havdata"]["year"]; ?></div>
+										<?php if($bodycontent["havdata"]){?>
+											 <div class="huge">
+												<?php echo($bodycontent["havdata"]["hav_total_percent"]); ?>
+											 </div>
+											<div>HAV (<?php echo($bodycontent["havdata"]["month"]); ?> - <?php echo($bodycontent["havdata"]["year"]); ?> )</div>
+										<?php }else{?>
+											<div class="huge">-</div>
+											<div>HAV</div>
+										<?php } ?>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -138,67 +163,9 @@
                 </div>
                 <!-- /.row -->
 
+				<!--
                 <div class="row">
-                   <!-- <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                                <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    <!--<div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">just now</span>
-                                        <i class="fa fa-fw fa-calendar"></i> Calendar updated
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">4 minutes ago</span>
-                                        <i class="fa fa-fw fa-comment"></i> Commented on a post
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">23 minutes ago</span>
-                                        <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">46 minutes ago</span>
-                                        <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has been added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">2 hours ago</span>
-                                        <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">yesterday</span>
-                                        <i class="fa fa-fw fa-globe"></i> Saved the world
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">two days ago</span>
-                                        <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
-                                    </a>
-                                </div>
-                                <div class="text-right">
-                                    <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
+         
                      <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -206,6 +173,8 @@
                                 <h3 class="panel-title"><i class="fa fa-history fa-fw"></i> Package history</h3>
                             </div>
                             <div class="panel-body">
+							
+							<h3>Current Package</h3>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead style="background:#2BB161;color:#FFF;">
@@ -215,7 +184,7 @@
                                                 <th>Package</th>
                                                 <th>Start Date</th>
                                                 <th>Valid upto</th>
-                                                <th>Amount(Inr)</th>-->
+                                                <th>Amount(Inr)</th>--
 												<th>Membership No</th>
 												<th>Name</th>
 												<th>Validity</th>
@@ -249,7 +218,7 @@
                                             }
                                          }
                                          ?> 
-										 -->
+										 --
 										 
 										 <?php // $count_size = ($bodycontent["activePackages"]['paymentInfo']); 
 												foreach($bodycontent["activePackages"] as $packageActive)
@@ -270,7 +239,7 @@
 													<a href="javascript:void(0);" data-toggle="modal" data-membership="<?php echo base64_encode($packageActive['membership_no']);?>" data-validity="<?php echo $validity; ?>" data-target="#paymentInfo" class="paymentInfo"> <span class="glyphicon glyphicon-info-sign" style="font-size: 16px;"></span></a> 
 													
 													</td>
-													<td><span style="color:#068D46;font-weight:700;text-decoration:underline;">ACTIVE</span></td>
+													<td><span style="color:#068D46;font-weight:700;">ACTIVE</span></td>
 												</tr>		 
 														 
 														 
@@ -282,16 +251,163 @@
                                         </tbody>
                                     </table>
                                 </div>
+								
+								<h3>Advanced Booked Package</h3>
+								<div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead style="background:#2BB161;color:#FFF;">
+                                            <tr>
+												<th>Membership No</th>
+												<th>Name</th>
+												<th>Validity</th>
+												<th>Package</th>
+												<th>Package Rate</th>
+												<th>Due</th>
+												<th>Info</th>
+												<th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+									
+										<?php foreach($bodycontent['advancePackage'] as $advancePack){
+											   $validity = base64_encode($advancePack['validity_string']);
+										?>
+											<tr>
+												<td><?php echo $advancePack['membership_no']; ?></td>
+												<td><?php echo $advancePack['cus_name']; ?></td>
+												<td><?php echo $advancePack['validity_string']; ?></td>
+												<td><?php echo $advancePack['card_desc']; ?></td>
+												<td><?php echo $advancePack['subscription']; ?></td>
+												<td><?php echo $advancePack['due_amount']; ?></td>
+												<td>
+													<a href="javascript:void(0);" data-toggle="modal" data-membership="<?php echo base64_encode($advancePack['membership_no']);?>" data-validity="<?php echo $validity; ?>" data-target="#paymentInfo" class="paymentInfo"> <span class="glyphicon glyphicon-info-sign" style="font-size: 16px;"></span></a> 
+													
+												</td>
+												<td>BOOKED</td>
+											</tr>
+										<?php }?>
+
+										 
+                                        </tbody>
+                                    </table>
+                                </div>
+								
                                 <div class="text-right">
                                     <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                    </div> <!--transaction table-->
+                    </div> <!--transaction table-
                      </div>
                 </div>
-                <!-- /.row -->
+                 /.row -->
+					
+					
+				<!---- Package History ---->
+				
+				<div class="package-history">
+					<h3 class="pack-hist-title"><i class="fa fa-history fa-fw"></i> Package History</h3>
+					<div class="current-package">
+						<h4>Current Package</h4>
+						 <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead style="background:#2BB161;color:#FFF;">
+                                            <tr>
+											   
+												<th>Membership No</th>
+												<th>Name</th>
+												<th>Validity</th>
+												<th>Package</th>
+												<th>Package Rate</th>
+												<th>Due</th>
+												<th>Info</th>
+												<th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+										<?php // $count_size = ($bodycontent["activePackages"]['paymentInfo']); 
+												foreach($bodycontent["activePackages"] as $packageActive)
+												{
+													 $count = sizeof($packageActive['paymentInfo']);
+												     if($count>0)
+													 { 
+												      $validity = base64_encode($packageActive['paymentInfo']['validity_string']);
+												    ?>
+												<tr style="background:#BDDDB9;font-weight:700;">
+													<td><?php echo $packageActive['membership_no']; ?></td>
+													<td><?php echo $packageActive['cus_name']; ?></td>
+													<td><?php echo date('d-m-Y',strtotime($packageActive['paymentInfo']['from_dt']))." To ". date('d-m-Y',strtotime($packageActive['paymentInfo']['validupto_dt'])) ; ?></td>
+													<td><?php echo $packageActive['card_desc']; ?></td>
+													<td align="right"><?php echo $packageActive['paymentInfo']['subscription']; ?></td>
+													<td align="right"><?php echo number_format($packageActive['paymentInfo']['due_amount'],2); ?></td>
+													<td>
+													<a href="javascript:void(0);" data-toggle="modal" data-membership="<?php echo base64_encode($packageActive['membership_no']);?>" data-validity="<?php echo $validity; ?>" data-target="#paymentInfo" class="paymentInfo"> <span class="glyphicon glyphicon-info-sign" style="font-size: 16px;"></span></a> 
+													
+													</td>
+													<td><span style="color:#068D46;font-weight:700;">ACTIVE</span></td>
+												</tr>		 
+														 
+														 
+										<?php		 }
+												}
+										 ?>
 
+										 
+                                        </tbody>
+                                    </table>
+                                </div>
+					</div><!----- Current Package-->
+					<?php
+						
+					if($bodycontent['advancePackage']){?>
+					<div class="advance-package">
+						<h4>Advance Booked Package</h4>
+						<div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead style="background:#2BB161;color:#FFF;">
+                                            <tr>
+												<th>Membership No</th>
+												<th>Name</th>
+												<th>Validity</th>
+												<th>Package</th>
+												<th>Package Rate</th>
+												<th>Due</th>
+												<th>Info</th>
+												<th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+									
+										<?php foreach($bodycontent['advancePackage'] as $advancePack){
+											   $validity = base64_encode($advancePack['validity_string']);
+										?>
+											<tr>
+												<td><?php echo $advancePack['membership_no']; ?></td>
+												<td><?php echo $advancePack['cus_name']; ?></td>
+												<td><?php echo $advancePack['validity_string']; ?></td>
+												<td><?php echo $advancePack['card_desc']; ?></td>
+												<td align="right"><?php echo $advancePack['subscription']; ?></td>
+												<td align="right"><?php echo number_format($advancePack['due_amount'],2); ?></td>
+												<td>
+													<a href="javascript:void(0);" data-toggle="modal" data-membership="<?php echo base64_encode($advancePack['membership_no']);?>" data-validity="<?php echo $validity; ?>" data-target="#paymentInfo" class="paymentInfo"> <span class="glyphicon glyphicon-info-sign" style="font-size: 16px;"></span></a> 
+													
+												</td>
+												<td>BOOKED</td>
+											</tr>
+										<?php }?>
+
+										 
+                                        </tbody>
+                                    </table>
+                                </div>
+					</div>
+					<?php } else{echo "";}?>
+					
+					
+				</div>
+					
+					
+					
             </div>
             <!-- /.container-fluid -->
 

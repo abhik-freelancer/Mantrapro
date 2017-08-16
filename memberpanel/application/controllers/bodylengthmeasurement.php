@@ -11,7 +11,7 @@
  *
  * @author pc1
  */
-class anthropometry extends CI_Controller{
+class bodylengthmeasurement extends CI_Controller{
     //put your code here
     
      public function __construct() {
@@ -27,11 +27,14 @@ class anthropometry extends CI_Controller{
             $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
             $membershipno = $this->profilemodel->getMembershipNumber($customerId);
             $validity = $this->profilemodel->getValidityString($membershipno);
-            $page = 'healthandfitness/anthropometry';
+            $page = 'healthandfitness/body-length-measurement-view';
             $header = "";
             $headercontent="";
-            $result["bodyfatpercentage"]=$this->healthandfitnessmodel->getBodyfatpercentage($membershipno,$validity["VALIDITY_STRING"]);;
-            createbody_method($result, $page, $header, $session, $headercontent); 
+			
+			/******************RESULT FOR BODY LENGTH MEASUREMENT****************/
+			$result["bodyLengthMeasurement"]=$this->healthandfitnessmodel->getBodyLength($membershipno,$validity["VALIDITY_STRING"]);
+			 
+			createbody_method($result, $page, $header, $session, $headercontent); 
          }else{
               redirect('memberlogin', 'refresh');
          }

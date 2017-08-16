@@ -32,9 +32,12 @@ class body_calculator extends CI_Controller {
 	$firstname = trim($this->input->post('bodyfat-firstname'));
 	$lastname = trim($this->input->post('bodyfat-lastname'));
 	$gender = trim($this->input->post('bodyfat-gender'));
+	$dob = trim($this->input->post('body-fat-dob'));
+	$age = trim($this->input->post('body-fat-age'));
 	$mobile = trim($this->input->post('bodyfat-mobile'));
 	$email = trim($this->input->post('bodyfat-email'));
 	$weight = trim($this->input->post('txt_weight'));
+	$waist_navel = trim($this->input->post('txt_waist_navel'));
 	$waist = trim($this->input->post('txt_waist'));
 	$hip = trim($this->input->post('txt_hip'));
 	$sex = "";
@@ -49,9 +52,10 @@ class body_calculator extends CI_Controller {
 	if($validation_err){
 		$email_validate = $this->validateEmail($email);
 		if($email_validate){
-		$bodyfatpercentage = $this->bodycalculatormodel->getBodyFatPercentage($weight,$waist,$hip,$gender);	
+		$bodyfatpercentage = $this->bodycalculatormodel->getBodyFatPercentage($weight,$waist_navel,$waist,$hip,$gender,$age);	
 		
 		$fat_percent = $bodyfatpercentage['bodyFatPercentage'];
+		$fat_remarks = $bodyfatpercentage['bodyFatRemarks'];
 		$fat_mass = $bodyfatpercentage['bodyFatMass'];
 		$lean_body_mass = $bodyfatpercentage['bodyLeanMass'];
 		$waist_hp_ratio = $bodyfatpercentage['waisthipRatio'];
@@ -60,7 +64,7 @@ class body_calculator extends CI_Controller {
 		$waist_hp_point = $bodyfatpercentage['waistHipRatioValue'];
 		$waist_hip_rmk = $bodyfatpercentage['waistHipRatioAssessment'];
 		
-		$sms_message = "Dear ".$firstname.", \nYour Fat % is ".$fat_percent." which is ".$waist_circum_rmk.".\nYour waist hip ratio is ".$waist_hp_ratio." which is in ".$waist_hip_rmk." zone. \n ----- Team Mantra";
+		$sms_message = "Dear ".$firstname.", \nYour Fat % is ".$fat_percent." which is ".$fat_remarks.".\nYour waist hip ratio is ".$waist_hp_ratio." which is in ".$waist_hip_rmk." zone. \n ----- Team Mantra";
 
 		
 		$outsidebodyfat = array(
@@ -68,10 +72,12 @@ class body_calculator extends CI_Controller {
 			"first_name" => $firstname,
 			"last_name" => $lastname,
 			"gender" => $sex,
+			"dob" => $dob,
 			"mobile_no" => $mobile,
 			"email" => $email,
 			"location" => $venue, 
 			"weight" => $weight,
+			"waist_navel" => $waist_navel,
 			"waist_size" => $waist,
 			"hip_size" => $hip,
 			"fat_percent" => $fat_percent,
@@ -82,6 +88,7 @@ class body_calculator extends CI_Controller {
 			"waist_hp_ratio" => $waist_hp_ratio,
 			"waist_hp_point" => $waist_hp_point,
 			"waist_hip_rmk" => $waist_hip_rmk,
+			//"is_sms_sent" => "N"
 			"is_sms_sent" => $this->sendSMS($mobile,$sms_message)
 			
 		);

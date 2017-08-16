@@ -94,6 +94,12 @@
 					</select>
 				  </div>
 				  
+				<div class="form-group">
+					<label for="situp-test-dob">DOB</label>
+					<input type="text" class="form-control" id="body-fat-dob" name="body-fat-dob" placeholder="dd-mm-yyyy  Ex: 01-05-1990" autocomplete="off" onKeyUp="numericFilter(this);" readonly >
+					<input type="hidden" class="form-control" id="body-fat-age" name="body-fat-age" autocomplete="off" onKeyUp="numericFilter(this);" >
+				</div>
+				 
 				  <div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
@@ -109,15 +115,19 @@
 					</div>
 				  </div>
 				  <div class="form-group">
-					<label for="weight">Weight(in Kgs) <span style="font-size:16px;font-weight:bold;">*</span></label>
+					<label for="weight">Weight (in Kgs) <span style="font-size:16px;font-weight:bold;">*</span></label>
 					<input type="text" class="form-control" id="txt_weight" name="txt_weight" placeholder="" onKeyUp="numericFilter(this);" autocomplete="off">
 				  </div>
 				  <div class="form-group">
-					<label for="waist">Waist(in Inches) <span style="font-size:16px;font-weight:bold;">*</span></label>
+					<label for="waist">Waist (Navel - in Inches) <span style="font-size:16px;font-weight:bold;">*</span></label>
+					<input type="text" class="form-control" id="txt_waist_navel" name="txt_waist_navel" placeholder="" onKeyUp="numericFilter(this);" autocomplete="off">
+				  </div>
+				   <div class="form-group">
+					<label for="waist">Waist (in Inches) <span style="font-size:16px;font-weight:bold;">*</span></label>
 					<input type="text" class="form-control" id="txt_waist" name="txt_waist" placeholder="" onKeyUp="numericFilter(this);" autocomplete="off">
 				  </div>
 				  <div class="form-group">
-					<label for="hip">Hip(in Inches) <span style="font-size:16px;font-weight:bold;">*</span></label>
+					<label for="hip">Hip (in Inches) <span style="font-size:16px;font-weight:bold;">*</span></label>
 					<input type="text" class="form-control" id="txt_hip" name="txt_hip" placeholder="" onKeyUp="numericFilter(this);" autocomplete="off">
 				  </div>
 					<button type="submit" class="btn cutome-link-btn"> <span class="glyphicon glyphicon-chevron-left"></span>  Calculate

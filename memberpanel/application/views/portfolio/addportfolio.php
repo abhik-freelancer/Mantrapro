@@ -69,10 +69,18 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
+                                <label class="control-label" for="Waist">Waist (Navel - in Inches)*</label>
+								<input type="text" class="form-control decimal custome-input" id="waist-navel" name="waist-navel" placeholder="Enter waist navel size">
+                            </div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
                                 <label class="control-label" for="Waist">Waist (in Inches)*</label>
 								<input type="text" class="form-control decimal custome-input" id="Waist" name="waist" placeholder="Enter waist">
                             </div>
 						</div>
+						
 						<div class="col-md-6">
 							 <div class="form-group">
                                 <label class="control-label" for="hip">Hip (in Inches)*</label>

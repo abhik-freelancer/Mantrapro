@@ -1,3 +1,8 @@
+$(window).load(function(){
+	var basepath = $("#basepath").val();
+	getFamilyName(basepath);
+});
+
 $(document).ready(function(){
 	var basepath = $("#basepath").val();
 	
@@ -89,65 +94,7 @@ $(document).ready(function(){
 	
 	
 	$("#membr-relatinship").on("change",function(){
-		var relationid = $(this).val();
-		var relation= $("#membr-relatinship option:selected").text();
-		$("#relation_text").val(relation);
-		if(relation=="Self"){
-			
-			var notext = "";
-			var optionVal = "";
-				optionVal+='<select id="membr-family-name" name="membr-family-name" class="searchabledropdown form-control" data-show-subtext="true" data-live-search="true">';
-				optionVal+='<option vlaue="">Member Self</option>'
-				optionVal+='</select>';
-			$("#memFamilyName").html(optionVal);
-			$('.searchabledropdown').selectpicker();
-			$('#membr-family-name').prop('disabled', 'disabled');
-			 $("#memFamilyName .searchabledropdown .btn").css({
-				 "background":"#E0E0E0",
-				"cursor":"not-allowed"
-			 });
-		}
-		else{
-			var textname = "Name";
-			$("label[for=membr-family-name]").text(textname);
-			$('#membr-family-name').prop('disabled', false);
-			$("#memFamilyName .searchabledropdown .btn").css({});
-			 
-			 
-			 
-			$.ajax({
-				type: "POST",
-				url: basepath + 'memberfamily/getMemberFamily',
-				dataType: "html",
-				//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				data:{relationid:relationid},
-				success:function(result){
-					$("#memFamilyName").html(result);
-					$('.searchabledropdown').selectpicker();
-				},
-				error: function (jqXHR, exception) {
-					var msg = '';
-					if (jqXHR.status === 0) {
-						msg = 'Not connect.\n Verify Network.';
-					} else if (jqXHR.status == 404) {
-						msg = 'Requested page not found. [404]';
-					} else if (jqXHR.status == 500) {
-						msg = 'Internal Server Error [500].';
-					} else if (exception === 'parsererror') {
-						msg = 'Requested JSON parse failed.';
-					} else if (exception === 'timeout') {
-						msg = 'Time out error.';
-					} else if (exception === 'abort') {
-						msg = 'Ajax request aborted.';
-					} else {
-						msg = 'Uncaught Error.\n' + jqXHR.responseText;
-					}
-					alert(msg);  
-				}
-			});
-			
-			
-		}
+		getFamilyName(basepath);
 	});  
 	
 	
@@ -354,6 +301,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		//validateBloodTest();
 		if(validateBloodTest()){
+			
 		$.ajax({
 				type: "POST",
 				url: basepath + 'memberfamily/saveBloodTest',
@@ -398,7 +346,9 @@ $(document).ready(function(){
 					//alert(msg);  
 				}
 			});
-			}else{
+			}
+			else{
+				alert("dasd");
 				return false;
 			}
 			
@@ -481,13 +431,75 @@ $(document).ready(function(){
 	
 	
 	
-	
-	
-	
-	
-	
 });
 
+
+
+
+function getFamilyName(basepath)
+{
+		//var relationid = $(this).val();
+		var relationid = $("#membr-relatinship").val();
+		//alert(relationid);
+		var relation= $("#membr-relatinship option:selected").text();
+		$("#relation_text").val(relation);
+		if(relation=="Self"){
+			
+			var notext = "";
+			var optionVal = "";
+				optionVal+='<select id="membr-family-name" name="membr-family-name" class="searchabledropdown form-control" data-show-subtext="true" data-live-search="true">';
+				optionVal+='<option vlaue="">Member Self</option>'
+				optionVal+='</select>';
+			$("#memFamilyName").html(optionVal);
+			$('.searchabledropdown').selectpicker();
+			$('#membr-family-name').prop('disabled', 'disabled');
+			 $("#memFamilyName .searchabledropdown .btn").css({
+				 "background":"#E0E0E0",
+				"cursor":"not-allowed"
+			 });
+		}
+		else{
+			var textname = "Name";
+			$("label[for=membr-family-name]").text(textname);
+			$('#membr-family-name').prop('disabled', false);
+			$("#memFamilyName .searchabledropdown .btn").css({});
+			 
+			 
+			 
+			$.ajax({
+				type: "POST",
+				url: basepath + 'memberfamily/getMemberFamily',
+				dataType: "html",
+				//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data:{relationid:relationid},
+				success:function(result){
+					$("#memFamilyName").html(result);
+					$('.searchabledropdown').selectpicker();
+				},
+				error: function (jqXHR, exception) {
+					var msg = '';
+					if (jqXHR.status === 0) {
+						msg = 'Not connect.\n Verify Network.';
+					} else if (jqXHR.status == 404) {
+						msg = 'Requested page not found. [404]';
+					} else if (jqXHR.status == 500) {
+						msg = 'Internal Server Error [500].';
+					} else if (exception === 'parsererror') {
+						msg = 'Requested JSON parse failed.';
+					} else if (exception === 'timeout') {
+						msg = 'Time out error.';
+					} else if (exception === 'abort') {
+						msg = 'Ajax request aborted.';
+					} else {
+						msg = 'Uncaught Error.\n' + jqXHR.responseText;
+					}
+					alert(msg);  
+				}
+			});
+			
+			
+		}
+}
 
 
 
@@ -605,6 +617,8 @@ function validateBloodPressure(){
 		var reading = $("#reading").val();
 		var collectiondate = $("#bld-test-col-date").val();
 		
+		
+		
 		var error = "";
 		var up_icon = '<span class="glyphicon glyphicon-hand-up"></span>';
 		$("#membr-relatinship , #membr-family-name , #blood-test , #blood-test-unit , #reading , #bld-test-col-date").removeClass('validation-error');
@@ -618,6 +632,7 @@ function validateBloodPressure(){
 				$("#bldtest-err").html(error);
 				return false;
 			}
+			
 			if(relationText!="Self"){
 				if(familynameId=="0"){ 
 					error = up_icon+" Please select family name";
@@ -650,7 +665,8 @@ function validateBloodPressure(){
 				$("#bldtest-err").html(error);
 				return false;
 			}
-			return false;
+			
+			return true;
 			
 			
 			

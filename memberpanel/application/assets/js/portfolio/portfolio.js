@@ -22,7 +22,10 @@ $(document).ready(function () {
     $("#weight").blur(function () {
         getBodyfatPercentage();
     });
-    $("#Waist").blur(function () {
+    $("#waist-navel").blur(function () {
+        getBodyfatPercentage();
+    });
+	$("#Waist").blur(function () {
         getBodyfatPercentage();
     });
     $("#hip").blur(function () {
@@ -218,6 +221,7 @@ function getBodyfatPercentage() {
     //console.log("here i am");
     var basepath = $("#basepath").val();
     var weight = $("#weight").val() || "";
+    var waist_navel = $("#waist-navel").val() || "";
     var waist = $("#Waist").val() || "";
     var hip = $("#hip").val() || "";
     var bodyfat = "";
@@ -228,7 +232,7 @@ function getBodyfatPercentage() {
             url: basepath + 'portfolio/getBodyFatPercentage',
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data: {weight: weight, waist: waist, hip: hip},
+            data: {weight: weight, waist: waist,waist_navel:waist_navel, hip: hip},
             success: function (result) {
                 if (result.msg_code == 1) {
                     $("#bodyfat").val(result.msg_data.bodyFatPercentage);
@@ -279,12 +283,16 @@ function getBodyfatPercentage() {
 
 function bfvalidate() {
     var weight = $("#weight").val() || "";
+    var waist_navel = $("#waist-navel").val() || "";
     var waist = $("#Waist").val() || "";
     var hip = $("#hip").val() || "";
     if (weight == "") {
         return false;
     }
-    if (waist == "") {
+    if (waist_navel == "") {
+        return false;
+    }
+	if (waist == "") {
         return false;
     }
     if (hip == "") {

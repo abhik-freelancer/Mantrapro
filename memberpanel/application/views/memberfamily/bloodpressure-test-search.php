@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="header-panel-info">
-					<a href="<?php echo base_url();?>memberfamily/addbloodpressure" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Blood Pressure</a>
+					<a href="<?php echo base_url();?>memberfamily/addbloodpressure/F" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Blood Pressure</a>
 				</div>
 			</div>
 		</div>

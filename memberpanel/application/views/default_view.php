@@ -46,6 +46,7 @@
 	
 	<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />-->
 	<link href="<?php echo base_url(); ?>application/assets/css/bootstrapselect.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>application/assets/css/jquery.bxslider.css" rel="stylesheet" />
 	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -206,28 +207,46 @@
 						</li>
 						
 						<li>
-							<a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Health & Fitness <span class=" glyphicon glyphicon-menu-down" ></span></a>
+							<a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Hexagonal Facilities <span class=" glyphicon glyphicon-menu-down" ></span></a>
 							<ul class="collapse nav nav-second-level">
+								<li><a href="<?php echo(base_url());?>healthandfitness/generalmedicalassesment"><i class="fa fa-angle-double-right" aria-hidden="true"></i> General Medical Assessment</a></li>
 								<li>
-									<a href="javascript:void(0);" data-toggle="collapse" > General Fitness Assessment <span class="glyphicon glyphicon-menu-down"></span></a>
+									<a href="javascript:void(0);" data-toggle="collapse" ><i class="fa fa-angle-double-right" aria-hidden="true"></i> General Fitness Assessment <span class="glyphicon glyphicon-menu-down"></span></a>
 									<ul id="generalfitness" class="collapse nav nav-third-level">
-										<li><a href="<?php echo(base_url());?>healthandfitness/endurancetest">Endurance test</a></li>
-										<li><a href="<?php echo(base_url());?>healthandfitness/strengthtest">Strength test</a></li>
-										<li><a href="<?php echo(base_url());?>healthandfitness/flexibilitytest">Flexibility test</a></li>
+										<li><a href="<?php echo(base_url());?>healthandfitness/endurancetest"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Endurance test</a></li>
+										<li><a href="<?php echo(base_url());?>healthandfitness/strengthtest"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+ Strength test</a></li>
+										<li><a href="<?php echo(base_url());?>healthandfitness/flexibilitytest"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+ Flexibility test</a></li>
 									</ul>
 								
 								</li>
-								<li><a href="<?php echo(base_url());?>healthandfitness/generalmedicalassesment">General Medical Assessment</a></li>
-								<li><a href="<?php echo(base_url());?>Orthopaedicscreening">Orthopaedic Screening</a></li>
+								
+								
+								<li>
+									<a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Anthropometric Assessment <span class="glyphicon glyphicon-menu-down"></span></a>
+									<ul id="generalfitness" class="collapse nav nav-third-level">
+										<li><a href="<?php echo(base_url());?>bodyfatpercentage"> <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+ BodyFat%</a></li>
+										<li><a href="<?php echo(base_url());?>bodygrithmeasurement"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+ Body Girth Measurement</a></li>
+										<li><a href="<?php echo(base_url());?>bodylengthmeasurement"><i class="fa fa-hand-o-right" aria-hidden="true"></i>
+ Body Length Measurement</a></li>
+									</ul>
+								
+								</li>
+								
+								<li><a href="<?php echo(base_url());?>Orthopaedicscreening"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Biomechanical Screening</a></li>
 								
                                                                 
-<!--                                                                <li><a href="#">Archieves</a></li>
+								<!--<li><a href="#">Archieves</a></li>
 								<li><a href="#">Anthropometry</a></li>-->
-								<li><a href="<?php echo(base_url());?>healthandfitness/bloodtest">Blood Test</a></li>
+								<li><a href="<?php echo(base_url());?>healthandfitness/bloodtest"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blood Test</a></li>
+								<li><a href="javascript:;"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Archive Report</a></li>
 							</ul>
 						</li>
                     
-                    
+                    <!--
                     <li>
                          <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Portfolio <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
@@ -236,7 +255,60 @@
                             <li><a href="<?php echo base_url(); ?>portfolio/viewfolio">View folio</a></li>
                             
                         </ul>
-                    </li>
+                    </li> -->
+					
+					
+					<!--
+					<li>
+						<a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Other Report Archive <span class=" glyphicon glyphicon-menu-down" ></span></a>
+						<ul class="collapse nav nav-second-level">
+							<li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="" aria-hidden="true"></i> HAV Report</a></li>
+							<li>
+								<a href="javascript:void(0);" data-toggle="collapse" >Transformation Portfolio <span class="glyphicon glyphicon-menu-down"></span></a>
+								<ul  class="collapse nav nav-third-level">
+									<li><a href="<?php echo base_url(); ?>portfolio">Body Composition</a></li>
+									<li><a href="<?php echo base_url(); ?>portfolio/viewfolio">View Transformation</a></li>
+								</ul>
+							</li>
+							
+							<li>
+								<a href="javascript:void(0);" data-toggle="collapse" >Diet <span class="glyphicon glyphicon-menu-down"></span></a>
+								<ul class="collapse nav nav-third-level">
+									<li><a href="<?php echo base_url();?>dietary_management/diet_chart">Diet List</a></li>
+									<li><a href="<?php echo base_url();?>dietary_management">Dietary Management</a></li>
+									<li><a href="javascript:;">Nutrition Calculator</a></li>
+								</ul>
+							</li>
+							<li><a href="<?php echo base_url();?>applications"><i class="" aria-hidden="true"></i>Extension Applications</a></li>
+							<li><a href="<?php echo base_url();?>feedback"><i class="" aria-hidden="true"></i> Feedback</a></li>
+						
+						</ul>
+					</li>
+					--->
+					<li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Health Asset Value</a></li>
+					<li>
+						<a href="javascript:void(0);" data-toggle="collapse" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Transformation Portfolio <span class="glyphicon glyphicon-menu-down"></span></a>
+						<ul  class="collapse nav nav-third-level">
+							<li><a href="<?php echo base_url(); ?>portfolio"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Body Composition</a></li>
+							<li><a href="<?php echo base_url(); ?>portfolio/viewfolio"><i class="fa fa-angle-double-right" aria-hidden="true"></i> View Transformation</a></li>
+						</ul>
+					</li>
+					
+					<li>
+						<a href="javascript:void(0);" data-toggle="collapse" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Diet <span class="glyphicon glyphicon-menu-down"></span></a>
+						<ul class="collapse nav nav-third-level">
+							<li><a href="<?php echo base_url();?>dietary_management/diet_chart"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Diet List</a></li>
+							<li><a href="<?php echo base_url();?>dietary_management"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Dietary Management</a></li>
+							<li><a href="javascript:;"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Nutrition Calculator</a></li>
+						</ul>
+					</li>
+					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Application for Extension</a></li>
+					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Feedback</a></li>
+					<!------------------------------------------------------------>
+					
+					
+					
+					<!--
                     <li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Health Asset Value</a></li>
 					<li><a href="<?php echo base_url();?>feedback"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Feedback</a></li>
 					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Applications</a></li>
@@ -250,23 +322,23 @@
                             
                         </ul>
                     </li>
-					
+					-->
 					<!--
 					<li><a href="<?php echo base_url();?>dietary_management"><i class="fa fa-external-link-square"></i> Dietary Management</a></li> -->
 					
 					
-					<li><a href="#"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Other Reports</a></li>
+					
 					
 					<li>
-                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>  Member's Family <span class=" glyphicon glyphicon-menu-down" ></span>
+                         <a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>  Family Data Keeping <span class=" glyphicon glyphicon-menu-down" ></span>
                          </a>
                         <ul class="collapse nav nav-second-level">
-                            <li><a href="<?php echo base_url();?>memberfamily"><i class="fa fa-star" aria-hidden="true"></i> Family List</a></li>
+                            <li><a href="<?php echo base_url();?>memberfamily"><i class="fa fa-angle-double-right" aria-hidden="true"></i> My Family</a></li>
 							<li>
-								<a href="javascript:void(0);" data-toggle="collapse">Test Report <span class=" glyphicon glyphicon-menu-down" ></span></a>
+								<a href="javascript:void(0);" data-toggle="collapse"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Medical History<span class=" glyphicon glyphicon-menu-down" ></span></a>
 								<ul class="collapse nav nav-second-level"> 
-									<li><a href="<?php echo base_url();?>memberfamily/bloodpressurelist"><i class="fa fa-star" aria-hidden="true"></i> Blood Pressure</a></li>
-									<li><a href="<?php echo base_url();?>memberfamily/bloodtestlist"><i class="fa fa-star" aria-hidden="true"></i> Blood Test</a></li>
+									<li><a href="<?php echo base_url();?>memberfamily/bloodpressurelist"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Blood Pressure</a></li>
+									<li><a href="<?php echo base_url();?>memberfamily/bloodtestlist"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Blood Test</a></li>
 								</ul>
 							</li>
 							
@@ -323,6 +395,7 @@
 	 <script src="<?php echo base_url(); ?>application/assets/js/raphael.min.js"></script>
 	 <script src="<?php echo base_url(); ?>application/assets/js/morris.min.js"></script>
 	 <script src="<?php echo base_url(); ?>application/assets/js/sb-admin-2.js"></script>
+	 <script src="<?php echo base_url(); ?>application/assets/js/jquery.bxslider.js"></script>
          <!-- <script src="<?php echo base_url(); ?>application/assets/js/bootstrap-slider.js"></script>-->
 
     <script src="<?php echo base_url(); ?>application/assets/js/memberdashboard/memberdashboard.js"></script>
@@ -345,7 +418,18 @@
     <script src="<?php echo base_url(); ?>application/assets/js/sidebar-menu.js"></script>
     <script src="<?php echo base_url(); ?>application/assets/js/metisMenu.js"></script> -->
 	
-	
+	<script>
+		$(document).ready(function(){
+	  $('.slider1').bxSlider({
+			slideWidth: 1000,
+			minSlides: 1,
+			maxSlides: 1,
+			slideMargin: 10
+	  });
+	  
+	  $('.fatPerTransformation item:first').addClass('active');
+});
+	</script>
 
 </body>
 

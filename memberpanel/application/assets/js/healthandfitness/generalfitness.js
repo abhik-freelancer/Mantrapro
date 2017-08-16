@@ -121,7 +121,7 @@ $("#corestablity , #rhip,#lhip,#rankle,#lankle,#rknee,#lknee,#rmsl,#lmsl").dataT
 
 //rhip
 //bfpercentage
-$("#bfpercentage").dataTable({
+$("#bfpercentage,#bodygirthmeasurement").dataTable({
    "ordering": false ,
     language: {
         search: "_INPUT_",

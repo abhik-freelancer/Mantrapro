@@ -15,17 +15,18 @@ class healthassetvaluemodel extends CI_Model {
  
     public function getLatestHAVdata($membershipno,$validity){
         $havdata=array();
-        $sql = "SELECT 
-                `hav_master`.`id`,
-                `hav_master`.`hav_total_score`,
-                `hav_master`.`hav_total_percent`,
-                `hav_master`.`hav_total_max`,hav_master.`total_attendence`,
-                 hav_master.`month`,hav_master.`year`
-                FROM
-                `hav_master` WHERE `hav_master`.`id` =(
-                 SELECT 
-                    MAX(`hav_master`.`id`) FROM hav_master
-                 WHERE `hav_master`.`membership_no` ='".$membershipno."' AND `hav_master`.`validity_string` = '".$validity."' )";
+       $sql = "SELECT 
+				hav_master.id, 
+				hav_master.hav_total_score,
+				hav_master.hav_total_percent,
+				hav_master.hav_total_max, 
+				hav_master.total_attendence,
+				hav_master.month,
+				hav_master.year 
+				FROM hav_master 
+				WHERE hav_master.membership_no='".$membershipno."' AND hav_master.validity_string = '".$validity."' 
+				ORDER BY hav_master.id DESC LIMIT 1";
+				
         
         
         $query = $this->db->query($sql);

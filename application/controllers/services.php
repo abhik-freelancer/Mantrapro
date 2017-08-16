@@ -7,6 +7,7 @@ class services extends CI_Controller {
    parent::__construct();
     $this->load->model('homemodel','',TRUE);
     $this->load->model('servicemodel','',TRUE);
+    $this->load->model('gstmastermodel','',TRUE);
   }
 	
  public function index()
@@ -75,6 +76,27 @@ public function onlineregistration()
 	$result['cardDtl'] = $this->servicemodel->getCardDetailById($cardID,$branch);
 	$result['branch'] = $this->servicemodel->getBranchByCode($branch);
 	$result['finYrDtl'] = $this->servicemodel->getFinancialYear(); // getting financial year detail by current date
+	$result['cgstRateOpt'] = $this->gstmastermodel->getGSTRate('CGST'); // getting CGST Rate Options
+	$result['sgstRateOpt'] = $this->gstmastermodel->getGSTRate('SGST'); // getting CGST Rate Options
+	
+	
+	$cgstRate = $result['cgstRateOpt'][0]['rate']; // Need to change when rate is more than one 
+	$sgstRate = $result['sgstRateOpt'][0]['rate']; // Need to change when rate is more than one 
+
+
+	
+	$cgstAmt = $cgstRate*$result['cardDtl']['package_rate']/100;
+	$sgstAmt = $sgstRate*$result['cardDtl']['package_rate']/100;
+	$totalAmountPayble = $result['cardDtl']['package_rate']+$cgstAmt+$sgstAmt;
+	
+	$result['paymentInfo'] = array(
+		"cgstRate" => $cgstRate,
+		"sgstRate" => $sgstRate,
+		"cgstAmt" => $cgstAmt,
+		"sgstAmt" => $sgstAmt,
+		"totalGSTAmt" => $cgstAmt+$sgstAmt,
+		"totalPayableAmt" => $totalAmountPayble
+	);
 	
 	
 	
@@ -86,10 +108,10 @@ public function onlineregistration()
 public function proceedtopayment()
 {
 	
-//	$post = array();
+	//$post = array();
 	
 	// Personal Info
-	$name = trim($this->input->post('onlinereg-name'),TRUE);
+	$name = trim($this->input->post('onlinereg-name',TRUE));
 	$gender = $this->input->post('onlinereg-gender',TRUE);
 	$dob = trim($this->input->post('onlinereg-dob',TRUE));
 	$mobile = trim($this->input->post('onlinereg-mobile',TRUE));
@@ -110,7 +132,17 @@ public function proceedtopayment()
 	
 
 	$subscription = trim($this->input->post('subscription-amount',TRUE));
-	$servicetax = trim($this->input->post('service-tax-percent',TRUE));
+	
+	//$servicetax = trim($this->input->post('service-tax-percent',TRUE));
+	$servicetax = 0;
+	$cgstRate = $this->input->post('cgst-rate',TRUE);
+	$cgstAmt = trim($this->input->post('cgst-amount',TRUE));
+	
+	$sgstRate = $this->input->post('sgst-rate',TRUE);
+	$sgstAmt = trim($this->input->post('sgst-amount',TRUE));
+	
+	
+	
 	$netpayable = trim($this->input->post('net-payable-amt',TRUE));
 	
 	$cus_address = $address." ".$city;
@@ -118,7 +150,7 @@ public function proceedtopayment()
 	
 	/*$parameter_string = $name."*".$gender."*".$dob."*".$mobile."*".$email."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable."*".$cus_address."*".$zipcode;*/
 	
-	$parameter_string = $name."*".$gender."*".$dob."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable;
+	$parameter_string = $name."*".$gender."*".$dob."*".$branch_code."*".$package_code."*".$subscription."*".$servicetax."*".$netpayable."*".$cgstRate."*".$sgstRate;
 	
 	
 	
@@ -169,6 +201,7 @@ public function proceedtopayment()
 		"email" => $email,
 		"submitted" => $submitted
 	);
+	
 	
 	$page = 'onlinepayment/online-payment-process';
 	$this->load->view($page,$post);
@@ -237,7 +270,8 @@ public function paymentconfirmation()
 				$subscriptionAmt = $customerDtl[5];
 				$serviceTaxrate = $customerDtl[6];
 				$netPayableAmt = $customerDtl[7];
-				//$cus_address = $customerDtl[10];
+				$cgstRateId = $customerDtl[8];
+				$sgstRateId = $customerDtl[9];
 				//$zip_code = $customerDtl[11];
 				
 				$cus_mobile = $posts['customerPhone'];
@@ -264,6 +298,16 @@ public function paymentconfirmation()
 				$valid_upto = date('Y-m-d',strtotime('+'.$duration.' day',mktime(0,0,0,$opening_date[1],$opening_date[2],$opening_date[0])));
 				
 				$valid_string=$open_date." - ".$valid_upto;
+				
+				// CGST AMOUNT
+				
+				$rowCGSTRate = $this->gstmastermodel->GetGSTRateByIdAndType('CGST',$cgstRateId);
+				$rowSGSTRate = $this->gstmastermodel->GetGSTRateByIdAndType('SGST',$sgstRateId);
+				
+				$cgstAmount = 0;
+				$cgstAmount = $rowCGSTRate*$subscriptionAmt/100;
+				$sgstAmount = 0;
+				$sgstAmount = $rowSGSTRate*$subscriptionAmt/100;
 				
 				// Account Master
 				$account_master = array(
@@ -315,7 +359,11 @@ public function paymentconfirmation()
 					"AMOUNT" => $subscriptionAmt,
 					"MNTN_CHG" => 0,
 					"DUE_AMOUNT" => 0,
-					"SERVICE_TAX" => $serviceTaxrate,
+					"SERVICE_TAX" => NULL,
+					"CGST_RATE_ID" => $cgstRateId,
+					"CGST_AMT" => $cgstAmount,
+					"SGST_RATE_ID" => $sgstRateId,
+					"SGST_AMT" => $sgstAmount,
 					"TOTAL_AMOUNT" => $netPayableAmt,
 					"PAYMENT_DT" => date('Y-m-d'),
 					"FRESH_RENEWAL" => 'F',
@@ -438,8 +486,9 @@ private function generateMembershipNo($branch,$card,$srl)
 }
 
 // get aacouncode no
-private function generateAccountCode()
+/*private function generateAccountCode()
 {
+	/*
 	date_default_timezone_set('Asia/Kolkata');
 	$acc_code_prefix = "M-AAC";
 	$cuurent_time_stmp = date("dmYHis");
@@ -447,6 +496,37 @@ private function generateAccountCode()
 	$rand_no = rand(pow(10, $digits-1), pow(10, $digits)-1);
 	$acccoundCode = $acc_code_prefix."/".$cuurent_time_stmp."/".$rand_no;
 	return $acccoundCode;
+	
+}
+*/
+private function generateAccountCode(){
+	$padding = "";
+	$membercode = "";
+	$rowLasteSrl = $this->servicemodel->getLastSerialNoForMemCode();
+	
+	
+		$max_srl_no = $rowLasteSrl['maxSerialNo'];
+		$srl_tbl_id = $rowLasteSrl['tableID'];
+	
+	$new_serial = $max_srl_no+1;
+	$length = ceil(log10(abs($max_srl_no) + 1));
+	
+	if($length==1){ $padding="00000"; }
+	if($length==2){ $padding="0000"; }
+	if($length==3){ $padding="000"; }
+	if($length==4){ $padding="00"; }
+	if($length==5){ $padding="0"; }
+	if($length==6){ $padding=""; }
+	
+	
+	$membercode = 'M'.$padding.$new_serial;
+	$updArry = array(
+		"latest_srl" => $new_serial
+	);
+	$update = $this->servicemodel->updateSerialTable($updArry,$srl_tbl_id);
+	//echo $membercode;
+	return $membercode;
+	
 }
 
 

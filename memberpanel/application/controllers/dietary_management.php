@@ -167,7 +167,7 @@ class dietary_management extends CI_Controller{
 					"msg_data" => " All options and fields are requied",
 				);
 			}
-			
+			header("Access-Control-Allow-Origin: *");
 			header('Content-Type: application/json');
 			echo json_encode($response);
 			exit();

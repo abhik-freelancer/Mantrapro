@@ -20,7 +20,7 @@
 	
 	
 	<!------- Renewal Form ------>
-	
+
 		
 	<div class="container-fluid memberpanelFormContainer">
 		<div class="row renewalForm">
@@ -85,12 +85,59 @@
 						<input type="text" class="form-control" id="" name="" value="<?php echo $bodycontent['renewalamount']; ?>" readonly  />
 					</div>
 				</div>
+				
+				<!--
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="tax-percentage">Service Tax %</label>
 						<input type="text" class="form-control" id="" name="" value="<?php echo $bodycontent['taxpercentage']; ?>" readonly  />
 					</div>
+				</div>-->
+				
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="cgst-rate">CGST % Rate</label>
+							<select class="form-control" id="cgst-rate" name="cgst-rate" readonly>
+								<?php foreach($bodycontent['cgstRateOpt'] as $cgstRateOpt):?>
+								<option value="<?php echo $cgstRateOpt['gstID'] ?>" <?php if($cgstRateOpt['gstID']==1){echo "selected";}else{echo "";} ?>><?php echo $cgstRateOpt['rate']; ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+						<div class="col-md-6">
+								<label for="cgst-amount">CGST Amount</label>
+								<input type="text" class="form-control" id="cgst-amount" name="cgst-amount" value="<?php echo $bodycontent['cgstAmt'];?>" readonly />
+						</div>
+					</div>
 				</div>
+				
+
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="sgst-rate">SGST % Rate</label>
+								<select class="form-control" id="sgst-rate" name="sgst-rate"  readonly>
+									<?php foreach($bodycontent['sgstRateOpt'] as $sgstRateOpt):?>
+									<option value="<?php echo $sgstRateOpt['gstID'] ?>" <?php if($sgstRateOpt['gstID']==2){echo "selected";}else{echo "";} ?>><?php echo $sgstRateOpt['rate']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								
+								
+						</div>
+						<div class="col-md-6">
+							<label for="sgst-amount">SGST Amount</label>
+							<input type="text" class="form-control" id="sgst-amount" name="sgst-amount" value="<?php echo $bodycontent['sgstAmt'];?>" readonly />
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="tax-percentage">Total Taxable</label>
+						<input type="text" class="form-control" id="" name="" value="<?php echo $bodycontent['totalTaxableAmt']; ?>" readonly  />
+					</div>
+				</div>
+				
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="tax-percentage">Net Payable</label>

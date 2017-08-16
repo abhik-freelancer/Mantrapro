@@ -14,14 +14,23 @@
                 </ol>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-12">
+		
+		
+		<div class="row" >
+			<div class="col-md-12">
+				<div class="header-panel-info">
+					<a href="<?php echo base_url();?>memberfamily/addbloodtest/S" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Blood Test</a>
+				</div>
+			</div>
+		</div>
+		
+        <div class="row" style="margin-top:15px;">
+			<div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-medkit fa-fw"></i> Blood test</h3>
                     </div>
-                    <div class="panel-body">
+					<div class="panel-body">
                         <div class="col-lg-12"> <!--One Repeatation Max Test-->
                             <div class="panel panel-yellow">
                                 <div class="panel-heading">

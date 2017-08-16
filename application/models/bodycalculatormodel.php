@@ -21,7 +21,7 @@ class bodycalculatormodel extends CI_Model{
 		}
 	}
 	
-	public function getBodyFatPercentage($weight,$waist,$hip,$sex){
+	public function getBodyFatPercentage($weight,$navelwaist,$waist,$hip,$sex,$age){
         
         $healthStatus=array();
         $weight= $weight * 2.20462;
@@ -45,7 +45,9 @@ class bodycalculatormodel extends CI_Model{
             
             if($sex=="M"){
                 
-                $mBf = -98.42 + 4.15 * $waist - 0.082 * $weight;
+          //    $mBf = -98.42 + 4.15 * $waist - 0.082 * $weight;
+                $mBf = -98.42 + 4.15 * $navelwaist - 0.082 * $weight;
+				
                 //waist curcumference
                 if($waist >0 && $waist <31.5){
                     $waistCircumferenceValue=15;
@@ -70,7 +72,8 @@ class bodycalculatormodel extends CI_Model{
                 }
                 
             }else{ 
-                $mBf = (-76.76) + (4.15 * $waist) - (0.082 * $weight);
+        //      $mBf = (-76.76) + (4.15 * $waist) - (0.082 * $weight);
+                $mBf = (-76.76) + (4.15 * $navelwaist) - (0.082 * $weight);
                 //waist curcumference
                 if($waist >0 && $waist <28.5){
                     $waistCircumferenceValue=15;
@@ -110,6 +113,7 @@ class bodycalculatormodel extends CI_Model{
         }
         $healthStatus=array(
 			"bodyFatPercentage"=>$bodyFatPercentage,
+			"bodyFatRemarks"=>$this->getBodyFatRemarks($age,$sex,$bodyFatPercentage),
             "bodyFatMass"=>$bodyFatMass,
             "bodyLeanMass"=>$bodyLeanMass,
 			"waisthipRatio" => $waistHipRatio,
@@ -439,5 +443,383 @@ class bodycalculatormodel extends CI_Model{
 	
 	
 	
+	
+	/**
+	@BodyFatRemarks
+	@28.07.2017
+	@Mithilesh
+	*/
+	
+	public function getBodyFatRemarks($age,$gender,$body_fat_per)
+	{
+		if($age >= 18 && $age < 40)
+		{
+			if($gender=="M")
+			{
+				$body_remarks=$this->getFatM1("R",$body_fat_per);
+				//$body_score=getFatM1("P",$body_fat_per);
+			}
+			else
+			{
+				$body_remarks=$this->getFatF1("R",$body_fat_per);
+				//$body_score=getFatF1("P",$body_fat_per);
+			}
+		}
+		
+		if($age >= 40 && $age < 50)
+		{
+			if($gender=="M")
+			{
+				$body_remarks=$this->getFatM2("R",$body_fat_per);
+				//$body_score=getFatM2("P",$body_fat_per);
+			}
+			else
+			{
+				$body_remarks=$this->getFatF2("R",$body_fat_per);
+				//$body_score=getFatF2("P",$body_fat_per);
+			}
+		}
+		
+		if($age >= 50 && $age < 80)
+		{
+			if($gender=="M")
+			{
+				$body_remarks=$this->getFatM3("R",$body_fat_per);
+				//$body_score=getFatM3("P",$body_fat_per);
+			}
+			else
+			{
+				$body_remarks=$this->getFatF3("R",$body_fat_per);
+				//$body_score=getFatF3("P",$body_fat_per);
+			}
+		}
+		
+		return $body_remarks;
+	}
+	
+	
+
+// remarks and point for body composition
+	public function getFatM1($tag,$fat)
+	{
+		if($fat >= 0 && $fat < 5)
+		{
+			if($tag=="R")
+			{
+				return "Extremely  under fat";
+			}
+		}
+		if($fat >= 5 && $fat < 8)
+		{
+			if($tag=="R")
+			{
+				return "Under fat ";
+			}
+			
+		}
+		if($fat >= 8 && $fat < 20)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		
+		if($fat >= 20 && $fat < 24)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 1";
+			}
+		}	
+		
+		if($fat >= 24 && $fat < 28)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 2";
+			}
+		}
+						
+		if($fat >= 28)
+		{
+			if($tag=="R")
+			{
+				return "Extremely Obese";
+			}
+		}
+						
+	}
+
+
+
+	public function getFatF1($tag,$fat)
+	{
+		if($fat >= 0 && $fat < 14)
+		{
+			if($tag=="R")
+			{
+				return "Extremely  under fat";
+			}
+		}
+		if($fat >= 14 && $fat < 21)
+		{
+			if($tag=="R")
+			{
+				return "Under fat ";
+			}
+		}
+		
+		if($fat >= 21 && $fat < 33)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		if($fat >= 33 && $fat < 37)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 1";
+			}
+			
+		}
+		if($fat >= 37 && $fat < 40)
+		{
+			if($tag=="R")
+			{
+				return "Obese";
+			}
+			
+		}	
+		if($fat >= 41)
+		{
+			if($tag=="R")
+			{
+				return "Extremely Obese";
+			}
+			
+		}
+	}
+
+
+	public function getFatM2($tag,$fat)
+	{
+		if($fat >= 0 && $fat < 5)
+		{
+			if($tag=="R")
+			{
+				return "Extremely  under fat";
+			}
+		}
+		
+		if($fat >= 5 && $fat < 11)
+		{
+			if($tag=="R")
+			{
+				return "Under fat ";
+			}
+			
+		}
+		if($fat >= 11 && $fat < 22)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+		}
+		if($fat >= 22 && $fat < 26)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 1";
+			}
+		}
+		if($fat >= 26 && $fat < 32)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 2";
+			}
+		}
+		if($fat >= 32)
+		{
+			if($tag=="R")
+			{
+				return "Extremely obese";
+			}
+		}
+	}
+
+
+
+
+
+	public function getFatF2($tag,$fat)
+	{
+		if($fat >= 0 && $fat < 14)
+		{
+			if($tag=="R")
+			{
+				return "Extremely  under fat";
+			}
+			
+		}
+		if($fat >= 14 && $fat < 23)
+		{
+			if($tag=="R")
+			{
+				return "Under fat ";
+			}
+			
+		}
+		if($fat >= 23 && $fat < 34)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		if($fat >= 34 && $fat < 39)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 1";
+			}
+			
+		}
+		if($fat >= 39 && $fat < 41)
+		{
+			if($tag=="R")
+			{
+				return "Obese Stage 2";
+			}
+			
+		}
+		if($fat >= 41)
+		{
+			if($tag=="R")
+			{
+				return "Extremely obese";
+			}
+			
+		}
+	}
+
+
+
+	public function getFatM3($tag,$fat)
+	{
+		if($fat >= 0 && $fat < 5)
+		{
+			if($tag=="R")
+			{
+				return "Extremely  under fat";
+			}
+			
+		}
+		
+		if($fat >= 5 && $fat < 13)
+		{
+			if($tag=="R")
+			{
+				return "Under fat ";
+			}
+			
+		}
+		
+		if($fat >= 13 && $fat < 25)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		
+		if($fat >= 25 && $fat < 29)
+		{
+			if($tag=="R")
+			{
+				return "Obese";
+			}
+			
+		}
+		if($fat >= 25 && $fat < 29)
+		{
+			if($tag=="R")
+			{
+				return "Obese";
+			}
+			
+		}
+		if($fat >= 29)
+		{
+			if($tag=="R")
+			{
+				return "Extremely obese";
+			}
+			
+		}						
+						
+	}
+
+
+
+	public function getFatF3($tag,$fat)
+	{
+		if($fat >= 100 && $fat < 14)
+		{
+			if($tag=="R")
+			{
+				return "Eessential fat";
+			}
+		}
+		
+		if($fat >= 14 && $fat < 24)
+		{
+			if($tag=="R")
+			{
+				return "Under fat ";
+			}
+			
+		}
+		if($fat >= 24 && $fat < 36)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		if($fat >= 24 && $fat < 36)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		if($fat >= 24 && $fat < 36)
+		{
+			if($tag=="R")
+			{
+				return "Healthy";
+			}
+			
+		}
+		if($fat >= 36)
+		{
+			if($tag=="R")
+			{
+				return "Obese";
+			}
+			
+		}
+	}
 	
 }

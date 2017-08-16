@@ -36,10 +36,29 @@
 					<div class="form-group">
 						<label for="membr-relatinship">Relationship</label>
 							<select id="membr-relatinship" name="membr-relatinship" class="searchabledropdown form-control" data-show-subtext="true" data-live-search="true">
+							
 								<option value="0">Select</option>
+								<?php if($bodycontent['entry_from']=="S")
+								{
+									foreach($bodycontent['relationshipList'] as $relationship) :
+									if($relationship['relation']=="Self"){
+								?>
+									<option value="<?php echo $relationship['id'];?>" selected><?php echo $relationship['relation'];?></option>	
+								
+								<?php 
+									}
+									else{echo "";}
+									endforeach;
+								}
+								else{ ?>
+									
 								<?php foreach($bodycontent['relationshipList'] as $relationship) : ?>
-									<option value="<?php echo $relationship['id'];?>" ><?php echo $relationship['relation'];?></option>
-								<?php endforeach;?>
+								<option value="<?php echo $relationship['id'];?>" ><?php echo $relationship['relation'];?></option>	
+								<?php 
+								endforeach;
+								}?>
+								
+								
 							</select>
 							<input type="hidden" id="relation_text" name="relation_text" />
 					</div>
@@ -105,13 +124,27 @@
 	</div>
 </div>
 
+
+<?php 
+	$redirect_path = "";
+	if($bodycontent['entry_from']=="S")
+	{
+		$redirect_path = base_url()."healthandfitness/generalmedicalassesment";
+	}
+	else
+	{
+		$redirect_path = base_url()."memberfamily/bloodpressurelist";
+	}
+?>
+
+
 	<div id="memFamlyBPsaveModal" class="modal fade" role="dialog" style="position:fixed; top:35%;left:0%;">
 	  <div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
 		  <div class="modal-header modal-header-success">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='<?php echo base_url();?>memberfamily/bloodpressurelist'">×</button>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='<?php echo $redirect_path; ?>'">×</button>
             <h3><i class="glyphicon glyphicon-thumbs-up"></i> <span id="bpsavesuccessmsg"></span></h3>
 			
 			<!--		
@@ -123,7 +156,7 @@
 			
 		  </div> -->
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='<?php echo base_url();?>memberfamily/bloodpressurelist'">Close</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='<?php echo $redirect_path; ?>'">Close</button>
 		  </div>
 		</div>
 

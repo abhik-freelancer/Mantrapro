@@ -87,9 +87,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";}?>
@@ -118,9 +116,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";}?>
@@ -153,9 +149,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";} ?>
@@ -190,9 +184,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";} ?>
@@ -221,9 +213,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";} ?>
@@ -252,9 +242,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";} ?>
@@ -286,9 +274,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";}?>
@@ -319,9 +305,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo ""; }?>
@@ -358,9 +342,7 @@
                            </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";} ?>
@@ -397,9 +379,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php }else{echo ""; } ?>
@@ -428,9 +408,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php }else{echo "";} ?>
@@ -463,9 +441,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php }else {echo "";}?>
@@ -494,9 +470,7 @@
                             </tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php }else {echo "";}?>
@@ -531,9 +505,7 @@
 							</tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php }else{echo "";}?>
@@ -578,9 +550,7 @@
 							</tr>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";}?>
@@ -613,9 +583,7 @@
 						<?php } ?>
                         </tbody>
 					</table>
-					<div class="text-right">
-						<a href="#">View All <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
+					
 				</div>
 			</div>
 			<?php } else{echo "";}?>

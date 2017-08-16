@@ -49,10 +49,7 @@ class portfolio extends CI_Controller{
 			
             $result["bodycomp"] = $this->profilemodel->getPortfolioView($customerId,$validity["VALIDITY_STRING"]);
 			
-		/*	echo "<pre>";
-				print_r($result["bodycomp"]);
-			echo "</pre>"; 
-			exit; */
+		
            
             createbody_method($result, $page, $header, $session, $headercontent);
         }else{
@@ -66,12 +63,13 @@ class portfolio extends CI_Controller{
                 $session = $this->session->userdata('user_data');
                 $customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
                 $weight = $this->input->post("weight");
+				$waist_navel = $this->input->post("waist_navel");
                 $waist = $this->input->post("waist");
                 $hip= $this->input->post("hip");
                 $customer = $this->profilemodel->getCustomerByCustId($customerId);
                 $sex = $customer["CUS_SEX"];
                 
-                $healthresponse = $this->profilemodel->getBodyFatPercentage($weight,$waist,$hip,$sex);
+                $healthresponse = $this->profilemodel->getBodyFatPercentage($weight,$waist_navel,$waist,$hip,$sex);
                 
                 $response=array("msg_code"=>1,"msg_data"=>$healthresponse);
              
@@ -91,6 +89,7 @@ class portfolio extends CI_Controller{
             $customerId = $session["CUS_ID"];
             $dateofentry = $this->input->post("dateofentry");
             $weight = $this->input->post("weight");
+            $waist_navel = $this->input->post("waist-navel");
             $waist = $this->input->post("waist");
             $hip = $this->input->post("hip");
             $bodyfatPercentage = $this->input->post("bodyfatPercentage");
@@ -142,6 +141,7 @@ class portfolio extends CI_Controller{
                                                             "date_of_collection"=>date('Y-m-d'),
                                                             "membership_no"=>$membershipno,
                                                             "weight"=>$weight,
+                                                            "waist_navel"=>$waist_navel,
                                                             "waist"=>$waist,
                                                             "hip"=>$hip,
                                                             "fat_per"=>$bodyfatPercentage,
@@ -156,11 +156,11 @@ class portfolio extends CI_Controller{
                                                             "entry_from"=>"slf",
                                                             "member_id"=>$customerId,
                                                             "branch_code"=>"",
-                                                            "card_code"=>$card["CUS_CARD"],
+                                                            "card_code"=>$card["CUS_CARD"]
                                
                                                         );
-                                 
-                                 if( !$this->getBodyCompositionByDate($dateofentry,$validity["VALIDITY_STRING"])){
+														
+								if(!$this->getBodyCompositionByDate($dateofentry,$validity["VALIDITY_STRING"])){
                                  
                                         $insert = $this->profilemodel->insertbodycomposition($datainsertion); 
                                  }  else {
@@ -191,6 +191,7 @@ class portfolio extends CI_Controller{
                                                             "date_of_collection"=>date('Y-m-d'),
                                                             "membership_no"=>$membershipno,
                                                             "weight"=>$weight,
+                                                            "waist_navel"=>$waist_navel,
                                                             "waist"=>$waist,
                                                             "hip"=>$hip,
                                                             "fat_per"=>$bodyfatPercentage,
@@ -205,7 +206,7 @@ class portfolio extends CI_Controller{
                                                             "entry_from"=>"slf",
                                                             "member_id"=>$customerId,
                                                             "branch_code"=>"",
-                                                            "card_code"=>$card["CUS_CARD"],
+                                                            "card_code"=>$card["CUS_CARD"]
                                
                                                         );
                                  
@@ -217,7 +218,7 @@ class portfolio extends CI_Controller{
                                  }
                     
                                   if($insert){
-                                       $response = array("msg_code" => 1, "msg_data" => "Everything is okay !");
+                                       $response = array("msg_code" => 1, "msg_data" => "Data saved successfully");
                                     }else{
                                        $response = array("msg_code" => 2, "msg_data" => "Sorry something going wrong !");
                                     }

@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="header-panel-info">
-					<a href="<?php echo base_url();?>memberfamily/addbloodtest" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Blood Test</a>
+					<a href="<?php echo base_url();?>memberfamily/addbloodtest/F" class="btn btn-mantra"><span class="glyphicon glyphicon-plus"></span> Add Blood Test</a>
 				</div>
 			</div>
 		</div>

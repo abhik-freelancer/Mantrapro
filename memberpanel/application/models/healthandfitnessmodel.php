@@ -751,16 +751,23 @@ class healthandfitnessmodel extends CI_Model {
     
     public function getBodyfatpercentage($membershipno,$validity){
         $data=array();
-         $sql= "SELECT
-                `tran_id`,
-                `date_of_entry`,
-                date_format(`date_of_collection`,'%d-%m-%Y')as date_of_collection,
-                `weight`,
-                `fat_per`,
-                `fat_mass`,
-                `lean_body_mass`
+      $sql= "SELECT
+					  body_composition.`tran_id`,
+					  body_composition.`date_of_entry`,
+					  body_composition.`date_of_collection`,
+					  body_composition.`weight`,
+					  body_composition.`fat_per`,
+					  body_composition.`fat_mass`,
+					  body_composition.`lean_body_mass`,
+					  body_composition.`image_name`,
+					  body_composition.`entry_from`,
+					  body_composition.`hip`,
+					  body_composition.`waist_point`,
+					  body_composition.`waist_remarks`,
+					  body_composition.`waist_hip_ratio`,
+					  body_composition.`waist_hip_remarks`
                FROM `body_composition`
-               WHERE body_composition.`membership_no` ='".$membershipno."' AND body_composition.`validity_string`='".$validity."' ORDER BY date_of_collection DESC"; 
+               WHERE body_composition.`membership_no` ='".$membershipno."' AND body_composition.`validity_string`='".$validity."' ORDER BY body_composition.date_of_collection DESC"; 
          $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -769,7 +776,9 @@ class healthandfitnessmodel extends CI_Model {
                     "fat_per"=>$row->fat_per,
                     "fat_mass"=>$row->fat_mass,
                     "lean_body_mass"=>$row->lean_body_mass,
-                    "date_of_collection"=>$row->date_of_collection
+                    "date_of_collection"=>$row->date_of_collection,
+					"image_name"=>$row->image_name,
+					"entry_from"=>$row->entry_from
                     
                 );
             }
@@ -780,7 +789,68 @@ class healthandfitnessmodel extends CI_Model {
         }
     }
     
-   
+	public function getBodyGrith($membershipno,$validity)
+	{
+		$sql = "SELECT * FROM `body_grith` 
+				WHERE `body_grith`.membership_no = '".$membershipno."' AND 
+				body_grith.validity_string = '".$validity."' ORDER BY date_of_collection DESC";
+		 $query = $this->db->query($sql);	
+		 
+		if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = array(
+                   "entry_date" => $row->date_of_entry,
+                   "date_of_collection" => date("d-m-Y",strtotime($row->date_of_collection)),
+                   "neck" => $row->neck,
+                   "chest" => $row->chest,
+                   "chest_expansion" => $row->chest_expansion,
+                   "shoulder_length" => $row->shoulder_length,
+                   "hip" => $row->hip,
+                   "thigh" => $row->thigh,
+                   "calf" => $row->calf,
+                   "biceps_fles" => $row->biceps_fles,
+                   "biceps_extn" => $row->biceps_extn,
+                   "upper_abd" => $row->upper_abd,
+                   "mid_abd" => $row->mid_abd,
+                   "low_abd" => $row->low_abd
+                );
+            }
+            return $data;
+        } 
+		else{
+
+            return $data;
+        }
+			
+	}
+	
+ 
+	public function getBodyLength($membershipno,$validity)
+	{
+		$data = array();
+		$sql = "SELECT * FROM `body_length` 
+				WHERE `body_length`.membership_no = '".$membershipno."' AND 
+				body_length.validity_string = '".$validity."' ORDER BY date_of_collection DESC";
+		 $query = $this->db->query($sql);	
+		 
+		if ($query->num_rows() > 0)
+		{
+            foreach ($query->result() as $row) 
+			{
+                $data[] = array(
+                   "entry_date" => $row->date_of_entry,
+                   "date_of_collection" => date("d-m-Y",strtotime($row->date_of_collection)),
+                   "standing_height" => $row->standing_height,
+                   "seating_height" => $row->seating_height
+                );
+            }
+            return $data;
+        } 
+		else
+		{
+			return $data;
+        }
+	}    
     
     
 }

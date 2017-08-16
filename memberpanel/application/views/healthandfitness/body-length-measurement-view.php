@@ -19,56 +19,47 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                      <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-spin fa-fw"></i>Anthropometry </h3>
+                            <h3 class="panel-title"><i class="fa fa-spin fa-fw"></i>Anthropometry </h3>
                      </div>
+					 
                     <div class="panel-body">
-                        <div class="col-lg-12">
-                            <div class="panel panel-yellow">
+						<!---- BODY LENGTH MEASUREMENT ---->
+						<div class="col-lg-12">
+                            <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-hospital-o fa-fw"></i> Body fat percentage</h3>
+                                    <h3 class="panel-title"><i class="fa fa-hospital-o fa-fw"></i> Body Length Measurement</h3>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-hover" id="bfpercentage" > 
+                                    <table class="table table-bordered table-hover" id="bodygirthmeasurement" > 
 										<thead>
-												<tr>
-													<th>Date</th>
-													<th>Weight</th>
-													<th>Fat(%)</th>
-													<th>Fat mass</th>
-													<th>Lean body mass </th>
-													
-												</tr>
-											</thead>
+											<tr>
+												<th title="">Date</th>
+												<th title="Standing Height">Standing Height</th>
+												<th title="Seating Height">Seating Height</th>
+											</tr>
+										</thead>
 											<tbody>
-												<?php if($bodycontent["bodyfatpercentage"]) {
-													foreach ($bodycontent["bodyfatpercentage"] as $content) {
+												<?php if($bodycontent["bodyLengthMeasurement"]) {
+													foreach ($bodycontent["bodyLengthMeasurement"] as $content) {
 				
 
 													?>
 												<tr>
 													<td><?php echo($content["date_of_collection"]); ?></td>
-													<td><?php echo($content["weight"]); ?></td>
-													<td><?php echo($content["fat_per"]); ?></td>
-													<td><?php echo($content["fat_mass"]); ?></td>
-													<td><?php echo($content["lean_body_mass"]); ?></td>
-													
+													<td title="Standing Height"><?php echo($content["standing_height"]); ?></td>
+													<td title="Seating Height"><?php echo($content["seating_height"]); ?></td>
 												</tr>
 												<?php 
 												}
 												}?>
-												
 											</tbody>
 									</table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                
-                
-                
-                
+                        </div><!-- END of col-lg-12-->
+					</div>
             </div>
         </div>
     </div>

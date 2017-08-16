@@ -7,10 +7,11 @@
 </div>
 
 <?php 
-	$package_rate = $bodycontent['cardDtl']['package_rate'];
+/*	$package_rate = $bodycontent['cardDtl']['package_rate'];
 	$service_tax = $bodycontent['finYrDtl']['service_tax'];
 	$serviceTaxAmt = $package_rate*$service_tax/100;
-	$totalPayableAmt = $package_rate + $serviceTaxAmt;
+	$totalPayableAmt = $package_rate + $serviceTaxAmt;*/
+	
 ?>
 
 <div class="container-fluid" style="background:#F8F8F8;padding:2% 0;">
@@ -107,14 +108,60 @@
 						<label for="subscription-amount">Subscription Amount</label>
 						<input type="text" class="form-control" id="subscription-amount" name="subscription-amount" value="<?php echo $bodycontent['cardDtl']['package_rate'] ;?>" readonly />
 					</div>
+					<!--
 					<div class="form-group">
 						<label for="service-tax-percent">Service Tax%</label>
 						<input type="text" class="form-control" id="service-tax-percent" name="service-tax-percent" value="<?php echo $service_tax; ?>" readonly />
+					</div>-->
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<label for="cgst-rate">CGST % Rate</label>
+								<select class="form-control" id="cgst-rate" name="cgst-rate" readonly>
+									<?php foreach($bodycontent['cgstRateOpt'] as $cgstRateOpt):?>
+									<option value="<?php echo $cgstRateOpt['gstID'] ?>" <?php if($cgstRateOpt['gstID']==1){echo "selected";}else{echo "";} ?>><?php echo $cgstRateOpt['rate']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								
+								
+							</div>
+							<div class="col-md-6">
+								<label for="cgst-amount">CGST Amount</label>
+								<input type="text" class="form-control" id="cgst-amount" name="cgst-amount" value="<?php echo $bodycontent['paymentInfo']['cgstAmt'] ;?>" readonly />
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="net-payable-amt">Net Payable</label>
-						<input type="text" class="form-control" id="net-payable-amt" name="net-payable-amt" value="<?php echo $totalPayableAmt; ?>" readonly />
+						<div class="row">
+							<div class="col-md-6">
+								<label for="sgst-rate">SGST % Rate</label>
+								<select class="form-control" id="sgst-rate" name="sgst-rate"  readonly>
+									<?php foreach($bodycontent['sgstRateOpt'] as $sgstRateOpt):?>
+									<option value="<?php echo $sgstRateOpt['gstID'] ?>" <?php if($sgstRateOpt['gstID']==2){echo "selected";}else{echo "";} ?>><?php echo $sgstRateOpt['rate']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								
+								
+							</div>
+							<div class="col-md-6">
+								<label for="sgst-amount">SGST Amount</label>
+								<input type="text" class="form-control" id="sgst-amount" name="sgst-amount" value="<?php echo $bodycontent['paymentInfo']['sgstAmt'] ;?>" readonly />
+							</div>
+						</div>
 					</div>
+					
+				
+					<div class="form-group">
+						<label for="total-gst">Total GST Amount</label>
+						<input type="text" class="form-control" id="total-gst" name="total-gst" value="<?php echo $bodycontent['paymentInfo']['totalGSTAmt']; ?>" readonly />
+					</div>
+					
+				
+					<div class="form-group">
+						<label for="net-payable-amt">Net Payable</label>
+						<input type="text" class="form-control" id="net-payable-amt" name="net-payable-amt" value="<?php echo $bodycontent['paymentInfo']['totalPayableAmt']; ?>" readonly />
+					</div> 
+					
 					
 					
 					<div class="form-group">

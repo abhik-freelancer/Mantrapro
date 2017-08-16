@@ -51,8 +51,9 @@
 		 $style = "background:#099C4E;font-weight:700;color:#FFF;";
 	 }?>
 	 <tr style="<?php echo $style;?>">
-		<td colspan="4">Total</td>
+		<td colspan="3">Total</td>
 		<td align="right"><?php echo number_format($totalSubscription,2);?></td>
+		<td>&nbsp;</td>
 		<td align="right"><?php echo number_format($tatalPaidAmt,2);?></td>
 		<td align="right"><?php echo number_format($totalDueAmount,2);?></td>
 	 </tr>

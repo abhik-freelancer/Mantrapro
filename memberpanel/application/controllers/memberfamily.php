@@ -400,6 +400,8 @@ class memberfamily extends CI_Controller{
 		if($this->session->userdata('user_data')){
 			$session = $this->session->userdata('user_data');
 			$customerId = ($session["CUS_ID"]!="" ? $session["CUS_ID"]:0);
+			$entry_from = $this->uri->segment(3);
+			$result['entry_from'] = $entry_from;
 			$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
 			$page = 'memberfamily/add-memberfamily-bloodpressure';
 			
@@ -614,6 +616,8 @@ class memberfamily extends CI_Controller{
             $page = 'memberfamily/add-memberfamily-bloodtest';
             $header = "";
             $headercontent = "";
+			$entry_from = $this->uri->segment(3);
+			$result['entry_from'] = $entry_from;
 			$result['relationshipList'] = $this->memberfamilymodel->getRelationshipList();
 			$result['bloodTestList'] = $this->memberfamilymodel->getBloodTestList();
 		    createbody_method($result, $page, $header, $session, $headercontent);
@@ -679,6 +683,8 @@ class memberfamily extends CI_Controller{
 					"user_id" => 80, // entry from member self
 					"fin_id" => $finYearId
 					);
+					
+					//print_r($insertArray);
 					$status = $this->insertBloodTest($insertArray ,'S'); //S = Self .. entry for member self
 				}
 				else{
@@ -707,7 +713,7 @@ class memberfamily extends CI_Controller{
 				}
 			}
 			else{
-				echo "Not validate";
+				//echo "Not validate";
 				$response = array(
 					"msg_code" => 0,
 					"msg_data" => " All fields are required"

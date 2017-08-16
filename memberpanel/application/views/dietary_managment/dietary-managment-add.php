@@ -29,7 +29,7 @@
 	<div class="container-fluid">
 		<div class="row dietarymanagment-form-container">
 			<form id="dietaryManagmentForm" name="dietaryManagmentForm" class="dietaryManagmentForm" method="post" >
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-12 diet-col-border">
 				<div class="form-group">
 					<input type="hidden" name="mode" id="mode" value="<?php echo $bodycontent['mode']?>" />
 					<input type="hidden" name="dietManagmentEditId" id="dietManagmentEditId" value="<?php echo $bodycontent['dietarymanagmentID']?>" />
@@ -51,7 +51,7 @@
 					<label for="meal1opt2"> No</label>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-12 diet-col-border">
 				<div class="form-group">
 					<!-- Meal 2 -->
 					<label for="meal2"><span class="glyphicon glyphicon-menu-down"></span> Meal 2</label>
@@ -71,7 +71,7 @@
 					<label for="meal2opt2"> No</label>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-12 diet-col-border">
 				<div class="form-group">
 					<!-- Meal 3 -->
 					<label for="meal3"><span class="glyphicon glyphicon-menu-down"></span> Meal 3</label>
@@ -90,7 +90,7 @@
 					<label for="meal3opt2"> No</label>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 ">
+			<div class="col-lg-3 col-md-3 col-sm-12 ">
 				<div class="form-group">
 					<!-- Meal 4 -->
 					<label for="meal4"><span class="glyphicon glyphicon-menu-down"></span> Meal 4</label>
@@ -109,7 +109,7 @@
 					<label for="meal4opt2"> No</label>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-12 diet-col-border">
 				<div class="form-group">
 				<!-- Meal 5 -->
 					<label for="meal5"><span class="glyphicon glyphicon-menu-down"></span> Meal 5</label>
@@ -130,7 +130,7 @@
 				</div>
 			</div>
 			
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-12 diet-col-border">
 				<div class="form-group">
 				
 				<!-- Meal 6 -->
@@ -151,7 +151,7 @@
 					<label for="meal6opt2"> No</label>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-12 diet-col-border">
 				<div class="form-group">
 					<!-- Meal 7 -->
 					<label for="meal7"><span class="glyphicon glyphicon-menu-down"></span> Meal 7</label>
@@ -172,7 +172,7 @@
 				</div>
 			</div>
 			
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 ">
+			<div class="col-lg-3 col-md-3 col-sm-12">
 				<div class="form-group">
 				<!-- Meal 8 -->
 					<label for="meal8"><span class="glyphicon glyphicon-menu-down"></span> Meal 8</label>
@@ -208,7 +208,7 @@
 				</div>
 			</div> -->
 			
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 diet-col-border">
+			<div class="col-lg-3 col-md-3 col-sm-6 diet-col-border">
 				<div class="form-group">
 					<label for="weight">Weight</label>
 					<?php if($bodycontent['mode']=="Edit"){?>

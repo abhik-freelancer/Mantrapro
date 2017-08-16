@@ -371,6 +371,57 @@ class servicemodel extends CI_Model{
 		return $latestReceiptNo;
 	}
 	
+	public function getLastSerialNoForMemCode()
+	{
+		$data = array();
+		$this->db->select('MAX(serial_table.`latest_srl`) AS maxSerialNo,serial_table.id AS TableID')
+				 ->from('serial_table');
+				
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		
+		if($query->num_rows()>0)
+		{
+			$row = $query->row();
+			$data = array(
+				"maxSerialNo" => $row->maxSerialNo,
+				"tableID" => $row->TableID
+			);
+		}
+		else
+		{
+			$data = array();
+		}
+		return $data;
+	}
+	
+	public function updateSerialTable($updArry,$tblId)
+	{
+		try
+		{
+			$updateArray =array();
+			$this->db->trans_begin();
+			
+			// update serial_master
+			$this->db->where('serial_table.id', $tblId);
+			$this->db->update('serial_table', $updArry); 
+			
+			if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                return false;
+            } 
+			else {
+                $this->db->trans_commit();
+                return true;
+            }
+		}
+		catch (Exception $exc) 
+		{
+            echo $exc->getTraceAsString();
+        }
+	}
+	
+	
 	public function getCardDuration($card)
 	{
 		$card_duration = 0;

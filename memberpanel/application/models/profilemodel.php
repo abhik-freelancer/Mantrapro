@@ -22,6 +22,7 @@ class profilemodel extends CI_Model {
         $memberData = array();
         $sql = "SELECT `customer_master`.`CUS_ID`,
                 `customer_master`.`CUS_NAME`,
+                `customer_master`.`MEMBERSHIP_NO`,
                 `customer_master`.`CUS_PHONE`,
                 `customer_master`.`CUS_BRANCH`,
                 `customer_master`.`CUS_PHONE2`,
@@ -29,6 +30,9 @@ class profilemodel extends CI_Model {
                 `customer_master`.`CUS_PIN`,
                 `customer_master`.`CUS_EMAIL`,
                 `customer_master`.`CUS_SEX`,
+                `customer_master`.`HEIGHT`,
+                `customer_master`.`WEIGHT`,
+                `customer_master`.`WAIST`,
 				`customer_master`.`CUS_BLOOD_GRP`,customer_master.`CUS_CARD`,
                 
                 DATE_FORMAT(`customer_master`.`CUS_DOB`,'%d-%m-%Y') AS CUS_DOB,
@@ -47,6 +51,7 @@ class profilemodel extends CI_Model {
             $memberData = array(
                 "CUS_ID" => $row->CUS_ID,
                 "CUS_NAME" => $row->CUS_NAME,
+                "MEMBERSHIP_NO" => $row->MEMBERSHIP_NO,
                 "CUS_BRANCH" => $row->CUS_BRANCH,
                 "CUS_PHONE" => $row->CUS_PHONE,
                 "CUS_PHONE2" => $row->CUS_PHONE2,
@@ -54,6 +59,9 @@ class profilemodel extends CI_Model {
                 "CUS_PIN" => $row->CUS_PIN,
                 "CUS_EMAIL" => $row->CUS_EMAIL,
                 "CUS_SEX" => $row->CUS_SEX,
+                "HEIGHT" => $row->HEIGHT,
+                "WEIGHT" => $row->WEIGHT,
+                "WAIST" => $row->WAIST,
                 "CUS_BLOOD_GRP" => $row->CUS_BLOOD_GRP,
                 "CUS_DOB" => $row->CUS_DOB,
                 "CARD_DESC" => $row->CARD_DESC,

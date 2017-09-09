@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header page-label"> Health and fitness</h1>
+                <h1 class="page-header page-label"> 
+					Hexagonal Facilities <i class="fa fa-angle-right" aria-hidden="true"></i> Blood Test 
+				</h1>
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>
@@ -11,7 +13,8 @@
                     <li class="active">
                         <i class="fa fa-edit"></i> Blood test
                     </li>
-                </ol>
+                </ol>  
+				<p class="what-info-tag"><a href="javascript:;" data-toggle="modal" data-target="#bloodTestModal">Know about Blood Test</a> <i class="fa fa-question-circle" aria-hidden="true" style="font-size:20px;"></i></p>
             </div>
         </div>
 		
@@ -101,3 +104,34 @@
         </div>
     </div>
 </div>
+
+
+
+
+<div id="bloodTestModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+ 
+    <div class="modal-content">
+      <div class="modal-header" style="background:#fe7b34;color:#FFF;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Biomechanichal Screening</h4>
+      </div>
+      <div class="modal-body custome-modal-popup-body" style="height:250px;">
+       
+		<div class="normal_text" style="">
+			<p>
+			 Periodical blood test is the part of “prevention is better than cure “movement of Mantra to identifythe risk of hidden disease. </p>
+			<p>	
+				Getting screened is the first step in early intervention to prevent potential health disorders. It helps people to understand their risks, so that they can consult with their doctor and take the right steps towards a healthier life style .
+			</p>
+			
+		</div>
+	   
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+ 

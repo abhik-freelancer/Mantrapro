@@ -645,6 +645,63 @@ class dashboardmodel extends CI_Model {
         }
 	}
 	
+	// getMemberAttendanceByMonth 
+	// Count total no of days present in validity period month wise	
+	public function getMemberAttendanceByMonth($membership,$validitystring)
+	{
+		$data = array();
+		$sql = "SELECT COUNT(*) AS totalpresentDys,
+				DATE_FORMAT(member_attendance.att_date,'%b') AS month_info,
+				DATE_FORMAT(member_attendance.att_date,'%y') AS year_info, 
+				DATE_FORMAT(member_attendance.att_date,'%Y') AS full_year_info
+				FROM `member_attendance` WHERE member_attendance.membershipno='".$membership."' AND member_attendance.validity_string='".$validitystring."'
+				GROUP BY DATE_FORMAT(member_attendance.att_date, '%Y%m')";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0)
+			{
+				foreach($query->result() as $rows):
+					$data[] = array(
+						"totalpresentDys" => $rows->totalpresentDys,
+						"month_info" => $rows->month_info,
+						"year_info" => $rows->year_info,
+						"full_year" => $rows->full_year_info
+					); 
+				endforeach;
+			}
+			return $data;
+		
+	}
+
+	
+	// getMemberAttendanceDetailByMonthAndYear 
+	// Fetch detail record of single month
+	public function getMemberAttendanceDetailByMonthAndYear($membership,$validitystring,$month,$year)
+	{
+		$data = array();
+		$sql = "SELECT *
+					FROM `member_attendance` WHERE member_attendance.membershipno='".$membership."' AND member_attendance.validity_string='".$validitystring."'
+					AND DATE_FORMAT(member_attendance.att_date,'%b')='".$month."' AND DATE_FORMAT(member_attendance.att_date,'%Y')=".$year;
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0)
+			{
+				foreach($query->result() as $rows):
+					$data[] = array(
+						"membership" => $rows->membershipno,
+						"validitystring" => $rows->validity_string,
+						"att_date" => $rows->att_date,
+						"in_time" => $rows->in_time,
+						"out_time" => $rows->out_time
+					); 
+				endforeach;
+			}
+			return $data;
+		
+	}
+	
+	
+	
 	
 	
 }

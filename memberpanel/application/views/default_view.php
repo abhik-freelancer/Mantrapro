@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Mantra- Member panel</title>
+    <title>Mantra - Member's Panel</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -171,7 +171,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>memberdashboard">Member-panel</a>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>memberdashboard">Member's Panel</a>
                 <input type="hidden" value="<?php echo base_url(); ?>" id="basepath"></input>      
             </div>
             <!-- /.navbar-header -->
@@ -242,7 +242,7 @@
 								<!--<li><a href="#">Archieves</a></li>
 								<li><a href="#">Anthropometry</a></li>-->
 								<li><a href="<?php echo(base_url());?>healthandfitness/bloodtest"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blood Test</a></li>
-								<li><a href="javascript:;"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Archive Report</a></li>
+								<li><a href="<?php echo(base_url());?>archivereport"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Archive Report</a></li>
 							</ul>
 						</li>
                     
@@ -286,6 +286,7 @@
 					</li>
 					--->
 					<li><a href="<?php echo base_url(); ?>healthassetvaluereport"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Health Asset Value</a></li>
+					<li><a href="<?php echo base_url(); ?>mfbbreport"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> MFBB Report</a></li>
 					<li>
 						<a href="javascript:void(0);" data-toggle="collapse" ><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Transformation Portfolio <span class="glyphicon glyphicon-menu-down"></span></a>
 						<ul  class="collapse nav nav-third-level">
@@ -299,7 +300,8 @@
 						<ul class="collapse nav nav-third-level">
 							<li><a href="<?php echo base_url();?>dietary_management/diet_chart"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Diet List</a></li>
 							<li><a href="<?php echo base_url();?>dietary_management"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Dietary Management</a></li>
-							<li><a href="javascript:;"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Nutrition Calculator</a></li>
+							<!---
+							<li><a href="javascript:;"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Nutrition Calculator</a></li>-->
 						</ul>
 					</li>
 					<li><a href="<?php echo base_url();?>applications"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Application for Extension</a></li>

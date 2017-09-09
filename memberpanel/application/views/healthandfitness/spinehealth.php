@@ -4,16 +4,19 @@
      <div class="container-fluid">
          <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header page-label"> Health and fitness</h1>
+                <h1 class="page-header page-label"> 
+					Hexagonal Facilities <i class="fa fa-angle-right" aria-hidden="true"></i> Biomechanical Assessment
+				</h1>
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="<?php echo base_url(); ?>memberdashboard">Dashboard</a>
                     </li>
 
                     <li class="active">
-                        <i class="fa fa-edit"></i> Orthopedics Screenings
+                        <i class="fa fa-edit"></i> Biomechanical Screenings
                     </li>
                 </ol>
+				<p class="what-info-tag"><a href="javascript:;" data-toggle="modal" data-target="#biomechanichalScreeningModal">Know about Biomechanical Screenings</a> <i class="fa fa-question-circle" aria-hidden="true" style="font-size:20px;"></i></p>
             </div>
         </div>
          <div class="row">
@@ -752,3 +755,42 @@
          
      </div>
  </div>
+ 
+ 
+ 
+ 
+ 
+ <!------------------------>
+ 
+ 
+
+<div id="biomechanichalScreeningModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+ 
+    <div class="modal-content">
+      <div class="modal-header" style="background:#fe7b34;color:#FFF;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Biomechanichal Screening</h4>
+      </div>
+      <div class="modal-body custome-modal-popup-body" style="height:300px;">
+       
+		<div class="normal_text" style="">
+			<p>
+			Biomechanical Screening is a process through which an examination of the muscle and the joints are conducted in order to determine the body segments which needs to be trained. This can have a dramatic effect in improving your sports and fitness performance or a rehabilitation program by customizing your training schedule. The workout chart which would be generated from this Biomechanical Screening would enable you to accomplish your goals by preventing injury and optimizing sports and fitness performance. </p>
+			
+			<p>
+			A lot of injuries occur in our life because of bad posture or due to over-enthusiastic activities at the gym and sports. This is because before starting off, no initial assessment is done by a proper medical person and therefore the training programme turns out to be an unplanned activity. Chances of injury are very high. If the person has some amount of spondylitis or arthritis in his/her spine/ knees etc, then there is every possibility of the pain and symptoms to increase. With faulty exercises the amount of arthritis is bound to increase too. </p>
+
+		
+		</div>
+	   
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+ 
+ 
+ 

@@ -628,7 +628,81 @@ class memberdashboard extends CI_Controller {
 	
 	
 	
+	public function attendancedetail()
+	{
+		if($this->session->userdata('user_data'))
+		{
+			$session = $this->session->userdata('user_data');
+			
+			$customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $page = 'memberdashboard/member-attendence-view';
+            $membershipNumber = $this->profilemodel->getMembershipNumber($customerId);
+            $latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
+            $fromdate = ($latestvalidity["fromdate"]==""?"":$latestvalidity["fromdate"]);
+            $todate = ($latestvalidity["validupto"]==""?"":$latestvalidity["validupto"]);
+			$validityString =date('Y-m-d',strtotime($fromdate))." - ".date('Y-m-d',strtotime($todate)); // 2017-07-03 - 2017-10-04
+			$header ="";
+			$result['memberid']=$customerId;
+			$result['membershipNumber']=$membershipNumber;
+			$result['validityString']=$validityString;
+			
+			
+			$result['memberAttendance'] = $this->dashboardmodel->getMemberAttendanceByMonth($membershipNumber,$validityString);
+			
+			
+			
+			createbody_method($result, $page, $header, $session);
+		}
+		else
+		{
+			redirect('memberlogin','refresh');
+		}
+	}
 	
+	public function attendancedetailbymonth()
+	{
+		if($this->session->userdata('user_data'))
+		{
+			$session = $this->session->userdata('user_data');
+			$customerId = ($session["CUS_ID"] != "" ? $session["CUS_ID"] : 0);
+            $page = 'memberdashboard/member-attendence-detail-view';
+            $membershipNumber = $this->profilemodel->getMembershipNumber($customerId);
+            $latestvalidity = $this->profilemodel->getValidityString($membershipNumber);
+			$fromdate = ($latestvalidity["fromdate"]==""?"":$latestvalidity["fromdate"]);
+            $todate = ($latestvalidity["validupto"]==""?"":$latestvalidity["validupto"]);
+			
+			
+			$validityString =date('Y-m-d',strtotime($fromdate))." - ".date('Y-m-d',strtotime($todate)); // 2017-07-03 - 2017-10-04
+			$header ="";
+			$result['memberid']=$customerId;
+			$result['membershipNumber']=$membershipNumber;
+			$result['validityString']=$validityString;
+			
+			$month = $this->uri->segment(3);
+			$year = $this->uri->segment(4);
+			
+			
+			$result['memberAttDetail'] = $this->dashboardmodel->getMemberAttendanceDetailByMonthAndYear($membershipNumber,$validityString,$month,$year);
+			$result['month'] = $month;
+			$result['year'] = $year;
+			
+			createbody_method($result, $page, $header, $session);
+		}
+		else
+		{
+			redirect('memberlogin','refresh');
+		}
+	}
+	
+	
+	
+
+
+
+	
+	
+	
+	/*
 	public function getMacAddress()
 	{
 		ob_start(); 
@@ -648,7 +722,7 @@ class memberdashboard extends CI_Controller {
 		
 		//echo "********<br>";
 		echo $macAddress;
-	}
+	}*/
 	
 
 }

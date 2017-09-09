@@ -21,7 +21,7 @@
                     <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-reorder fa-2x"></i>
+                             <i class="fa fa-info-circle fa-2x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?php echo(round($bodycontent["havdata"]["hav_total_score"])." / ".$bodycontent["havdata"]["hav_total_max"]) ?></div>
@@ -30,7 +30,7 @@
                      </div>
                     </div>
                     <div class="panel-footer">
-                        <span class="pull-left">Know about health asset value.</span>
+                        <span class="pull-left"></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <span class="pull-left">Get your attendance list.</span>
+                        <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/attendancedetail">Get your attendance list.</a></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>

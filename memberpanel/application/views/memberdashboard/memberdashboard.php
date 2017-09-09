@@ -109,7 +109,7 @@
                             </div>
                             <a href="#">
                                 <div class="panel-footer dashboard-attendance-block-footer">
-                                    <span class="pull-left"><a href="javascript:;">View Details</a></span>
+                                    <span class="pull-left"><a href="<?php echo base_url();?>memberdashboard/attendancedetail">View Details</a></span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -139,7 +139,7 @@
                             </div>
                             <a href="javascript:;">
                                 <div class="panel-footer dashboard-due-block-footer">
-                                    <span class="pull-left"><a> View Details</a></span>
+                                    <span class="pull-left"><a href="<?php base_url();?>healthassetvaluereport"> View Details</a></span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
